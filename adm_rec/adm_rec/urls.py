@@ -20,7 +20,8 @@ urlpatterns = patterns('',
     #(r'captchas/',  include('captchas.urls')),
     
     # Model de Dados
-    (r'^usuario/', include('usuario.urls')), 
+    (r'^usuario/', include('usuario.urls')),
+     
 )
 
 # Configuração de urls de arquivos estáticos e de mídia

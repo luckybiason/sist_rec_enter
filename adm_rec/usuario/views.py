@@ -24,19 +24,25 @@ def usuario_list(request):
     num_pag, page, paginator = makePaginator(request,usuarios)
     return render(request, 'usuarios/listagem.html', locals())
 
+from datetime import date
 @login_required
 @user_passes_test(can_make_user)
 def usuario(request, id=None):
+    today = date.today()
+    today = today.strftime('%Y-%m-%d %H:%M:%S')
+    print today
     if request.method == 'POST':
         if id:
             u = User.objects.get(id=id)
             form = FormUser(request.POST,request.FILES,instance=u)
         else:
             form = FormUser(request.POST,request.FILES)
+            
         if form.is_valid():
             u = form.save()
-            messages.success(request,'- O usuário %s foi cadastrado com sucesso'%u.username)
+            messages.success(request,'- O usuário %s foi cadastrado com sucesso' % u.username)
             return redirect(u)
+        else: print form.errors
     else:
         if id:
             u = User.objects.get(id=id)

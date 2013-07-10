@@ -55,6 +55,7 @@
 			</div>
 
 			<footer id="rodape">
+				{% include "rodape.html" %}
 			</footer>
 		</div>
 		<!-- fim div#tudo -->
@@ -72,7 +73,8 @@
 			         "aaaaa"  
 			         ".bbb." 
 			         ".d.c."  
-			         "....." 
+			         "....."  
+			         "eeeee" 
 			         * 140px 5px 700px *;
 		}
 		#topo {
@@ -98,11 +100,13 @@
 			z-index: 3;
 		}
 		#rodape {
-			/*position: e;*/
-			width: 200px;
-			height: 20px;
-			float: right;
+			position: e;
+			/*height: 50px;*/
+			margin-top  : 10px;
+			padding-top  : 10px;
+			border-top   : 3px solid #A2B5CD;
 			margin-right: 1%;
+			/*background-color : #4A708B;*/
 		}
 		#mainmenu{position: g;}
 

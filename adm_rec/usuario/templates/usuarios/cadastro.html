@@ -49,26 +49,18 @@
 		  </tr>
 		  <tr><td colspan='2'><hr/><td/></tr> 
           {% endif %}
-          <tr> 
+          <!--tr> 
               <td><b>Grupos:<b/></td>
               <td>{{form.groups}}<br/>{{form.groups.help_text}}</td>
           </tr>
-          <tr><td colspan='2'><hr/><td/></tr> 
-          <tr> 
+          <tr><td colspan='2'><hr/><td/></tr--> 
+          <!--tr> 
               <td><b>Permissões do usuário:<b/></td>
               <td>{{form.user_permissions}}<br/>{{form.user_permissions.help_text}}</td>
           </tr>
-          <tr><td colspan='2'><hr/><td/></tr> 
-          <tr> 
-              <td><b>Último login:<b/></td>
-              <td>{{form.last_login}}<br/>{{form.last_login.help_text}}</td>
-          </tr>
-          <tr><td colspan='2'><hr/><td/></tr> 
-          <tr> 
-              <td><b>Data de registro:<b/></td>
-              <td>{{form.date_joined}}<br/>{{form.date_joined.help_text}}</td>
-          </tr>
-          <tr><td colspan='2'><hr/><td/></tr> 
+          <tr><td colspan='2'><hr/><td/></tr--> 
+          <input type="hidden" name="last_login" value="{{ today }}" id="id_last_login">
+          <input type="hidden" name="date_joined" value="{{ today }}" id="id_date_joined">
         </table>
         <input type='submit' value='Salvar' />
     </form>
