@@ -1,0 +1,56 @@
+{% load i18n %}
+<table style="width:660px">
+	<tr>
+		<td style="width:220px; margin-left:auto; margin-right:auto"> 
+			<script>
+				$(function() {
+					$("#per_page").change(function() {
+						location.href = '{{ request.path }}?per_page=' + $(this).val() + '';
+					})
+				});
+			</script>
+			<form method='get' name='form_per_page' >
+				{% trans 'Por Página' %}:&nbsp;
+				<input type="text" value="{{per_page}}" name="per_page" size="2" id="per_page"/>
+			</form> 
+		</td>
+		<td style="margin-left:auto; margin-right:auto"> 
+			{% if page.has_other_pages %}
+			<script>
+				$(function() {
+					$("#page_change").change(function() {
+						location.href = '{{ request.path }}?page=' + $(this).val() + '&per_page={{per_page}}';
+					})
+				});
+			</script>
+			<form method='get' name='combopags' >
+	
+				{% if page.has_previous %}
+				<a href='{{ request.path }}?page={{ page.previous_page_number }}&per_page={{per_page}}'> 
+					<img src="/static/GridList/img/arrow_left.gif" alt="Anterior" title="Anterior"/> 
+				</a>
+				{% else %}
+				<span><img src="/static/GridList/img/arrow_left_disabled.gif" alt="Anterior" title=""/></span>
+				{% endif %}
+	
+				<select name='page' id="page_change" >
+					<option value='1' selected="selected">---</option>
+					{% for i in paginator.page_range %}
+					<option value='{{ i }}'>{{ i }}</option>
+					{% endfor %}
+				</select>
+	
+				{% if page.has_next %}
+				<a href='{{ request.path }}?page={{ page.next_page_number }}&per_page={{per_page}}'> 
+					<img src="/static/GridList/img/arrow_right.gif" alt="Próxima" title="Próxima"/> 
+				</a>
+				{% else %}
+				<span><img src="/static/GridList/img/arrow_right_disabled.gif" alt="Próxima" title=""/></span>
+				{% endif %}
+	
+			</form> 
+			{% endif %} 
+		</td>
+	</tr>
+</table>
+

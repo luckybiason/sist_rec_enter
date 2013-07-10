@@ -1,0 +1,20 @@
+<td>
+<ul id="icons_plus{{id}}" class="ui-widget ui-helper-clearfix"
+               style="list-style: none; padding-left: 1px!important; margin: 0px!important;">
+
+	{# REMOVE_ICON #}
+	<li class="ui-state-default ui-corner-all" style="float: left;margin-left: 1px;">
+		<a href='{{excluir}}'><span class="ui-icon ui-icon-trash"></span></a>
+	</li>
+
+	{# PLUS_MINUS_ICON #}
+	{% if detail %}
+	<li class="ui-state-default ui-corner-all" id='plus{{id}}' style="float: left;margin-left: 1px;">
+		<span class="ui-icon ui-icon-plusthick" id='bt_pesq_plus{{id}}' onclick='pesq({{id}})'></span>
+	</li>
+	<li class="ui-state-default ui-corner-all"  id='minus{{id}}' style='display:None; float: left;margin-left: 1px;'>
+		<span class="ui-icon ui-icon-minusthick" id='bt_pesq_minus{{id}}' onclick='hide({{id}})'></span>
+	</li>
+	{% endif %}
+</ul>
+</td>

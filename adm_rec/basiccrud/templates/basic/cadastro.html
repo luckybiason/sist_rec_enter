@@ -1,0 +1,31 @@
+{% extends "base.html" %}
+
+{% load url from future %}
+{% load i18n %}
+
+{% block conteudo %}
+<script>
+	{% if required %}
+	    CAMPOS_OBRIGATORIOS = "{{required}}".split(" ");
+	{% endif %}
+</script>
+<script src="{{ STATIC_PREFIX }}basiccrud/basiccrud.js"  type="text/javascript"></script>
+<link rel='stylesheet' type='text/css' href='{{ STATIC_PREFIX }}basiccrud/basiccrud.css' />
+        
+
+<div style="margin-left:auto; margin-right:auto"  >
+    <form enctype='multipart/form-data' method='post'>
+	    {% csrf_token %}
+	   <fieldset class="fieldset_off">
+        <table cellspacing='0px' cellpadding='0px'>
+          <tr>{{form}}</tr>
+        </table>
+       <br/>
+        <input type='submit' value='{% trans 'Salvar' %}'/>
+        <a  class="link_btn" href='{% url listagem %}'>{% trans 'Voltar' %}</a>
+       </fieldset>
+    </form>
+</div>
+
+{% endblock %}
+

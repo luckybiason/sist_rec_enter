@@ -1,0 +1,50 @@
+<link href="{{STATIC_PREFIX}}css/jquery.ui.potato.menu.css" rel="stylesheet" type="text/css" />
+<style>
+	.menu {
+		list-style: none;
+		font-size: 12px;
+		height: auto;
+	}
+
+	.menu img {
+		border: 0px;
+		height: 16px;
+		position: relative;
+		top: 3px;
+	}
+	span{
+		text-align: justify!important;
+	}
+	.potato-menu-group { table-layout: fixed; }
+    .potato-menu-item a { height: 34px!important; }
+</style>
+
+
+<script>
+	$(function() {
+		$('#mainmenu').buttonset();
+		$('#mainmenu').ptMenu();
+	}); 
+</script>
+<script src="{{STATIC_PREFIX}}js/jquery.ui.potato.menu.js"></script>
+
+{% comment %}
+<!-- MENU 2 COM JQUERY UI  -->
+<script>
+		$(function() {
+			$("#menu2").menu({
+				position : {
+					at : "left bottom bottom"
+				}
+			});
+		});
+	</script>
+	
+	<style type="text/css">
+		#menu2 li {
+			width: auto;
+			clear: none;
+		}
+		/*#menu li ul li { width: auto; clear: none; float: none; text-align: justify; }*/
+	</style>
+	{% endcomment %}

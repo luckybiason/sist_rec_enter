@@ -1,0 +1,24 @@
+
+.button, button, input[type=button] {
+	font-weight:     bold !important;
+	padding:         5px !important;
+	border:          1px solid #ccc !important;
+	text-decoration: none !important;
+	background:      #e2e2e2 !important;
+	color:           #778899 !important;
+	min-width:       90px !important;
+}
+
+.buttonNext, .buttonPrev {
+	font-weight:     bold !important;
+	margin-right:    5px !important;
+	padding:         5px !important;
+	border:          1px solid #ccc !important;
+	text-decoration: none !important;
+	background:      #e2e2e2 !important;
+	color:           #778899 !important;
+	min-width:       90px !important;
+}
+.buttonPrev{
+	background-image: url('static/arrow_left.gif')
+}

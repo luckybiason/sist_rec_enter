@@ -1,0 +1,52 @@
+<!-- Motion Captcha -->
+<!--script type="text/javascript" src="{{STATIC_URL}}reorderCapt/js/jquery-1.3.2.js"></script-->
+<!--script type="text/javascript" src="{{STATIC_URL}}reorderCapt/js/ui.core.js"></script-->
+<!--script type="text/javascript" src="{{STATIC_URL}}reorderCapt/js/ui.sortable.js"></script-->
+<link type="text/css" rel="stylesheet" href="{{STATIC_PREFIX}}reorderCapt/css/ui.sortable.css" >
+<script src="http://code.jquery.com/jquery-1.9.1.js"></script>
+<script src="http://code.jquery.com/ui/1.10.2/jquery-ui.js"></script>
+<script>
+	$(function() {
+		$("#sortable").sortable();
+		$("#sortable").disableSelection();
+
+		$.fn.shuffle = function() {
+			return this.each(function() {
+				var items = $(this).children();
+				return (items.length) ? $(this).html($.shuffle(items, $(this))) : this;
+			});
+		}
+
+		$.fn.validate = function() {
+			var res = false;
+			this.each(function() {
+				var arr = $(this).children();
+				res = ((arr[0].innerHTML == "A") && (arr[1].innerHTML == "B") && (arr[2].innerHTML == "C") && (arr[3].innerHTML == "D") && (arr[4].innerHTML == "E") && (arr[5].innerHTML == "F"));
+			});
+			return res;
+		}
+
+		$.shuffle = function(arr, obj) {
+			for (var j, x, i = arr.length; i; j = parseInt(Math.random() * i), x = arr[--i], arr[i] = arr[j], arr[j] = x);
+			if (arr[0].innerHTML == "1")
+				obj.html($.shuffle(arr, obj))
+			else
+				return arr;
+		}
+
+		$('#sortable').shuffle();
+
+		$('#form_login').submit(function(e) {
+			esconderCarregando();
+			if (!$('#sortable').validate()) {
+				jAlert("Ordene as letras para fazer o login.","Erro!");
+				return false
+			} else {
+				return true
+			}
+		});
+		
+		$("#sortable").css("margin-bottom","5px");
+        $("#entrar").appendTo($("#sortable").parent());
+	}); 
+</script>

@@ -1,0 +1,43 @@
+
+{% extends "base.html" %}
+
+{% block conteudo %}
+<h3>Cadastro de Usuários</h3>
+<a class='button' href='{% url usuario.cadastro %}'>Novo registro</a>
+<hr width='300px' align='left'/>
+{% include 'combopags.html'%}
+<table id='listagem'>
+    <thead>
+    <tr>
+        <th>ID</th>
+        <th>Nome</th>
+        <th>Email</th>
+        <th>Adm</th>
+        <th>Super</th>
+    </tr>
+    </thead>
+    <tbody>
+    {% for p in page.object_list %}
+    <tr>
+        <td>{{ p.id }}</a></td>
+        <td>{{ p.username }}</td>
+        <td>{{ p.email }}</td>
+        <td>{{ p.is_staff }}</td>
+        <td>{{ p.is_superuser }}</td>
+        {% if user.is_superuser or user.is_staff %} 
+	    <td>
+	        <a href='{% url usuario.cadastro p.id %}'><img src='{{STATIC_PREFIX}}/GridList/img/edit.png' width='15px'></a>
+	        <img src='{{STATIC_PREFIX}}/GridList/img/add.png' width='15px'>
+	    </td>
+        {% endif %} 
+    </tr>
+    {% empty %}
+        <tr>
+            <td colspan='2'>Nenhum registro cadastrado.</td>
+        </tr>
+    {% endfor %}
+    </tbody>
+</table>
+{% include 'pagcontrol.html'%}
+<br/>
+{% endblock %}

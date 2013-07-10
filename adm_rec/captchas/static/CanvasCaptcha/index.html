@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <script src="jquery-1.5.1.min.js"></script>
+    <!-- <script src="fonts/helvetiker.js"></script> -->
+    <script src="fonts/gentilis.js"></script>
+    <script src="fonts/optimer.js"></script>
+    <script src="fonts/helvetiker.js"></script>
+    <script src="canvasCaptcha.js"></script>
+  </head>
+  <body style="background-color: #ABA">
+    <input id="text" value="canvas captcha" />
+    <br />
+    <canvas id="glyphs" width="400" height="150"></canvas>
+
+    <script>
+      function updateCaptcha() {
+        var ctx = $("#glyphs")[0].getContext('2d');
+        drawCaptcha({
+          context: ctx, 
+          font: optimer, 
+          style: 'navy',
+          text: $("#text").val()
+        });
+      }
+      $(function() { 
+        $("#text").change(updateCaptcha);
+        $("#text").keydown(function() { window.setTimeout(updateCaptcha, 1) });
+        updateCaptcha();
+      });
+    </script>
+  </body>
+</html>

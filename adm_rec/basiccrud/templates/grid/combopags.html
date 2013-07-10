@@ -1,0 +1,15 @@
+{% load i18n %}
+{% if page.has_other_pages %}
+
+    <script>
+      $(function(){
+      	$("#per_page").change(function(){location.href= '{{ request.path }}?per_page='+$(this).val()+'';})
+      });
+    </script>
+    
+	<form method='get' name='form_per_page' id='combopags'>
+		{% trans 'Por Página' %}:&nbsp;<input type="text" value="{{per_page}}" name="per_page" size="2" id="per_page"/>
+	</form>
+
+{% endif %}
+

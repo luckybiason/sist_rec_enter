@@ -1,0 +1,19 @@
+<!-- Motion Captcha -->
+<script type="text/javascript" src="{{STATIC_PREFIX}}motionCapt/js/jquery.motionCaptcha.0.2.js"></script>
+<link type="text/css" rel="stylesheet" href="{{STATIC_PREFIX}}motionCapt/css/jquery.motionCaptcha.0.2.css" />
+
+<script type="text/javascript">
+	$(function() {
+		$('#entrar').hide();
+		$('#form_login').motionCaptcha({
+			submitId : 'entrar'
+		});
+		$('#form_login').submit(function(){
+			if( $('#entrar').css("display")=="none" ){
+				return false
+			}else{
+				return true
+			}
+		});
+	}); 
+</script>

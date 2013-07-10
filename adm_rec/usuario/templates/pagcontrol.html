@@ -1,0 +1,21 @@
+<br/>
+{% if page.has_other_pages %}
+
+	{% if page.has_previous %}
+		<a class='buttonPrev' href='{{ request.path }}?pagina={{ page.previous_page_number }}'>< Anterior</a>
+	{% endif %}
+
+	{% for i in paginator.page_range %}
+		{% if i == num_pag %}
+		        <span class='buttonAtual'>{{ i }}</span>
+		{% else %}
+			<a class='button' href='{{ request.path }}?pagina={{ i }}'>{{ i }}</a>
+		{% endif %}
+	{% endfor %}
+	   
+	{% if page.has_next %}
+		<a class='buttonNext' href='{{ request.path }}?pagina={{ page.next_page_number }}'>Próxima></a>
+	{% endif %}
+
+{% endif %}
+<br/>

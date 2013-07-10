@@ -1,0 +1,70 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
+# This file is distributed under the same license as the PACKAGE package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
+#
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: PACKAGE VERSION\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2013-02-21 05:53-0600\n"
+"PO-Revision-Date: 2013-02-19 07:32-0600\n"
+"Last-Translator:   <biasonlucky@hotmail.com>\n"
+"Language-Team: LANGUAGE <LL@li.org>\n"
+"Language: \n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"X-Translated-Using: django-rosetta 0.7.0\n"
+
+#: class_based/gridlist.py:73
+msgid "Nenhum registro cadastrado."
+msgstr "No records registered."
+
+#: class_based/coisas/anti_robots.py:53
+msgid "Invalid number!"
+msgstr "Invalid number!"
+
+#: class_based/coisas/anti_robots.py:93
+msgid "Let us know if you are human"
+msgstr "Let us know if you are human"
+
+#: class_based/templates/class_based/cadastro.html:14
+#: class_based/templates/class_based/listagem.html:23
+msgid "Salvar"
+msgstr "Save"
+
+#: class_based/templates/class_based/cadastro.html:15
+msgid "Voltar"
+msgstr "Back"
+
+#: class_based/templates/class_based/listagem.html:30
+#: class_based/templates/class_based/listagem.html:31
+msgid "Novo"
+msgstr "New"
+
+#: class_based/templates/class_based/grid/combopags.html:11
+msgid "Por Página"
+msgstr "Per Page"
+
+#: class_based/templates/class_based/grid/filtros.html:6
+msgid "Filtrar"
+msgstr "Filter"
+
+
+msgid "O Registro contêm outros registros que dependem dele."
+msgstr "The registry contains other records that depend on it."
+
+msgid "Criado com sucesso."
+msgstr "Create successfully."
+
+msgid "um erro ocorreu."
+msgstr "An error occurred."
+
+msgid "Alterado com sucesso."
+msgstr "Altered successfully."
+
+msgid "Deletado com sucesso."
+msgstr "Deleted successfully."
+

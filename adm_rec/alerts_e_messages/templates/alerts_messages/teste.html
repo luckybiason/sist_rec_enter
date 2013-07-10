@@ -1,0 +1,214 @@
+{% extends 'base.html' %}
+
+{% load url from future %}
+
+{% block aereo %}
+<!-- mensagens teste -->
+<div class="info message">
+		 <h3>FYI, something just happened!</h3>
+		 <p>This is just an info notification message.</p>
+</div>
+
+<div class="error message">
+		 <h3>Ups, an error ocurred</h3>
+		 <p>This is just an error notification message.</p>
+</div>
+
+<div class="warning message">
+		 <h3>Wait, I must warn you!</h3>
+		 <p>This is just a warning notification message.</p>
+</div>
+
+<div class="success message">
+		 <h3>Congrats, you did it!</h3>
+		 <p>This is just a success notification message.</p>
+</div>
+{% endblock %}
+
+{% block conteudo %}
+<script>
+	$(function() {
+		
+		// jNotify  //
+		time_of_msg = 2000
+		config = {
+			autoHide : false, // added in v2.0
+			clickOverlay : true, // added in v2.0
+			TimeShown : time_of_msg,
+			HorizontalPosition : 'center',
+			VerticalPosition : 'top',
+			onCompleted : function() {
+			}
+		}
+
+		$("#error").click(function() {
+			jError('Sou um alerta de erro', config);
+		});
+		$("#info").click(function() {
+			jNotify('Sou um alerta de informação', config);
+		});
+		$("#warning").click(function() {
+			jWarning('Sou um alerta de alerta', config);
+		});
+		$("#success").click(function() {
+			jSuccess('Sou um alerta de sucesso', config);
+		});
+		$("#plan").click(function() {
+			jPlain('Sou um alerta em branco', config);
+		});
+
+		// Toastmessage  //
+
+		$("#Terror").click(function() {
+			$().toastmessage('showErrorToast', "some message here");
+		});
+		$("#Tinfo").click(function() {
+			$().toastmessage('showNoticeToast', 'some message here');
+		});
+		$("#Twarning").click(function() {
+			$().toastmessage('showWarningToast', "some message here");
+		});
+		$("#Tsuccess").click(function() {
+			$().toastmessage('showSuccessToast', "some message here");
+		});
+
+		$().toastmessage({
+			sticky : true,
+			position : 'top-center',
+			type : 'success',
+			close : function() {
+			}
+		});
+		// Alertas e Mensagens JQuery  //
+
+		$('#dialog').dialog({
+			autoOpen : false,
+			width : 400,
+			modal : true,
+			resizable : false,
+			buttons : {
+				"OK" : function() {
+					$(this).dialog("close");
+				},
+				"Cancel" : function() {
+					$(this).dialog("close");
+				}
+			}
+		});
+
+		$('#confirm_jquery').click(function(e) {
+			$('#dialog').dialog('open');
+		});
+
+		// jquery_alerts //
+		$("#alert_button").click(function() {
+			jAlert('This is a custom alert box', 'Alert Dialog');
+		});
+
+		$("#confirm_button").click(function() {
+			jConfirm('Can you confirm this?', 'Confirmation Dialog', function(r) {
+				jAlert('Confirmed: ' + r, 'Confirmation Results');
+			});
+		});
+
+		$("#prompt_button").click(function() {
+			jPrompt('Type something:', 'Prefilled value', 'Prompt Dialog', function(r) {
+				if (r) jAlert('You entered ' + r);
+			});
+		});
+
+		$("#alert_button_with_html").click(function() {
+			jAlert('You can use HTML, such as <strong>bold</strong>, <em>italics</em>, and <u>underline</u>!');
+		});
+
+		// JReject //
+		$('#demo2').click(function() {  
+		    $.reject({  
+		        reject: {  
+		            safari: true, // Apple Safari  
+		            chrome: true, // Google Chrome  
+		            firefox: true, // Mozilla Firefox  
+		            msie: true, // Microsoft Internet Explorer  
+		            opera: true, // Opera  
+		            konqueror: true, // Konqueror (Linux)  
+		            unknown: true // Everything else  
+		        }  
+		    }); // Customized Browsers  
+		  
+		    return false;  
+		}); 
+	});
+
+</script>
+
+<h2>Teste de alertas e mensagens em jquery</h2>
+<h4>Basico - criado a partir do dialog do jqueryUI</h4>
+<a class='link_btn' onclick='$.alert("message", "title");return false;'>Sou um alerta dialog</a>
+<a class='link_btn' id='confirm_jquery'>Sou uma confirmação dialog</a>
+<br/>
+<div id="dialog" title="Verify Form jQuery UI Style">
+	<p><span class="ui-icon ui-icon-alert" style="float:left; margin:0 7px 0 0;"></span> You entered your e-mail address as:</p>
+	<p id="dialog-email"></p>
+	<p>If this is correct, click Submit Form.</p>
+	<p>To edit, click Cancel.<p>
+</div>
+ir até site: <a href='http://coding.abel.nu/2012/01/jquery-ui-replacement-for-alert/'>http://coding.abel.nu/</a><br/>
+ir até site: <a href='http://www.downloadjavascripts.com/list/javasiteppp37/Details.aspx'>www.downloadjavascripts.com</a>
+
+<br/>
+
+<h2>Notificações</h2>
+
+<h4>Teste do jNotify</h4>
+<a class='link_btn' id='error'>Sou um alerta de erro</a><br/>
+<a class='link_btn' id='info'>Sou um alerta de informação</a><br/>
+<a class='link_btn' id='warning'>Sou um alerta de alerta</a><br/>
+<a class='link_btn' id='success'>Sou um alerta de sucesso</a><br/>
+<a class='link_btn' id='plan'>Sou um alerta em branco</a><br/>
+ir até site: <a href='http://www.myjqueryplugins.com/jquery-plugin/jnotify'>http://myjqueryplugins.com</a>
+
+<h4>Teste do Toastmessage</h4>
+<a class='link_btn' id='Terror'>Sou um alerta de erro</a><br/>
+<a class='link_btn' id='Tinfo'>Sou um alerta de informação</a><br/>
+<a class='link_btn' id='Twarning'>Sou um alerta de alerta</a><br/>
+<a class='link_btn' id='Tsuccess'>Sou um alerta de sucesso</a><br/>
+ir até site: <a href='https://github.com/akquinet/jquery-toastmessage-plugin/wiki'>https://github.com/akquinet/</a>
+
+<h4>Teste do desconhecido</h4>
+<a class="link_btn trigger info-trigger" onclick='return false;'>Info</a>
+<a class="link_btn trigger error-trigger" onclick='return false;'>Error</a>
+<a class="link_btn trigger warning-trigger" onclick='return false;'>Warning</a>
+<a class="link_btn trigger success-trigger" onclick='return false;'>Success</a><br/>
+ir até site: <a href='http://www.red-team-design.com/cool-notification-messages-with-css3-jquery'>http://www.red-team-design.com/cool-notification-messages-with-css3-jquery</a>
+
+
+<h2>Dialogs de confirmação e input</h2>
+
+<h4>Teste do Apprise (adaptado, por mim, para tema JQuery)</h4>
+<a class='link_btn'  onclick="apprise('Hello');return false;">apprise('Hello');</a><br/>
+<a class='link_btn'  onclick="apprise('Hello?', {'confirm':true});return false;">apprise('Hello?', {'confirm':true});</a><br/>
+<a class='link_btn'  onclick="apprise('Hello now?', {'verify':true});return false;">apprise('Hello now?', {'verify':true});</a><br/>
+<a class='link_btn'  onclick="apprise('How about now?', {'verify':true, 'textYes':'Yes already!', 'textNo':'No, not yet'});return false;">apprise('How about now?', {'verify':true, 'textYes':'Yes already!', 'textNo':'No, not yet'});</a><br/>
+<a class='link_btn'  onclick="apprise('Hello', {'animate':true});return false;">apprise('Hello', {'animate':true});</a><br/>
+<a class='link_btn'  onclick="apprise('Verify your name', {'input':'Jack Jones', 'textOk':'Correct'});">apprise('Verify your name', {'input':'Jack Jones', 'textOk':'Correct'});</a><br/>
+<a class='link_btn'  onclick="apprise('Whats your name?', {'input':true});">apprise('What's your name?', {'input':true});</a><br/>
+<a class='link_btn'  onclick="apprise('Hello');return false;">apprise('Hello');</a><br/>
+ir até site: <a href='http://thrivingkings.com/read/Apprise-The-attractive-alert-alternative-for-jQuery'>http://thrivingkings.com/</a>
+
+
+<h4>Teste do jquery_alerts (adaptado, por mim, para tema JQuery)</h4>
+<b>Alert</b>     <a class='link_btn' id="alert_button">Show Alert</a><br/>
+<b>Confirm</b>   <a class='link_btn' id="confirm_button">Show Confirm</a><br/>
+<b>Prompt</b>    <a class='link_btn' id="prompt_button">Show Prompt</a><br/>
+<b>With HTML</b> <a class='link_btn' id="alert_button_with_html">Show Alert</a><br/>
+ir até site: <a href='http://www.shiguenori.com/material/jquery.alerts/'>http://www.shiguenori.com/jquery.alerts/</a>
+
+
+<h4>Teste do jReject </h4>
+<a class='link_btn' id="demo2">Show reject</a><br/>
+ir até site: <a href='http://jreject.turnwheel.com/'>http://jreject.turnwheel.com/</a><br/>
+GitHub: <a href='https://github.com/TurnWheel/jReject'>https://github.com/TurnWheel/jReject</a>
+
+
+
+{% endblock %}

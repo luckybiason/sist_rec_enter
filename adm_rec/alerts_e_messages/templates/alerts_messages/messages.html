@@ -1,0 +1,73 @@
+
+<script type="text/javascript">
+ $(function(){
+	{% if messages %}
+	time_of_msg = 2000
+	config = {
+		autoHide : false, // added in v2.0
+		clickOverlay : true, // added in v2.0 
+		TimeShown : time_of_msg,
+		HorizontalPosition : 'center',
+		VerticalPosition   : 'top',
+		onCompleted : function(){ }
+	 }
+	
+   $().toastmessage({
+       sticky   : true,
+       position : 'top-center',
+       type     : 'success',
+       close    : function () {}
+	});
+	
+	{% for m in messages %}
+		if( '{{m.tags}}'=='error' ){
+			jError(  '{{ m }}',config ); 
+	        //$().toastmessage('showErrorToast', "{{ m }}");
+		}else if( '{{m.tags}}'=='success' ){
+			jSuccess(  '{{ m }}',config );
+		    //$().toastmessage('showSuccessToast', "{{ m }}");
+		}else if( '{{m.tags}}'=='info' ){
+			jNotify(  '{{ m }}',config ); 
+		    //$().toastmessage('showNoticeToast', '{{ m }}');
+		}else if( '{{m.tags}}'=='warning' ){
+			jWarning(  '{{ m }}',config );
+		    //$().toastmessage('showWarningToast', "{{ m }}");
+		}	
+	{% endfor %}
+	{% endif %}	  
+});
+</script>
+
+{% comment %}
+<div id='messages'  style="margin-left:auto; margin-right:auto">
+	{% if messages %}
+	{% for m in messages %}
+	<li class='{{ m.tags }}'>
+		{{ m }}
+	</li>
+	{% endfor %}
+	{% endif %}
+</div>
+
+
+ jNotify();
+ 
+  // simple Error box call
+  jError(); <div id="jError" style="opacity: 0; min-width: 200px; top: 21px; left: 562.5px;">um erro ocorreu.</div>
+ 
+  // simple Success box call success
+  jSuccess();
+ 
+  // more complex Notify box call
+  jNotify(
+    'Here the message !!<br />You can write HTML code, <strong>bold</strong>,...',
+    {
+      autoHide : true, // added in v2.0
+      TimeShown : 3000,
+      HorizontalPosition : 'center',
+      onCompleted : function(){ // added in v2.0
+      alert('jNofity is completed !');
+    }
+  }
+  ); // close jNotify
+  {% endcomment %}

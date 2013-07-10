@@ -1,0 +1,15 @@
+{% load i18n %}
+<table style="width:100%">
+	
+    <tr> 
+    	<td style="margin-left:auto; margin-right:auto" >
+			{% blocktrans count qntd=qnt %}Existe {{ qntd }} registro{% plural %}Existem {{ qntd }} registros{% endblocktrans %}
+            <br/>{{teste}}
+        </td>
+        <td style="margin-left:auto; margin-right:auto">
+			<form method='post' action="#" id='formPesq' >
+			   {% trans "Filtrar" %}:<input type='text' id='pesquisar' name='pesquisar' size='20' />
+			</form>
+        </td>
+    </tr>
+</table>

@@ -1,0 +1,12 @@
+<br/>
+{% if page.has_other_pages %}
+<form method='GET' name='combopags'>
+    Página:<select name='pagina'>
+	{% for i in paginator.page_range %}
+      <option value='{{ i }}'>{{ i }}</option>
+    {% endfor %}
+    </select>
+    <input type='submit' value='Ir'/>
+</form>
+{% endif %}
+<br/>

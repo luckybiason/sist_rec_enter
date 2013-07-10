@@ -1,0 +1,20 @@
+<div style="margin-left:auto; margin-right:auto">
+	
+	{% if filters %}
+		<fieldset>{{filters|safe}}</fieldset>
+		<br/>
+	{% endif %}
+	
+	<fieldset class="fieldset_off">
+	<table id='listagem' class="tablecol" >
+	    {{thead|safe}}
+	    {{body|safe}}
+	</table>
+	</fieldset>
+	
+	{% if tfoot %}
+		<br/>
+		<fieldset >{{tfoot|safe}}</fieldset>
+	{% endif %}
+	
+</div>

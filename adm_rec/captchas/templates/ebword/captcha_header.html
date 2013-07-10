@@ -1,0 +1,67 @@
+<!-- Ebword Captcha +  CanvasCaptcha -->
+<!--[if lt IE 9]>
+        <script type="text/javascript" src="http://html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+        <script type="text/javascript" src="{{STATIC_PREFIX}}CanvasCaptcha/excanvas.min.js"></script>
+<![endif]-->
+
+<script type="text/javascript" src="{{STATIC_PREFIX}}ebwordCapt/jquery.ebcaptchaword.js"></script>
+<!--link type="text/css" rel="stylesheet" href="{{STATIC_PREFIX}}ebwordCapt/css/ui.sortable.css" /-->
+<script src="{{STATIC_PREFIX}}CanvasCaptcha/fonts/gentilis.js"></script>
+<script src="{{STATIC_PREFIX}}CanvasCaptcha/fonts/optimer.js"></script>
+<script src="{{STATIC_PREFIX}}CanvasCaptcha/fonts/helvetiker.js"></script>
+<script src="{{STATIC_PREFIX}}CanvasCaptcha/canvasCaptcha.js"></script>
+
+<script type="text/javascript">
+	$(function() {
+        // Esconder Botão submit e criar o código do captcha
+		$( "#entrar" ).button({ disabled:true })
+		$('#form_login').ebcaptchaword();
+
+        //- Função de validação
+		function validate() {
+			if ($('#ebcaptchainput').val().toLowerCase() == $('#ebcaptchatext').html().toLowerCase()) {
+				return true
+			} else { return false }
+		}
+		
+		//- Criação do captcha visual
+		function updateCaptcha() {
+			drawCaptcha({
+				context : $("#glyphs")[0].getContext('2d'),
+				font    : optimer,
+				style   : 'black',
+				text    : $("#ebcaptchatext").html()
+			});
+		}
+		updateCaptcha();
+		$("#glyphs").attr("title",$("#ebcaptchatext").html());
+		
+		// Proprio para o IE8 (imagem ou texto)
+        if( $("#glyphs").attr("title")==""){ $("#glyphs").hide(); }
+        else{ $("#ebcaptchatext").hide(); }
+        
+        //- Eventos para validação
+		$('#ebcaptchainput').live("input",function() {
+			if (validate() ){
+			    $( "#entrar" ).button({ disabled:false })
+			               .removeClass("ui-button-disabled")
+			               .removeClass("ui-state-disabled")
+			               .removeAttr("disable")
+			               .removeAttr("aria-disabled"); 
+			}else{
+			    $( "#entrar" ).button({ disabled:true })
+			}
+		}) 
+		
+		$('#entrar').click(function() {
+			 $('#form_login').submit();
+		}) 
+		
+	}); 
+</script>
+
+<!--[if lt IE 9]>   
+<script type="text/javascript">
+	$(function() { $("#glyphs").hide();}); 
+</script>
+<![endif]-->

@@ -1,0 +1,99 @@
+	
+
+#container {
+	text-align: left;
+	width: 700px;
+	margin-left: auto;
+	margin-right: auto;
+}
+
+.question {
+	position: absolute;
+	display: inline;
+	text-align: center!important;
+	width: 125px;/*174px;*/
+	height: 55px;
+	font-size: 13px;
+	/*line-height: 1.5em;*/
+	/*background: url('images/bubble.png') left top no-repeat;*/
+	padding: 10px 0 0 0;
+	/*text-shadow: 0px 1px 0px #fff;*/
+	/*margin-left: -7em;*/
+	/*margin-top: -6em;*/
+	opacity: 0;
+}
+
+.yes, .cancel {
+	margin-top: .5em;
+	margin-right: .5em;
+	cursor: pointer;
+	display: inline-block;
+	width: 63px;
+	height: 21px;
+	color: #fff;
+	text-shadow: 0px 1px 0px #000;
+	/*background: url('images/button.png') left top no-repeat;*/
+}
+.yes{width: 40px;}
+.cancel{width: 50px;}
+
+.title {
+	font-size: 30px;
+	margin-bottom: 1.5em;
+	font-weight: bold;
+	font-style: italic;
+	text-shadow: 0px 2px 0px #fff;
+}
+
+a, a:visited, a:hover {
+	text-decoration: none;
+	color: #000;
+}
+
+
+/*plugin de notificação desconhecido */
+.message{
+		background-size: 40px 40px;
+		background-image: linear-gradient(135deg, rgba(255, 255, 255, .05) 25%, transparent 25%,
+							transparent 50%, rgba(255, 255, 255, .05) 50%, rgba(255, 255, 255, .05) 75%,
+							transparent 75%, transparent);										
+		 box-shadow: inset 0 -1px 0 rgba(255,255,255,.4);
+		 width: 100%;
+		 border: 1px solid;
+		 color: #fff;
+		 padding: 15px;
+		 position: fixed;
+		 _position: absolute;
+		 text-shadow: 0 1px 0 rgba(0,0,0,.5);
+		 animation: animate-bg 5s linear infinite;
+		 z-index: 1000;
+}
+
+.info{
+		 background-color: #4ea5cd;
+		 border-color: #3b8eb5;
+}
+
+.error{
+		 background-color: #de4343;
+		 border-color: #c43d3d;
+}
+		 
+.warning{
+		 background-color: #eaaf51;
+		 border-color: #d99a36;
+}
+
+.success{
+		 background-color: #61b832;
+		 border-color: #55a12c;
+}
+
+.message h3{ margin: 0 0 5px 0;													 }
+
+.message p{ margin: 0;													 }
+
+@keyframes animate-bg {
+    from { background-position: 0 0;}
+    to {background-position: -80px 0;}
+}
