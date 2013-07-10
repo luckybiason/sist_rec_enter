@@ -111,7 +111,7 @@ INSTALLED_APPS = (
     # Modelos de dados
     'usuario',
     # 'comp_visuais',
-    # 'televisores',
+    'televisores',
     # Apps de Processos
 )
 

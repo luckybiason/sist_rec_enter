@@ -21,6 +21,7 @@ urlpatterns = patterns('',
     
     # Model de Dados
     (r'^usuario/', include('usuario.urls')),
+    (r'^televisores/', include('televisores.urls')),
      
 )
 
