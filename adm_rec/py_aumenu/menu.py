@@ -81,7 +81,7 @@ MENU = lambda :{
            'titulo'      : _(u"Gerenciamento"),
            'img'         : "img/icone_cadastro.gif",
            'id-html'     : "config",
-           'itens-width' : "110",
+           'itens-width' : "145",
            'perm_need'   : [''],
            'itens'  :[
                      {  

@@ -6,11 +6,13 @@
 	<head>
 		<title>Estudo Class-Based</title>
 
-		<script src="{{STATIC_PREFIX}}js/jquery-1.8.2.min.js"></script>
+		<script src="{{STATIC_PREFIX}}js/jquery.js"></script>
 		<script src="{{STATIC_PREFIX}}js/jquery.tpl_layout1.1.6.min.js" type="text/javascript"></script>
-		<link href="{{STATIC_PREFIX}}css/jquery-ui.css" rel="stylesheet" type="text/css" />
-
-		<link type="text/css" rel="stylesheet" href="{{STATIC_PREFIX}}css/brasil/jquery-ui-1.10.3.custom.min.css"/>
+		
+		<link type="text/css" rel='stylesheet' href="{{STATIC_PREFIX}}css/style.css"/>
+		<link type="text/css" rel="stylesheet" href="{{STATIC_PREFIX}}css/listagem.css"/>
+		<link type="text/css" rel="stylesheet" href="{{STATIC_PREFIX}}css/botoes.css"/>
+		<link type="text/css" rel="stylesheet" href="{{STATIC_PREFIX}}css/redmond/jquery-ui-1.10.3.custom.min.css"/>
 
 		<script src="{{STATIC_PREFIX}}js/ui/jquery-ui-1.9.1.custom.js" type="text/javascript"></script>
 		<script src="{{STATIC_PREFIX}}js/ui/jquery.ui.core.js"         type="text/javascript"></script>
@@ -23,8 +25,10 @@
         <!-- jNotify -->
         <link   href="{{STATIC_PREFIX}}jNotify/css/jNotify.jquery.css" type="text/css" rel="stylesheet"/>
         <script src ="{{STATIC_PREFIX}}jNotify/js/jNotify.jquery.js"   type="text/javascript"></script>
-        
-        
+                
+        <!-- Toastmessage -->
+        <link   href="{{STATIC_PREFIX}}toastmessage/css/jquery.toastmessage.css" type="text/css" rel="stylesheet"/>
+        <script src ="{{STATIC_PREFIX}}toastmessage/js/jquery.toastmessage.js"   type="text/javascript"></script>
         <!-- Instalação de botões -->
 		<script>
 		$(function() {
@@ -84,12 +88,12 @@
 	<style>
 		#tudo {
 			display: 
-			         "aaaaa"  
-			         ".bbb." 
-			         ".d.c."  
-			         "....."  
-			         "eeeee" 
-			         * 140px 5px 700px *;
+			         "aaa"  
+			         ".b." 
+			         ".c."  
+			         "..."  
+			         "eee" 
+			         * 700px *;
 		}
 		#topo {
 			position: a;
@@ -103,15 +107,17 @@
 			height: 42px;
 			display: 
 			         ".g." 
-			         10% 80% 10%;
+			         25% 65% 10%;
+			text-align: center;
 		}
 		#principal {
 			position: c;
 			height: auto;
 			min-height: 400px;
+			text-align: center;
 		}
 		#aux {
-			position: d;
+			/*position: d;*/
 			z-index: 3;
 		}
 		#rodape {
