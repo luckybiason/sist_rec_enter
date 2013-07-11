@@ -4,9 +4,9 @@
 {% block conteudo %}
 <h3>Cadastro de Usuários</h3>
 <a class='button' href='{% url usuario.cadastro %}'>Novo registro</a>
-<hr width='300px' align='left'/>
+<hr width='600px' align='left'/>
 {% include 'combopags.html'%}
-<table id='listagem'>
+<table id='listagem' width='600px'>
     <thead>
     <tr>
         <th>ID</th>
@@ -14,6 +14,8 @@
         <th>Email</th>
         <th>Adm</th>
         <th>Super</th>
+        <th>Último Login</th>
+        <th>Cadastrado em</th>
     </tr>
     </thead>
     <tbody>
@@ -30,6 +32,8 @@
 	        <img src='{{STATIC_PREFIX}}/GridList/img/add.png' width='15px'>
 	    </td>
         {% endif %} 
+        <td>{{ p.last_login }}</td>
+        <td>{{ p.date_joined }}</td>
     </tr>
     {% empty %}
         <tr>

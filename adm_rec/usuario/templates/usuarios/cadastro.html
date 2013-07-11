@@ -5,62 +5,52 @@
        <form enctype='multipart/form-data' method='post'>
        	{% csrf_token %}
         <table cellspacing='0px' cellpadding='0px'>
+        	
           <tr>
               <td><b>Usuário:<b></td>
               <td>{{form.username}}<br/>{{form.username.help_text}}</td>
           </tr>
-          <tr><td colspan='2'>{{form.username.errors}}</td></tr>
-          <tr><td colspan='2'><hr/><td/></tr> 
+          
           <tr>
               <td><b>Primeiro Nome:<b></td>
               <td>{{form.first_name}}</td>
           </tr>
-          <tr><td colspan='2'>{{form.first_name.errors}}</td></tr>
-          <tr><td colspan='2'><hr/><td/></tr> 
+          
           <tr>
               <td><b>Último nome:<b></td>
               <td>{{form.last_name}}</td>
           </tr>
-          <tr><td colspan='2'>{{form.last_name.errors}}</td></tr>
-          <tr><td colspan='2'><hr/><td/></tr> 
+
           <tr>
               <td><b>Endereço de e-mail:<b></td>
               <td>{{form.email}}</td>
           </tr>
-          <tr><td colspan='2'>{{form.username.errors}}</td></tr>
-          <tr><td colspan='2'><hr/><td/></tr> 
+
+          	 
+          {% if not id %}
           <tr> 
               <td><b>Senha:</b></td>
               <td>{{form.password}}</td>
           </tr>
-          <tr><td colspan='2'>{{form.password.errors}}</td></tr>
-          <tr><td colspan='2'><hr/><td/></tr> 
+          {% endif %}
+          
           {% if user.is_superuser or user.is_staff %} 
           <tr> 
               <td><b>Administrador:<b/></td>
-              <td>{{form.is_staff}}<br/>{{form.is_staff.help_text}}</td>
+              <td>{{form.is_staff}}</td>
           </tr>
-          <tr><td colspan='2'><hr/><td/></tr>
           {% endif %} 
+          
           {% if user.is_superuser %} 
 		  <tr> 
 		      <td><b>Status de superusuário:<b/></td>
-		      <td>{{form.is_superuser}}<br/>{{form.is_superuser.help_text}}</td>
+		      <td>{{form.is_superuser}}</td>
 		  </tr>
-		  <tr><td colspan='2'><hr/><td/></tr> 
-          {% endif %}
-          <!--tr> 
-              <td><b>Grupos:<b/></td>
-              <td>{{form.groups}}<br/>{{form.groups.help_text}}</td>
-          </tr>
-          <tr><td colspan='2'><hr/><td/></tr--> 
-          <!--tr> 
-              <td><b>Permissões do usuário:<b/></td>
-              <td>{{form.user_permissions}}<br/>{{form.user_permissions.help_text}}</td>
-          </tr>
-          <tr><td colspan='2'><hr/><td/></tr--> 
+          {% endif %} 
+          
           <input type="hidden" name="last_login" value="{{ today }}" id="id_last_login">
           <input type="hidden" name="date_joined" value="{{ today }}" id="id_date_joined">
+          
         </table>
         <input type='submit' value='Salvar' />
     </form>
