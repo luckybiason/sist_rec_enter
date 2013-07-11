@@ -49,7 +49,7 @@ def usuario(request, id=None):
                 user = User.objects.create_user( username=request.POST['username'],
                                                  password=request.POST['password'],
                                                  email=request.POST['email'] )
-                populate_user(u, request.POST)
+                populate_user(user, request.POST)
             messages.success(request,'- O %s foi cadastrado com sucesso' % user.username)
             return redirect('usuario.listagem')
         except Exception, ex:

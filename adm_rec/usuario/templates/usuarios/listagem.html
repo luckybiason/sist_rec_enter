@@ -9,13 +9,16 @@
 <table id='listagem' width='600px'>
     <thead>
     <tr>
-        <th>ID</th>
-        <th>Nome</th>
-        <th>Email</th>
-        <th>Adm</th>
-        <th>Super</th>
-        <th>Último Login</th>
-        <th>Cadastrado em</th>
+        <td class="ui-widget-header">ID</thd>
+        <td class="ui-widget-header">Nome</td>
+        <td class="ui-widget-header">Email</td>
+        <td class="ui-widget-header">Adm</td>
+        <td class="ui-widget-header">Super</td>
+        <td class="ui-widget-header">Último Login</td>
+        <td class="ui-widget-header">Cadastrado em</td>
+        {% if user.is_superuser or user.is_staff %} 
+        <td class="ui-widget-header">Ações</td>
+        {% endif %}
     </tr>
     </thead>
     <tbody>
@@ -26,14 +29,14 @@
         <td>{{ p.email }}</td>
         <td>{{ p.is_staff }}</td>
         <td>{{ p.is_superuser }}</td>
+        <td>{{ p.last_login }}</td>
+        <td>{{ p.date_joined }}</td>
         {% if user.is_superuser or user.is_staff %} 
 	    <td>
 	        <a href='{% url usuario.cadastro p.id %}'><img src='{{STATIC_PREFIX}}/GridList/img/edit.png' width='15px'></a>
 	        <img src='{{STATIC_PREFIX}}/GridList/img/add.png' width='15px'>
 	    </td>
         {% endif %} 
-        <td>{{ p.last_login }}</td>
-        <td>{{ p.date_joined }}</td>
     </tr>
     {% empty %}
         <tr>

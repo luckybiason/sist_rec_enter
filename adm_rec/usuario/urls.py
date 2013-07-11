@@ -1,7 +1,7 @@
 #-*- coding: utf-8 -*-
 from django.conf.urls.defaults import *
 from basiccrud.views import *
-from models import Usuario
+
 urlpatterns = patterns('usuario', 
                        
     ## - Cadastro e listagem de usuarios
