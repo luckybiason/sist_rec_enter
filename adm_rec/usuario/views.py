@@ -24,29 +24,39 @@ def usuario_list(request):
     num_pag, page, paginator = makePaginator(request,usuarios)
     return render(request, 'usuarios/listagem.html', locals())
 
-from datetime import date
+import pytz
+from datetime import datetime
+def populate_user(user, post):
+    user.first_name   = post.get('first_name','')
+    user.last_name    = post.get('last_name','')
+    user.email        = post.get('email','')
+    user.is_superuser = post.get('is_superuser','')
+    user.is_staff     = post.get('is_staff','')
+    user.date_joined  = datetime.now(pytz.utc)
+    user.save()
+
 @login_required
 @user_passes_test(can_make_user)
 def usuario(request, id=None):
-    today = date.today()
-    today = today.strftime('%Y-%m-%d %H:%M:%S')
-    print today
     if request.method == 'POST':
-        if id:
-            u = User.objects.get(id=id)
-            form = FormUser(request.POST,request.FILES,instance=u)
-        else:
-            form = FormUser(request.POST,request.FILES)
-            
-        if form.is_valid():
-            u = form.save()
-            messages.success(request,'- O usuário %s foi cadastrado com sucesso' % u.username)
-            return redirect(u)
-        else: print form.errors
+        try:
+            if id: # Alteração
+                user = User.objects.get(id=id)
+                form = FormUser(instance= User.objects.get(id=id) )
+                populate_user(User.objects.get(id=id), request.POST)
+            else: # Criação
+                form = FormUser()
+                user = User.objects.create_user( username=request.POST['username'],
+                                                 password=request.POST['password'],
+                                                 email=request.POST['email'] )
+                populate_user(u, request.POST)
+            messages.success(request,'- O %s foi cadastrado com sucesso' % user.username)
+            return redirect('usuario.listagem')
+        except Exception, ex:
+            messages.error(request,ex)
     else:
         if id:
-            u = User.objects.get(id=id)
-            form = FormUser(instance=u)
+            form = FormUser(instance= User.objects.get(id=id) )
         else:
             form = FormUser()
     

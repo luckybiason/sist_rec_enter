@@ -1,10 +1,11 @@
 #-*- coding: utf-8 -*-
 from django.conf.urls.defaults import *
-
+from basiccrud.views import *
+from models import Usuario
 urlpatterns = patterns('usuario', 
                        
     ## - Cadastro e listagem de usuarios
-    url(r'^listagem/$',             'views.usuario_list', name='usuario.listagem'),
+    url(r'^listagem/$',             'views.usuario_list', name='usuario.listagem'),  
     url(r'^cadastro/$',             'views.usuario',      name='usuario.cadastro'),
     url(r'^cadastro/(?P<id>\d+)/$', 'views.usuario',      name='usuario.cadastro'),
     # (desabilitada) url(r'^exclusao/(?P<id>\d+)/$', 'views.usuariodel', name='usuarios.excluir'),
