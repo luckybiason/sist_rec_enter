@@ -6,8 +6,11 @@
 	<head>
 		<title>Estudo Class-Based</title>
 
-		<script src="{{STATIC_PREFIX}}js/jquery.js"></script>
+		<script src="{{STATIC_PREFIX}}js/jquery-1.8.2.min.js"></script>
 		<script src="{{STATIC_PREFIX}}js/jquery.tpl_layout1.1.6.min.js" type="text/javascript"></script>
+		<link href="{{STATIC_PREFIX}}css/jquery-ui.css" rel="stylesheet" type="text/css" />
+
+		<link type="text/css" rel="stylesheet" href="{{STATIC_PREFIX}}css/brasil/jquery-ui-1.10.3.custom.min.css"/>
 
 		<script src="{{STATIC_PREFIX}}js/ui/jquery-ui-1.9.1.custom.js" type="text/javascript"></script>
 		<script src="{{STATIC_PREFIX}}js/ui/jquery.ui.core.js"         type="text/javascript"></script>
@@ -15,11 +18,22 @@
 
 		<!-- jquery_alerts -->
 		<script src="{{STATIC_PREFIX}}jquery_alerts/js/jquery.alerts.js" type="text/javascript"></script>
-		<link href="{{STATIC_PREFIX}}jquery_alerts/css/jquery.alerts.css" rel="stylesheet" type="text/css" media="screen" />
+		<link href="{{STATIC_PREFIX}}jquery_alerts/css/jquery.alerts.css" rel="stylesheet" type="text/css" />
 		
         <!-- jNotify -->
         <link   href="{{STATIC_PREFIX}}jNotify/css/jNotify.jquery.css" type="text/css" rel="stylesheet"/>
         <script src ="{{STATIC_PREFIX}}jNotify/js/jNotify.jquery.js"   type="text/javascript"></script>
+        
+        
+        <!-- Instalação de botões -->
+		<script>
+		$(function() {
+			// Tranforma todos os botões em botões do JQuery UI
+			$("input[type=submit], button, .link_btn,th, .aButtons > button, .button").button();
+			// Todos os botões de excluir, apresentando uma mini confirmação antes
+	        $('.ui-icon-trash').addClass("ask");
+		});
+		</script>
         
 		{% include "menu_statics.html" %}
 
@@ -44,7 +58,7 @@
 			</nav>
 
 			<aside id="aux">
-				{% include "menu_ver.html" %}
+				{#% include "menu_ver.html" %#}
 			</aside>
 
 			<div id="principal">

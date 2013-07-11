@@ -2,9 +2,9 @@ body {
 	margin:           5px;
 	background-color: white;
 	color:            #778899;
+	font-family: "Courier New", Courier, monospace;
+	font-size: medium;
 }
-
-
 a {
 	color: #778899;
 }
@@ -13,18 +13,14 @@ hr {
 	text-align: left;
 	width:      650px;
 }
-
-
 .header {
 	background-color: #DCDCDC;
 	padding:          5px;
 	text-decoration:  none;
 }
-
 .header a {
 	text-decoration: none;
 }
-
 .header.titulo {
 }
 
@@ -34,4 +30,7 @@ hr {
 
 .ui-widget {
     font-size: 0.9em!important;
+}
+fieldset{
+	border: none;
 }

@@ -123,7 +123,7 @@ TEMPLATE_CONTEXT_PROCESSORS = (
     "django.contrib.messages.context_processors.messages",
     #
     'django.core.context_processors.request',
-    #'py_aumenu.contrib.menu_maker',        # CP para Componente de Menu (Pronto)
+    'py_aumenu.contrib.menu_maker',        # CP para Componente de Menu (Pronto)
     #'tekextensions.context_processors.admin_media_prefix',
     'captchas.contrib.client_captcha',     # CP para Componente de captchas parametrizados 
 )
