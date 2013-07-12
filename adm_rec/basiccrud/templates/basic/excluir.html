@@ -8,6 +8,7 @@
 	    <p> Deseja mesmo excluir <b>{{ object }}</b>  nº<b>{{ object.id }}</b>? </p>
 	    
 	    <form method='post'>
+	        {% csrf_token %}
 	        <input type='hidden' value='{{ object.id }}' name='id'/>
 	        <input class='link_btn' type='submit' value='Confirmar exclusão' />
             <a  class="link_btn" href='{% url listagem %}'>Voltar</a>

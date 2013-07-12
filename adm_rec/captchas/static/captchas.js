@@ -20,7 +20,7 @@ $(function() {
 
 	//- Previnir submit no enter
 	$('#form_login').bind("keypress", function(e) {
-		esconderCarregando();
+		//esconderCarregando();
 		if (e.keyCode == 13) {
 			e.preventDefault();
 			return false;
