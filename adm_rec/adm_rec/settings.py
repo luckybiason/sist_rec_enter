@@ -111,7 +111,7 @@ INSTALLED_APPS = (
     'captchas',          # Componente de captchas
     # Modelos de dados
     'usuario',
-    # 'comp_visuais',
+    'comp_visuais',
     'televisores',
     # Apps de Processos
 )

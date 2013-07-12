@@ -8,7 +8,9 @@ urlpatterns = patterns('usuario',
     url(r'^listagem/$',             'views.usuario_list', name='usuario.listagem'),  
     url(r'^cadastro/$',             'views.usuario',      name='usuario.cadastro'),
     url(r'^cadastro/(?P<id>\d+)/$', 'views.usuario',      name='usuario.cadastro'),
+    url(r'^cadastro/(?P<id>\d+)/$', 'views.usuario',      name='usuario.cadastro'),
     # (desabilitada) url(r'^exclusao/(?P<id>\d+)/$', 'views.usuariodel', name='usuarios.excluir'),
+    url(r'^detail/$',  'views.getdetail', name='usuario.getdetail'),
     
     ## - Edição de lisatgem de permissões do usuário
 )

@@ -5,7 +5,12 @@ from methods                  import catch_urls
 from django.shortcuts         import render
 from django.utils.translation import ugettext as _ , ugettext_lazy as __, ungettext
 
-translate = lambda obj,field : force_unicode(getattr(obj,field), encoding='utf-8', strings_only=False, errors='strict')#.encode('ascii', 'ignore')
+def translate(obj,field):
+    if callable(field):
+        return field(obj)
+    if callable(getattr(obj,field)):
+        return getattr(obj,field)(obj)
+    return force_unicode(getattr(obj,field), encoding='utf-8', strings_only=False, errors='strict')#.encode('ascii', 'ignore')
 
 ### - Funções de HTML Dinâmico - ###
 

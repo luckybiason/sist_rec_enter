@@ -36,10 +36,17 @@ MENU = lambda :{
                            'perm_need'   : [''],
                            'itens'  :[
                                       { 
-                                       'titulo'    : _(u"Tipo de Tela"),
+                                       'titulo'    : _(u"Categoria (Componente)"),
                                        'img'       : "img/icone_cadastro.gif",
-                                       'url-name'  : "tipos_tela.listagem",
-                                       'id-html'   : "tipo_tela",
+                                       'url-name'  : "categoria.listagem",
+                                       'id-html'   : "categoria",
+                                       'perm_need' : [''],
+                                       },
+                                      { 
+                                       'titulo'    : _(u"Entrada"),
+                                       'img'       : "img/icone_cadastro.gif",
+                                       'url-name'  : "entrada.listagem",
+                                       'id-html'   : "entrada",
                                        'perm_need' : [''],
                                        },
                                       { 
@@ -50,14 +57,6 @@ MENU = lambda :{
                                        'perm_need' : [''],
                                        },
                                       { 
-                                       'titulo'    : _(u"Modo preferencial de imagem"),
-                                       'img'       : "img/icone_cadastro.gif",
-                                       'url-name'  : "modo_pref.listagem",
-                                       'id-html'   : "modo_pref",
-                                       'perm_need' : [''],
-                                       },
-                                     
-                                      { 
                                        'titulo'    : _(u"Itens inclusos"),
                                        'img'       : "img/icone_cadastro.gif",
                                        'url-name'  : "item.listagem",
@@ -65,12 +64,20 @@ MENU = lambda :{
                                        'perm_need' : [''],
                                        },
                                       { 
-                                       'titulo'    : _(u"Entrada"),
+                                       'titulo'    : _(u"Modo preferencial de imagem"),
                                        'img'       : "img/icone_cadastro.gif",
-                                       'url-name'  : "entrada.listagem",
-                                       'id-html'   : "entrada",
+                                       'url-name'  : "modo_pref.listagem",
+                                       'id-html'   : "modo_pref",
                                        'perm_need' : [''],
                                        },
+                                      { 
+                                       'titulo'    : _(u"Tipo de Tela"),
+                                       'img'       : "img/icone_cadastro.gif",
+                                       'url-name'  : "tipos_tela.listagem",
+                                       'id-html'   : "tipo_tela",
+                                       'perm_need' : [''],
+                                       },
+                                     
 
                            ]  # Fim itens submenu Cadastros Auxiliares
                      },  # Fim submenu Cadastros Auxiliares

@@ -20,8 +20,9 @@ urlpatterns = patterns('',
     #(r'captchas/',  include('captchas.urls')),
     
     # Model de Dados
-    (r'^usuario/', include('usuario.urls')),
-    (r'^televisores/', include('televisores.urls')),
+    (r'^usuario/',      include('usuario.urls')),
+    (r'^televisores/',  include('televisores.urls')),
+    (r'^comp_visuais/', include('comp_visuais.urls')),
      
 )
 

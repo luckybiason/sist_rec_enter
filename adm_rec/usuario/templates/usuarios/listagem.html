@@ -1,50 +1,112 @@
-
 {% extends "base.html" %}
+{% load static %}
+{% get_static_prefix as STATIC_PREFIX %}
+{% load url from future %}
+
+{% block css_custom %}
+{% endblock %}
+
+{% block js_custom %}
+
+<script type="text/javascript">
+	HASH_LIST_AJAX = {
+		URL_LIST_AJAX : "{% url 'usuario.getdetail' %}",
+	}
+</script>
+<script src="{{STATIC_PREFIX}}GridList/js/pesq_details.js" type="text/javascript"></script>
+
+<script src="{{STATIC_PREFIX}}GridList/js/jquery.tablesorter.js" type="text/javascript"></script>
+<script src="{{STATIC_PREFIX}}GridList/js/list_order.js"         type="text/javascript"></script>
+<script src="{{STATIC_PREFIX}}GridList/js/list_search.js"        type="text/javascript"></script>
+
+{% endblock %}
 
 {% block conteudo %}
-<h3>Cadastro de Usuários</h3>
-<a class='button' href='{% url usuario.cadastro %}'>Novo registro</a>
-<hr width='600px' align='left'/>
-{% include 'combopags.html'%}
-<table id='listagem' width='600px'>
-    <thead>
-    <tr>
-        <td class="ui-widget-header">ID</thd>
-        <td class="ui-widget-header">Nome</td>
-        <td class="ui-widget-header">Email</td>
-        <td class="ui-widget-header">Adm</td>
-        <td class="ui-widget-header">Super</td>
-        <td class="ui-widget-header">Último Login</td>
-        <td class="ui-widget-header">Cadastrado em</td>
-        {% if user.is_superuser or user.is_staff %} 
-        <td class="ui-widget-header">Ações</td>
-        {% endif %}
-    </tr>
-    </thead>
-    <tbody>
-    {% for p in page.object_list %}
-    <tr>
-        <td>{{ p.id }}</a></td>
-        <td>{{ p.username }}</td>
-        <td>{{ p.email }}</td>
-        <td>{{ p.is_staff }}</td>
-        <td>{{ p.is_superuser }}</td>
-        <td>{{ p.last_login }}</td>
-        <td>{{ p.date_joined }}</td>
-        {% if user.is_superuser or user.is_staff %} 
-	    <td>
-	        <a href='{% url usuario.cadastro p.id %}'><img src='{{STATIC_PREFIX}}/GridList/img/edit.png' width='15px'></a>
-	        <img src='{{STATIC_PREFIX}}/GridList/img/add.png' width='15px'>
-	    </td>
-        {% endif %} 
-    </tr>
-    {% empty %}
-        <tr>
-            <td colspan='2'>Nenhum registro cadastrado.</td>
-        </tr>
-    {% endfor %}
-    </tbody>
-</table>
-{% include 'pagcontrol.html'%}
-<br/>
+<div style="text-align:right; width: 100%">
+	<a class="link_btn ui-button ui-widget ui-state-default ui-corner-all ui-button-text-only" href="{% url 'usuario.cadastro' %}" role="button" aria-disabled="false"> <span class="ui-button-text">Novo</span> </a>
+	<br><br>
+</div>
+
+<div style="margin-left:auto; margin-right:auto">
+
+	<fieldset>{% include 'grid/filtros.html'%}</fieldset>
+	<br>
+	<fieldset class="fieldset_off">
+	<table id='listagem' width='600px' class="tablecol">
+		<thead>
+			<tr>
+				<td class="ui-widget-header">ID</thd> <td class="ui-widget-header">Nome</td>
+				<td class="ui-widget-header">Email</td>
+				<td class="ui-widget-header">Adm</td>
+				<td class="ui-widget-header">Super</td>
+				<td class="ui-widget-header">Último Login</td>
+				<td class="ui-widget-header">Cadastrado em</td>
+				{% if user.is_superuser or user.is_staff %}
+				<td class="ui-widget-header">Ações</td>
+				{% endif %}
+			</tr>
+		</thead>
+		<tbody>
+			{% for p in page.object_list %}
+			<tr>
+				<td>{{ p.id }}</a></td>
+				<td>{{ p.username }}</td>
+				<td>{{ p.email }}</td>
+				<td>
+					{% if  p.is_staff %}
+                        <img src='{{ STATIC_PREFIX }}GridList/img/small-success-icon.gif' width="15px">
+                    {% else %}
+                        <input type="checkbox" disabled="disabled" >
+                    {% endif %}
+                </td>
+				<td>
+					{% if p.is_superuser %}
+                        <img src='{{ STATIC_PREFIX }}GridList/img/small-success-icon.gif' width="15px">
+                    {% else %}
+                        <input type="checkbox" disabled="disabled" >
+                    {% endif %}
+                </td>
+				<td>{{ p.last_login }}</td>
+				<td>{{ p.date_joined }}</td>
+				{% if user.is_superuser or user.is_staff %}
+				<td>
+					
+                    <ul id="icons_plus{{p.id}}" class="ui-widget ui-helper-clearfix" style="list-style: none; padding-left: 1px!important; margin: 0px!important;">
+					<a href="{% url 'usuario.cadastro' p.id %}"><img src='{{STATIC_PREFIX}}/GridList/img/edit.png' width='15px'></a>
+
+					<li class="" id='plus{{p.id}}' style="float: left;margin-left: 1px;">
+						<img src='{{STATIC_PREFIX}}/GridList/img/add.png' width='15px' id='bt_pesq_plus{{p.id}}' onclick='pesq({{p.id}})'>
+					</li>
+					<li class=""  id='minus{{p.id}}' style='display:None; float: left;margin-left: 1px;'>
+					<img src='{{STATIC_PREFIX}}/GridList/img/recolhe.png' width='15px' id='bt_pesq_minus{{p.id}}' onclick='hide({{p.id}})'>
+					</li>
+					</ul>
+				</td>
+				{% endif %}
+			</tr>
+			<tr>
+				<td style="display:None" class="detalhes">{{ p.id }}</a></td>
+				<td style="display:None" class="detalhes">{{ p.username }}</td>
+				<td style="display:None" class="detalhes">{{ p.email }}</td>
+				<td style="display:None" class="detalhes">{{ p.is_staff }}</td>
+				<td style="display:None" class="detalhes">{{ p.is_superuser }}</td>
+				<td style="display:None" class="detalhes">{{ p.last_login }}</td>
+				<td style="display:None" class="detalhes">{{ p.date_joined }}</td>
+				<td colspan="8" id="datalhes{{p.id}}" style="display:None" class="detalhes">
+					
+                </td>
+			</tr>
+			{% empty %}
+			<tr>
+				<td colspan='2'>Nenhum registro cadastrado.</td>
+			</tr>
+			{% endfor %}
+		</tbody>
+	</table>
+	<br/>
+	</fieldset>
+	
+	<fieldset>{% include 'grid/combopags.html'%}</fieldset>
+
+</div>
 {% endblock %}
