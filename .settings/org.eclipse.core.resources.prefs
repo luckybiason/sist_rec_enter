@@ -1,6 +1,7 @@
 eclipse.preferences.version=1
 encoding//adm_rec/adm_rec/settings.py=utf-8
 encoding//adm_rec/adm_rec/urls.py=utf-8
+<<<<<<< HEAD
 encoding//adm_rec/basiccrud/gridlist.py=utf-8
 encoding//adm_rec/basiccrud/methods.py=utf-8
 encoding//adm_rec/basiccrud/mixins.py=utf-8
@@ -11,9 +12,12 @@ encoding//adm_rec/comp_visuais/models.py=utf-8
 encoding//adm_rec/comp_visuais/urls.py=utf-8
 encoding//adm_rec/comp_visuais/validators.py=utf-8
 encoding//adm_rec/comp_visuais/views.py=utf-8
+=======
+>>>>>>> 4cba34d8bbe2cad70f6242a1a673193142a9dfe3
 encoding//adm_rec/lojas/models.py=utf-8
 encoding//adm_rec/lojas/urls.py=utf-8
 encoding//adm_rec/py_aumenu/menu.py=utf-8
+encoding//adm_rec/py_aumenu/methods.py=utf-8
 encoding//adm_rec/televisores/models.py=utf-8
 encoding//adm_rec/televisores/urls.py=utf-8
 encoding//adm_rec/televisores/views.py=utf-8

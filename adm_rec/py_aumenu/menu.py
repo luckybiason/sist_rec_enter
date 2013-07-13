@@ -42,6 +42,13 @@ MENU = lambda :{
                          'id-html'   : "loja",
                          'perm_need' : [''],
                      },
+                     {  
+                         'titulo'    : _(u"Lojas"),
+                         'img'       : "img/users.png",
+                         'url-name'  : "lojas.listagem",
+                         'id-html'   : "loja",
+                         'perm_need' : [''],
+                     },
                      { 
                            'titulo'      : _(u"Cadastros Auxiliares"),
                            'img'         : "img/cadas.png",
@@ -120,7 +127,6 @@ MENU = lambda :{
                      },
            ]  # Fim itens
         },  # Fim submenu cadastros
-              
         {  # Item de menu
             'titulo'    : _(u"Logout"),
             'img'       : "img/logout.png",

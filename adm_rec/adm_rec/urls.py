@@ -24,7 +24,6 @@ urlpatterns = patterns('',
     (r'^lojas/',        include('lojas.urls')),
     (r'^televisores/',  include('televisores.urls')),
     (r'^comp_visuais/', include('comp_visuais.urls')),
-     
 )
 
 # Configuração de urls de arquivos estáticos e de mídia

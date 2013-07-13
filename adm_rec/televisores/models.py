@@ -18,7 +18,7 @@ class Marca(models.Model):
         return self.descricao
     
     @models.permalink                                        
-    def get_absolute_url(self):                              
+    def get_absolute_url(self):                   
        return ('marcas.cadastro', (), {'id': self.id})
    
     @staticmethod
@@ -193,7 +193,6 @@ class Entrada(models.Model):
     @staticmethod
     def success_url(): 
         return "entrada.listagem"
-
 
 ################################################################################
 ############################ - CADASTRO PRINCIPAL - ############################

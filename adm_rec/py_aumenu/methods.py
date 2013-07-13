@@ -13,7 +13,7 @@ _MENU = "" # O menu tem cache... se alterar dinamicamente ou por qualquer razão
 HTML_IMG = ''' <img src="%(img)s" class="menu" alt="%(titulo)s" title="%(titulo)s"/> '''
 
 HTML_ITEM = """
-    <li>
+    <li style="vertical-align:middle;">
           <a href="%(url)s" style="width:%(width)spx;max-width:%(width)spx;">
               %(img)s
               <span>&nbsp;%(titulo)s&nbsp;</span>
