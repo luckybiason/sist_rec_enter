@@ -61,16 +61,18 @@ class Categoria(models.Model):
 ############################ - CADASTRO PRINCIPAL - ############################
 ################################################################################
 
-'''
-class ComponenteVisual(models.Model):
-    nome = models.CharField(max_length=50, unique=True, verbose_name=__(u"Nome"))
-    nome    Campo de no máximo 45 caracteres    Não pode estar vazio nem duplicado
-imagem    Campo do tipo texto    Guarda o caminho da imagem salva no servidor. É obrigatório.
-categoria    Campo do tipo inteiro que representa uma chave estrangeira para a tabela Categoria    É obrigatorio.
-altura_padrao    campo do tipo real medido em metros. Não poderá ser negativo nem igual a zero    É obrigatorio.
-largura_padrao    campo do tipo real medido em metros. Não poderá ser negativo nem igual a zero    É obrigatorio.
-is_televisor    Campo do tipo booleano, padrão é false    Indica se o componente é o espaço reservado para o televisor. Somente poderá haver um desses na tabela.
+from validators import size_validator
 
+class ComponenteVisual(models.Model):
+    nome      = models.CharField(max_length=50, unique=True, verbose_name=__(u"Nome"))
+    imagem    = models.ImageField(upload_to='img_comp_vis', blank=False, null=False)
+    categoria = models.ForeignKey(Categoria,  blank=False, null=False, verbose_name=__(u"Categoria"))
+    
+    altura_padrao  = models.FloatField(verbose_name=__(u"Altura padrão"),  blank=False, null=False, validators=[size_validator])
+    largura_padrao = models.FloatField(verbose_name=__(u"Largura padrão"), blank=False, null=False, validators=[size_validator])
+    
+    is_televisor = models.BooleanField(default=False, blank=True)
+    
     class Meta:
         verbose_name        = _(u'Componente visual')
         verbose_name_plural = _(u'Componentes visuais')
@@ -84,7 +86,18 @@ is_televisor    Campo do tipo booleano, padrão é false    Indica se o componen
        return ('comp_visuais.cadastro', (), {'id': self.id})
    
     @staticmethod
+    def get_config():
+        return { 
+           'titulo'   : _(u"Cadastro de Componentes Visuais"),
+           'app'      : "comp_visuais",
+           'required' : "nome",
+           'fields' : [
+                       ('id',   _(u'Cód.'), False),
+                       ('nome', _(u'Nome'), False),
+            ],
+        }
+   
+    @staticmethod
     def success_url(): 
         return "comp_visuais.listagem"
-'''    
    

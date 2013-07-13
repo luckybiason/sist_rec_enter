@@ -1,19 +1,29 @@
-<td>
+<td width='10%'>
 <ul id="icons_plus{{id}}" class="ui-widget ui-helper-clearfix"
                style="list-style: none; padding-left: 1px!important; margin: 0px!important;">
+    
+    
+	{# EDIT_ICON #}
+	<li class="" style="float: left;margin-left: 1px;">
+       <a href="{{editar}}"><img title='Editar' alt='Editar' src='/static/GridList/img/edit.png' width='15px'></a>
+	</li>
 
 	{# REMOVE_ICON #}
-	<li class="ui-state-default ui-corner-all" style="float: left;margin-left: 1px;">
-		<a href='{{excluir}}'><span class="ui-icon ui-icon-trash"></span></a>
+	<li class="" style="float: left;margin-left: 1px;">
+       <a href="{{excluir}}"><img title='Excluir' alt='Excluir' src='/static/GridList/img/trash.png' width='15px'></a>
 	</li>
 
 	{# PLUS_MINUS_ICON #}
 	{% if detail %}
-	<li class="ui-state-default ui-corner-all" id='plus{{id}}' style="float: left;margin-left: 1px;">
-		<span class="ui-icon ui-icon-plusthick" id='bt_pesq_plus{{id}}' onclick='pesq({{id}})'></span>
+	<li id='plus{{id}}' style="float: left;margin-left: 1px;">
+		<span id='bt_pesq_plus{{id}}' onclick='pesq({{id}})'>
+			<img  title='Mais' alt='Mais' src='/static/GridList/img/add.png' width='15px'>
+		</span>
 	</li>
-	<li class="ui-state-default ui-corner-all"  id='minus{{id}}' style='display:None; float: left;margin-left: 1px;'>
-		<span class="ui-icon ui-icon-minusthick" id='bt_pesq_minus{{id}}' onclick='hide({{id}})'></span>
+	<li id='minus{{id}}' style='display:None; float: left;margin-left: 1px;'>
+		<span id='bt_pesq_minus{{id}}' onclick='hide({{id}})'>
+			<img  title='Recolher' alt='Recolher' src='/static/GridList/img/recolhe.png' width='15px'>
+		</span>
 	</li>
 	{% endif %}
 </ul>

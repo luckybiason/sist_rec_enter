@@ -54,16 +54,16 @@
 				<td>{{ p.email }}</td>
 				<td>
 					{% if  p.is_staff %}
-                        <img src='{{ STATIC_PREFIX }}GridList/img/small-success-icon.gif' width="15px">
+                        <img src='{{ STATIC_PREFIX }}GridList/img/success.png' width="15px">
                     {% else %}
-                        <input type="checkbox" disabled="disabled" >
+                        <img src='{{ STATIC_PREFIX }}GridList/img/error.png' width="15px">
                     {% endif %}
                 </td>
 				<td>
 					{% if p.is_superuser %}
-                        <img src='{{ STATIC_PREFIX }}GridList/img/small-success-icon.gif' width="15px">
+                        <img src='{{ STATIC_PREFIX }}GridList/img/success.png' width="15px">
                     {% else %}
-                        <input type="checkbox" disabled="disabled" >
+                        <img src='{{ STATIC_PREFIX }}GridList/img/error.png' width="15px">
                     {% endif %}
                 </td>
 				<td>{{ p.last_login }}</td>
@@ -106,7 +106,7 @@
 	<br/>
 	</fieldset>
 	
-	<fieldset>{% include 'grid/combopags.html'%}</fieldset>
+	<!--fieldset>{#% include 'grid/combopags.html'%#}</fieldset-->
 
 </div>
 {% endblock %}

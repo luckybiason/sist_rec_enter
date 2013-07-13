@@ -1,0 +1,65 @@
+{% extends "base.html" %}
+
+{% load url from future %}
+{% block conteudo %}
+<style>
+	#id_categoria{ width:230px; }
+</style>
+<script>
+	{% if required %}
+	    CAMPOS_OBRIGATORIOS = "{{required}}".split(" ");
+	{% else %}
+	    CAMPOS_OBRIGATORIOS = " ".split(" ");
+	{% endif %}
+</script>
+<script src="{{ STATIC_PREFIX }}basiccrud/basiccrud.js"  type="text/javascript"></script>
+<link rel='stylesheet' type='text/css' href='{{ STATIC_PREFIX }}basiccrud/basiccrud.css' />
+        
+
+<div style="margin-left:auto; margin-right:auto"  >
+<form enctype='multipart/form-data' method='post'>
+	{% csrf_token %}
+	<table cellspacing='0px' cellpadding='2px' style="margin-left: auto; margin-right: auto;">
+	     <tr>
+             <td rowspan='4' style="vertical-align: bottom">
+             	<div class="ui-button ui-widget ui-state-default ui-button-text-only ui-corner-left">
+				 {% if object.imagem %}
+                    <img id='img' src='/media/{{ object.logo }}' width='120px'><br/>
+				    Atualmente:<a href="/media/{{ object.logo }}">/media/{{ object.imagem }}</a><br>
+                    Modificar:
+                  {% else %}
+                    <img id='img' src='/static/imagem/sem_img.png' width='120px'><br/>
+                  {% endif %}
+                  <input id="id_imagem" type="file" name="imagem">
+				</div>
+			 </td>
+			 <th width='90px'><label for="id_inativo">Nome:</label></th>
+			 <td>{{form.nome}}</td>
+		 </tr>
+         <tr>
+             <th width='90px'><label for="id_nome">Categoria:</label></th>
+			 <td>{{form.categoria}}</td>
+         </tr>
+         <tr>
+             <td colspan="2">
+             	<fieldset>
+                    <legend>Dimensão padrão</legend>
+                    <table>
+	                    <tr> <th width='70px'>Altura: </th> <td>{{form.altura_padrao}} cm</td> </tr>
+	                    <tr> <th width='70px'>Largura:</th> <td>{{form.largura_padrao}} cm</td> </tr>
+                    </table>
+                 </fieldset>
+             </td>
+         </tr>
+	</table>
+	<br>
+	<fieldset class="fieldset_off">
+	   <input type='submit' value='Salvar' />
+       <a href="{% url 'comp_visuais.listagem' %}" class="ui-button ui-widget ui-state-default ui-corner-all" 
+          style="padding: 5px">Listagem</a>
+    </fieldset>
+</form>
+</div>
+
+{% endblock %}
+

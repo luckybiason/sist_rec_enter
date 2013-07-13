@@ -14,13 +14,14 @@ urlpatterns = patterns('',
     (r'^logout/$' ,'django.contrib.auth.views.logout_then_login', {'login_url'    :'/login/'}),
       
     # Sistema de mensagens
-    #(r'alerts_e_messages/',  include('alerts_e_messages.urls')),
+    (r'alerts_e_messages/',  include('alerts_e_messages.urls')),
         
     # Captchas
     #(r'captchas/',  include('captchas.urls')),
     
     # Model de Dados
     (r'^usuario/',      include('usuario.urls')),
+    (r'^lojas/',        include('lojas.urls')),
     (r'^televisores/',  include('televisores.urls')),
     (r'^comp_visuais/', include('comp_visuais.urls')),
      

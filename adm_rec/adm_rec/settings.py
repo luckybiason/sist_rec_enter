@@ -113,6 +113,7 @@ INSTALLED_APPS = (
     'usuario',
     'comp_visuais',
     'televisores',
+    'lojas',
     # Apps de Processos
 )
 

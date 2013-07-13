@@ -2,62 +2,76 @@
 
 {% load url from future %}
 {% block conteudo %}
-       <form enctype='multipart/form-data' method='post'>
-       	{% csrf_token %}
-        <table cellspacing='0px' cellpadding='0px'>
+<form enctype='multipart/form-data' method='post'>
+	{% csrf_token %}
+	<fieldset class="fieldset_off">
+	<table width='550px' cellspacing='2px' cellpadding='0px' style="margin-left: auto; margin-right: auto;">
         	
           <tr>
-              <td><b>Usuário:<b></td>
-              <td>{{form.username}}<br/>{{form.username.help_text}}</td>
+             <th><b>Usuário:<b>{{form.username}}</th>
+              {% if not id %}
+              	<th><b>Senha:</b>{{form.password}}
+                    <img src='{{ STATIC_PREFIX }}GridList/img/password.png' width="20px" align="absmiddle"></th>
+              {% else %}
+                 <td></td>
+              {% endif %}
           </tr>
           
+     </table>
+	<table width='550px' cellspacing='2px' cellpadding='0px' style="margin-left: auto; margin-right: auto;">
+		
           <tr>
-              <td><b>Primeiro Nome:<b></td>
+              <th width='150px'><b>Primeiro Nome:<b></th>
               <td>{{form.first_name}}</td>
           </tr>
           
           <tr>
-              <td><b>Último nome:<b></td>
+              <th width='150px'><b>Último nome:<b></th>
               <td>{{form.last_name}}</td>
           </tr>
-
-          <tr>
-              <td><b>Endereço de e-mail:<b></td>
+          
+           <tr>
+              <th width='150px'><b>Endereço de e-mail:<b></th>
               <td>{{form.email}}</td>
           </tr>
 
-          	 
-          {% if not id %}
-          <tr> 
-              <td><b>Senha:</b></td>
-              <td>{{form.password}}</td>
-          </tr>
-          {% endif %}
           
           {% if user.is_superuser or user.is_staff %} 
           <tr> 
-              <td><b>Administrador:<b/></td>
+              <th width='150px'><b>Administrador:<b/></th>
               <td>{{form.is_staff}}</td>
           </tr>
           {% endif %} 
           
           {% if user.is_superuser %} 
 		  <tr> 
-		      <td><b>Status de superusuário:<b/></td>
+		      <th width='150px'><b>Superusuário:<b/></th>
 		      <td>{{form.is_superuser}}</td>
 		  </tr>
           {% endif %} 
           
+          {% if id and user.is_superuser%} 
+          <tr> 
+              <th width='150px'><b>Usuário ativo:<b/></th>
+              <td>{{form.is_active}}</td>
+          </tr>
+          {% endif %} 
           <input type="hidden" name="last_login" value="{{ today }}" id="id_last_login">
           <input type="hidden" name="date_joined" value="{{ today }}" id="id_date_joined">
-          
         </table>
-        <input type='submit' value='Salvar' />
+        <br>
+        
+     </fieldset>
+	<fieldset class="fieldset_off">
+	   <input type='submit' value='Salvar' />
+       <a href="{% url 'usuario.listagem' %}" class="ui-button ui-widget ui-state-default ui-corner-all" 
+          style="padding: 5px">Listagem</a>
+    </fieldset>
+    
     </form>
 
     <hr/>
     
-    <a class='button' href="{% url 'usuario.listagem' %}">Listagem</a>
 
 {% endblock %}
 
