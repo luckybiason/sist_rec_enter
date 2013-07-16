@@ -18,14 +18,14 @@ class Marca(models.Model):
         return self.descricao
     
     @models.permalink                                        
-    def get_absolute_url(self):                              
-       return ('marca.cadastro', (), {'id': self.id})
+    def get_absolute_url(self):                   
+       return ('marcas.cadastro', (), {'id': self.id})
    
     @staticmethod
     def get_config():
         return { 
            'titulo'   : _(u"Cadastro de Marcas"),
-           'app'      : "marca",
+           'app'      : "marcas",
            'required' : "descricao",
            'fields' : [
                        ('id',        _(u'Cód.'),      True),
@@ -35,7 +35,7 @@ class Marca(models.Model):
     
     @staticmethod
     def success_url(): 
-        return "marca.listagem"
+        return "marcas.listagem"
 
 class TipoTela(models.Model):
     descricao = models.CharField(max_length=50, unique=True, verbose_name=__(u"Descrição"))
@@ -89,7 +89,7 @@ class Funcao(models.Model):
         return { 
            'titulo'   : _(u"Cadastro de Funções"),
            'app'      : "funcao",
-           'required' : "descricao",
+           'required' : "nome",
            'fields' : [
                        ('id',        _(u'Cód.'),     True),
                        ('nome',      _(u'Nome'),     False) 
@@ -214,9 +214,9 @@ class Televisor(models.Model):
     potencia        = models.FloatField(verbose_name=__(u"Potência"))
     consumo_energia = models.FloatField(verbose_name=__(u"Consumo de energia"))
     ## Tela
-    tipo_de_tela  = models.ForeignKey(TipoTela,    blank=False, null=False, verbose_name=__(u"Tipo de tela"))
+    tipo_de_tela  = models.ForeignKey(TipoTela, blank=False, null=False, verbose_name=__(u"Tipo de tela"))
     # ? resolucao = models.IntegerField(max_length=150, unique=True, verbose_name=__(u"Resolução"))
-    formato_tela  = models.ForeignKey(Funcao, blank=True,  null=True,  verbose_name=__(u"Formato da tela"))
+    formato_tela  = models.ForeignKey(Funcao, blank=True, null=True, verbose_name=__(u"Formato da tela"))
     ## Flags
     is_full_hd    = models.BooleanField( verbose_name=__(u"Full HD"))
     is_smart_tv   = models.BooleanField( verbose_name=__(u"Smart TV"))
@@ -230,15 +230,19 @@ class Televisor(models.Model):
     especificacao = models.TextField(verbose_name=__(u"Outras especificações"))
     site          = models.CharField(max_length=150, verbose_name=__(u"Site"))
     video         = models.CharField(max_length=150, verbose_name=__(u"Link de Video"))
-    # Será diferente: conexoes, lojas (entra em outro processo
+    # Será diferente: conexoes, lojas (entra em outro processo)
     
     class Meta:
         verbose_name        = _(u'Televisor')
         verbose_name_plural = _(u'Televisores')
         ordering            = ['nome']
+        db_table            = 'televisores'
 
     def __unicode__(self):
-        return self.descricao
+        return self.nome
+    
+    def get_imagem(self): 
+        return u'''<img src='/media/%s' height='40px'>''' % str(self.imagem)
     
     @models.permalink                                        
     def get_absolute_url(self):                              
@@ -247,5 +251,19 @@ class Televisor(models.Model):
     @staticmethod
     def success_url(): 
         return "televisor.listagem"
+    
+    @staticmethod
+    def get_config():
+        return { 
+           'titulo'   : _(u"Cadastro de Televisores"),
+           'app'      : "televisor",
+           'required' : "nome",
+           'fields' : [
+                       #('get_imagem', _(u'Imagem'), True),
+                       ('id',   _(u'Cód.'), False),
+                       ('nome', _(u'Nome'), False),
+            ],
+        }
+   
 
    

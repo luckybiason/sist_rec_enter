@@ -5,22 +5,21 @@ from django.contrib.auth.decorators import login_required,user_passes_test
 from django.contrib.auth.models     import User
 from django.shortcuts               import redirect,render
 from forms                          import FormUser
+from adm_rec.utils.decorators       import ajax_json_view
+
+@ajax_json_view
+def getdetail(request):
+    return { 'html': u" << Permissões do usuário %s, a implementar >> " % request.GET.get('id','') }
 
 can_make_user = lambda u: u.is_superuser or u.id_staff
-
-@login_required
-@user_passes_test(can_make_user)
-def usuariodel(request,id):
-    usuario = User.objects.get(pk=id)
-    if request.method == 'POST':
-        usuario.delete()
-        return redirect('usuario.listagem')
-    return render(request, 'usuarios/excluir.html', locals())
+TITULO = "Cadastro de Usuários"
 
 @login_required
 @user_passes_test(can_make_user)
 def usuario_list(request):
+    titulo   = TITULO
     usuarios = User.objects.all()
+    qnt      = len(usuarios)
     num_pag, page, paginator = makePaginator(request,usuarios)
     return render(request, 'usuarios/listagem.html', locals())
 
@@ -38,6 +37,7 @@ def populate_user(user, post):
 @login_required
 @user_passes_test(can_make_user)
 def usuario(request, id=None):
+    titulo = TITULO
     if request.method == 'POST':
         try:
             if id: # Alteração

@@ -5,7 +5,12 @@ from methods                  import catch_urls
 from django.shortcuts         import render
 from django.utils.translation import ugettext as _ , ugettext_lazy as __, ungettext
 
-translate = lambda obj,field : force_unicode(getattr(obj,field), encoding='utf-8', strings_only=False, errors='strict')#.encode('ascii', 'ignore')
+def translate(obj,field):
+    if callable(field):
+        return field(obj)
+    if callable(getattr(obj,field)):
+        return getattr(obj,field)(obj)
+    return force_unicode(getattr(obj,field), encoding='utf-8', strings_only=False, errors='strict')#.encode('ascii', 'ignore')
 
 ### - Funções de HTML Dinâmico - ###
 
@@ -21,8 +26,13 @@ def _make_thead(fields,locals,request):
     return render(request,'grid/thead.html', {'fields':fields}).content
 
 #- Opções no final da linha
-def _details(request,id,excluir,detail=True):
-    return render(request,'grid/opcoes.html', {'excluir':excluir,'id':id,"detail":detail}).content
+def _details(request, id, excluir, editar,detail=True):
+    return render(request,'grid/opcoes.html', {
+                                               'excluir':excluir,
+                                               'editar' :editar,
+                                               'id':id,
+                                               "detail":detail
+                                               }).content
 
 #- Footer: Paginação 
 def _make_tfoot(fields,locals,request):
@@ -47,6 +57,7 @@ def _make_body(urls,fields, objetos,request,with_details=True):
             linha += _details(request,
                              p.pk,
                              reverse(urls["excluir"],args=[p.pk]),
+                             reverse(urls["cadastro"],args=[p.pk]),
                              with_details)
             linha += (linha_det+DETAIL%(cols_num,p.pk,CLASS_DETAIL) if with_details else "")
             body  += linha+"</tr>"

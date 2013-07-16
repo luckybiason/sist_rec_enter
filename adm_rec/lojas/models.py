@@ -5,7 +5,7 @@ from django.utils.translation import ugettext as _ , ugettext_lazy as __
 class Loja(models.Model):
     nome = models.CharField(max_length=50, unique=True, verbose_name=__(u"Nome"))
     logo = models.ImageField(upload_to='img_lojas', blank=True, null=True)
-    site = models.CharField(max_length=150, unique=True, verbose_name=__(u"Site"))
+    site = models.CharField(max_length=150, verbose_name=__(u"Site"), blank=True, null=True)
     
     class Meta:
         verbose_name        = _(u'Loja')
@@ -15,13 +15,16 @@ class Loja(models.Model):
     def __unicode__(self):
         return self.nome
     
+    def get_logo(self, obj): 
+        return u'''<img src='/media/%s' width='20px'>''' % str(self.logo)
+    
+    def get_site(self, obj): 
+        return u'''<a href='%s'><img src='/static/imagem/web.png' width='20px' title='Ir ao Site' align='absmiddle'>Ir ao Site</a>''' % str(self.site)
+    
     @models.permalink                                        
     def get_absolute_url(self):                              
-       return ('loja.cadastro', (), {'id': self.id})
-   
-    def show_logo(self):
-        return '''<img src='%(img)s' heigth='50px'>''' % self.logo
-   
+       return ('lojas.cadastro', (), {'id': self.id})
+       
     @staticmethod
     def get_config():
         return { 
@@ -29,11 +32,13 @@ class Loja(models.Model):
            'app'      : "lojas",
            'required' : "nome",
            'fields' : [
-                       ('id',   _(u'Cód.'), True),
-                       ('nome', _(u'Nome'), False) 
+                       ('get_logo', _(u'Logo'), True),
+                       ('id',   _(u'Cód.'), False),
+                       ('nome', _(u'Nome'), False),
+                       ('get_site', _(u'Site'), False),
             ],
         }
     
     @staticmethod
     def success_url(): 
-        return "loja.listagem"
+        return "lojas.listagem"

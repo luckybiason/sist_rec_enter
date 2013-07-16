@@ -4,9 +4,31 @@
 {% load i18n %}
 
 {% block conteudo %}
+
+{% if css_custom %}
+     {% for css in css_custom %}
+         <link rel="stylesheet" type="text/css" href="{{ STATIC_URL }}{{ css }}">
+     {% endfor %}
+{% endif %}
+
+{% if js_custom %}
+     {% for js in js_custom %}
+         <script type="text/javascript" src="{{ STATIC_URL }}{{ js }}"></script>
+     {% endfor %}
+{% endif %}
+
+{% if inclusao_html %}
+     {% for template_name in inclusao_html %}
+         {% include template_name %}
+     {% endfor %}
+{% endif %}
+
+
 <script>
 	{% if required %}
 	    CAMPOS_OBRIGATORIOS = "{{required}}".split(" ");
+	{% else %}
+	    CAMPOS_OBRIGATORIOS = " ".split(" ");
 	{% endif %}
 </script>
 <script src="{{ STATIC_PREFIX }}basiccrud/basiccrud.js"  type="text/javascript"></script>
