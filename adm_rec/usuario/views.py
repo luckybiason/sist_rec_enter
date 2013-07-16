@@ -11,7 +11,7 @@ from adm_rec.utils.decorators       import ajax_json_view
 def getdetail(request):
     return { 'html': u" << Permissões do usuário %s, a implementar >> " % request.GET.get('id','') }
 
-can_make_user = lambda u: u.is_superuser or u.id_staff
+can_make_user = lambda u: u.is_superuser or u.is_staff
 TITULO = "Cadastro de Usuários"
 
 @login_required
