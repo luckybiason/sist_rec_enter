@@ -201,22 +201,22 @@ TIPO_ALIMENTACAO = [('1','110v'), ('2','220v'), ('b','Bivolt')]
 
 class Televisor(models.Model):
     ## Dados Básicos
-    nome    = models.CharField(max_length=50,  unique=True, verbose_name=__(u"Nome"))
-    imagem  = models.ImageField(upload_to='img_televisores', blank=False, null=False, verbose_name=__(u"Foto"))
-    marca   = models.ForeignKey(Marca,       blank=False, null=False, verbose_name=__(u"Marca"))
-    funcoes = models.ManyToManyField(Funcao, blank=True,  null=True,  verbose_name=__(u"Funções"), related_name='televisores')
+    nome    = models.CharField(max_length=50,  unique=True, verbose_name=__(u"Nome:"))
+    imagem  = models.ImageField(upload_to='img_televisores', blank=False, null=False, verbose_name=__(u"Foto:"))
+    marca   = models.ForeignKey(Marca,       blank=False, null=False, verbose_name=__(u"Marca:"))
+    funcoes = models.ManyToManyField(Funcao, blank=True,  null=True,  verbose_name=__(u"Funções:"), related_name='televisores')
     ## Medidas
-    polegadas       = models.FloatField(verbose_name=__(u"Polegadas"))
-    altura          = models.FloatField(verbose_name=__(u"Altura"))
-    largura         = models.FloatField(verbose_name=__(u"Largura"))
-    profundidade    = models.FloatField(verbose_name=__(u"Profundidade"))
-    peso            = models.FloatField(verbose_name=__(u"Peso"))
-    potencia        = models.FloatField(verbose_name=__(u"Potência"))
-    consumo_energia = models.FloatField(verbose_name=__(u"Consumo de energia"))
+    polegadas       = models.FloatField(verbose_name=__(u"Polegadas:"))
+    altura          = models.FloatField(verbose_name=__(u"Altura:"))
+    largura         = models.FloatField(verbose_name=__(u"Largura:"))
+    profundidade    = models.FloatField(verbose_name=__(u"Profundidade:"))
+    peso            = models.FloatField(verbose_name=__(u"Peso:"))
+    potencia        = models.FloatField(verbose_name=__(u"Potência:"))
     ## Tela
-    tipo_de_tela  = models.ForeignKey(TipoTela, blank=False, null=False, verbose_name=__(u"Tipo de tela"))
-    # ? resolucao = models.IntegerField(max_length=150, unique=True, verbose_name=__(u"Resolução"))
-    formato_tela  = models.ForeignKey(Funcao, blank=True, null=True, verbose_name=__(u"Formato da tela"))
+    tipo_de_tela    = models.ForeignKey(TipoTela, blank=False, null=False, verbose_name=__(u"Tipo de tela:"))
+    resolucao       = models.CharField(max_length=150, unique=True, verbose_name=__(u"Resolução"))
+    formato_tela    = models.ForeignKey(Funcao, blank=True, null=True, verbose_name=__(u"Formato da tela:"))
+    consumo_energia = models.FloatField(verbose_name=__(u"Consumo Energ.:"))
     ## Flags
     is_full_hd    = models.BooleanField( verbose_name=__(u"Full HD"))
     is_smart_tv   = models.BooleanField( verbose_name=__(u"Smart TV"))
@@ -230,7 +230,7 @@ class Televisor(models.Model):
     especificacao = models.TextField(verbose_name=__(u"Outras especificações"))
     site          = models.CharField(max_length=150, verbose_name=__(u"Site"))
     video         = models.CharField(max_length=150, verbose_name=__(u"Link de Video"))
-    # Será diferente: conexoes, lojas (entra em outro processo)
+    # Será diferente: lojas (entra em outro processo)
     
     class Meta:
         verbose_name        = _(u'Televisor')
@@ -257,7 +257,7 @@ class Televisor(models.Model):
         return { 
            'titulo'   : _(u"Cadastro de Televisores"),
            'app'      : "televisor",
-           'required' : "nome",
+           'required' : "nome polegadas altura largura marca tipo_de_tela",
            'fields' : [
                        #('get_imagem', _(u'Imagem'), True),
                        ('id',   _(u'Cód.'), False),
@@ -265,5 +265,40 @@ class Televisor(models.Model):
             ],
         }
    
+
+class TelevisorConexao(models.Model):    
+    televisor = models.ForeignKey(Televisor, blank=False, null=False)
+    conexao   = models.ForeignKey(Entrada,   blank=False, null=False, verbose_name=__(u"Conexão:"))
+    qntd      = models.FloatField(default=1, verbose_name=__(u"Quantidade:"))
+    obs       = models.TextField(verbose_name=__(u"Observações:"))
+    
+    class Meta:
+        ordering = ['conexao']
+        unique_together = [('televisor','conexao')]
+
+class TelevisorItens(models.Model):    
+    televisor = models.ForeignKey(Televisor, blank=False, null=False)
+    item      = models.ForeignKey(Item,      blank=False, null=False, verbose_name=__(u"Item:"))
+    qntd      = models.FloatField(default=0, verbose_name=__(u"Quantidade:"))
+    obs       = models.TextField(verbose_name=__(u"Observações:"))
+    
+    class Meta:
+        ordering = ['item']
+        unique_together = [('televisor','item')]
+
+from lojas.models import Loja
+class TelevisorLoja(models.Model):    
+    televisor   = models.ForeignKey(Televisor, verbose_name=__(u"Televisor:"))
+    loja        = models.ForeignKey(Loja,      verbose_name=__(u"Loja:"))
+    preco       = models.FloatField(default=0, verbose_name=__(u"Preço:"))
+    num_parcela = models.FloatField(default=0, verbose_name=__(u"Quantidade de parcelas:"))
+    val_parcela = models.FloatField(default=0, verbose_name=__(u"Valor de parcelas:"))
+    site        = models.CharField(max_length=150, verbose_name=__(u"Página:"))
+    obs  = models.TextField(verbose_name=__(u"Observações:"))
+    
+    class Meta:
+        ordering = ['loja']
+        unique_together = [('televisor','loja')]
+
 
    

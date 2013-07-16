@@ -57,13 +57,13 @@ input {
 .messages_list.error{display:none}
 /* --- Manipulação de campos obrigatórios --- */
 .vObrigatorio {
-	color: #C09853;
-	border-color: #C09853;
+	color: #104E8B;
+	border-color: #104E8B;
 	box-shadow: 0 1px 1px rgba(0, 0, 0, 0.075) inset;
 	border-style: solid;
 }
 .input_obrigatorio_label {
-	color: #C09853;
+	color: #104E8B;
 }
 
 .errorlist {

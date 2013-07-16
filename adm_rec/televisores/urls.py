@@ -18,8 +18,7 @@ urlpatterns = patterns('televisores',
         url(r'^tipos_tela/cadastro/(?P<pk>\d+)/$', GeneralUpdateView.as_view(model=TipoTela), name='tipos_tela.cadastro'),
         url(r'^tipos_tela/excluir/(?P<pk>\d+)/$',  GeneralDeleteView.as_view(model=TipoTela), name='tipos_tela.excluir'),
         # Funções
-        url(r'^funcao/listagem/$',             GeneralListView.as_view(model=Funcao, 
-                                                                       with_details=True),   name='funcao.listagem'),
+        url(r'^funcao/listagem/$',             GeneralListView.as_view(model=Funcao, with_details=True), name='funcao.listagem'),
         url(r'^funcao/cadastro/$',             GeneralCreateView.as_view(model=Funcao), name='funcao.cadastro'),
         url(r'^funcao/cadastro/(?P<pk>\d+)/$', GeneralUpdateView.as_view(model=Funcao), name='funcao.cadastro'),
         url(r'^funcao/excluir/(?P<pk>\d+)/$',  GeneralDeleteView.as_view(model=Funcao), name='funcao.excluir'),
@@ -40,14 +39,11 @@ urlpatterns = patterns('televisores',
         url(r'^entrada/cadastro/(?P<pk>\d+)/$', GeneralUpdateView.as_view(model=Entrada), name='entrada.cadastro'),
         url(r'^entrada/excluir/(?P<pk>\d+)/$',  GeneralDeleteView.as_view(model=Entrada), name='entrada.excluir'),
         
-         ## - Cadastros Principal        
+        ## - Cadastros Principal        
         # Televisores
-        url(r'^televisor/listagem/$',             GeneralListView.as_view(model=Televisor,
-                                                                          with_details=True),   name='televisor.listagem'),
-        url(r'^televisor/cadastro/$',             GeneralCreateView.as_view(model=Televisor, 
-                                                                            template_name='televisor/cadastro.html'), name='televisor.cadastro'),
-        url(r'^televisor/cadastro/(?P<pk>\d+)/$', GeneralUpdateView.as_view(model=Televisor, 
-                                                                            template_name='televisor/cadastro.html'), name='televisor.cadastro'),
-        url(r'^televisor/excluir/(?P<pk>\d+)/$',  GeneralDeleteView.as_view(model=Televisor), name='televisor.excluir'),
+        url(r'^televisor/listagem/$',             GeneralListView.as_view(model=Televisor, with_details=True), name='televisor.listagem'),
+        url(r'^televisor/cadastro/$',             GeneralCreateView.as_view(model=Televisor, template_name='televisor/cadastro.html'), name='televisor.cadastro'),
+        url(r'^televisor/cadastro/(?P<pk>\d+)/$', GeneralUpdateView.as_view(model=Televisor, template_name='televisor/cadastro.html'), name='televisor.cadastro'),
+        # (Desabilitada) url(r'^televisor/excluir/(?P<pk>\d+)/$',  GeneralDeleteView.as_view(model=Televisor), name='televisor.excluir'),
         url(r'^televisor/detail/$',  'views.getdetail_televisor', name='televisor.getdetail'),
 )
