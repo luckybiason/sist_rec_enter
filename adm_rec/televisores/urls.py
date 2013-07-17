@@ -42,8 +42,8 @@ urlpatterns = patterns('televisores',
         ## - Cadastros Principal        
         # Televisores
         url(r'^televisor/listagem/$',             GeneralListView.as_view(model=Televisor, with_details=True), name='televisor.listagem'),
-        url(r'^televisor/cadastro/$',             GeneralCreateView.as_view(model=Televisor, template_name='televisor/cadastro.html'), name='televisor.cadastro'),
-        url(r'^televisor/cadastro/(?P<pk>\d+)/$', GeneralUpdateView.as_view(model=Televisor, template_name='televisor/cadastro.html'), name='televisor.cadastro'),
-        # (Desabilitada) url(r'^televisor/excluir/(?P<pk>\d+)/$',  GeneralDeleteView.as_view(model=Televisor), name='televisor.excluir'),
+        url(r'^televisor/cadastro/$',             'views.cad_televisor', name='televisor.cadastro'),
+        url(r'^televisor/cadastro/(?P<pk>\d+)/$', 'views.upd_televisor', name='televisor.cadastro'),
+        url(r'^televisor/excluir/(?P<pk>\d+)/$',  GeneralDeleteView.as_view(model=Televisor), name='televisor.excluir'),
         url(r'^televisor/detail/$',  'views.getdetail_televisor', name='televisor.getdetail'),
 )

@@ -19,3 +19,28 @@ def getdetail_televisor(request):
     tele = Televisor.objects.filter(pk=id)[0]
     return { 'html': u" %s " % str(tele) }
 
+
+
+from basiccrud.views import *
+
+## - Views dos televisores
+#cad_televisor = GeneralCreateView.as_view(model=Televisor, template_name='televisor/cadastro.html')
+#upd_televisor = GeneralUpdateView.as_view(model=Televisor, template_name='televisor/cadastro.html')
+
+class Cad_televisor(GeneralCreateView):
+    def after_post(self, request):
+        print request
+
+cad_televisor = Cad_televisor.as_view(model=Televisor, template_name='televisor/cadastro.html')
+
+#def teste(self, request):
+#        print "request"
+#cad_televisor = GeneralCreateView.as_view(after_post=teste,
+#                                          model=Televisor, 
+#                                          template_name='televisor/cadastro.html')
+
+class Upd_televisor(GeneralUpdateView):
+    def after_post(self, request):
+        print "request"
+upd_televisor = Upd_televisor.as_view(model=Televisor, template_name='televisor/cadastro.html')
+
