@@ -40,11 +40,25 @@ class GeneralCreateView(BasicContextMixin,FormMessageMixin, CreateView):
     template_name = CreateView_template_name 
     msg_success   = _(u"Criado com sucesso.")
     msg_error     = _(u"um erro ocorreu.")
+            
+    def post(self, request, *args, **kwargs):
+        #if getattr(self,'before_post'): getattr(self,'before_post')(request)
+        to_return = super(CreateView, self).post(request, *args, **kwargs)
+        #if getattr(self,'after_post'): getattr(self,'after_post')(request)
+        return to_return
+    
 
 class GeneralUpdateView(BasicContextMixin,FormMessageMixin, UpdateView):
     template_name = UpdateView_template_name
     msg_success   = _(u"Alterado com sucesso.")
     msg_error     = _(u"um erro ocorreu.")
+    
+    def post(self, request, *args, **kwargs):
+        #if getattr(self,'before_post'): getattr(self,'before_post')(request)
+        to_return = super(UpdateView, self).post(request, *args, **kwargs)
+        #if getattr(self,'after_post'): getattr(self,'after_post')(request)
+        return to_return
+    
 
 class GeneralDeleteView(BasicContextMixin, DeleteView):
     template_name = DeleteView_template_name 
