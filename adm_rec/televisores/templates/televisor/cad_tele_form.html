@@ -1,0 +1,106 @@
+<table cellspacing='0px' cellpadding='2px' style="margin-left: auto; margin-right: auto;  max-width: 600px">
+			<tr>
+				<th width='120px'><label for="id_inativo">{{form.nome.label}}</label></th>
+				<td>{{form.nome}}{{form.nome.errors}}</td>
+				<td rowspan='3' colspan="2" style="vertical-align: bottom; height: 100%">
+				<div class="ui-button ui-widget ui-state-default ui-button-text-only ui-corner-left">
+					{% if object.imagem %}
+					<img id='img' src='/media/{{ object.imagem }}' width='100px'><br/>
+					Atualmente:<a href="/media/{{ object.imagem }}">download</a><br>Modificar:
+					{% else %}
+					<img id='img' src='/static/imagem/sem_img.png' width='120px'>{{form.imagem.errors}}<br/>
+					{% endif %}
+					<input id="id_imagem" type="file" name="imagem">
+				</div></td>
+			</tr>
+			<tr>
+				<th width='120px'><label for="id_nome">{{form.marca.label}}</label></th>
+				<td>{{form.marca}}{{form.marca.errors}}</td>
+			</tr>
+			<tr>
+				<th width='120px'><label for="id_funcoes">{{form.funcoes.label}}</label></th>
+				<td>{{form.funcoes}}{{form.funcoes.errors}}</td>
+			</tr>
+			<tr>
+				<th width='120px'><label for="id_tipo_de_tela">{{form.tipo_de_tela.label}}</label></th>
+				<td>{{form.tipo_de_tela}}{{form.tipo_de_tela.errors}}</td>
+				<th width='120px'><label for="id_formato_tela">{{form.formato_tela.label}}</label></th>
+				<td>{{form.formato_tela}}{{form.formato_tela.errors}}</td>
+			</tr>
+			<tr>
+				<td colspan="4">
+				<tr>
+					<th width='120px'><label for="id_consumo_energia">{{form.consumo_energia.label}}</label></th>
+					<td>{{form.consumo_energia}}{{form.consumo_energia.errors}}</td>
+					<th width='120px'><label for="id_resolucao">{{form.resolucao.label}}</label></th>
+					<td>{{form.resolucao}}{{form.resolucao.errors}}</td>
+				</tr>
+		</table>
+		<br>
+		
+		<table cellspacing='0px' cellpadding='2px' style="margin-left: auto; margin-right: auto;  max-width: 600px">
+			<caption>Dimensões</caption>
+			<tr>
+					<th style='width:120px'><label for="id_altura" style='width:40px'>{{form.altura.label}}</label></th>
+					<td>{{form.altura}}{{form.altura.errors}}</td>
+					<th style='width:120px'><label for="id_largura" style='width:40px'>{{form.largura.label}}</label></th>
+					<td>{{form.largura}}{{form.largura.errors}}</td>
+			</tr>
+			<tr>
+					<th style='width:120px'><label for="id_polegadas" style='width:40px'>{{form.polegadas.label}}</label></th>
+					<td>{{form.polegadas}}{{form.polegadas.errors}}</td>
+					<th style='width:120px'><label for="id_profundidade" style='width:40px'>{{form.profundidade.label}}</label></th>
+					<td>{{form.profundidade}}{{form.profundidade.errors}}</td>
+			</tr>
+			<tr>
+					<th style='width:120px'><label for="id_peso" style='width:40px'>{{form.peso.label}}</label></th>
+					<td>{{form.peso}}{{form.peso.errors}}</td>
+					<th style='width:120px'><label for="id_profundidade" style='width:40px'>{{form.potencia.label}}</label></th>
+					<td>{{form.potencia}}{{form.potencia.errors}}</td>
+			</tr>
+		</table>
+		<br>
+		
+		<table cellspacing='3px' cellpadding='3px' style="margin-left: auto; margin-right: auto;  max-width: 600px">
+			<caption>Informações</caption>
+			<tr>
+					<th style='width:80px'><label for="id_is_full_hd" style='width:40px'>{{form.is_full_hd.label}}</label></th>
+					<td>{{form.is_full_hd}}{{form.is_full_hd.errors}}</td>
+					<th style='width:80px'><label for="id_is_smart_tv" style='width:40px'>{{form.is_smart_tv.label}}</label></th>
+					<td>{{form.is_smart_tv}}{{form.is_smart_tv.errors}}</td>
+					<th style='width:125px'><label for="id_is_hdtv" style='width:40px'>{{form.is_hdtv.label}}</label></th>
+					<td>{{form.is_hdtv}}{{form.is_hdtv.errors}}</td>
+					<th style='width:80px'><label for="id_is_3d" style='width:40px'>{{form.is_3d.label}}</label></th>
+					<td>{{form.is_3d}}{{form.is_3d.errors}}</td>
+			</tr>
+			<tr>
+					<th style='width:80px'><label for="id_has_pip" style='width:40px'>{{form.has_pip.label}}</label></th>
+					<td>{{form.has_pip}}{{form.has_pip.errors}}</td>
+					<th style='width:80px'><label for="id_has_sap" style='width:40px'>{{form.has_sap.label}}</label></th>
+					<td>{{form.has_sap}}{{form.has_sap.errors}}</td>
+					<th style='width:125px' colspan="2"><label for="id_has_conversor" style='width:40px'>{{form.has_conversor.label}}</label></th>
+					<td>{{form.has_conversor}}{{form.has_conversor.errors}}</td>
+			</tr>
+		</table>
+		<br>
+		
+		<table cellspacing='0px' cellpadding='2px' style="margin-left: auto; margin-right: auto;  max-width: 600px">
+			<caption>Outros</caption>
+			<tr>
+					<th style='width:120px'><label for="id_alimentacao" style='width:40px'>{{form.alimentacao.label}}</label></th>
+					<td>{{form.alimentacao}}{{form.alimentacao.errors}}</td>
+					<th style='width:120px'><label for="id_site" style='width:40px'>{{form.site.label}}</label></th>
+					<td>{{form.site}}{{form.site.errors}}</td>
+			</tr>
+			<tr>
+					<th style='width:120px'><label for="id_video" style='width:40px'>{{form.video.label}}</label></th>
+					<td>{{form.video}}{{form.video.errors}}</td>
+					<td></td>
+					<td></td>
+			</tr>
+			<tr>
+					<th style='width:120px'><label for="id_especificacao" style='width:40px'>{{form.especificacao.label}}</label></th>
+					<td colspan="3">{{form.especificacao}}{{form.especificacao.errors}}</td>
+			</tr>
+		</table>
+		<br>

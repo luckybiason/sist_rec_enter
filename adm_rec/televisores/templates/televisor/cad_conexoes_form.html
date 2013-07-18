@@ -1,27 +1,14 @@
-{% extends "base.html" %}
-
-{% load url from future %}
-{% block conteudo %}
 
 <form enctype='multipart/form-data' method='post'>
 	{% csrf_token %}
 	<fieldset class="fieldset_off">
-	<legend> Cadastro Principal </legend>
-	{% include 'usuarios/cad_user_form.html' %}
+	<legend> Cadastro de conexões  </legend>
+	
     </fieldset>
 	<fieldset class="fieldset_off">
 	   <input type='submit' value='Salvar' />
-       <a  href="{% url 'usuario.listagem' %}" 
+       <a  href="{#% url 'conexoes.listagem' %#}" 
           class="ui-button ui-widget ui-state-default ui-corner-all" 
           style="padding: 5px">Listagem</a>
     </fieldset>
 </form>
-	
-{% endblock %}
-
-
-
-
-
-
-

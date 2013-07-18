@@ -1,0 +1,53 @@
+<table width='550px' cellspacing='2px' cellpadding='0px' style="margin-left: auto; margin-right: auto;">
+
+	<tr>
+		<th><b>Usuário:<b>{{form.username}}</th>
+		{% if not id %}
+		<th><b>Senha:</b>{{form.password}} <img src='{{ STATIC_PREFIX }}GridList/img/password.png' width="20px" align="absmiddle"></th>
+		{% else %}
+		<td></td>
+		{% endif %}
+	</tr>
+
+</table>
+<table width='550px' cellspacing='2px' cellpadding='0px' style="margin-left: auto; margin-right: auto;">
+
+	<tr>
+		<th width='150px'><b>Primeiro Nome:<b></th>
+		<td>{{form.first_name}}{{form.first_name.errors}}</td>
+	</tr>
+
+	<tr>
+		<th width='150px'><b>Último nome:<b></th>
+		<td>{{form.last_name}}{{form.last_name.errors}}</td>
+	</tr>
+
+	<tr>
+		<th width='150px'><b>Endereço de e-mail:<b></th>
+		<td>{{form.email}}{{form.email.errors}}</td>
+	</tr>
+
+	{% if user.is_superuser or user.is_staff %}
+	<tr>
+		<th width='150px'><b>Administrador:<b/></th>
+		<td>{{form.is_staff}}</td>
+	</tr>
+	{% endif %}
+
+	{% if user.is_superuser %}
+	<tr>
+		<th width='150px'><b>Superusuário:<b/></th>
+		<td>{{form.is_superuser}}</td>
+	</tr>
+	{% endif %}
+
+	{% if id and user.is_superuser%}
+	<tr>
+		<th width='150px'><b>Usuário ativo:<b/></th>
+		<td>{{form.is_active}}</td>
+	</tr>
+	{% endif %}
+	<input type="hidden" name="last_login"  value="{{ today }}" id="id_last_login">
+	<input type="hidden" name="date_joined" value="{{ today }}" id="id_date_joined">
+</table>
+<br>

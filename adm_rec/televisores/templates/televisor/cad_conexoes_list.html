@@ -46,8 +46,46 @@
 {% endif %}
 
 	<div style="text-align:right; width: 100%" >
-		<a class="link_btn" href="{% url cadastro %}">{% trans "Novo" %}</a><br/><br/>
+		<a class="link_btn" href="{% url 'conexoes.cadastro' %}?id_tele={{id_tele}}">{% trans "Novo" %}</a><br/><br/>
 	</div>
-	{{table|safe}}
+	
+<div style="margin-left:auto; margin-right:auto">
 
+	<fieldset>{% include 'grid/filtros.html'%}</fieldset>
+	<br>
+	<fieldset class="fieldset_off">
+	<table id='listagem' width='600px' class="tablecol">
+		<thead>
+			<tr>
+				<td class="ui-widget-header">Conexão</td>
+				<td class="ui-widget-header">Qnt.</td>
+				<td class="ui-widget-header">Obs.</td>
+			</tr>
+		</thead>
+		<tbody>
+			{% for p in page.object_list %}
+			<tr>
+				<td>{{ p.conexao }}</td>
+				<td>{{ p.qntd }}</td>
+				<td>{{ p.obs }}</td>
+				<td>
+                    <ul id="icons_plus{{p.id}}" class="ui-widget ui-helper-clearfix" style="list-style: none; padding-left: 1px!important; margin: 0px!important;">
+					  <a href="{% url 'conexoes.cadastro' p.id %}?id_tele={{id_tele}}">
+						<img src='{{STATIC_PREFIX}}/GridList/img/edit.png' width='15px'>
+					  </a>
+                      {% include 'grid/custom_plus_minus.html'%}
+					</ul>
+				</td>
+			</tr>
+			{% empty %}
+			<tr>
+				<td colspan='2'>Nenhum registro cadastrado.</td>
+			</tr>
+			{% endfor %}
+		</tbody>
+	</table>
+	<br/>
+	</fieldset>
+
+</div>
 {% endblock %}

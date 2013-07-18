@@ -272,9 +272,35 @@ class TelevisorConexao(models.Model):
     qntd      = models.FloatField(default=1, verbose_name=__(u"Quantidade:"))
     obs       = models.TextField(verbose_name=__(u"Observações:"))
     
+    def __unicode__(self):
+        return self.conexao.descricao
+    
     class Meta:
         ordering = ['conexao']
         unique_together = [('televisor','conexao')]
+        
+    @models.permalink                                        
+    def get_absolute_url(self):                              
+       return ('conexoes.cadastro', (), {'id': self.id})
+   
+    @staticmethod
+    def success_url(): 
+        return "conexoes.listagem"
+    
+    @staticmethod
+    def get_config():
+        return { 
+           'titulo'   : _(u"Conexões"),
+           'app'      : "conexoes",
+           'required' : "",
+           'fields' : [
+                       ('id',        _(u'Cód.'),      False),
+                       ('televisor', _(u'Televisor'), False),
+                       ('conexao',   _(u'Conexão'),   False),
+                       ('qntd',      _(u'Qntd.'),     False),
+                       ('obs',       _(u'Obs.'),      False),
+            ],
+        }
 
 class TelevisorItens(models.Model):    
     televisor = models.ForeignKey(Televisor, blank=False, null=False)

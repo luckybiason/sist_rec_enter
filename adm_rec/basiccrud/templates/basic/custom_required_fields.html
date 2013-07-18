@@ -1,0 +1,7 @@
+<script>
+	{% if required %}
+	CAMPOS_OBRIGATORIOS = "{{required}}".split(" ");
+	{% else %}
+	CAMPOS_OBRIGATORIOS = " ".split(" ");
+	{% endif %}
+</script>

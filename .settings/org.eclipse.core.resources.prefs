@@ -4,6 +4,7 @@
 eclipse.preferences.version=1
 encoding//adm_rec/adm_rec/settings.py=utf-8
 encoding//adm_rec/adm_rec/urls.py=utf-8
+encoding//adm_rec/basiccrud/custom.py=utf-8
 encoding//adm_rec/basiccrud/gridlist.py=utf-8
 encoding//adm_rec/basiccrud/methods.py=utf-8
 encoding//adm_rec/basiccrud/mixins.py=utf-8
