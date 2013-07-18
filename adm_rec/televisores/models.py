@@ -214,7 +214,7 @@ class Televisor(models.Model):
     potencia        = models.FloatField(verbose_name=__(u"Potência:"))
     ## Tela
     tipo_de_tela    = models.ForeignKey(TipoTela, blank=False, null=False, verbose_name=__(u"Tipo de tela:"))
-    #resolucao       = models.CharField(max_length=150, unique=True, verbose_name=__(u"Resolução"))
+    resolucao       = models.CharField(max_length=150, unique=True, verbose_name=__(u"Resolução"))
     formato_tela    = models.ForeignKey(Funcao, blank=True, null=True, verbose_name=__(u"Formato da tela:"))
     consumo_energia = models.FloatField(verbose_name=__(u"Consumo Energ.:"))
     ## Flags
