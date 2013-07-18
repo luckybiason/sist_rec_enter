@@ -23,9 +23,9 @@
 </div>
 
 {% if object.id %}
-<iframe width="600px" style="border:none"  src="{% url 'conexoes.listagem' %}?obj_id={{object.id}}"></iframe>
-<iframe src="{% url 'itens.listagem'    object.id %}"></iframe>
-<iframe src="{% url 'lojas.listagem'    object.id %}"></iframe>
+<iframe width="700px" height="700px" style="border:none"  src="{% url 'conexoes.listagem' %}?obj_id={{object.id}}"></iframe>
+<iframe width="600px" style="border:none"  src="{% url 'tel_itens.listagem' %}?obj_id={{object.id}}"></iframe>
+<iframe width="600px" style="border:none"  src="{% url 'tel_lojas.listagem' %}?obj_id={{object.id}}"></iframe>
 {% endif %}
 
 {% endblock %}

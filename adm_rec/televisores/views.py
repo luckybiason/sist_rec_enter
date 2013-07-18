@@ -25,23 +25,21 @@ def getdetail_televisor(request):
 
 ##-- Funções dos relacionamentos de Televisores
 #- Conexoes
-def list_conexoes(request, tel_id):
-    #from gridlist import make_table
-    #make_table(request, model, object_list, locals=locals)
-    conexoes = TelevisorConexao.objects.filter(televisor__id=tel_id)
-    num_pag, page, paginator = makePaginator(request,conexoes)
-    id_tele = tel_id
-    return render(request, 'televisor/cad_conexoes_list.html', locals())
-
-def cad_conexoes(request, tel_id=None):
+def list_conexoes(request):
     id_tele = request.GET.get('id_tele')
-    conexoes = TelevisorConexao.objects.filter(televisor__id=tel_id)
+    conexoes = TelevisorConexao.objects.filter(televisor__id=id_tele)
     num_pag, page, paginator = makePaginator(request,conexoes)
     return render(request, 'televisor/cad_conexoes_list.html', locals())
 
-def exc_conexoes(request, tel_id):
+def cad_conexoes(request, pk=None):
     id_tele = request.GET.get('id_tele')
-    conexoes = TelevisorConexao.objects.filter(televisor__id=tel_id)
+    conexoes = TelevisorConexao.objects.filter(televisor__id=id_tele)
+    num_pag, page, paginator = makePaginator(request,conexoes)
+    return render(request, 'televisor/cad_conexoes_list.html', locals())
+
+def exc_conexoes(request, pk):
+    id_tele = request.GET.get('id_tele')
+    conexoes = TelevisorConexao.objects.filter(televisor__id=id_tele)
     num_pag, page, paginator = makePaginator(request,conexoes)
     return render(request, 'televisor/cad_conexoes_list.html', locals())
 
@@ -57,13 +55,39 @@ def exc_conexoes(request, tel_id):
 #                                         template_name='cad_conexoes_list.html')
 
 #- Itens Inclusos
-def list_itens(request, tel_id):
-    itens = TelevisorConexao.objects.filter(televisor__id=tel_id)
+def list_itens(request):
+    id_tele = request.GET.get('id_tele')
+    itens = TelevisorConexao.objects.filter(televisor__id=id_tele)
+    num_pag, page, paginator = makePaginator(request,itens)
+    return render(request, 'televisor/cad_itens_list.html', locals())
+
+def cad_itens(request, pk=None):
+    id_tele = request.GET.get('id_tele')
+    itens = TelevisorConexao.objects.filter(televisor__id=id_tele)
+    num_pag, page, paginator = makePaginator(request,itens)
+    return render(request, 'televisor/cad_itens_list.html', locals())
+
+def exc_itens(request, pk):
+    id_tele = request.GET.get('id_tele')
+    itens = TelevisorConexao.objects.filter(televisor__id=id_tele)
     num_pag, page, paginator = makePaginator(request,itens)
     return render(request, 'televisor/cad_itens_list.html', locals())
 
 #- Lojas
-def list_lojas(request, tel_id):
-    lojas = TelevisorLoja.objects.filter(televisor__id=tel_id)
+def list_lojas(request):
+    id_tele = request.GET.get('id_tele')
+    lojas = TelevisorLoja.objects.filter(televisor__id=id_tele)
+    num_pag, page, paginator = makePaginator(request,lojas)
+    return render(request, 'televisor/cad_lojas_list.html', locals())
+
+def cad_lojas(request, pk=None):
+    id_tele = request.GET.get('id_tele')
+    lojas = TelevisorLoja.objects.filter(televisor__id=id_tele)
+    num_pag, page, paginator = makePaginator(request,lojas)
+    return render(request, 'televisor/cad_lojas_list.html', locals())
+
+def exc_lojas(request, pk):
+    id_tele = request.GET.get('id_tele')
+    lojas = TelevisorLoja.objects.filter(televisor__id=id_tele)
     num_pag, page, paginator = makePaginator(request,lojas)
     return render(request, 'televisor/cad_lojas_list.html', locals())

@@ -1,4 +1,4 @@
-{% extends template_base %}
+{% extends 'iframe.html' %}
 
 {% load static %}
 {% get_static_prefix as STATIC_PREFIX %}
@@ -73,7 +73,7 @@
 					  <a href="{% url 'conexoes.cadastro' p.id %}?id_tele={{id_tele}}">
 						<img src='{{STATIC_PREFIX}}/GridList/img/edit.png' width='15px'>
 					  </a>
-                      {% include 'grid/custom_plus_minus.html'%}
+                      {% include 'basic/custom_plus_minus.html'%}
 					</ul>
 				</td>
 			</tr>

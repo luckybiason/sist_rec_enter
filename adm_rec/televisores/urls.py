@@ -56,14 +56,14 @@ urlpatterns = patterns('televisores',
         url(r'^conexoes/cadastro/(?P<pk>\d+)/$', 'views.cad_conexoes',  name='conexoes.cadastro'),
         url(r'^conexoes/excluir/(?P<pk>\d+)/$',  'views.exc_conexoes',  name='conexoes.excluir'),
         # - Itens inclusos
-        url(r'^itens/listagem/(?P<tel_id>\d+)/$', 'views.list_itens', name='tel_itens.listagem'),
-        url(r'^itens/cadastro/$',                 'views.cad_itens',  name='tel_itens.cadastro'),
-        url(r'^itens/cadastro/(?P<pk>\d+)/$',     'views.cad_itens',  name='tel_itens.cadastro'),
-        url(r'^itens/excluir/(?P<pk>\d+)/$',      'views.exc_itens',  name='tel_itens.excluir'),
+        url(r'^itens/listagem/$',             'views.list_itens', name='tel_itens.listagem'),
+        url(r'^itens/cadastro/$',             'views.cad_itens',  name='tel_itens.cadastro'),
+        url(r'^itens/cadastro/(?P<pk>\d+)/$', 'views.cad_itens',  name='tel_itens.cadastro'),
+        url(r'^itens/excluir/(?P<pk>\d+)/$',  'views.exc_itens',  name='tel_itens.excluir'),
         # - Lojas
-        url(r'^lojas/listagem/(?P<tel_id>\d+)/$', 'views.list_lojas', name='tel_lojas.listagem'),
-        url(r'^lojas/cadastro/$',                 'views.cad_lojas',  name='tel_lojas.cadastro'),
-        url(r'^lojas/cadastro/(?P<pk>\d+)/$',     'views.cad_lojas',  name='tel_lojas.cadastro'),
-        url(r'^lojas/excluir/(?P<pk>\d+)/$',      'views.exc_lojas',  name='tel_lojas.excluir'),
+        url(r'^lojas/listagem/$',             'views.list_lojas', name='tel_lojas.listagem'),
+        url(r'^lojas/cadastro/$',             'views.cad_lojas',  name='tel_lojas.cadastro'),
+        url(r'^lojas/cadastro/(?P<pk>\d+)/$', 'views.cad_lojas',  name='tel_lojas.cadastro'),
+        url(r'^lojas/excluir/(?P<pk>\d+)/$',  'views.exc_lojas',  name='tel_lojas.excluir'),
         
 )
