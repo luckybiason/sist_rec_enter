@@ -4,6 +4,7 @@ from adm_rec.utils.paginators import makePaginator
 from django.contrib           import messages
 from django.shortcuts         import redirect,render
 from models                   import *
+from django.http import HttpResponseRedirect
 
 @ajax_json_view
 def getdetail_funcao(request):
@@ -25,17 +26,48 @@ def getdetail_televisor(request):
 
 ##-- Funções dos relacionamentos de Televisores
 #- Conexoes
+from models import TelevisorConexao
+from forms  import TelevisorConexaoForm
+
 def list_conexoes(request):
-    id_tele = request.GET.get('id_tele')
+    titulo   = "Listagem de conexões"
+    id_tele  = request.GET.get('id_tele')
     conexoes = TelevisorConexao.objects.filter(televisor__id=id_tele)
     num_pag, page, paginator = makePaginator(request,conexoes)
     return render(request, 'televisor/cad_conexoes_list.html', locals())
 
 def cad_conexoes(request, pk=None):
-    id_tele = request.GET.get('id_tele')
-    conexoes = TelevisorConexao.objects.filter(televisor__id=id_tele)
-    num_pag, page, paginator = makePaginator(request,conexoes)
-    return render(request, 'televisor/cad_conexoes_list.html', locals())
+    titulo  = "Cadastro de conexões"
+    
+    if request.method =='POST':
+        id_tele = request.POST.get('televisor')
+    else:
+        id_tele = request.GET.get('id_tele')
+        
+    if request.method =='POST':
+        if pk:
+            tvcon = TelevisorConexao.objects.get(id=pk)
+            form  = TelevisorConexaoForm(request.POST,instance=tvcon)
+        else:
+            form = TelevisorConexaoForm(request.POST)
+        if form.is_valid():
+            tvcon = form.save()
+            messages.success(request, 'A conexão foi salva com sucesso')
+            print '/televisores/conexoes/listagem/?id_tele=%s' % id_tele
+            return redirect('/televisores/conexoes/listagem/?id_tele=%s' % id_tele)
+        else:
+            if TelevisorConexao.objects.filter(televisor__id=id_tele,
+                                         conexao__id=request.POST.get('conexao')).exists():
+                messages.error(request, u'Já existe uma conexão dessas para o televisor.')
+            else:
+                messages.error(request, u'Existem erros de preenchimento no formulário.')
+    else:
+        if pk:
+            tvcon = TelevisorConexao.objects.get(id=pk)
+            form  = TelevisorConexaoForm(instance=tvcon)
+        else:
+            form = TelevisorConexaoForm()
+    return render(request, 'televisor/cad_conexoes_form.html', locals())
 
 def exc_conexoes(request, pk):
     id_tele = request.GET.get('id_tele')

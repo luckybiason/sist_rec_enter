@@ -47,14 +47,10 @@
 
 	</head>
 
-	<body>
-		<div id="tudo">
-			<div id="principal">
+	<body style="max-width: 700px">
+				<h3 class='ui-widget-header' style="text-align: center; margin-top: 13px;">{{titulo}}</h3>
 				{% include "alerts_messages/messages.html" %}
 				{% block conteudo %}
 				{% endblock %}
-			</div>
-		</div>
-
 	</body>
 </html>

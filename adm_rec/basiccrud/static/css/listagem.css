@@ -135,7 +135,7 @@ fieldset label {
 	width:        200px;
 	margin-right: 0.5px;
 	padding-top:  0.2px;
-	text-align:   right;
+	/*text-align:   right;*/
 	font-weight:  bold;
 }
 

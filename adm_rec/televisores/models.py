@@ -1,6 +1,7 @@
 #-*- coding: utf-8 -*-
 from django.db import models
 from django.utils.translation import ugettext as _ , ugettext_lazy as __
+from django.core.urlresolvers import reverse
 
 ################################################################################
 ########################### - CADASTROS AUXILIARES - ########################### 
@@ -209,28 +210,27 @@ class Televisor(models.Model):
     polegadas       = models.FloatField(verbose_name=__(u"Polegadas:"))
     altura          = models.FloatField(verbose_name=__(u"Altura:"))
     largura         = models.FloatField(verbose_name=__(u"Largura:"))
-    profundidade    = models.FloatField(verbose_name=__(u"Profundidade:"))
-    peso            = models.FloatField(verbose_name=__(u"Peso:"))
-    potencia        = models.FloatField(verbose_name=__(u"Potência:"))
+    profundidade    = models.FloatField(verbose_name=__(u"Profundidade:"), blank=True, null=True)
+    peso            = models.FloatField(verbose_name=__(u"Peso:"),         blank=True, null=True)
+    potencia        = models.FloatField(verbose_name=__(u"Potência:"),     blank=True, null=True)
     ## Tela
     tipo_de_tela    = models.ForeignKey(TipoTela, blank=False, null=False, verbose_name=__(u"Tipo de tela:"))
-    resolucao       = models.CharField(max_length=150, unique=True, verbose_name=__(u"Resolução"))
-    formato_tela    = models.ForeignKey(Funcao, blank=True, null=True, verbose_name=__(u"Formato da tela:"))
-    consumo_energia = models.FloatField(verbose_name=__(u"Consumo Energ.:"))
+    resolucao       = models.CharField(max_length=150, verbose_name=__(u"Resolução"), blank=True, null=True)
+    formato_tela    = models.CharField(max_length=150, verbose_name=__(u"Formato da tela:"), blank=True, null=True)
+    consumo_energia = models.FloatField(verbose_name=__(u"Consumo Energ.:"), blank=True, null=True)
     ## Flags
-    is_full_hd    = models.BooleanField( verbose_name=__(u"Full HD"))
-    is_smart_tv   = models.BooleanField( verbose_name=__(u"Smart TV"))
-    is_hdtv       = models.BooleanField( verbose_name=__(u"HDTV"))
-    is_3d         = models.BooleanField( verbose_name=__(u"3D"))
-    has_pip       = models.BooleanField( verbose_name=__(u"PIP"))
-    has_sap       = models.BooleanField( verbose_name=__(u"SAP"))
-    has_conversor = models.BooleanField( verbose_name=__(u"Conversor Digital")) 
+    is_full_hd    = models.BooleanField( verbose_name=__(u"Full HD"),  blank=True)
+    is_smart_tv   = models.BooleanField( verbose_name=__(u"Smart TV"), blank=True)
+    is_hdtv       = models.BooleanField( verbose_name=__(u"HDTV"),     blank=True)
+    is_3d         = models.BooleanField( verbose_name=__(u"3D"),       blank=True)
+    has_pip       = models.BooleanField( verbose_name=__(u"PIP"),      blank=True)
+    has_sap       = models.BooleanField( verbose_name=__(u"SAP"),      blank=True)
+    has_conversor = models.BooleanField( verbose_name=__(u"Conversor Digital"), blank=True) 
     ## Outros
-    alimentacao   = models.CharField(max_length=150, verbose_name=__(u"Alimentação"), choices=TIPO_ALIMENTACAO)
-    especificacao = models.TextField(verbose_name=__(u"Outras especificações"))
-    site          = models.CharField(max_length=150, verbose_name=__(u"Site"))
-    video         = models.CharField(max_length=150, verbose_name=__(u"Link de Video"))
-    # Será diferente: lojas (entra em outro processo)
+    alimentacao   = models.CharField(max_length=150, verbose_name=__(u"Alimentação"), choices=TIPO_ALIMENTACAO, blank=True, null=True)
+    especificacao = models.TextField(verbose_name=__(u"Outras especificações"), blank=True, null=True)
+    site          = models.CharField(max_length=150, verbose_name=__(u"Site"),  blank=True, null=True)
+    video         = models.CharField(max_length=150, verbose_name=__(u"Link de Video"), blank=True, null=True)
     
     class Meta:
         verbose_name        = _(u'Televisor')
@@ -279,28 +279,10 @@ class TelevisorConexao(models.Model):
         ordering = ['conexao']
         unique_together = [('televisor','conexao')]
         
-    @models.permalink                                        
-    def get_absolute_url(self):                              
-       return ('conexoes.cadastro', (), {'id': self.id})
    
     @staticmethod
     def success_url(): 
         return "conexoes.listagem"
-    
-    @staticmethod
-    def get_config():
-        return { 
-           'titulo'   : _(u"Conexões"),
-           'app'      : "conexoes",
-           'required' : "",
-           'fields' : [
-                       ('id',        _(u'Cód.'),      False),
-                       ('televisor', _(u'Televisor'), False),
-                       ('conexao',   _(u'Conexão'),   False),
-                       ('qntd',      _(u'Qntd.'),     False),
-                       ('obs',       _(u'Obs.'),      False),
-            ],
-        }
 
 class TelevisorItens(models.Model):    
     televisor = models.ForeignKey(Televisor, blank=False, null=False)

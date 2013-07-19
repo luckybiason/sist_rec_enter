@@ -13,7 +13,7 @@ Detalhes_template_name   = "basic/detalhes.html" # Detalhes
 
 ##- Função para componente de listagem
 from gridlist import make_table
-def listagem(request, model, object_list, locals={},  with_details=False):
+def listagem_integracao(request, model, object_list, locals={},  with_details=False):
     return make_table(request, model, object_list, locals=locals,  with_details=with_details)
 
 ##- Função para detalhes

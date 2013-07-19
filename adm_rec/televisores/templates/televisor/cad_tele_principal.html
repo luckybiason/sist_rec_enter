@@ -1,0 +1,42 @@
+
+<table cellspacing='0px' cellpadding='2px'  class='tables_tabs'>
+	<tr>
+		<th><label for="id_inativo">{{form.nome.label}}</label></th>
+		<td>{{form.nome}}{{form.nome.errors}}</td>
+		
+		<td rowspan='6' colspan="2" style="vertical-align: bottom; height: 100%">
+		<div class="ui-button ui-widget ui-state-default ui-button-text-only ui-corner-left">
+			{% if object.imagem %}
+			<img id='img' src='/media/{{ object.imagem }}' width='250px'><br/>
+			Atualmente:<a href="/media/{{ object.imagem }}">download</a>
+			<br>
+			Modificar:
+			{% else %}
+			<img id='img' src='/static/imagem/sem_img.png' width='190px'>{{form.imagem.errors}}
+			<br/>
+			{% endif %}
+			<input id="id_imagem" type="file" name="imagem">
+		</div></td>
+	</tr>
+	<tr>
+		<th width='120px'><label for="id_nome">{{form.marca.label}}</label></th>
+		<td>{{form.marca}}{{form.marca.errors}}</td>
+	</tr>
+	<tr>
+		<th><label for="id_funcoes">{{form.funcoes.label}}</label></th>
+		<td>{{form.funcoes}}{{form.funcoes.errors}}</td>
+	</tr>
+	<tr>
+		<th><label for="id_tipo_de_tela">{{form.tipo_de_tela.label}}</label></th>
+		<td>{{form.tipo_de_tela}}{{form.tipo_de_tela.errors}}</td>
+	</tr>
+	<tr>
+		<th><label for="id_resolucao">{{form.resolucao.label}}</label></th>
+		<td>{{form.resolucao}}{{form.resolucao.errors}}</td>
+	</tr>
+	<tr>
+		<th><label for="id_formato_tela">{{form.formato_tela.label}}</label></th>
+		<td>{{form.formato_tela}}{{form.formato_tela.errors}}</td>
+	</tr>
+</table>
+<br>

@@ -35,6 +35,7 @@ class ListContextMixin(object):
 # - Para usar em cadastros
 #   (necessário o método statico success_url() na model)
 class BasicContextMixin(SingleObjectMixin):
+    template_base = 'base.html'
     
     def get_success_url (self, **kwargs):
         return reverse(self.model.success_url())
@@ -42,6 +43,7 @@ class BasicContextMixin(SingleObjectMixin):
     def get_context_data(self, **kwargs):
         contextP    = super(BasicContextMixin, self).get_context_data(**kwargs)
         url_context = catch_urls(self.model).items()
+        template_base = self.template_base
         return dict(contextP.items()+url_context+self.model.get_config().items())   
 
 # - Controle de Mensagens para criaçao e exclusão

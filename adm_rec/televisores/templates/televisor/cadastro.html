@@ -2,31 +2,85 @@
 {% load url from future %}
 
 {% block conteudo %}
+<script>
+	$(function() {
+		$("#tabs").tabs();
+	}); 
+</script>
 <style>
-	#id_marca, #id_funcoes, #id_tipo_de_tela, #id_formato_tela, #id_alimentacao { width: 150px; }
-	#id_especificacao { width: 420px; }	
+	#id_marca, #id_funcoes, #id_tipo_de_tela, #id_formato_tela, #id_alimentacao,
+	input, select, textarea {
+		width: 150px!important;
+	}
+	#id_especificacao {
+		width: 100%!important;
+		height: 100px;
+	}
+	th {
+		width  : 150px;
+		margin : 0px;
+		padding: 0px;
+	}
+	#tabs{
+		width:700px;
+	}
+	.tables_tabs{
+		margin-left : auto; 
+		margin-right: auto;  
+		max-width   : 600px";
+	}
 </style>
 {% include 'basic/custom_required_fields.html' %}
 {% include 'basic/statics.html' %}
 
-<div style="margin-left:auto; margin-right:auto; max-width: 600px" >
+<div class="div_grid">
 	<form enctype='multipart/form-data' method='post'>
 		{% csrf_token %}
-	    <legend> Cadastro Principal </legend>
-	    {% include 'televisor/cad_tele_form.html' %}
-		<fieldset class="fieldset_off">
+		
+		<fieldset class="fieldset_off" style="720px">
+            {% include 'televisor/cad_tele_principal.html' %}
+        </fieldset>
+        <br>
+		<div id="tabs">
+			<ul>
+				<li><a href="#tabs-geral">Dados Gerais</a></li>
+				<li><a href="#tabs-dimen">Dimensões</a></li>
+				<li><a href="#tabs-info">Informações</a></li>
+				{% if object.id %}
+				<li><a href="#tabs-1">Conexões</a></li>
+				<li><a href="#tabs-2">Itens Inclusos</a></li>
+				<li><a href="#tabs-3">Lojas</a></li>
+				{% endif %}
+			</ul>
+			<div id="tabs-geral">
+				{% include 'televisor/cad_tele_gerais.html' %}
+			</div>
+			<div id="tabs-dimen">
+				{% include 'televisor/cad_tele_dimensoes.html' %}
+			</div>
+			<div id="tabs-info">
+				{% include 'televisor/cad_tele_informacoes.html' %}
+			</div>
+			{% if object.id %}
+			<div id="tabs-1">
+				<iframe class='iframes' src="{% url 'conexoes.listagem' %}?id_tele={{object.id}}"></iframe>
+			</div>
+			<div id="tabs-2">
+				<iframe class='iframes' src="{% url 'tel_itens.listagem' %}?id_tele={{object.id}}"></iframe>
+			</div>
+			<div id="tabs-3">
+				<iframe class='iframes'   src="{% url 'tel_lojas.listagem' %}?id_tele={{object.id}}"></iframe>
+			</div>
+			{% endif %}
+		</div>
+        <br>
+		<fieldset class="fieldset_off" style="z-index: 9999">
 			<input type='submit' value='Salvar' />
 			<a href="{% url 'televisor.listagem' %}" class="ui-button ui-widget ui-state-default ui-corner-all"
 			style="padding: 5px">Listagem</a>
 		</fieldset>
 	</form>
 </div>
-
-{% if object.id %}
-<iframe width="700px" height="700px" style="border:none"  src="{% url 'conexoes.listagem' %}?obj_id={{object.id}}"></iframe>
-<iframe width="600px" style="border:none"  src="{% url 'tel_itens.listagem' %}?obj_id={{object.id}}"></iframe>
-<iframe width="600px" style="border:none"  src="{% url 'tel_lojas.listagem' %}?obj_id={{object.id}}"></iframe>
-{% endif %}
 
 {% endblock %}
 

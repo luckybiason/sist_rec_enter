@@ -12,62 +12,24 @@
 		onCompleted : function(){ }
 	 }
 	
-   $().toastmessage({
+   /*$().toastmessage({
        sticky   : true,
        position : 'top-center',
        type     : 'success',
        close    : function () {}
-	});
+	});*/
 	
 	{% for m in messages %}
 		if( '{{m.tags}}'=='error' ){
-			jError(  '{{ m }}',config ); 
-	        //$().toastmessage('showErrorToast', "{{ m }}");
+			jError(  '{{ m|safe }}',config ); 
 		}else if( '{{m.tags}}'=='success' ){
-			jSuccess(  '{{ m }}',config );
-		    //$().toastmessage('showSuccessToast', "{{ m }}");
+			jSuccess(  '{{ m|safe }}',config );
 		}else if( '{{m.tags}}'=='info' ){
-			jNotify(  '{{ m }}',config ); 
-		    //$().toastmessage('showNoticeToast', '{{ m }}');
+			jNotify(  '{{ m|safe }}',config ); 
 		}else if( '{{m.tags}}'=='warning' ){
-			jWarning(  '{{ m }}',config );
-		    //$().toastmessage('showWarningToast', "{{ m }}");
+			jWarning(  '{{ m|safe }}',config );
 		}	
 	{% endfor %}
 	{% endif %}	  
 });
 </script>
-
-{% comment %}
-<div id='messages'  style="margin-left:auto; margin-right:auto">
-	{% if messages %}
-	{% for m in messages %}
-	<li class='{{ m.tags }}'>
-		{{ m }}
-	</li>
-	{% endfor %}
-	{% endif %}
-</div>
-
-
- jNotify();
- 
-  // simple Error box call
-  jError(); <div id="jError" style="opacity: 0; min-width: 200px; top: 21px; left: 562.5px;">um erro ocorreu.</div>
- 
-  // simple Success box call success
-  jSuccess();
- 
-  // more complex Notify box call
-  jNotify(
-    'Here the message !!<br />You can write HTML code, <strong>bold</strong>,...',
-    {
-      autoHide : true, // added in v2.0
-      TimeShown : 3000,
-      HorizontalPosition : 'center',
-      onCompleted : function(){ // added in v2.0
-      alert('jNofity is completed !');
-    }
-  }
-  ); // close jNotify
-  {% endcomment %}

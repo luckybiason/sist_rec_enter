@@ -5,18 +5,11 @@
 <style>
 	#id_categoria{ width:230px; }
 </style>
-<script>
-	{% if required %}
-	    CAMPOS_OBRIGATORIOS = "{{required}}".split(" ");
-	{% else %}
-	    CAMPOS_OBRIGATORIOS = " ".split(" ");
-	{% endif %}
-</script>
-<script src="{{ STATIC_PREFIX }}basiccrud/basiccrud.js"  type="text/javascript"></script>
-<link rel='stylesheet' type='text/css' href='{{ STATIC_PREFIX }}basiccrud/basiccrud.css' />
+{% include 'basic/custom_required_fields.html' %}
+{% include 'basic/statics.html' %}
         
 
-<div style="margin-left:auto; margin-right:auto"  >
+<div class="div_grid"  >
 <form enctype='multipart/form-data' method='post'>
 	{% csrf_token %}
 	<table cellspacing='0px' cellpadding='2px' style="margin-left: auto; margin-right: auto;">
