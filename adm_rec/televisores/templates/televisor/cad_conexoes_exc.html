@@ -1,0 +1,26 @@
+{% extends 'iframe.html' %}
+
+{% load static %}
+{% get_static_prefix as STATIC_PREFIX %}
+{% load url from future %}
+
+{% block conteudo %}
+
+
+<div class="div_grid">
+
+	<fieldset class="fieldset_off">
+		<p>
+			Excluir a conexao "{{ conexao.conexao }}"?
+		</p>
+		<form method='post'  name="exc_itens">
+		    {% csrf_token %}
+			<input type='hidden' value='{{ conexao.id }}' name='id'/>
+			<input type='submit' value='Confirmar exclusão' />
+			<a  href="{% url 'conexao.listagem' %}?id_tele={{id_tele}}"
+			class="ui-button ui-widget ui-state-default ui-corner-all"
+			style="padding: 5px">Cancelar exclusão</a>
+		</form>
+	</fieldset>
+</div>
+{% endblock %}

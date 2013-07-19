@@ -1,0 +1,16 @@
+{% if page.has_other_pages %}
+<fieldset>
+	<br/>
+	<form method='GET' name='combopags'>
+		<input type="hidden" value="{{id_tele}}" name="id_tele"/>
+		Página:
+		<select name='pagina'>
+			{% for i in paginator.page_range %}
+			<option value='{{ i }}'>{{ i }}</option>
+			{% endfor %}
+		</select>
+		<input type='submit' value='Ir'/>
+	</form>
+	<br/>
+</fieldset>
+{% endif %}

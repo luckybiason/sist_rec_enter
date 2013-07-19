@@ -3,6 +3,7 @@
 {% block conteudo %}
     <p> Excluir o usuário "{{ usuario.username }}"? </p>
 
+		{% csrf_token %}
     <form method='post'>
         <input type='hidden' value='{{ usuario.id }}' name='id'/>
         <input type='submit' value='Confirmar exclusão' />

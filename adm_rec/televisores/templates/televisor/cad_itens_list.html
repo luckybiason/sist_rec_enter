@@ -1,0 +1,49 @@
+{% extends 'iframe.html' %}
+
+{% load static %}
+{% get_static_prefix as STATIC_PREFIX %}
+{% load url from future %}
+
+{% block conteudo %}
+{% include 'basic/custom_required_fields.html' %}
+{% include 'basic/statics.html' %}
+
+<div class="div_grid">
+	<a class="link_btn" href="{% url 'tel_itens.cadastro' %}?id_tele={{id_tele}}">Novo</a></td>
+	<br>
+	<fieldset class="fieldset_off">
+	<table id='listagem' style="width: 675px!important;" class="tablecol">
+		<thead>
+			<tr>
+				<td class="ui-widget-header" style="width: 400px!important;">Item</td>
+				<td class="ui-widget-header">Qnt.</td>
+				<td class="ui-widget-header" width="10%">Ações</td>
+			</tr>
+		</thead>
+		<tbody>
+			{% for p in page.object_list %}
+			<tr>
+				<td>{{ p.item }}</td>
+				<td>{{ p.qntd }}</td>
+				<td>
+                    <ul id="icons_plus{{p.id}}" class="ui-widget ui-helper-clearfix" style="list-style: none; padding-left: 1px!important; margin: 0px!important;">
+					  <a href="{% url 'tel_itens.cadastro' p.id %}?id_tele={{id_tele}}">
+						<img src='{{STATIC_PREFIX}}/GridList/img/edit.png' width='15px'>
+					  </a>
+					  <a href="{% url 'tel_itens.excluir' p.id %}?id_tele={{id_tele}}">
+						<img src='{{STATIC_PREFIX}}/GridList/img/delete.png' width='15px'>
+					  </a>
+					</ul>
+				</td>
+			</tr>
+			{% empty %}
+			<tr> <td colspan='3'>Nenhum registro cadastrado.</td> </tr>
+			{% endfor %}
+		</tbody>
+	</table>
+	<br/>
+	</fieldset>
+    {% include 'televisor/tele_combo_pages.html' %}
+
+</div>
+{% endblock %}

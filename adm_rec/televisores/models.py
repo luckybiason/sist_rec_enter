@@ -278,8 +278,7 @@ class TelevisorConexao(models.Model):
     class Meta:
         ordering = ['conexao']
         unique_together = [('televisor','conexao')]
-        
-   
+    
     @staticmethod
     def success_url(): 
         return "conexoes.listagem"

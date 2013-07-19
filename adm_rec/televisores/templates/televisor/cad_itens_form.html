@@ -1,0 +1,59 @@
+{% extends 'iframe.html' %}
+
+{% load static %}
+{% get_static_prefix as STATIC_PREFIX %}
+{% load url from future %}
+
+{% block conteudo %}
+<script>
+    CAMPOS_OBRIGATORIOS = "".split(" ");
+</script>
+<script src="{{ STATIC_PREFIX }}basiccrud/basiccrud.js"  type="text/javascript"></script>
+<link rel='stylesheet' type='text/css' href='{{ STATIC_PREFIX }}basiccrud/basiccrud.css' />
+
+<div class="div_grid">
+
+<style>
+	#id_item, input, select {
+		width: 150px!important;
+	}
+	#id_obs {
+		width: 100%!important;
+		height: 100px;
+	}
+</style>
+
+	<form enctype='multipart/form-data' method='post' name="items">
+		{% csrf_token %}
+        
+		<fieldset class="fieldset_off">
+			
+			<br>
+			<table style="max-width: 670px!important;" class="tablecol div_grid">
+				<tr>
+					<input type="hidden" value="{{id_tele}}" name="televisor">
+					<th><label for="id_inativo">{{form.item.label}}</label></th>
+					<td>{{form.item}}{{form.item.errors}}</td>
+				</tr>
+				<tr>
+					<th><label for="id_nome">{{form.qntd.label}}</label></th>
+					<td>{{form.qntd}}{{form.qntd.errors}}</td>
+				</tr>
+				<tr>
+					<th><label for="id_nome">{{form.obs.label}}</label></th>
+					<td colspan="3">{{form.obs}}{{form.obs.errors}}</td>
+				</tr>
+
+			</table>
+		</fieldset>
+
+		<fieldset class="fieldset_off">
+			<input type='submit' value='Salvar' />
+			<a  href="{% url 'tel_itens.listagem' %}?id_tele={{id_tele}}"
+			class="ui-button ui-widget ui-state-default ui-corner-all"
+			style="padding: 5px">Listagem</a>
+		</fieldset>
+	</form>
+
+</div>
+{% endblock %}

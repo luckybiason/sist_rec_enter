@@ -13,10 +13,10 @@
 	<a class="link_btn" href="{% url 'conexoes.cadastro' %}?id_tele={{id_tele}}">Novo</a></td>
 	<br>
 	<fieldset class="fieldset_off">
-	<table id='listagem' style="max-width: 670px!important;" class="tablecol">
+	<table id='listagem' style="width: 675px!important;" class="tablecol">
 		<thead>
 			<tr>
-				<td class="ui-widget-header">Conexão</td>
+				<td class="ui-widget-header" style="width: 400px!important;">Conexão</td>
 				<td class="ui-widget-header">Qnt.</td>
 				<td class="ui-widget-header" width="10%">Ações</td>
 			</tr>
@@ -31,7 +31,9 @@
 					  <a href="{% url 'conexoes.cadastro' p.id %}?id_tele={{id_tele}}">
 						<img src='{{STATIC_PREFIX}}/GridList/img/edit.png' width='15px'>
 					  </a>
-                      {% include 'basic/custom_plus_minus.html'%}
+					  <a href="{% url 'conexoes.excluir' p.id %}?id_tele={{id_tele}}">
+						<img src='{{STATIC_PREFIX}}/GridList/img/delete.png' width='15px'>
+					  </a>
 					</ul>
 				</td>
 			</tr>
@@ -44,21 +46,6 @@
 	</table>
 	<br/>
 	</fieldset>
-
-	<fieldset>
-<br/>
-{% if page.has_other_pages %}
-<form method='GET' name='combopags'>
-    <input type="hidden" value="{{id_tele}}" name="id_tele"/>
-    Página:<select name='pagina'>
-	{% for i in paginator.page_range %}
-      <option value='{{ i }}'>{{ i }}</option>
-    {% endfor %}
-    </select>
-    <input type='submit' value='Ir'/>
-</form>
-{% endif %}
-<br/>
-    </fieldset>
+    {% include 'televisor/tele_combo_pages.html' %}
 </div>
 {% endblock %}
