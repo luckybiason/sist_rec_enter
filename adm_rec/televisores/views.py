@@ -174,8 +174,13 @@ def cad_lojas(request, pk=None):
     return render(request, 'televisor/cad_lojas_form.html', locals())
 
 def exc_lojas(request, pk):
+    titulo  = "Exclusão de loja no televisor"
     id_tele = request.GET.get('id_tele')
-    return render(request, 'televisor/cad_lojas_list.html', locals())
+    loja = TelevisorItens.objects.get(id=pk)
+    if request.method == 'POST':
+        loja.delete()
+        return redirect(reverse('tel_lojas.listagem')+'?id_tele=%s' % id_tele)
+    return render(request, 'televisor/cad_lojas_exc.html', locals())
 
 
 
