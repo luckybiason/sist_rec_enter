@@ -3,10 +3,56 @@ from adm_rec.utils.decorators import ajax_json_view
 from adm_rec.utils.paginators import makePaginator
 from django.contrib           import messages
 from django.shortcuts         import redirect,render
+from basiccrud.views          import *
 from models                   import *
-from django.http import HttpResponseRedirect
+from django.contrib.auth.decorators import login_required
+
+#areafuncao_listagem = GeneralListView.as_view(model=models.AreaFuncao)
+#areafuncao_listagem = perm_post_get('list_areafuncao')(areafuncao_listagem)
+
+## - Cadastros auxiliares          
+# Marcas
+marcas_listagem = login_required(GeneralListView.as_view(model=Marca))
+marcas_cadastro = login_required(GeneralCreateView.as_view(model=Marca))
+marcas_editar   = login_required(GeneralUpdateView.as_view(model=Marca))
+marcas_excluir  = login_required(GeneralDeleteView.as_view(model=Marca))
+# Tipos de telas
+tipos_tela_listagem = login_required(GeneralListView.as_view(model=TipoTela))
+tipos_tela_cadastro = login_required(GeneralCreateView.as_view(model=TipoTela))
+tipos_tela_editar   = login_required(GeneralUpdateView.as_view(model=TipoTela))
+tipos_tela_excluir  = login_required(GeneralDeleteView.as_view(model=TipoTela))
+# Funções
+funcao_listagem = login_required(GeneralListView.as_view(model=Funcao, with_details=True))
+funcao_cadastro = login_required(GeneralCreateView.as_view(model=Funcao))
+funcao_editar   = login_required(GeneralUpdateView.as_view(model=Funcao))
+funcao_excluir  = login_required(GeneralDeleteView.as_view(model=Funcao))
+# Modo preferencial de Imagem
+modo_pref_listagem = login_required(GeneralListView.as_view(model=ModoPref))
+modo_pref_cadastro = login_required(GeneralCreateView.as_view(model=ModoPref))
+modo_pref_editar   = login_required(GeneralUpdateView.as_view(model=ModoPref))
+modo_pref_excluir  = login_required(GeneralDeleteView.as_view(model=ModoPref))
+# Itens Inclusos
+item_listagem = login_required(GeneralListView.as_view(model=Item))
+item_cadastro = login_required(GeneralCreateView.as_view(model=Item))
+item_editar   = login_required(GeneralUpdateView.as_view(model=Item))
+item_excluir  = login_required(GeneralDeleteView.as_view(model=Item))
+# Entradas
+entrada_listagem = login_required(GeneralListView.as_view(model=Entrada))
+entrada_cadastro = login_required(GeneralCreateView.as_view(model=Entrada))
+entrada_editar   = login_required(GeneralUpdateView.as_view(model=Entrada))
+entrada_excluir  = login_required(GeneralDeleteView.as_view(model=Entrada))
+
+## - Cadastro Principal de Televisores
+televisor_listagem = login_required(GeneralListView.as_view(model=Televisor,   with_details=True))
+televisor_cadastro = login_required(GeneralCreateView.as_view(model=Televisor, template_name='televisor/cadastro.html'))
+televisor_editar   = login_required(GeneralUpdateView.as_view(model=Televisor, template_name='televisor/cadastro.html'))
+televisor_excluir  = login_required(GeneralDeleteView.as_view(model=Televisor))
+
+
+##-- Views Ajax
 
 @ajax_json_view
+@login_required
 def getdetail_funcao(request):
     id = request.GET.get('id','')
     if not id:
@@ -14,8 +60,8 @@ def getdetail_funcao(request):
     funcao = Funcao.objects.get(pk=id)
     return { 'html': u" <b>Descrição:</b> %s " % funcao.descricao }
 
-
 @ajax_json_view
+@login_required
 def getdetail_televisor(request):
     id  = request.GET.get('id','')
     if not id:
@@ -23,13 +69,13 @@ def getdetail_televisor(request):
     tele = Televisor.objects.filter(pk=id)[0]
     return { 'html': u" %s " % str(tele) }
 
-
 ##-- Funções dos relacionamentos de Televisores
 
 #- Conexoes
 from models import TelevisorConexao
 from forms  import TelevisorConexaoForm
 
+@login_required
 def list_conexoes(request):
     titulo   = "Listagem de conexões"
     id_tele  = request.GET.get('id_tele')
@@ -37,6 +83,7 @@ def list_conexoes(request):
     num_pag, page, paginator = makePaginator(request,conexoes)
     return render(request, 'televisor/cad_conexoes_list.html', locals())
 
+@login_required
 def cad_conexoes(request, pk=None):
     titulo  = "Cadastro de conexões"
     
@@ -68,7 +115,7 @@ def cad_conexoes(request, pk=None):
         else:
             form = TelevisorConexaoForm()
     return render(request, 'televisor/cad_conexoes_form.html', locals())
-
+@login_required
 def exc_conexoes(request, pk):
     titulo  = "Exclusão da conexão inclusa no televisor"
     id_tele = request.GET.get('id_tele')
@@ -82,6 +129,7 @@ def exc_conexoes(request, pk):
 from models import TelevisorItens
 from forms  import TelevisorItensForm
 
+@login_required
 def list_itens(request):
     titulo   = "Listagem de itens inclusos"
     id_tele  = request.GET.get('id_tele')
@@ -89,6 +137,7 @@ def list_itens(request):
     num_pag, page, paginator = makePaginator(request,itens)
     return render(request, 'televisor/cad_itens_list.html', locals())
 
+@login_required
 def cad_itens(request, pk=None):
     titulo  = "Cadastro de itens inclusos no televisor"
     
@@ -121,6 +170,7 @@ def cad_itens(request, pk=None):
             form = TelevisorItensForm()
     return render(request, 'televisor/cad_itens_form.html', locals())
 
+@login_required
 def exc_itens(request, pk):
     titulo  = "Exclusão do item incluso no televisor"
     id_tele = request.GET.get('id_tele')
@@ -134,6 +184,7 @@ def exc_itens(request, pk):
 from models import TelevisorLoja
 from forms  import TelevisorLojaForm
 
+@login_required
 def list_lojas(request):
     titulo   = "Listagem de lojas"
     id_tele  = request.GET.get('id_tele')
@@ -141,6 +192,7 @@ def list_lojas(request):
     num_pag, page, paginator = makePaginator(request,lojas)
     return render(request, 'televisor/cad_lojas_list.html', locals())
 
+@login_required
 def cad_lojas(request, pk=None):
     titulo  = "Cadastro de lojas do televisor"
     
@@ -173,6 +225,7 @@ def cad_lojas(request, pk=None):
             form = TelevisorLojaForm()
     return render(request, 'televisor/cad_lojas_form.html', locals())
 
+@login_required
 def exc_lojas(request, pk):
     titulo  = "Exclusão de loja no televisor"
     id_tele = request.GET.get('id_tele')

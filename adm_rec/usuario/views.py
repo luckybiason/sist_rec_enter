@@ -61,3 +61,19 @@ def usuario(request, id=None):
             form = FormUser()
     
     return render(request, 'usuarios/cadastro.html', locals())
+
+@login_required
+@user_passes_test(can_make_user)
+def recuperar_senha(request):
+    '''
+        1: Cliente digita email ou login
+        2: (POST): Gera senha, envia email e redireciona para o passo 3
+        3: Concluído
+    '''
+    passo = request.GET.get('passo', '1')
+    if EXECUTAR_PASSO.has_key(passo):
+        return EXECUTAR_PASSO[passo](request)
+    else:
+        messages.error(request, "Passo inválido. Você será direcionado ao primeiro passo.")
+        passo= '1'
+    return render(request, 'senha/recuperar_senha.html', locals())
