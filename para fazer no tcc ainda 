@@ -1,0 +1,100 @@
+TODO:
+Sistema de envio de email
+Criação de senha nova
+Conversao de senha em md5
+terminar a recuperação de senha apos isso
+
+O campos de senha na tela somente poderá aparecer para o usuário cujo perfil for aquele.
+
+
+arrumar o sistema de autenticação.
+
+PRONTO:
+remover o rodapé da listagem de usuarios.
+assim como o detalhe do mais.
+
+
+############################ PERMISSOES QUE FOI RETIRADO #############################
+Sistema de permissao, foi passado para "se der tempo"
+
+R11. Para armazenar a informação de permissões que o usuário terá, será utilizada a tabela perm_user, com os seguintes campos:
+•	id_user: Campo do tipo inteiro, chave estrangeiro para a tabela user. Faz o relacionamento entre as duas. ???? duas tabelas?
+•	perm_telas: Campo do tipo texto, contém uma lista de ids separados por vírgula, os ids são os códigos das telas. O código das telas não será armazenado no banco. O sistema de permissão será realizado via Python pelo componente de permissão PyPerm (descrito em componentes mais a frente). Em qual?
+R12. Na tela de cadastro será anexado um formulário contendo as telas do sistema e um elemento de checkbox, conforme Figura 3.7a, para cadastrar as permissões. Apenas super usuários poderão ver e salvar este formulário. 
+ 
+Figura 3.7a. Cadastro de Usuários com edição de permissão.
+R13. Na listagem de usuário outro botão será inserido na coluna de Ações, para abrir um contêiner que mostra uma lista de permissões do usuário, conforme Figura 3.7b.
+
+
+listagem de usuario, esse codigo foi retirado 
+pq faz parte das permissoes.
+
+
+    url(r'^detail/$',               'views.getdetail',       name='usuario.getdetail'),
+
+    ## - Edição de listagem de permissões do usuário
+    # a implementar futuramente
+    #url(r'^permissoes/listagem/$',             'views.permissoes/_list', name='permissoes.listagem'),  
+    #url(r'^permissoes/cadastro/$',             'views.permissoes/',      name='permissoes.cadastro'),
+    #url(r'^permissoes/cadastro/(?P<id>\d+)/$', 'views.permissoes/',      name='permissoes.cadastro'),
+
+@ajax_json_view
+def getdetail(request):
+    return { 'html': u" << Permissões do usuário %s, a implementar >> " % request.GET.get('id','') }
+
+
+
+<script type="text/javascript">
+	HASH_LIST_AJAX = {
+		URL_LIST_AJAX : "{% url 'usuario.getdetail' %}",
+	}
+</script>
+		<tbody>
+			{% for p in page.object_list %}
+			<tr>
+				<td>{{ p.id }}</a></td>
+				<td>{{ p.username }}</td>
+				<td>{{ p.email }}</td>
+				<td>
+					{% if  p.is_staff %}
+                        <img src='{{ STATIC_PREFIX }}GridList/img/success.png' width="15px">
+                    {% else %}
+                        <img src='{{ STATIC_PREFIX }}GridList/img/error.png' width="15px">
+                    {% endif %}
+                </td>
+				<td>
+					{% if p.is_superuser %}
+                        <img src='{{ STATIC_PREFIX }}GridList/img/success.png' width="15px">
+                    {% else %}
+                        <img src='{{ STATIC_PREFIX }}GridList/img/error.png' width="15px">
+                    {% endif %}
+                </td>
+				<td>{{ p.last_login }}</td>
+				<td>{{ p.date_joined }}</td>
+				{% if user.is_superuser or user.is_staff %}
+				<td>
+                    <ul id="icons_plus{{p.id}}" class="ui-widget ui-helper-clearfix" style="list-style: none; padding-left: 1px!important; margin: 0px!important;">
+					<a href="{% url 'usuario.cadastro' p.id %}"><img src='{{STATIC_PREFIX}}/GridList/img/edit.png' width='15px'></a>
+                    {% include 'basic/custom_plus_minus.html'%}
+					</ul>
+				</td>
+				{% endif %}
+			</tr>
+			<tr>
+				<td style="display:None" class="detalhes">{{ p.id }}</a></td>
+				<td style="display:None" class="detalhes">{{ p.username }}</td>
+				<td style="display:None" class="detalhes">{{ p.email }}</td>
+				<td style="display:None" class="detalhes">{{ p.is_staff }}</td>
+				<td style="display:None" class="detalhes">{{ p.is_superuser }}</td>
+				<td style="display:None" class="detalhes">{{ p.last_login }}</td>
+				<td style="display:None" class="detalhes">{{ p.date_joined }}</td>
+				<td colspan="8" id="datalhes{{p.id}}" style="display:None" class="detalhes">
+					
+                </td>
+			</tr>
+			{% empty %}
+			<tr>
+				<td colspan='2'>Nenhum registro cadastrado.</td>
+			</tr>
+			{% endfor %}
+		</tbody>

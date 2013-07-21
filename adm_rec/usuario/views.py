@@ -7,9 +7,6 @@ from django.shortcuts               import redirect,render
 from forms                          import FormUser
 from adm_rec.utils.decorators       import ajax_json_view
 
-@ajax_json_view
-def getdetail(request):
-    return { 'html': u" << Permissões do usuário %s, a implementar >> " % request.GET.get('id','') }
 
 can_make_user = lambda u: u.is_superuser or u.is_staff
 TITULO = "Cadastro de Usuários"
@@ -62,18 +59,21 @@ def usuario(request, id=None):
     
     return render(request, 'usuarios/cadastro.html', locals())
 
-@login_required
-@user_passes_test(can_make_user)
+from methods import EXECUTAR_PASSO
 def recuperar_senha(request):
     '''
-        1: Cliente digita email ou login
-        2: (POST): Gera senha, envia email e redireciona para o passo 3
-        3: Concluído
+        1: Cliente digita o login.
+        2: Confirma o envio para o email.
+        3: Gera senha, envia email, Concluído.
     '''
-    passo = request.GET.get('passo', '1')
+    if request.method == 'GET':
+        passo = request.GET.get('passo', '1')
+    else:
+        passo = request.POST.get('passo', '1')
+        
     if EXECUTAR_PASSO.has_key(passo):
         return EXECUTAR_PASSO[passo](request)
     else:
         messages.error(request, "Passo inválido. Você será direcionado ao primeiro passo.")
         passo= '1'
-    return render(request, 'senha/recuperar_senha.html', locals())
+        return EXECUTAR_PASSO['1'](request)

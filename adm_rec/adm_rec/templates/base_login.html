@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html>
+	{% load url from future %}
+	{% load static %}
+	{% get_static_prefix as STATIC_PREFIX %}
+	<head>
+		<title>Sistema ADM ReCEnter</title>
+		<meta http-equiv='content-type' content='text/html; charset=utf-8'>
+		<meta name='robots' content='noindex'>
+		<link   href="{{STATIC_PREFIX}}css/login.css" type="text/css" rel="stylesheet"/>
+
+		<script src="{{STATIC_PREFIX}}js/jquery.js"></script>
+		<script src="{{STATIC_PREFIX}}js/jquery.tpl_layout1.1.6.min.js" type="text/javascript"></script>
+
+		<script src="{{STATIC_PREFIX}}js/ui/jquery-ui-1.9.1.custom.js" type="text/javascript"></script>
+		<script src="{{STATIC_PREFIX}}js/ui/jquery.ui.core.js"         type="text/javascript"></script>
+		<script src="{{STATIC_PREFIX}}js/ui/jquery.ui.widget.js"       type="text/javascript"></script>
+
+		<!-- jquery_alerts -->
+		<script src="{{STATIC_PREFIX}}jquery_alerts/js/jquery.alerts.js" type="text/javascript"></script>
+		<link href="{{STATIC_PREFIX}}jquery_alerts/css/jquery.alerts.css" rel="stylesheet" type="text/css" media="screen" />
+
+		<!-- jNotify -->
+		<link   href="{{STATIC_PREFIX}}jNotify/css/jNotify.jquery.css" type="text/css" rel="stylesheet"/>
+		<script src ="{{STATIC_PREFIX}}jNotify/js/jNotify.jquery.js"   type="text/javascript"></script>
+
+		{% include "menu_statics.html" %}
+
+		<!--Controles de Captchas-->
+		{% include CAPTCHA_PATH_HEAD %}
+		<script type='text/javascript' src='{{ STATIC_PREFIX }}captchas.js'></script>
+
+		<style>
+			.centeralizado {
+				margin-right: auto;
+				margin-left: auto;
+			}
+		</style>
+	</head>
+
+	<body>
+		<table class="centeralizado">
+			<tr>
+				<td> {% include "alerts_messages/messages.html" %}
+				<header id="topo" class="centeralizado">
+					<img src="{{STATIC_PREFIX}}imagem/logo.png"  height="250px"/>
+					<br>
+					<p>
+						Você está entrando em um sistema administrador, é necessário autenticação.
+					</p>
+				</header></td>
+			</tr>
+			<tr>
+				<td>
+				<div id="principal">
+					<!--h3 class='ui-widget-header' style="text-align: center; margin-top: 13px;" >Login</h3-->
+					{% include "alerts_messages/messages.html" %}
+					{% block conteudo %}
+					{% endblock %}
+				</div></td>
+			</tr>
+		</table>
+
+	</body>
+	<style>
+		fieldset {
+			border: none;
+		}
+	</style>
+</html>

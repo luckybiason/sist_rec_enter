@@ -83,7 +83,8 @@ MIDDLEWARE_CLASSES = (
     'django.contrib.messages.middleware.MessageMiddleware',
     # Uncomment the next line for simple clickjacking protection:
     # 'django.middleware.clickjacking.XFrameOptionsMiddleware',
-    'debug_toolbar.middleware.DebugToolbarMiddleware',
+    #'adm_rec.middleware.tools.LoginEnforce',
+    #'debug_toolbar.middleware.DebugToolbarMiddleware',
 )
 
 ROOT_URLCONF = 'adm_rec.urls'
@@ -140,6 +141,7 @@ PUBLIC_URLS = (
     r'login/',
     r'logout/',
     r'$',
+    r'(.*)$recuperar_senha(.*)$',
 )
 #####################################################################################
 

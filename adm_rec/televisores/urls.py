@@ -29,22 +29,22 @@ urlpatterns = patterns('televisores',
         url(r'^modo_pref/cadastro/(?P<pk>\d+)/$', 'views.modo_pref_editar',   name='modo_pref.cadastro'),
         url(r'^modo_pref/excluir/(?P<pk>\d+)/$',  'views.modo_pref_excluir',  name='modo_pref.excluir'),
         # Itens Inclusos
-        url(r'^item/listagem/$',             'item_listagem', name='item.listagem'),
-        url(r'^item/cadastro/$',             'item_cadastro', name='item.cadastro'),
-        url(r'^item/cadastro/(?P<pk>\d+)/$', 'item_editar',   name='item.cadastro'),
-        url(r'^item/excluir/(?P<pk>\d+)/$',  'item_excluir',  name='item.excluir'),
+        url(r'^item/listagem/$',             'views.item_listagem', name='item.listagem'),
+        url(r'^item/cadastro/$',             'views.item_cadastro', name='item.cadastro'),
+        url(r'^item/cadastro/(?P<pk>\d+)/$', 'views.item_editar',   name='item.cadastro'),
+        url(r'^item/excluir/(?P<pk>\d+)/$',  'views.item_excluir',  name='item.excluir'),
         # Entradas
-        url(r'^entrada/listagem/$',             'entrada_listagem', name='entrada.listagem'),
-        url(r'^entrada/cadastro/$',             'entrada_cadastro', name='entrada.cadastro'),
-        url(r'^entrada/cadastro/(?P<pk>\d+)/$', 'entrada_editar',   name='entrada.cadastro'),
-        url(r'^entrada/excluir/(?P<pk>\d+)/$',  'entrada_excluir',  name='entrada.excluir'),
+        url(r'^entrada/listagem/$',             'views.entrada_listagem', name='entrada.listagem'),
+        url(r'^entrada/cadastro/$',             'views.entrada_cadastro', name='entrada.cadastro'),
+        url(r'^entrada/cadastro/(?P<pk>\d+)/$', 'views.entrada_editar',   name='entrada.cadastro'),
+        url(r'^entrada/excluir/(?P<pk>\d+)/$',  'views.entrada_excluir',  name='entrada.excluir'),
         
         ## - Cadastros Principal        
         # Televisores
-        url(r'^televisor/listagem/$',             'televisor_listagem',        name='televisor.listagem'),
-        url(r'^televisor/cadastro/$',             'televisor_cadastro',        name='televisor.cadastro'),
-        url(r'^televisor/cadastro/(?P<pk>\d+)/$', 'televisor_editar',          name='televisor.cadastro'),
-        url(r'^televisor/excluir/(?P<pk>\d+)/$',  'televisor_excluir',         name='televisor.excluir'),
+        url(r'^televisor/listagem/$',             'views.televisor_listagem',  name='televisor.listagem'),
+        url(r'^televisor/cadastro/$',             'views.televisor_cadastro',  name='televisor.cadastro'),
+        url(r'^televisor/cadastro/(?P<pk>\d+)/$', 'views.televisor_editar',    name='televisor.cadastro'),
+        url(r'^televisor/excluir/(?P<pk>\d+)/$',  'views.televisor_excluir',   name='televisor.excluir'),
         url(r'^televisor/detail/$',               'views.getdetail_televisor', name='televisor.getdetail'),
         # Relacionamentos
         # - Conexões

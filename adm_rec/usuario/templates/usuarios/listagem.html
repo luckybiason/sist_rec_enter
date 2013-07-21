@@ -8,11 +8,6 @@
 
 {% block js_custom %}
 
-<script type="text/javascript">
-	HASH_LIST_AJAX = {
-		URL_LIST_AJAX : "{% url 'usuario.getdetail' %}",
-	}
-</script>
 {% include 'basic/statics.html' %}
 
 {% endblock %}
@@ -68,22 +63,9 @@
 				<td>
                     <ul id="icons_plus{{p.id}}" class="ui-widget ui-helper-clearfix" style="list-style: none; padding-left: 1px!important; margin: 0px!important;">
 					<a href="{% url 'usuario.cadastro' p.id %}"><img src='{{STATIC_PREFIX}}/GridList/img/edit.png' width='15px'></a>
-                    {% include 'basic/custom_plus_minus.html'%}
-					</ul>
+                    </ul>
 				</td>
 				{% endif %}
-			</tr>
-			<tr>
-				<td style="display:None" class="detalhes">{{ p.id }}</a></td>
-				<td style="display:None" class="detalhes">{{ p.username }}</td>
-				<td style="display:None" class="detalhes">{{ p.email }}</td>
-				<td style="display:None" class="detalhes">{{ p.is_staff }}</td>
-				<td style="display:None" class="detalhes">{{ p.is_superuser }}</td>
-				<td style="display:None" class="detalhes">{{ p.last_login }}</td>
-				<td style="display:None" class="detalhes">{{ p.date_joined }}</td>
-				<td colspan="8" id="datalhes{{p.id}}" style="display:None" class="detalhes">
-					
-                </td>
 			</tr>
 			{% empty %}
 			<tr>
@@ -95,7 +77,5 @@
 	<br/>
 	</fieldset>
 	
-	<fieldset>{% include 'grid/combopags.html'%}</fieldset>
-
 </div>
 {% endblock %}

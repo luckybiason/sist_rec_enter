@@ -1,0 +1,15 @@
+{% extends 'base_login.html' %}
+	{% load url from future %}
+{% block conteudo %}
+<div class="centeralizado" style='width: 100%'>
+	<form method='POST' id="form_login">
+		{% csrf_token %}
+		<input type="hidden" maxlength="30" name="passo" id="id_passo" value='{{ prox_passo }}'>
+		<fieldset class="centeralizado fieldset_off">			
+			{% if template %}
+			    {% include template %}
+			{% endif %}
+		</fieldset>
+	</form>
+</div>
+{% endblock %}

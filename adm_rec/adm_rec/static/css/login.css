@@ -1,0 +1,54 @@
+body {
+	background: white;
+}
+fieldset {
+	border: none;
+}
+#topo {
+	position: a;
+	z-index: 0;
+	margin: 0px;
+	text-align: center;
+	font-family: "Agency FB"
+}
+#principal {
+	position: b;
+	height: 320px;
+	text-align: center;
+	margin-right: auto;
+	margin-left: auto;
+}
+.textoExpl {
+	margin: 0px;
+	padding: 0px;
+}
+#id_login_img, #id_password_img, #id_email_img {
+	border: 1px solid #DCDCDC;
+	padding: 2px;
+	background-color: #DCDCDC;
+	padding-right: 0px;
+	margin-right: 0px;
+	height: 35px;
+}
+#id_username, #id_password, #id_email {
+	border: 1px solid #DCDCDC;
+	padding: 2px;
+	height: 35px;
+	padding-left: 0px;
+	margin-left: 0px;
+}
+.login_button {
+	border: 1px solid #CD853F;
+	padding: 2px;
+	height: 35px;
+	padding-left: 0px;
+	margin-left: 0px;
+	background-color: #EE9A49;
+	color: white;
+	font-size: medium;
+	width: 200px;
+}
+#link_esqueci_senha {
+	text-decoration: none;
+	color: #698B69;
+}

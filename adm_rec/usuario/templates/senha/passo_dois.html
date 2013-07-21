@@ -1,0 +1,17 @@
+<table class="centeralizado">
+	<tr>
+		<th>Deseja confirmar o envio para o e-mail abaixo da sua nova senha?</th>
+	</tr>
+	<tr>
+		<th><img src="{{STATIC_PREFIX}}imagem/email.png"  title="Email"
+		height="25px"  align="absmiddle" id='id_email_img'/>
+		<input type="hidden" maxlength="30" name="username" id="id_username" value='{{ user.username }}'>
+		<span id="id_username"> {{ user.email }} </span>
+		</th>
+	</tr>
+	<tr>
+		<th>
+		<input type='submit' id="rec_senha" class='login_button' value='OK' class="ui-button ui-widget ui-state-default" />
+		</th>
+	</tr>
+</table>
