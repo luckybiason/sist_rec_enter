@@ -24,7 +24,7 @@
              	<div class="ui-button ui-widget ui-state-default ui-button-text-only ui-corner-left">
 				 {% if object.logo %}
                     <img id='img' src='/media/{{ object.logo }}' width='60px'><br/>
-				    Atualmente:<a href="/media/{{ object.logo }}">/media/{{ object.logo }}</a><br>
+				    Atualmente:<a href="/media/{{ object.logo }}">download</a><br>
                     Modificar:
                   {% else %}
                     <img id='img' src='/static/imagem/sem_img.png' width='60px'>{{form.logo.errors}}<br/>

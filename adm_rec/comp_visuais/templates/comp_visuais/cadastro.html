@@ -4,6 +4,9 @@
 {% block conteudo %}
 <style>
 	#id_categoria{ width:230px; }
+	#id_altura_padrao, #id_largura_padrao{
+		width:130px;
+	}
 </style>
 {% include 'basic/custom_required_fields.html' %}
 {% include 'basic/statics.html' %}
@@ -14,14 +17,14 @@
 	{% csrf_token %}
 	<table cellspacing='0px' cellpadding='2px' style="margin-left: auto; margin-right: auto;">
 	     <tr>
-             <td rowspan='4' style="vertical-align: bottom; height: 100%">
-             	<div class="ui-button ui-widget ui-state-default ui-button-text-only ui-corner-left">
+             <td rowspan='4' style="vertical-align: bottom; height: 100%;">
+             	<div class="ui-button ui-widget ui-state-default ui-button-text-only ui-corner-left"  style=" padding-top: 15px; height: 145px">
 				 {% if object.imagem %}
-                    <img id='img' src='/media/{{ object.imagem }}' width='120px'><br/>
-				    Atualmente:<a href="/media/{{ object.imagem }}">/media/{{ object.imagem }}</a><br>
+                    <img id='img' src='/media/{{ object.imagem }}' height='100px'><br/>
+				    Atualmente:<a href="/media/{{ object.imagem }}">download</a><br>
                     Modificar:
                   {% else %}
-                    <img id='img' src='/static/imagem/sem_img.png' width='120px'>{{form.imagem.errors}}<br/>
+                    <img id='img' src='/static/imagem/sem_img.png' height='100px'>{{form.imagem.errors}}<br/>
                   {% endif %}
                   <input id="id_imagem" type="file" name="imagem">
 				</div>
@@ -35,9 +38,9 @@
          </tr>
          <tr>
              <td colspan="2">
-             	<fieldset>
+             	<fieldset style="text-align: center">
                     <legend>Dimensão padrão</legend>
-                    <table>
+                    <table style="margin-left: auto; margin-right: auto;">
 	                    <tr> 
 	                    	<th style='width:70px'>
 	                    		<label for="id_altura_padrao" style='width:40px'>Altura:</label>
