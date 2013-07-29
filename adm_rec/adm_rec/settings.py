@@ -26,7 +26,7 @@ MANAGERS = ADMINS
 EMAIL_USE_TLS        = True
 EMAIL_HOST           = 'smtp.gmail.com'
 EMAIL_HOST_USER      = 'biasonlucky10@gmail.com'
-EMAIL_HOST_PASSWORD  = 'tsuna2525'
+EMAIL_HOST_PASSWORD  = ''
 EMAIL_PORT = 587
 
 # - Configuração de Banco de dados
