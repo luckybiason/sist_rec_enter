@@ -32,9 +32,7 @@
 				<td class="ui-widget-header">Super</td>
 				<td class="ui-widget-header">Último Login</td>
 				<td class="ui-widget-header">Cadastrado em</td>
-				{% if user.is_superuser or user.is_staff %}
 				<td class="ui-widget-header">Ações</td>
-				{% endif %}
 			</tr>
 		</thead>
 		<tbody>
@@ -59,13 +57,11 @@
                 </td>
 				<td>{{ p.last_login }}</td>
 				<td>{{ p.date_joined }}</td>
-				{% if user.is_superuser or user.is_staff %}
 				<td>
                     <ul id="icons_plus{{p.id}}" class="ui-widget ui-helper-clearfix" style="list-style: none; padding-left: 1px!important; margin: 0px!important;">
 					<a href="{% url 'usuario.cadastro' p.id %}"><img src='{{STATIC_PREFIX}}/GridList/img/edit.png' width='15px'></a>
                     </ul>
 				</td>
-				{% endif %}
 			</tr>
 			{% empty %}
 			<tr>
@@ -76,6 +72,8 @@
 	</table>
 	<br/>
 	</fieldset>
+	
+	<fieldset>{% include 'combopags.html'%}</fieldset>
 	
 </div>
 {% endblock %}

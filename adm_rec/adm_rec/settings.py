@@ -26,7 +26,7 @@ MANAGERS = ADMINS
 EMAIL_USE_TLS        = True
 EMAIL_HOST           = 'smtp.gmail.com'
 EMAIL_HOST_USER      = 'biasonlucky10@gmail.com'
-EMAIL_HOST_PASSWORD  = ''
+EMAIL_HOST_PASSWORD  = 'tsuna2525'
 EMAIL_PORT = 587
 
 # - Configuração de Banco de dados
@@ -84,7 +84,7 @@ MIDDLEWARE_CLASSES = (
     # Uncomment the next line for simple clickjacking protection:
     # 'django.middleware.clickjacking.XFrameOptionsMiddleware',
     #'adm_rec.middleware.tools.LoginEnforce',
-    #'debug_toolbar.middleware.DebugToolbarMiddleware',
+    'debug_toolbar.middleware.DebugToolbarMiddleware',
 )
 
 ROOT_URLCONF = 'adm_rec.urls'
@@ -105,16 +105,15 @@ INSTALLED_APPS = (
     'django.contrib.staticfiles',
     # Componentes externos
     'adm_rec',           # Projeto
-    'basiccrud',         # Componente de CRUD básico
-    'py_aumenu',         # Componente de Menu 
-    'debug_toolbar',     # Barra de Debug Template do django
     'alerts_e_messages', # Sistema de alertas e mensagens
+    'basiccrud',         # Componente de CRUD básico
     'captchas',          # Componente de captchas
+    'debug_toolbar',     # Barra de Debug Template do django
+    'py_aumenu',         # Componente de Menu 
     # Modelos de dados
-    'usuario',
-    'comp_visuais',
-    'televisores',
     'lojas',
+    'usuario',
+    'televisores',
     # Apps de Processos
 )
 
@@ -129,7 +128,8 @@ TEMPLATE_CONTEXT_PROCESSORS = (
     'py_aumenu.contrib.menu_maker',        # CP para Componente de Menu (Pronto)
     #'tekextensions.context_processors.admin_media_prefix',
     'captchas.contrib.client_captcha',     # CP para Componente de captchas parametrizados 
-)
+    'adm_rec.contrib.user_logado',         # CP para imprimir dados do Usuário
+) 
 
 #####################################################################################
 # Configuração para o login

@@ -12,7 +12,7 @@ can_make_user = lambda u: u.is_superuser or u.is_staff
 TITULO = "Cadastro de Usuários"
 
 @login_required
-@user_passes_test(can_make_user)
+#@user_passes_test(can_make_user)
 def usuario_list(request):
     titulo   = TITULO
     usuarios = User.objects.all()
@@ -22,6 +22,7 @@ def usuario_list(request):
 
 import pytz
 from datetime import datetime
+from senhas   import cria_hash  
 def populate_user(user, post):
     user.first_name   = post.get('first_name','')
     user.last_name    = post.get('last_name','')
@@ -29,11 +30,20 @@ def populate_user(user, post):
     user.is_superuser = post.get('is_superuser','')
     user.is_staff     = post.get('is_staff','')
     user.date_joined  = datetime.now(pytz.utc)
+    #if post.get('password'):
+    #    user.password = cria_hash(post.get('password'))
     user.save()
 
 @login_required
-@user_passes_test(can_make_user)
+#@user_passes_test(can_make_user)
 def usuario(request, id=None):
+    user_logado = User.objects.get(pk=request.session.get('_auth_user_id'))
+    is_the_user = int(user_logado.id)==int(id)
+    
+    if not ( can_make_user(user_logado) or is_the_user ): 
+        messages.warning(request,'Acesso negado')
+        return redirect('usuario.listagem')
+        
     titulo = TITULO
     if request.method == 'POST':
         try:
