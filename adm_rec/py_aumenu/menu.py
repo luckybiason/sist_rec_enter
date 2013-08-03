@@ -29,22 +29,8 @@ MENU = lambda :{
                          'perm_need' : [''],
                      },
                      {  
-                         'titulo'    : _(u"Componentes Visuais"),
-                         'img'       : "img/sofa.png",
-                         'url-name'  : "comp_visuais.listagem",
-                         'id-html'   : "comp_visuais",
-                         'perm_need' : [''],
-                     },
-                     {  
                          'titulo'    : _(u"Lojas"),
                          'img'       : "img/lojas.png",
-                         'url-name'  : "lojas.listagem",
-                         'id-html'   : "loja",
-                         'perm_need' : [''],
-                     },
-                     {  
-                         'titulo'    : _(u"Lojas"),
-                         'img'       : "img/users.png",
                          'url-name'  : "lojas.listagem",
                          'id-html'   : "loja",
                          'perm_need' : [''],
@@ -56,13 +42,6 @@ MENU = lambda :{
                            'itens-width' : "280",
                            'perm_need'   : [''],
                            'itens'  :[
-                                      { 
-                                       'titulo'    : _(u"Categoria (Componente)"),
-                                       'img'       : "img/book.png",
-                                       'url-name'  : "categoria.listagem",
-                                       'id-html'   : "categoria",
-                                       'perm_need' : [''],
-                                       },
                                       { 
                                        'titulo'    : _(u"Marcas"),
                                        'img'       : "img/book.png",

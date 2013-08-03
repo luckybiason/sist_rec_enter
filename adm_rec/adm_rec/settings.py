@@ -104,18 +104,23 @@ INSTALLED_APPS = (
     'django.contrib.messages',
     'django.contrib.staticfiles',
     # Componentes externos
-    'adm_rec',           # Projeto
-    'basiccrud',         # Componente de CRUD básico
-    'py_aumenu',         # Componente de Menu 
-    'debug_toolbar',     # Barra de Debug Template do django
-    'alerts_e_messages', # Sistema de alertas e mensagens
-    'captchas',          # Componente de captchas
+     'adm_rec',           # Projeto
+     'basiccrud',         # Componente de CRUD básico
+     'py_aumenu',         # Componente de Menu 
+     'debug_toolbar',     # Barra de Debug Template do django
+     'alerts_e_messages', # Sistema de alertas e mensagens
+     'captchas',          # Componente de captchas
     # Modelos de dados
-    'usuario',
-    'comp_visuais',
-    'televisores',
-    'lojas',
+     'usuario',
+     'lojas',
+     'televisores',
+    # Portal
+    # 'portal',
+    # 'clientes',
     # Apps de Processos
+    # 'avaliacao',
+    # 'busca_produtos'
+    # 'recomendacoes'
 )
 
 TEMPLATE_CONTEXT_PROCESSORS = (
