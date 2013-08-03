@@ -84,7 +84,7 @@ MIDDLEWARE_CLASSES = (
     # Uncomment the next line for simple clickjacking protection:
     # 'django.middleware.clickjacking.XFrameOptionsMiddleware',
     #'adm_rec.middleware.tools.LoginEnforce',
-    #'debug_toolbar.middleware.DebugToolbarMiddleware',
+    'debug_toolbar.middleware.DebugToolbarMiddleware',
 )
 
 ROOT_URLCONF = 'adm_rec.urls'
@@ -104,23 +104,23 @@ INSTALLED_APPS = (
     'django.contrib.messages',
     'django.contrib.staticfiles',
     # Componentes externos
-     'adm_rec',           # Projeto
-     'basiccrud',         # Componente de CRUD básico
-     'py_aumenu',         # Componente de Menu 
-     'debug_toolbar',     # Barra de Debug Template do django
-     'alerts_e_messages', # Sistema de alertas e mensagens
-     'captchas',          # Componente de captchas
+    'adm_rec',           # Projeto
+    'alerts_e_messages', # Sistema de alertas e mensagens
+    'basiccrud',         # Componente de CRUD básico
+    'captchas',          # Componente de captchas
+    'debug_toolbar',     # Barra de Debug Template do django
+    'py_aumenu',         # Componente de Menu 
     # Modelos de dados
-     'usuario',
-     'lojas',
-     'televisores',
-    # Portal
-    # 'portal',
-    # 'clientes',
+    'lojas',
+    'usuario',
+    'televisores',
     # Apps de Processos
     # 'avaliacao',
     # 'busca_produtos'
     # 'recomendacoes'
+    # Portal
+    # 'portal',
+    # 'clientes',
 )
 
 TEMPLATE_CONTEXT_PROCESSORS = (
@@ -134,7 +134,8 @@ TEMPLATE_CONTEXT_PROCESSORS = (
     'py_aumenu.contrib.menu_maker',        # CP para Componente de Menu (Pronto)
     #'tekextensions.context_processors.admin_media_prefix',
     'captchas.contrib.client_captcha',     # CP para Componente de captchas parametrizados 
-)
+    'adm_rec.contrib.user_logado',         # CP para imprimir dados do Usuário
+) 
 
 #####################################################################################
 # Configuração para o login

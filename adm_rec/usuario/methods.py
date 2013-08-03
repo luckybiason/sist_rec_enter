@@ -1,15 +1,16 @@
 #-*- coding: utf-8 -*-
-from adm_rec.utils.paginators       import makePaginator
+from adm_rec.utils.paginators       import makePaginator    
 from django.contrib                 import messages
 from django.contrib.auth.decorators import login_required,user_passes_test
 from django.contrib.auth.models     import User
 from django.shortcuts               import redirect,render
 from forms                          import FormUser
 from adm_rec.utils.decorators       import ajax_json_view
-
+from senhas                         import gerar_senha, cria_hash      
+from adm_rec.utils.emails           import envia_email
 
 ##- Recuperação de senha
-EMAIL_TEXTO = lambda senha_nova, user : '''
+EMAIL_TEXTO = lambda senha_nova, user : u'''
 <!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/html4/strict.dtd">
 <head>
 
@@ -30,19 +31,14 @@ EMAIL_TEXTO = lambda senha_nova, user : '''
         Sua nova senha é: <b>%(senha_nova)s</b>
         <br/>
         <br/>
-        Por favor vá até o sistema e troque sua senha, para uma senha desejada.
-        <br/>
-        <b>Clique <a href='%(link)s'>(aqui)</a></b> para ir até seu perfil.
-        <br/>
-        <br/>
         Obrigado.
-        Administração RecEntertainment
+        Administração do No Alvo
         <hr>
     </p>
 
 </body>
 </html>
-''' & {  
+''' % {  
     'link'      : '',
     'logo'      : '',
     'senha_nova': senha_nova,
@@ -72,10 +68,13 @@ def do_third_step(request):
     username   = request.POST.get('username','')
     user       = User.objects.get(username=username)
     # Cria nova senha
-    #nova_senha    = make_new_pass(user)
-    #user.password = convert_md5(nova_senha)
+    nova_senha    = gerar_senha(qtd_caracteres=7)
+    user.password = cria_hash(nova_senha)
+    user.save()
     # Envia email
-    #envia_email(user.email, EMAIL_TEXTO(nova_senha, user))
+    envia_email('Recuperação de Senha No Alvo', 
+                EMAIL_TEXTO(nova_senha, user),
+                [user.email])
     return render(request, 'senha/recuperar_senha.html', locals())
 
 EXECUTAR_PASSO = {

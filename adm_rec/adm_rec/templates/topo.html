@@ -1,3 +1,14 @@
 <h1 class="ui-widget-header" style="text-align: center; margin-top: 0px; ">
-	Sistema Administrador RecEntertainment
+	Sistema Administrador No Alvo
 </h1>
+<p>
+	Bem vindo,&nbsp;<b>{{ USER_NAME }}</b>
+	
+	{% if USER_SUPER %}
+	&nbsp;Perfil: <b>SUPERUSUARIO</b>
+	{% endif %}
+	
+	{% if USER_ADM %}
+	&nbsp;Perfil: <b>Administrador</b>
+	{% endif %}
+</p>
