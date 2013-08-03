@@ -28,7 +28,7 @@ def populate_user(user, post):
     user.last_name    = post.get('last_name','')
     user.email        = post.get('email','')
     user.is_superuser = post.get('is_superuser','')
-    user.is_staff     = post.get('is_staff','')
+    user.is_staff     = True
     user.date_joined  = datetime.now(pytz.utc)
     #if post.get('password'):
     #    user.password = cria_hash(post.get('password'))
@@ -38,7 +38,8 @@ def populate_user(user, post):
 #@user_passes_test(can_make_user)
 def usuario(request, id=None):
     user_logado = User.objects.get(pk=request.session.get('_auth_user_id'))
-    is_the_user = int(user_logado.id)==int(id)
+    
+    is_the_user = int(user_logado.id)==int(id) if id else False
     
     if not ( can_make_user(user_logado) or is_the_user ): 
         messages.warning(request,'Acesso negado')

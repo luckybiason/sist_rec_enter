@@ -27,13 +27,6 @@
 		<td>{{form.email}}{{form.email.errors}}</td>
 	</tr>
 
-	{% if user.is_superuser or user.is_staff %}
-	<tr>
-		<th width='150px'><b>Administrador:<b/></th>
-		<td>{{form.is_staff}}</td>
-	</tr>
-	{% endif %}
-
 	{% if user.is_superuser %}
 	<tr>
 		<th width='150px'><b>Superusuário:<b/></th>
@@ -47,6 +40,7 @@
 		<td>{{form.is_active}}</td>
 	</tr>
 	{% endif %}
+	<input type="hidden" name="is_staff"    value="1"  id="id_is_staff" >
 	<input type="hidden" name="last_login"  value="{{ today }}" id="id_last_login">
 	<input type="hidden" name="date_joined" value="{{ today }}" id="id_date_joined">
 </table>

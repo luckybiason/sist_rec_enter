@@ -119,7 +119,7 @@ INSTALLED_APPS = (
     # 'busca_produtos'
     # 'recomendacoes'
     # Portal
-    # 'portal',
+     'portal',
     # 'clientes',
 )
 
@@ -139,15 +139,14 @@ TEMPLATE_CONTEXT_PROCESSORS = (
 
 #####################################################################################
 # Configuração para o login
-LOGIN_URL          = "/login/"
-LOGOUT_URL         = "/logout/"
-LOGIN_REDIRECT_URL = "/"
+LOGIN_URL          = "/adm/login/"
+LOGOUT_URL         = "/adm/logout/"
+LOGIN_REDIRECT_URL = "/adm/"
 
 PUBLIC_URLS = (
-    r'login/',
-    r'logout/',
-    r'$',
-    r'(.*)$recuperar_senha(.*)$',
+    r'/adm/login/',
+    r'/adm/logout/',
+    r'/adm/$',
 )
 #####################################################################################
 

@@ -11,7 +11,7 @@ MENU = lambda :{
         {  # Item de menu
             'titulo'    : _(u"Home"),
             'img'       : "img/home.png",
-            'url'       : "/",
+            'url'       : "/adm/",
             'perm_need' : [''],
         },
         {  # Submenu Cadastros
@@ -109,7 +109,7 @@ MENU = lambda :{
         {  # Item de menu
             'titulo'    : _(u"Logout"),
             'img'       : "img/logout.png",
-            'url'       : "/logout/",
+            'url'       : "/adm/logout/",
             'perm_need' : [''],
         },
     ]  # Fim MENU["itens"]

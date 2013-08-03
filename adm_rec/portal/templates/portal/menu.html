@@ -1,0 +1,83 @@
+{% load url from future %}
+<style>
+	a {
+		text-decoration: none;
+	}
+	#menu_h, #menu_h ul, #menu_h ul li {
+		list-style: none;
+	}
+	#menu_h {
+		width: 96px;
+	}
+	#menu_h ul li a{
+		text-decoration: none;
+		padding-bottom: 10px;
+		text-transform: capitalize;
+		background: none repeat scroll 0 0 transparent;
+		color: #666666;
+		display: block;
+		font-family: "Trebuchet MS",Verdana,Arial,Sans-serif;
+		font-size: 12px;
+		height: 20px;
+		line-height: 20px;
+		margin: 0 0 1px;
+		overflow: hidden;
+		padding: 0;
+		text-decoration: none;
+		text-align: left!important;
+	}
+	.title_menu {
+		width: 96px;
+		background-color: #93C3CD;
+		color: #605E5E;
+		margin: 0;
+		display: block;
+		font-size: 14px;
+		height: 26px;
+		line-height: 26px;
+		font-weight: bold;
+		text-decoration: none;
+		padding-left: 10px;
+		position: relative;
+		text-align: left!important;
+	}
+</style>
+
+<script>
+	$(function() {
+	}); 
+</script>
+<div class="menu">
+
+	<ul id="menu_h">
+		<li>
+			<a href="#" class="title_menu">Marcas</a>
+			<ul>
+				<li>
+					<a href=""><span>> Marcas</span></a>
+				</li>
+			</ul>
+		</li>
+		<li>
+			<a href="#" class="title_menu" >Lojas</a>
+			<ul>
+				<li>
+					<a href=""><span>> Lojas</span></a>
+				</li>
+			</ul>
+		</li>
+		<li>
+			<a href="#" class="title_menu" >Preço</a>
+			<ul>
+				<li>
+					<a href=""><span>>Todos</span></a>
+					<a href=""><span>>Até 500</span></a>
+					<a href=""><span>>Até 1000</span></a>
+					<a href=""><span>>Até 2000</span></a>
+					<a href=""><span>>Acima de 2000</span></a>
+				</li>
+			</ul>
+		</li>
+
+	</ul>
+</div>

@@ -1,14 +1,26 @@
-<h1 class="ui-widget-header" style="text-align: center; margin-top: 0px; ">
-	Sistema Administrador No Alvo
-</h1>
-<p>
-	Bem vindo,&nbsp;<b>{{ USER_NAME }}</b>
-	
-	{% if USER_SUPER %}
-	&nbsp;Perfil: <b>SUPERUSUARIO</b>
-	{% endif %}
-	
-	{% if USER_ADM %}
-	&nbsp;Perfil: <b>Administrador</b>
-	{% endif %}
-</p>
+<table style="width: 100%; height:150px;">
+	<tr>
+		<td><img src="{{STATIC_PREFIX}}imagem/.png"  height="150px" /></td>
+		<td>
+			<h1 style="text-align: center; margin-top: 0px; color: #35414F"> Sistema Administrador No Alvo </h1>
+		</td>
+		<td>
+			<img src="/static/img/users.png" width="20px"/>
+		</td>
+		<td>
+		<p>
+			Bem vindo,&nbsp;<b>{{ USER_NAME }}</b>
+            <br>
+			{% if USER_SUPER %}
+			   Perfil: <b>Super Usuário</b>
+			{% else %}
+			   Perfil: <b>Administrador</b>
+			{% endif %}
+			<br>
+			Email: <b>{{ USER_EMAIL }}</b>
+			<br>
+			Último login: <b>{{ USER_LAST_LOGIN }}</b>
+		</p>
+		</td>
+	</tr>
+</table>

@@ -28,8 +28,7 @@
 			<tr>
 				<td class="ui-widget-header">ID</thd> <td class="ui-widget-header">Nome</td>
 				<td class="ui-widget-header">Email</td>
-				<td class="ui-widget-header">Adm</td>
-				<td class="ui-widget-header">Super</td>
+				<td class="ui-widget-header">Super User</td>
 				<td class="ui-widget-header">Último Login</td>
 				<td class="ui-widget-header">Cadastrado em</td>
 				<td class="ui-widget-header">Ações</td>
@@ -41,13 +40,6 @@
 				<td>{{ p.id }}</a></td>
 				<td>{{ p.username }}</td>
 				<td>{{ p.email }}</td>
-				<td>
-					{% if  p.is_staff %}
-                        <img src='{{ STATIC_PREFIX }}GridList/img/success.png' width="15px">
-                    {% else %}
-                        <img src='{{ STATIC_PREFIX }}GridList/img/error.png' width="15px">
-                    {% endif %}
-                </td>
 				<td>
 					{% if p.is_superuser %}
                         <img src='{{ STATIC_PREFIX }}GridList/img/success.png' width="15px">
