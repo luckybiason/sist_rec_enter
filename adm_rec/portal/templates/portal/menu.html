@@ -1,5 +1,9 @@
 {% load url from future %}
 <style>
+    *{ 
+       font-family: Arial, Helvetica, sans-serif;
+       font-size: medium;
+     }
 	a {
 		text-decoration: none;
 	}
@@ -8,6 +12,14 @@
 	}
 	#menu_h {
 		width: 96px;
+	}
+	#menu_h li hr{
+		width: 90px;
+		color: #363636;
+	}
+	#menu_h ul{
+		width: 90px;
+		padding:2px;
 	}
 	#menu_h ul li a{
 		text-decoration: none;
@@ -28,16 +40,16 @@
 	}
 	.title_menu {
 		width: 96px;
-		background-color: #93C3CD;
-		color: #605E5E;
+		color: #8B0000;/*#93C3CD;*/
+		background-color: white;/*#605E5E;*/
 		margin: 0;
 		display: block;
-		font-size: 14px;
+		font-size: 20px;
 		height: 26px;
 		line-height: 26px;
 		font-weight: bold;
 		text-decoration: none;
-		padding-left: 10px;
+		padding-left: 5px;
 		position: relative;
 		text-align: left!important;
 	}
@@ -57,6 +69,7 @@
 					<a href=""><span>> Marcas</span></a>
 				</li>
 			</ul>
+			<hr>
 		</li>
 		<li>
 			<a href="#" class="title_menu" >Lojas</a>
@@ -65,6 +78,7 @@
 					<a href=""><span>> Lojas</span></a>
 				</li>
 			</ul>
+			<hr>
 		</li>
 		<li>
 			<a href="#" class="title_menu" >Preço</a>

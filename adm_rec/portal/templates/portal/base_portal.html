@@ -4,18 +4,17 @@
 	{% load static %}
 	{% get_static_prefix as STATIC_PREFIX %}
 	<head>
-		<title>Sistema Administrador No Alvo</title>
+		<title>No Alvo</title>
 
 		<script src="{{STATIC_PREFIX}}js/jquery.js"></script>
 		<script src="{{STATIC_PREFIX}}js/jquery.tpl_layout1.1.6.min.js" type="text/javascript"></script>
-		
+
 		<link type="text/css" rel='stylesheet' href="{{STATIC_PREFIX}}css/style.css"/>
 		<link type="text/css" rel="stylesheet" href="{{STATIC_PREFIX}}css/listagem.css"/>
 		<link type="text/css" rel="stylesheet" href="{{STATIC_PREFIX}}css/botoes.css"/>
-		
+
 		<!-- TEMAS -->
-		<link type="text/css" rel="stylesheet" href="{{STATIC_PREFIX}}css/flat_sniker/jquery-ui-1.10.3.custom.min.css"/>
-        
+
 		<script src="{{STATIC_PREFIX}}js/ui/jquery-ui-1.9.1.custom.js" type="text/javascript"></script>
 		<script src="{{STATIC_PREFIX}}js/ui/jquery.ui.core.js"         type="text/javascript"></script>
 		<script src="{{STATIC_PREFIX}}js/ui/jquery.ui.widget.js"       type="text/javascript"></script>
@@ -23,23 +22,23 @@
 		<!-- jquery_alerts -->
 		<script src="{{STATIC_PREFIX}}jquery_alerts/js/jquery.alerts.js" type="text/javascript"></script>
 		<link href="{{STATIC_PREFIX}}jquery_alerts/css/jquery.alerts.css" rel="stylesheet" type="text/css" />
-		
-        <!-- jNotify -->
-        <link   href="{{STATIC_PREFIX}}jNotify/css/jNotify.jquery.css" type="text/css" rel="stylesheet"/>
-        <script src ="{{STATIC_PREFIX}}jNotify/js/jNotify.jquery.js"   type="text/javascript"></script>
-                
-        <!-- Toastmessage -->
-        <link   href="{{STATIC_PREFIX}}toastmessage/css/jquery.toastmessage.css" type="text/css" rel="stylesheet"/>
-        <script src ="{{STATIC_PREFIX}}toastmessage/js/jquery.toastmessage.js"   type="text/javascript"></script>
-        
-        <!-- Instalação de botões -->
+
+		<!-- jNotify -->
+		<link   href="{{STATIC_PREFIX}}jNotify/css/jNotify.jquery.css" type="text/css" rel="stylesheet"/>
+		<script src ="{{STATIC_PREFIX}}jNotify/js/jNotify.jquery.js"   type="text/javascript"></script>
+
+		<!-- Toastmessage -->
+		<link   href="{{STATIC_PREFIX}}toastmessage/css/jquery.toastmessage.css" type="text/css" rel="stylesheet"/>
+		<script src ="{{STATIC_PREFIX}}toastmessage/js/jquery.toastmessage.js"   type="text/javascript"></script>
+
+		<!-- Instalação de botões -->
 		<script>
-		$(function() {
-			// Tranforma todos os botões em botões do JQuery UI
-			$("input[type=submit], button, .link_btn,th, .aButtons > button, .button").button();
-			// Todos os botões de excluir, apresentando uma mini confirmação antes
-	        $('.ui-icon-trash').addClass("ask");
-		});
+			$(function() {
+				// Tranforma todos os botões em botões do JQuery UI
+				$("input[type=submit], button, .link_btn,th, .aButtons > button, .button").button();
+				// Todos os botões de excluir, apresentando uma mini confirmação antes
+				$('.ui-icon-trash').addClass("ask");
+			});
 		</script>
 
 		{% block css_custom %}
@@ -51,13 +50,13 @@
 	</head>
 
 	<body>
-        {% block aereo %}
-        {% endblock %}
+		{% block aereo %}
+		{% endblock %}
 		<div id="tudo">
 			<header id="topo">
 				{% include "portal/topo.html" %}
 			</header>
- 
+
 			<nav id="menu" >
 				{% include "portal/menu.html" %}
 			</nav>
@@ -76,12 +75,19 @@
 
 	</body>
 	<style>
+		body {
+			padding: 0px;
+			margin: 0px;
+			color:#000000;
+		}
 		#topo {
 			z-index: 0;
 			margin: 0px;
-			width: 99%;
+			width: 100%;
 			margin-left: auto;
 			margin-right: auto;
+			padding: 0px;
+			/*background: #778899;*/
 		}
 		#menu {
 			height: 42px;
@@ -89,11 +95,11 @@
 			margin-left: auto;
 			margin-right: auto;
 			width: 700px;
-			float:left;
+			float: left;
 		}
 		#principal {
-			position  : c;
-			height    : auto;
+			position: c;
+			height: auto;
 			min-height: 400px;
 			text-align: center;
 			margin-left: auto;
@@ -103,5 +109,58 @@
 		#rodape {
 		}
 
+		#id_pesq_label {
+			width: 530px;
+			padding: 3px;
+			padding-right: 0px;
+			margin-right: 0px;
+			height: 35px;
+			font-size: medium;
+			border-bottom-left-radius: 6px;
+			border-bottom-right-radius: 6px;
+			border-top-left-radius: 6px;
+			border-top-right-radius: 6px;
+			vertical-align: middle;
+			background: white;
+			border: 1px solid #666666;
+		}
+		#id_buscar_img {
+			padding: 2px;
+			padding-right: 0px;
+			margin-right: 2px;
+			height: 34px;
+			font-size: medium;
+			float: left;
+		}
+		#id_pesq_busca {
+			border: none;
+			padding: 0px;
+			height: 34px;
+			float: left;
+			width: 410px;
+			color: gray;
+		}
+		#id_pesq_label span {
+			float: left;
+			height: 28px;
+			background: #8B0000;
+			color: white;
+			border-radius: 7px 7px 7px 7px;
+			vertical-align: middle;
+			text-transform: uppercase;
+			padding: 6px 6px 0px 6px;
+		}
+
+		.login_button {
+			border: 1px solid #CD853F;
+			padding: 3px;
+			height: 35px;
+			padding-left: 0px;
+			margin-left: 0px;
+			background-color: #EE9A49;
+			color: white;
+			font-size: medium;
+			width: 180px;
+		}
 	</style>
 </html>

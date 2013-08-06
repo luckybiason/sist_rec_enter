@@ -264,6 +264,9 @@ class Televisor(models.Model):
                        ('nome', _(u'Nome'), False),
             ],
         }
+        
+    def lojas(self):
+        return [ tel_loja.loja for tel_loja in TelevisorLoja.objects.filter(televisor=self)]
    
 
 class TelevisorConexao(models.Model):    
@@ -278,7 +281,7 @@ class TelevisorConexao(models.Model):
     class Meta:
         ordering = ['conexao']
         unique_together = [('televisor','conexao')]
-    
+        
     @staticmethod
     def success_url(): 
         return "conexoes.listagem"

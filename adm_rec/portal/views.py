@@ -1,5 +1,6 @@
 #-*- coding: utf-8 -*-
 from django.shortcuts  import render
+from methods           import buscar_produtos
 
 #from django.contrib.auth.decorators import login_required
 #@login_required
@@ -8,3 +9,8 @@ from django.shortcuts  import render
 
 def home(request):
     return render(request, 'portal/home.html', locals())
+
+def buscar(request):
+    ''' Função de busca de produtos no site '''
+    produtos = buscar_produtos(request)
+    return render(request, 'portal/listagem_produtos.html', locals())
