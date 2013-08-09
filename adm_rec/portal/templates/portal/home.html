@@ -11,17 +11,32 @@
 
 {% block conteudo %}
 
-<div class="conteudo">
+<div class="conteudo" style="margin-left: auto; margin-right: auto; width: 100%">
 	<!-- Rotativos-->
-	<div class="rotativos">
-        {% include "portal/banners/principais_lojas.html" %} 
-        
+
+	<style>
+		#carrossel1, #carrossel2, #carrossel3 , #carrossel_rec{
+			float: left;
+			margin-left: 30px;
+	         margin-bottom: 10px;
+		}
+		#carrossel_rec .carousel{
+	        width: 905px;
+	         margin-top: 10px;
+		}
+	</style>
+	<div class="rotativos" style="margin-left: auto; margin-right: auto">
+		{% include "portal/banners/principais_televisores.html" %}
+		{% include "portal/banners/principais_marcas.html" %}
+		{% include "portal/banners/principais_lojas.html" %}
+	</div>
+	<div class="rotativos" style="margin-left: auto; margin-right: auto;">
+		{% include "portal/banners/recomendados.html" %}
+	    <div class="banner_filtragem with_borders" style="margin-left: 30px; width: 485px; float: left">
+		   aqui vem um banner
+	    </div>
 	</div>
 
-	<!-- Pricipais-->
-	<div class="principal">
-
-	</div>
 </div>
 
 {% endblock %}

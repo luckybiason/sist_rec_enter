@@ -1,0 +1,56 @@
+<script>
+var carousel_rec = {
+"data":[
+{% for televisor in televisores %}
+{
+"url"       :"{% url televisor.cadastro televisor.id %}",
+"img"       :"/media/{{ televisor.imagem }}",
+"descricao" :"{{ televisor.nome }}",
+"aux"       :"{{ televisor.marca.descricao }}"
+},
+{
+"url"       :"{% url televisor.cadastro televisor.id %}",
+"img"       :"/media/{{ televisor.imagem }}",
+"descricao" :"{{ televisor.nome }}",
+"aux"       :"{{ televisor.marca.descricao }}"
+},
+{
+"url"       :"{% url televisor.cadastro televisor.id %}",
+"img"       :"/media/{{ televisor.imagem }}",
+"descricao" :"{{ televisor.nome }}",
+"aux"       :"{{ televisor.marca.descricao }}"
+},
+{
+"url"       :"{% url televisor.cadastro televisor.id %}",
+"img"       :"/media/{{ televisor.imagem }}",
+"descricao" :"{{ televisor.nome }}",
+"aux"       :"{{ televisor.marca.descricao }}"
+}{% if not forloop.last %},{% endif %}
+{% endfor %}
+]
+};
+$(function(){
+create(carousel_rec.data, '#carrossel_rec');
+});
+
+</script>
+<div class="page-wrapper">
+	<div id="carrossel_rec" class="carousel_box">
+		<div class="carousel_header"  >
+			Recomendados para você
+		</div>
+		<div id="carousel_rec">
+			<div href="#" class="prev-box">
+				<a href="#" alt="voltar" class="prev"></a>
+			</div>
+			<div class="carousel" id="imgsOffers">
+				<div class="carr offersCarr">
+					<!-- items -->
+				</div>
+			</div>
+			<div href="#" class="next-box">
+				<a href="#" alt="avançar" class="next"></a>
+			</div>
+		</div>
+	</div>
+</div>

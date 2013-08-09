@@ -1,0 +1,56 @@
+<script>
+var carousel1 = {
+"data":[
+{% for televisor in televisores %}
+{
+"url"       :"{% url televisor.cadastro televisor.id %}",
+"img"       :"/media/{{ televisor.imagem }}",
+"descricao" :"{{ televisor.nome }}",
+"aux"       :"{{ televisor.marca.descricao }}"
+},
+{
+"url"       :"{% url televisor.cadastro televisor.id %}",
+"img"       :"/media/{{ televisor.imagem }}",
+"descricao" :"{{ televisor.nome }}",
+"aux"       :"{{ televisor.marca.descricao }}"
+},
+{
+"url"       :"{% url televisor.cadastro televisor.id %}",
+"img"       :"/media/{{ televisor.imagem }}",
+"descricao" :"{{ televisor.nome }}",
+"aux"       :"{{ televisor.marca.descricao }}"
+},
+{
+"url"       :"{% url televisor.cadastro televisor.id %}",
+"img"       :"/media/{{ televisor.imagem }}",
+"descricao" :"{{ televisor.nome }}",
+"aux"       :"{{ televisor.marca.descricao }}"
+}{% if not forloop.last %},{% endif %}
+{% endfor %}
+]
+};
+$(function(){
+create(carousel1.data, '#carrossel1');
+});
+
+</script>
+<div class="page-wrapper">
+	<div id="carrossel1" class="carousel_box">
+		<div class="carousel_header"  >
+			Principais Televisores
+		</div>
+		<div id="carousel1">
+			<div href="#" class="prev-box">
+				<a href="#" alt="voltar" class="prev"></a>
+			</div>
+			<div class="carousel" id="imgsOffers">
+				<div class="carr offersCarr">
+					<!-- items -->
+				</div>
+			</div>
+			<div href="#" class="next-box">
+				<a href="#" alt="avançar" class="next"></a>
+			</div>
+		</div>
+	</div>
+</div>

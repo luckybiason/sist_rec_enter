@@ -1,18 +1,22 @@
 .carousel{
-	width: 420px;
+	width: 390px;
 	height:200px;
 	float:left;
 	overflow:hidden;
+	padding: 5px;
+}
+.carousel_box{
+	border: 1px solid #CDCDC1;
+	border-bottom-left-radius: 7px;
+	border-bottom-right-radius: 7px;
+	border-top-left-radius: 7px;
+	border-top-right-radius: 7px;
 }
 .carr{
 	 position: relative;
 	
 }
-#carrossel1, #carrossel2{
-	float: left;
-	margin-top:10px;
-	
-}
+
 .link-box-offer{
 	text-decoration:none;
 }
@@ -20,12 +24,12 @@
 	width:100px;
 	height:160px;
 	float:left;
-	padding: 20px;
+	padding: 15px;
 }
 .txt-box-offer{
 	font: 14px Arial, Helvetica, sans-serif;
 	text-align:center;
-	display: block;
+	/*display: block;*/
     height: 35px;
     overflow: hidden;
     width: 100%;
@@ -50,4 +54,7 @@
 }
 .next{
 	background-position:21px 0;
+}
+.carousel_header{
+    margin-top: 5px;
 }

@@ -26,4 +26,6 @@ CREATE TABLE "televisores" (
     "site" varchar(150),
     "video" varchar(150)
 )
--- 
+-- Inserir imagem na marca
+alter table televisores_marca
+add column "imagem" varchar(100) NOT NULL default " ";

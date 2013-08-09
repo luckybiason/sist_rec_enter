@@ -1,0 +1,49 @@
+<script>
+var carousel2 = {
+"data":[
+{% for marca in marcas %}
+{
+"url"       :"{% url marcas.cadastro marca.id %}",
+"img"       :"/media/{{ marca.imagem }}",
+"descricao" :"{{ marca.descricao }}",
+"aux"       :""
+},
+{
+"url"       :"{% url marcas.cadastro marca.id %}",
+"img"       :"/media/{{ marca.imagem }}",
+"descricao" :"{{ marca.descricao }}",
+"aux"       :""
+},
+{
+"url"       :"{% url marcas.cadastro marca.id %}",
+"img"       :"/media/{{ marca.imagem }}",
+"descricao" :"{{ marca.descricao }}",
+"aux"       :""
+}{% if not forloop.last %},{% endif %}
+{% endfor %}
+]
+};
+$(function(){
+create(carousel2.data, '#carrossel2');
+});
+</script>
+<div class="page-wrapper">
+	<div id="carrossel2" class="carousel_box">
+		<div class="carousel_header">
+			Principais Marcas
+		</div>
+		<div id="carousel2">
+			<div href="#" class="prev-box">
+				<a href="#" alt="voltar" class="prev"></a>
+			</div>
+			<div class="carousel" id="imgsOffers">
+				<div class="carr offersCarr">
+					<!-- items -->
+				</div>
+			</div>
+			<div href="#" class="next-box">
+				<a href="#" alt="avançar" class="next"></a>
+			</div>
+		</div>
+	</div>
+</div>
