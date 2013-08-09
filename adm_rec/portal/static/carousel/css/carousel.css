@@ -1,0 +1,67 @@
+ .carousel_header{
+	width: 420px;
+	overflow:hidden;
+	margin-top: 0px!important;
+	color: #363636;
+}
+.carousel{
+	width: 420px;
+	height:250px;
+	float:left;
+	overflow:hidden;
+	margin-top: 0px!important;
+	color: #CD0000;
+}
+.carr{
+	 position: relative;
+	
+}
+.link-box-offer{
+	font: 16px Arial, Helvetica, sans-serif;
+	text-align:center;
+	text-decoration:none;
+	color: #363636;
+}
+.item-carousel{
+	width:110px;
+	height:160px;
+	float:left;
+	padding: 20px;
+}
+.txt-box-offer{
+	font: 17px Arial, Helvetica, sans-serif;
+	text-align:center;
+	display: block;
+    width: 100%;
+	color: #363636;
+	height:50px;
+}
+.aux-txt-box-offer{
+	font: 14px Arial, Helvetica, sans-serif;
+	text-align:center;
+	display: block;
+    width: 100%;
+	color: #CD0000;
+	height:30px;
+}
+.next-box, .prev-box{
+	width:22px;
+	/*height:200px;*/
+	float:left;
+	margin: 0 10px;
+}
+.prev, .next{
+	background:url('/static/carousel/img/arrow.png');
+	display: block;
+    float: left;
+    height: 29px;
+    width: 21px;
+    position:relative;
+    top:85px;	
+}
+.prev{
+	background-position:0 0;
+}
+.next{
+	background-position:21px 0;
+}

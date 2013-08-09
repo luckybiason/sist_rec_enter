@@ -1,0 +1,109 @@
+<script>
+var carousel1 = {
+"data":[
+	{"url":"http://www.uol.com.br", "img":"{{STATIC_PREFIX}}carousel/img/fake/fake1.jpg","descricao":"TV Samsung", "aux":"au1"},
+	{% for televisor in televisores %}
+		{
+		"url"       :"{% url televisor.cadastro televisor.id %}",
+		"img"       :"/media/{{ televisor.imagem }}",
+		"descricao" :"{{ televisor.nome }}",
+		"aux"       :"{{ televisor.marca.descricao }}"
+		},
+	{% endfor %}
+	{"url":"http://www.uol.com.br", "img":"{{STATIC_PREFIX}}carousel/img/fake/fake1.jpg","descricao":"TV Samsung", "aux":"au1"},
+	{"url":"http://www.uol.com.br", "img":"{{STATIC_PREFIX}}carousel/img/fake/fake1.jpg","descricao":"TV Samsung", "aux":"au1"},
+	]
+};
+var carousel2 = {
+"data":[
+	{% for marca in marcas %}
+		{
+		"url"       :"{% url marcas.cadastro marca.id %}",
+		"img"       :"/media/{{ marca.imagem }}",
+		"descricao" :"{{ marca.descricao }}",
+		"aux"       :""
+		},
+	{% endfor %}
+    {"url":"http://www.uol.com.br", "img":"{{STATIC_PREFIX}}carousel/img/fake/fake1.jpg","descricao":"TV Samsung", "aux":"au1"},
+	{"url":"http://www.uol.com.br", "img":"{{STATIC_PREFIX}}carousel/img/fake/fake1.jpg","descricao":"TV Samsung", "aux":"au1"},
+	]
+};
+var carousel3 = {
+"data":[
+	{"url":"http://www.uol.com.br", "img":"{{STATIC_PREFIX}}carousel/img/fake/fake1.jpg","descricao":"TV Samsung", "aux":"au1"},
+	{% for marca in marcas %}
+		{
+		"url"       :"{% url marcas.cadastro marca.id %}",
+		"img"       :"/media/{{ marca.imagem }}",
+		"descricao" :"{{ marca.descricao }}",
+		"aux"       :""
+		},
+	{% endfor %}
+{"url":"http://www.uol.com.br", "img":"{{STATIC_PREFIX}}carousel/img/fake/fake1.jpg","descricao":"TV Samsung", "aux":"au1"},
+	{"url":"http://www.uol.com.br", "img":"{{STATIC_PREFIX}}carousel/img/fake/fake1.jpg","descricao":"TV Samsung", "aux":"au1"},
+	]
+};
+$(function(){
+create(carousel1.data, '#carrossel1');
+//functionality();
+create(carousel2.data, '#carrossel2');
+//functionality();
+create(carousel3.data, '#carrossel3');
+//functionality();
+});
+
+</script>
+
+<div class="page-wrapper">
+	<div id="carrossel1">
+		<div id="carousel">
+	        <p class="carousel_header"  >Principais Televisores</p>
+			<div href="#" class="prev-box">
+				<a href="#" alt="voltar" class="prev"></a>
+			</div>
+			<div class="carousel" id="imgsOffers">
+				<div class="carr offersCarr">
+					<!-- items -->
+				</div>
+			</div>
+			<div href="#" class="next-box">
+				<a href="#" alt="avançar" class="next"></a>
+			</div>
+		</div>
+	</div>
+	
+	<div id="carrossel2">
+		<div id="carousel">
+	        <p class="carousel_header"  >Principais Marcas</p>
+			<div href="#" class="prev-box">
+				<a href="#" alt="voltar" class="prev"></a>
+			</div>
+			<div class="carousel" id="imgsOffers">
+				<div class="carr offersCarr">
+					<!-- items -->
+				</div>
+			</div>
+			<div href="#" class="next-box">
+				<a href="#" alt="avançar" class="next"></a>
+			</div>
+		</div>
+	</div>
+	
+	
+	<div id="carrossel3">
+		<div id="carousel">
+	        <p class="carousel_header"  >Principais Lojas</p>
+			<div href="#" class="prev-box">
+				<a href="#" alt="voltar" class="prev"></a>
+			</div>
+			<div class="carousel" id="imgsOffers">
+				<div class="carr offersCarr">
+					<!-- items -->
+				</div>
+			</div>
+			<div href="#" class="next-box">
+				<a href="#" alt="avançar" class="next"></a>
+			</div>
+		</div>
+	</div>
+</div>

@@ -1,0 +1,153 @@
+<!DOCTYPE html>
+<html>
+	{% load url from future %}
+	{% load static %}
+	{% load i18n %}
+	{% get_static_prefix as STATIC_PREFIX %}
+	<head>
+		<title>Estudo Class-Based</title>
+
+		<script src="{{STATIC_PREFIX}}js/jquery.js"></script>
+		<script src="{{STATIC_PREFIX}}js/jquery.tpl_layout1.1.6.min.js" type="text/javascript"></script>
+
+		<link type="text/css" rel='stylesheet' href="{{STATIC_PREFIX}}css/style.css"/>
+		<link type="text/css" rel='stylesheet' href="{{STATIC_PREFIX}}css/step_to_step.css"/>
+		<link type="text/css" rel="stylesheet" href="{{STATIC_PREFIX}}css/jquery-ui.css"/>
+		<link type="text/css" rel="stylesheet" href="{{STATIC_PREFIX}}css/geral/listagem.css"/>
+		<link type="text/css" rel="stylesheet" href="{{STATIC_PREFIX}}css/geral/mensagens.css"/>
+		<link type="text/css" rel="stylesheet" href="{{STATIC_PREFIX}}css/geral/botoes.css"/>
+
+		<script src="{{STATIC_PREFIX}}js/ui/jquery-ui-1.9.1.custom.js" type="text/javascript"></script>
+		<script src="{{STATIC_PREFIX}}js/ui/jquery.ui.core.js"         type="text/javascript"></script>
+		<script src="{{STATIC_PREFIX}}js/ui/jquery.ui.widget.js"       type="text/javascript"></script>
+
+		<!--TEMA DINAMICO-->
+		<link type="text/css" rel="stylesheet" href="{{STATIC_PREFIX}}css/{{USER_THEME}}/jquery-ui-1.10.1.custom.min.css"/>
+
+        <!-- Alertas e Mensagens JQuery -->
+        <script src="{{STATIC_PREFIX}}myDialog.js" type="text/javascript"></script>
+        <link type="text/css" rel="stylesheet" href="{{STATIC_PREFIX}}myDialog.css" />
+        
+		<!-- jquery_alerts -->
+		<script src="{{STATIC_PREFIX}}jquery_alerts/js/jquery.alerts.js" type="text/javascript"></script>
+		<link href="{{STATIC_PREFIX}}jquery_alerts/css/jquery.alerts.css" rel="stylesheet" type="text/css" media="screen" />
+		
+        <!-- jNotify -->
+        <link   href="{{STATIC_PREFIX}}jNotify/css/jNotify.jquery.css" type="text/css" rel="stylesheet"/>
+        <script src ="{{STATIC_PREFIX}}jNotify/js/jNotify.jquery.js"   type="text/javascript"></script>
+        
+        <!-- Toastmessage -->
+        <link   href="{{STATIC_PREFIX}}toastmessage/css/jquery.toastmessage.css" type="text/css" rel="stylesheet"/>
+        <script src ="{{STATIC_PREFIX}}toastmessage/js/jquery.toastmessage.js"   type="text/javascript"></script>
+        
+        <!-- Apprise -->
+        <link   href="{{STATIC_PREFIX}}Apprise/apprise.css" type="text/css" rel="stylesheet"/>
+        <script src ="{{STATIC_PREFIX}}Apprise/apprise-1.5.full.js"   type="text/javascript"></script>
+        
+        <!-- jReject -->
+        <link   href="{{STATIC_PREFIX}}jReject/css/jquery.reject.css" type="text/css" rel="stylesheet"/>
+        <script src ="{{STATIC_PREFIX}}jReject/js/jquery.reject.js"  type="text/javascript"></script>
+        
+        
+        <!-- Instalação de botões -->
+		<script>
+		$(function() {
+			// Tranforma todos os botões em botões do JQuery UI
+			$("input[type=submit], button, .link_btn,th, .aButtons > button, .button").button();
+			// Todos os botões de excluir, apresentando uma mini confirmação antes
+	        $('.ui-icon-trash').addClass("ask");
+		});
+		</script>
+
+		<!--JS da internacionalização-->
+		<script src="{% url 'django.views.i18n.javascript_catalog' %}" type="text/javascript" ></script>
+         
+		{% include "menu_statics.html" %}
+
+		{% block css_custom %}
+		{% endblock %}
+
+		{% block js_custom %}
+		{% endblock %}
+
+	</head>
+
+	<body>
+        {% block aereo %}
+        {% endblock %}
+		<div id="tudo">
+			<header id="topo">
+				{% include "topo.html" %}
+			</header>
+
+			<nav id="nav-principal" >
+				{% include "menu.html" %}
+			</nav>
+
+			<aside id="aux">
+				{% include "menu_ver.html" %}
+			</aside>
+
+			<div id="principal">
+				<h3 class='ui-widget-header' style="text-align: center; margin-top: 13px;">{{titulo}}</h3>
+				{% include "alerts_messages/messages.html" %}
+				{% block conteudo %}
+				{% endblock %}
+			</div>
+
+			<footer id="rodape">
+				{% include "idiomas.html" %}
+			</footer>
+		</div>
+		<!-- fim div#tudo -->
+
+	</body>
+
+	<script>
+		$(document).ready(function() {
+			$.setTemplateLayout();
+			//$.setTemplateLayout("css.css");
+		});
+	</script>
+	<style>
+		#tudo {
+			display: 
+			         "aaaaa"  
+			         ".bbb." 
+			         ".d.c."  
+			         "....." 
+			         * 140px 5px 700px *;
+		}
+		#topo {
+			position: a;
+			z-index: 0;
+			margin: 0px;
+			width: 99%;
+			height: 72px;
+		}
+		#nav-principal {
+			position: b;
+			height: 42px;
+			display: 
+			         ".g." 
+			         10% 80% 10%;
+		}
+		#principal {
+			position: c;
+			height: auto;
+		}
+		#aux {
+			position: d;
+			z-index: 3;
+		}
+		#rodape {
+			/*position: e;*/
+			width: 200px;
+			height: 20px;
+			float: right;
+			margin-right: 1%;
+		}
+		#mainmenu{position: g;}
+
+	</style>
+</html>

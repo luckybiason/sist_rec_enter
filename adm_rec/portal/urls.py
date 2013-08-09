@@ -7,6 +7,7 @@ from django.conf               import settings
 urlpatterns = patterns('portal.views',
     # Home
     url(r'^$', 'home',  name='portal.home'),
+    url(r'^buscar$', 'buscar',  name='portal.buscar'),
     
 )
 

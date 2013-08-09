@@ -1,26 +1,30 @@
 <table style="width: 100%; margin: 0px; padding: 2px; background: #222222; height: 25px; color:white;">
 	<tr>
-		<td>
-			Olá, Visitante, Ainda não é cadastrado: <a>Clique aqui</a>
-		</td>
-		
-		<td>
-			<span style="float:right; padding-right: 5px;"> Entrar</span>
-		</td>
+		<td> Olá, Visitante, Ainda não é cadastrado: <a>Clique aqui</a></td>
+
+		<td><span style="float:right; padding-right: 5px;"> Entrar</span></td>
 	</tr>
 </table>
 
-
-<table style="width: 500px; height:150px; margin-right: auto; margin-left: auto;">
-	<tr>
-		<td><img src="{{STATIC_PREFIX}}imagem/logo3.png"  height="120px" style='padding-right: 50px'/></td>
-		<td>
-		<p>
-			<div id="id_pesq_label">
-			    <img src="{{STATIC_PREFIX}}img_portal/look.png"  title="Buscar" height="25px" align="absmiddle" id='id_buscar_img'/>
-			    <input type="text" maxlength="100" name="pesq_busca" id="id_pesq_busca" placeholder="Digite o produto, marca ou modelo">
-			    <span id='buscar_button'>Buscar</span>
-			</div>
-		</p></td>
-	</tr>
-</table>
+<script>
+	$(function() {
+		$('#buscar_button').click(function() {
+             $("#form_busca").submit();
+		});
+	}); 
+</script>
+<form name="form_busca" method="GET" id='form_busca'>
+	<table style="width: 500px; height:150px; margin-right: auto; margin-left: auto;">
+		<tr>
+			<td><img src="{{STATIC_PREFIX}}imagem/logo3.png"  height="120px" style='padding-right: 50px'/></td>
+			<td>
+			<p>
+				<div id="id_pesq_label">
+					<img src="{{STATIC_PREFIX}}img_portal/look.png"  title="Buscar" height="25px" align="absmiddle" id='id_buscar_img'/>
+					<input type="text" maxlength="100" name="pesq_busca" id="id_pesq_busca" placeholder="Digite o produto, marca ou modelo">
+					<span id='buscar_button'>Buscar</span>
+				</div>
+			</p></td>
+		</tr>
+	</table>
+</form>

@@ -1,0 +1,53 @@
+.carousel{
+	width: 420px;
+	height:200px;
+	float:left;
+	overflow:hidden;
+}
+.carr{
+	 position: relative;
+	
+}
+#carrossel1, #carrossel2{
+	float: left;
+	margin-top:10px;
+	
+}
+.link-box-offer{
+	text-decoration:none;
+}
+.item-carousel{
+	width:100px;
+	height:160px;
+	float:left;
+	padding: 20px;
+}
+.txt-box-offer{
+	font: 14px Arial, Helvetica, sans-serif;
+	text-align:center;
+	display: block;
+    height: 35px;
+    overflow: hidden;
+    width: 100%;
+}
+.next-box, .prev-box{
+	width:22px;
+	height:200px;
+	float:left;
+	margin: 0 10px;
+}
+.prev, .next{
+	background:url('../img/arrow.png');
+	display: block;
+    float: left;
+    height: 29px;
+    width: 21px;
+    position:relative;
+    top:85px;	
+}
+.prev{
+	background-position:0 0;
+}
+.next{
+	background-position:21px 0;
+}

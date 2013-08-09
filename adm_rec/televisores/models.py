@@ -9,6 +9,7 @@ from django.core.urlresolvers import reverse
 
 class Marca(models.Model):
     descricao = models.CharField(max_length=50, unique=True, verbose_name=__(u"Descrição"))
+    imagem    = models.ImageField(upload_to='img_marcas', blank=False, null=False, verbose_name=__(u"Logo:"))
     
     class Meta:
         verbose_name        = _(u'marca')

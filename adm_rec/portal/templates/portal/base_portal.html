@@ -13,8 +13,6 @@
 		<link type="text/css" rel="stylesheet" href="{{STATIC_PREFIX}}css/listagem.css"/>
 		<link type="text/css" rel="stylesheet" href="{{STATIC_PREFIX}}css/botoes.css"/>
 
-		<!-- TEMAS -->
-
 		<script src="{{STATIC_PREFIX}}js/ui/jquery-ui-1.9.1.custom.js" type="text/javascript"></script>
 		<script src="{{STATIC_PREFIX}}js/ui/jquery.ui.core.js"         type="text/javascript"></script>
 		<script src="{{STATIC_PREFIX}}js/ui/jquery.ui.widget.js"       type="text/javascript"></script>
@@ -31,9 +29,15 @@
 		<link   href="{{STATIC_PREFIX}}toastmessage/css/jquery.toastmessage.css" type="text/css" rel="stylesheet"/>
 		<script src ="{{STATIC_PREFIX}}toastmessage/js/jquery.toastmessage.js"   type="text/javascript"></script>
 
+        <!-- Carousel -->
+        <!--link type="text/css" href="{{STATIC_PREFIX}}carousel/css/base.css" rel="stylesheet" /-->
+        <link type="text/css" href="{{STATIC_PREFIX}}js/carousel/css/carousel.css" rel="stylesheet" />
+		<script src="{{STATIC_PREFIX}}js/carousel/js/lib/carousel.js"></script>
+		
 		<!-- Instalação de botões -->
 		<script>
 			$(function() {
+				$.setTemplateLayout();
 				// Tranforma todos os botões em botões do JQuery UI
 				$("input[type=submit], button, .link_btn,th, .aButtons > button, .button").button();
 				// Todos os botões de excluir, apresentando uma mini confirmação antes
@@ -58,7 +62,7 @@
 			</header>
 
 			<nav id="menu" >
-				{% include "portal/menu.html" %}
+				{#% include "portal/menu.html" %#}
 			</nav>
 
 			<div id="principal">
@@ -75,38 +79,39 @@
 
 	</body>
 	<style>
+		#tudo {
+			display: 
+			         "aaa"  
+			         "ccc"  
+			         "eee" 
+			         200px 5px *;
+		}
 		body {
 			padding: 0px;
 			margin: 0px;
 			color:#000000;
 		}
 		#topo {
+			position : a;
 			z-index: 0;
 			margin: 0px;
 			width: 100%;
-			margin-left: auto;
-			margin-right: auto;
-			padding: 0px;
-			/*background: #778899;*/
+			height: 230px;
 		}
 		#menu {
-			height: 42px;
-			text-align: center;
-			margin-left: auto;
-			margin-right: auto;
-			width: 700px;
-			float: left;
+			position   : b;
+			text-align : center;
 		}
 		#principal {
 			position: c;
-			height: auto;
 			min-height: 400px;
 			text-align: center;
-			margin-left: auto;
-			margin-right: auto;
-			width: 700px
+			height: auto;
 		}
 		#rodape {
+			position: e;
+			width: 100%;
+			height: auto;
 		}
 
 		#id_pesq_label {
