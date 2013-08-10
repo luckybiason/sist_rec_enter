@@ -24,6 +24,7 @@ urlpatterns = patterns('',
     
     # Portal
     (r'^$',      include('portal.urls')),
+    (r'^buscar/', include('busca.urls')),
 )
 
 # Configuração de urls de arquivos estáticos e de mídia

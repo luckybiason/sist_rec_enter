@@ -4,7 +4,7 @@ from django.conf.urls.defaults import *
 from django.conf               import settings
 
 
-urlpatterns = patterns('portal.views',
+urlpatterns = patterns('busca',
     # Home
-    url(r'^$',       'home',     name='portal.home'),
+    url(r'^$', 'views.buscar',  name='busca.produto'),
 )
