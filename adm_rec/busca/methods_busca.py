@@ -5,7 +5,7 @@ from adm_rec.utils.sql  import sql_to_dict
 
 OPERADOR = {
     '+' : ' AND ',
-    ' ' : ' OR ',            
+    ' ' : ' OR ',  
 }
 
 def _validando_texto(texto):
@@ -54,7 +54,7 @@ def _definir_key_words(texto, add_clausulas):
         else:
             add_clausulas(clausulas, buff, OPERADOR[char]) # Adiciona às clausulas o buffer
             buff = '' #limpa o buffer
-    add_clausulas(clausulas, buff) # Adiciona o restante do buffer
+    add_clausulas(clausulas, buff, '') # Adiciona o restante do buffer
     # Envolvver as clausulas em parênteses
     return "(%s)" % (" ".join(clausulas))
 
@@ -62,7 +62,8 @@ def _wheres_palavras_chave(texto):
 
     def _adicionar_clausulas(lst_clausulas, palavra, operador):
         query_re = "('%(inicio)s' || '%(palavra)s' || '%(fim)s')" % {
-            'palavra'  : del_acento(sql_escape(palavra)),
+            #'palavra'  : del_acento(sql_escape(palavra)),
+            'palavra'  : palavra,
             'inicio'   : "(\n| |^)",
             'fim'      : "([^A-z]|$|\n)"
         } 

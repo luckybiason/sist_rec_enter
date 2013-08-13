@@ -7,18 +7,6 @@ var carousel2 = {
 "img"       :"/media/{{ marca.imagem }}",
 "descricao" :"{{ marca.descricao }}",
 "aux"       :""
-},
-{
-"url"       :"{% url marcas.cadastro marca.id %}",
-"img"       :"/media/{{ marca.imagem }}",
-"descricao" :"{{ marca.descricao }}",
-"aux"       :""
-},
-{
-"url"       :"{% url marcas.cadastro marca.id %}",
-"img"       :"/media/{{ marca.imagem }}",
-"descricao" :"{{ marca.descricao }}",
-"aux"       :""
 }{% if not forloop.last %},{% endif %}
 {% endfor %}
 ]

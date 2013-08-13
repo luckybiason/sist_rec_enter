@@ -7,18 +7,6 @@ var carousel3 = {
 "img"       :{% if loja.logo %}"/media/{{ loja.logo }}"{% else %}"/static/imagem/sem_img.png"{% endif %},
 "descricao" :"{{ loja.nome }}",
 "aux"       :"{{ loja.quantidade_prod }} produtos"
-},
-{
-"url"       :"{% url lojas.cadastro loja.id %}",
-"img"       :{% if loja.logo %}"/media/{{ loja.logo }}"{% else %}"/static/imagem/sem_img.png"{% endif %},
-"descricao" :"{{ loja.nome }}",
-"aux"       :"{{ loja.quantidade_prod }} produtos"
-},
-{
-"url"       :"{% url lojas.cadastro loja.id %}",
-"img"       :{% if loja.logo %}"/media/{{ loja.logo }}"{% else %}"/static/imagem/sem_img.png"{% endif %},
-"descricao" :"{{ loja.nome }}",
-"aux"       :"{{ loja.quantidade_prod }} produtos"
 } {% if not forloop.last %},{% endif %}
 {% endfor %}
 ]

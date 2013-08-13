@@ -7,24 +7,6 @@ var carousel_rec = {
 "img"       :"/media/{{ televisor.imagem }}",
 "descricao" :"{{ televisor.nome }}",
 "aux"       :"{{ televisor.marca.descricao }}"
-},
-{
-"url"       :"{% url televisor.cadastro televisor.id %}",
-"img"       :"/media/{{ televisor.imagem }}",
-"descricao" :"{{ televisor.nome }}",
-"aux"       :"{{ televisor.marca.descricao }}"
-},
-{
-"url"       :"{% url televisor.cadastro televisor.id %}",
-"img"       :"/media/{{ televisor.imagem }}",
-"descricao" :"{{ televisor.nome }}",
-"aux"       :"{{ televisor.marca.descricao }}"
-},
-{
-"url"       :"{% url televisor.cadastro televisor.id %}",
-"img"       :"/media/{{ televisor.imagem }}",
-"descricao" :"{{ televisor.nome }}",
-"aux"       :"{{ televisor.marca.descricao }}"
 }{% if not forloop.last %},{% endif %}
 {% endfor %}
 ]
@@ -37,7 +19,7 @@ create(carousel_rec.data, '#carrossel_rec');
 <div class="page-wrapper">
 	<div id="carrossel_rec" class="carousel_box">
 		<div class="carousel_header"  >
-			Recomendados para você
+			{% if client_id %}Recomendados para você{% else %}Principais televisores{% endif %}
 		</div>
 		<div id="carousel_rec">
 			<div href="#" class="prev-box">

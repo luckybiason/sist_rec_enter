@@ -15,28 +15,29 @@
 	<!-- Rotativos-->
 
 	<style>
-		#carrossel1, #carrossel2, #carrossel3 , #carrossel_rec{
+		#carrossel1, #carrossel2, #carrossel3, #carrossel_rec {
 			float: left;
 			margin-left: 30px;
-	         margin-bottom: 10px;
+			margin-bottom: 10px;
+            background: whitesmoke;
 		}
-		#carrossel_rec .carousel{
-	        width: 905px;
-	         margin-top: 10px;
+		#carrossel_rec .carousel {
+			width: 905px;
+			margin-top: 10px;
 		}
 	</style>
+	<div class="rotativos" style="margin-left: auto; margin-right: auto;">
+		{% include "portal/banners/recomendados.html" %}
+	</div>
 	<div class="rotativos" style="margin-left: auto; margin-right: auto">
-		{% include "portal/banners/principais_televisores.html" %}
+		{#% include "portal/banners/principais_televisores.html" %#}
 		{% include "portal/banners/principais_marcas.html" %}
 		{% include "portal/banners/principais_lojas.html" %}
 	</div>
-	<div class="rotativos" style="margin-left: auto; margin-right: auto;">
-		{% include "portal/banners/recomendados.html" %}
-	    <div class="banner_filtragem with_borders" style="margin-left: 30px; width: 485px; float: left; height:200px;">
-		   aqui vem um banner
-	    </div>
-	</div>
 
+	<div class="banner_filtragem with_borders" style="margin-left: 30px; width: 485px; float: left; height:200px;">
+		aqui vem um banner
+	</div>
 </div>
 
 {% endblock %}

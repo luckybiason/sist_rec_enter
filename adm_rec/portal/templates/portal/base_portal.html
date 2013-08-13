@@ -66,7 +66,7 @@
 				{#% include "portal/menu.html" %#}
 			</nav>
 
-			<div id="principal">
+			<div id="principal" style="margin-left: auto; margin-right: auto">
 				{% include "alerts_messages/messages.html" %}
 				{% block conteudo %}
 				{% endblock %}
@@ -82,10 +82,10 @@
 	<style>
 		#tudo {
 			display: 
-			         "aaa"  
-			         "ccc"  
-			         "eee" 
-			         200px 5px *;
+			         "a"  
+			         "c"  
+			         "e" 
+			         ;
 		}
 		body {
 			padding: 0px;
@@ -97,7 +97,10 @@
 			z-index: 0;
 			margin: 0px;
 			width: 100%;
-			height: 230px;
+			height: 170px;
+			background-color: #4F94CD; /*#436EEE; /*#8B8B83;*/
+            border-bottom: 5px solid #363636;
+            margin-bottom: 30px;
 		}
 		#menu {
 			position   : b;
@@ -113,6 +116,7 @@
 			position: e;
 			width: 100%;
 			height: auto;
+            /*background: #CFCFCF;*/
 		}
 
 		#id_pesq_label {

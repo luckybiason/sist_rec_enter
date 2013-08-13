@@ -7,24 +7,6 @@ var carousel1 = {
 "img"       :"/media/{{ televisor.imagem }}",
 "descricao" :"{{ televisor.nome }}",
 "aux"       :"{{ televisor.marca.descricao }}"
-},
-{
-"url"       :"{% url televisor.cadastro televisor.id %}",
-"img"       :"/media/{{ televisor.imagem }}",
-"descricao" :"{{ televisor.nome }}",
-"aux"       :"{{ televisor.marca.descricao }}"
-},
-{
-"url"       :"{% url televisor.cadastro televisor.id %}",
-"img"       :"/media/{{ televisor.imagem }}",
-"descricao" :"{{ televisor.nome }}",
-"aux"       :"{{ televisor.marca.descricao }}"
-},
-{
-"url"       :"{% url televisor.cadastro televisor.id %}",
-"img"       :"/media/{{ televisor.imagem }}",
-"descricao" :"{{ televisor.nome }}",
-"aux"       :"{{ televisor.marca.descricao }}"
 }{% if not forloop.last %},{% endif %}
 {% endfor %}
 ]
