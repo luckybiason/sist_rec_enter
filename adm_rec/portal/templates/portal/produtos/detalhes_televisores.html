@@ -1,0 +1,48 @@
+{% extends 'portal/base_portal.html' %}
+
+{% load url from future %}
+
+{% block js_custom %}
+<script>
+	$(function() {
+	}); 
+</script>
+
+<!--link type="text/css" href="{{STATIC_PREFIX}}pages/css/base.css" rel="stylesheet" /-->
+<link type="text/css" href="{{STATIC_PREFIX}}pages/css/product.css" rel="stylesheet" />
+<script src="{{STATIC_PREFIX}}pages/js/product.js"></script>
+{% endblock %}
+
+{% block conteudo %}
+<div class="page-wraper" style="margin-left: auto; margin-right: auto; width: 100%; margin-bottom: 30px;">
+	<table>
+
+		<tr>
+			<td style="vertical-align: top!important">
+				<!-- INI: MENU Lateral --> 
+				{% include 'portal/produtos/det_menu_vertical.html' %} 
+				<!-- END: MENU Lateral -->
+			</td>
+			<td>
+			<div id="box-main">
+
+				<!-- INI: ABA DE OFERTAS -->
+				{% include 'portal/produtos/det_aba_ofertas.html' %}
+				<!-- END: ABA DE OFERTAS -->
+
+				<!-- INI: ABA DE SPECS -->
+				{% include 'portal/produtos/det_aba_espec.html' %}
+				<!-- END: ABA DE SPECS -->
+
+				<!-- INI: ABA DE Comentarios -->
+				{% include 'portal/produtos/det_aba_coments.html' %}
+				<!-- END: ABA DE Comentarios -->
+
+			</div></td>
+		</tr>
+
+	</table>
+
+</div>
+
+{% endblock %}

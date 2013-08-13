@@ -1,6 +1,6 @@
 #-*- coding: utf-8 -*-
-from django.shortcuts  import render
-from methods_busca   import buscar_produtos
+from django.shortcuts import redirect,render
+from methods_busca    import buscar_produtos
 
 #from django.contrib.auth.decorators import login_required
 #@login_required
@@ -24,3 +24,14 @@ def buscar(request):
     ''' Função de busca de produtos no site '''
     produtos = buscar_produtos(request)
     return render(request, 'portal/listagem_produtos.html', locals())
+
+def visualizar(request, id_televisor):
+    ''' Função que carrega um televisor e seus detalhes '''
+    
+    if not id_televisor:
+        return redirect('usuario.listagem')
+    
+    televisor = Televisor.objects.get(pk=id_televisor)
+    lojas     = TelevisorLoja.objects.filter(televisor=televisor)
+    
+    return render(request, 'portal/produtos/detalhes_televisores.html', locals())

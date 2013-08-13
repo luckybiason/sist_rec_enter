@@ -4,7 +4,9 @@ from django.conf.urls.defaults import *
 from django.conf               import settings
 
 
-urlpatterns = patterns('portal.views',
+urlpatterns = patterns('portal',
     # Home
-    url(r'^$',       'home',     name='portal.home'),
+    url(r'^$', 'views.home', name='portal.home'),
+    # Produtos
+    url(r'^visualizar/(?P<id_televisor>\d+)/$', 'views.visualizar', name='portal.visualizar'),
 )

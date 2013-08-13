@@ -1,0 +1,304 @@
+table.specs {
+	width: 100%;
+	border: 1px solid #909FB2;
+	float: left;
+}
+.spec-name, .spec-value {
+	width: 38%;
+	font: 14px Arial, Helvetica, sans-serif;
+	color: #414141;
+	padding-left: 2%;
+}
+.spec-name {
+	font-weight: bold;
+}
+.spec-value {
+	width: 58%;
+}
+.page-wraper tr{
+ height:50px;
+ }
+.page-wrapertd{
+ vertical-align: middle;
+ border-right: 1px solid #CBCAC8;
+ border-bottom: 1px solid #CBCAC8;
+ }
+
+/*INI: Table Specs */
+.specs {
+	border-collapse: separate;
+	margin-top: 8px;
+	width: 100%;
+}
+.specs th, .specs td {
+	padding: 0;
+	font-weight: normal;
+	font-size: .9em;
+	text-align: left;
+	color: #444;
+}
+.specs th {
+	width: 195px;
+}
+.specs td {
+	width: 186px;
+	padding: 0 5px;
+}
+.specs td:first .specs-value {
+	border-left: 0;
+}
+.specs-row:nth-child(even) {
+	background: #EEE;
+}
+.specs-row:nth-child(odd) {
+	background: #FFF;
+}
+.specs tr:nth-child(even) th, .specs tr:nth-child(even) td {
+	border-top: 1px solid #FFF;
+	border-bottom: 1px solid #FFF;
+}
+.specs tr:nth-child(odd) th, .specs tr:nth-child(odd) td {
+	border-top: 1px solid #DDD;
+	border-bottom: 1px solid #DDD;
+}
+.specs-row .last {
+	display: none;
+}
+.specs-value {
+	border-left: 1px solid #DDD;
+	margin: 10px 0;
+	padding: 5px 0;
+	text-align: left;
+}
+/*END: Table Specs */
+#box-main {
+	width: 800px;
+	/*float: right;*/
+}
+#box-prod {
+	/*float: left;*/
+	padding: 30px;
+	width: 220px;
+}
+.price {
+	color: #025EC7;
+	display: block;
+	float: right;
+	font-size: 22px;
+	height: 30px;
+	margin-top: 9px;
+	overflow: hidden;
+	width: 138px;
+}
+
+/*
+ * ABA DE OFERTAS
+ *
+ */
+.box-item-offer {
+	border-bottom: 1px solid #CCC;
+	float: left;
+	width: 100%;
+}
+.description-offer {
+	display: block;
+	float: left;
+	font: 13px Arial, Helvetica, sans-serif;
+	height: 54px;
+	overflow: hidden;
+	padding: 10px 20px;
+	width: 250px;
+	margin-top: 7px;
+}
+
+.img-offer {
+	float: left;
+	width: 100px;
+	height: 100px;
+}
+
+.logo-img {
+	float: left;
+	/*height: 31px;*/
+	margin: 23px;
+	width: 88px;
+}
+.btn-ver-oferta {
+	border: 2px solid #BF0303;
+	border-radius: 5px 5px 5px 5px;
+	color: #FFFFFF;
+	float: right;
+	font: 13px Trebuchet MS, Arial, Helvetica, sans-serif;
+	height: 24px;
+	letter-spacing: 2px;
+	margin-top: 6px;
+	padding: 7px 0 0;
+	text-align: center;
+	width: 133px;
+	background: #ff3019; /* Old browsers */
+	background: -moz-linear-gradient(top,  #ff3019 0%, #cf0404 100%); /* FF3.6+ */
+	background: -webkit-gradient(linear, left top, left bottom, color-stop(0%,#ff3019), color-stop(100%,#cf0404)); /* Chrome,Safari4+ */
+	background: -webkit-linear-gradient(top,  #ff3019 0%,#cf0404 100%); /* Chrome10+,Safari5.1+ */
+	background: -o-linear-gradient(top,  #ff3019 0%,#cf0404 100%); /* Opera 11.10+ */
+	background: -ms-linear-gradient(top,  #ff3019 0%,#cf0404 100%); /* IE10+ */
+	background: linear-gradient(to bottom,  #ff3019 0%,#cf0404 100%); /* W3C */
+	filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#ff3019', endColorstr='#cf0404',GradientType=0 ); /* IE6-9 */
+}
+.btn-ver-oferta:hover {
+	background: #e84b17; /* Old browsers */
+	background: -moz-linear-gradient(top,  #e84b17 0%, #cf0404 100%); /* FF3.6+ */
+	background: -webkit-gradient(linear, left top, left bottom, color-stop(0%,#e84b17), color-stop(100%,#cf0404)); /* Chrome,Safari4+ */
+	background: -webkit-linear-gradient(top,  #e84b17 0%,#cf0404 100%); /* Chrome10+,Safari5.1+ */
+	background: -o-linear-gradient(top,  #e84b17 0%,#cf0404 100%); /* Opera 11.10+ */
+	background: -ms-linear-gradient(top,  #e84b17 0%,#cf0404 100%); /* IE10+ */
+	background: linear-gradient(to bottom,  #e84b17 0%,#cf0404 100%); /* W3C */
+	filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#e84b17', endColorstr='#cf0404',GradientType=0 ); /* IE6-9 */
+}
+
+/*INI: NAV PROD*/
+.item-nav-first {
+	border-top: 1px solid #CCC;
+}
+.item-nav {
+	border-bottom: 1px solid #CCC;
+	display: block;
+	font: 14px arial;
+	padding: 10px 5px;
+	text-decoration: none;
+	width: 166px;
+	color: #414141;
+}
+.item-nav-active {
+	color: #BF0303;
+}
+
+/**/
+.tabs {
+	display: none;
+}
+/*COMENTARIOS */
+.link-coment {
+	float: left;
+	font: 14px arial;
+	text-align: right;
+	text-decoration: none;
+	width: 100%;
+	color: #BF0303;
+}
+.coment {
+	width: 90%;
+	padding: 20px 10px;
+	background: #E6E9E;
+	border: 1px #414141 solid;
+	float: left;
+	margin: 20px 5%;
+	font: 14px Arial, Helvetica, sans-serif;
+	border-radius: 5px;
+}
+.name-coment {
+	width: 100%;
+	padding: 10px 0;
+	color: #414141;
+}
+
+/* classe para limitar as margens horizontais das seções principais da pagina */
+.page-wrapper {
+	display: block;
+	margin: 0 auto;
+	width: 940px;
+}
+.hidden {
+	display: none;
+}
+
+.page-wraper {
+	width: 940px;
+	margin: 0 auto;
+}
+h2 {
+	border-bottom: 2px solid #CCC;
+	color: #414141;
+	float: left;
+	font: 26px Arial, Helvetica, sans-serif;
+	height: 36px;
+	margin-bottom: 15px;
+	margin-top: 30px;
+	width: 100%;
+	letter-spacing: 2px;
+}
+h3 {
+	border-bottom: 1px solid #CCC;
+	color: #414141;
+	float: left;
+	font: 22px Arial, Helvetica, sans-serif;
+	height: 30px;
+	margin-bottom: 15px;
+	margin-top: 30px;
+	width: 100%;
+	letter-spacing: 2px;
+}
+.sub-h2 {
+	font: 14px Arial, Helvetica, sans-serif;
+	color: #414141;
+}
+.parag-default {
+	font: 14px Arial, Helvetica, sans-serif;
+	color: #777;
+	line-height: 20px;
+	margin: 15px 0;
+	float: left;
+	width: 100%;
+}
+.content-aba {
+	width: 100%;
+	float: left;
+}
+textarea {
+	resize: vertical;
+}
+.no-underline {
+	text-decoration: none
+}
+.no-underline:hover {
+	text-decoration: underline
+}
+#page-container {
+	background: #FFF;
+	box-shadow: 0 1px 5px #777;
+	max-width: 1500px;
+	margin: 0 auto;
+}
+.txt-default {
+	font: 1em Arial, Verdana, serif;
+	color: #414141;
+	letter-spacing: 1px;
+}
+.clear {
+	clear: both;
+}
+
+.h-list, .v-list {
+	list-style: none;
+}
+
+.v-list li a, .h-list li a {
+	text-decoration: none;
+}
+
+.h-list li {
+	display: inline;
+}
+
+.h-list li a {
+	float: left;
+}
+.v-list li a {
+	display: block;
+}
+.v-list li a:hover, .h-list li a:hover {
+	text-decoration: underline;
+}
+
+ol, ul {
+	list-style: none;
+}

@@ -3,7 +3,7 @@ var carousel_rec = {
 "data":[
 {% for televisor in televisores %}
 {
-"url"       :"{% url televisor.cadastro televisor.id %}",
+"url"       :"{% url portal.visualizar televisor.id %}",
 "img"       :"/media/{{ televisor.imagem }}",
 "descricao" :"{{ televisor.nome }}",
 "aux"       :"{{ televisor.marca.descricao }}"

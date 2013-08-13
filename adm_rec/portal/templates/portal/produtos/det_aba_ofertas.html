@@ -1,0 +1,20 @@
+<div id="aba0" class="tabs">
+	<h2>Ofertas de {{ televisor.nome }}</h2>
+	{% for lojatv in lojas %}
+	<div class="box-item-offer">
+		<a href="#">
+			<img src="/media/{{ televisor.imagem }}" class="img-offer" style="padding: 5px;"/>
+		<p class="description-offer">
+			{{ televisor.nome }}
+		</p>
+		{% if lojatv.loja.logo %}
+             <img id='img' src='/media/{{ lojatv.loja.logo }}' class="logo-img" height="60px" ><br/>
+        {% else %}
+             <img id='img' src='/static/imagem/sem_img.png' class="logo-img" height="60px"><br/>
+        {% endif %}
+		<span class="parcelas"> {{ lojatv.num_parcela }} x {{ lojatv.val_parcela }} </span> 
+		<span class="price"> R$ {{ lojatv.preco }} </span> 
+		<span class="btn-ver-oferta">Ver Oferta</span> </a>
+	</div>
+	{% endfor %}
+</div>

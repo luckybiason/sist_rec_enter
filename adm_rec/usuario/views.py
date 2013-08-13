@@ -30,8 +30,6 @@ def populate_user(user, post):
     user.is_superuser = post.get('is_superuser','')
     user.is_staff     = True
     user.date_joined  = datetime.now(pytz.utc)
-    #if post.get('password'):
-    #    user.password = cria_hash(post.get('password'))
     user.save()
 
 @login_required
@@ -43,7 +41,7 @@ def usuario(request, id=None):
     
     if not ( can_make_user(user_logado) or is_the_user ): 
         messages.warning(request,'Acesso negado')
-        return redirect('usuario.listagem')
+        return redirect('portal.home')
         
     titulo = TITULO
     if request.method == 'POST':

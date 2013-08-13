@@ -1,0 +1,155 @@
+/* ==========================================================================
+   GENERAL RULES
+   ========================================================================== */
+
+/* http://meyerweb.com/eric/tools/css/reset/ 
+   v2.0 | 20110126
+   License: none (public domain)
+*/
+
+html, body, div, span, applet, object, iframe,
+h1, h2, h3, h4, h5, h6, p, blockquote, pre,
+a, abbr, acronym, address, big, cite, code,
+del, dfn, em, img, ins, kbd, q, s, samp,
+small, strike, strong, sub, sup, tt, var,
+b, u, i, center,
+dl, dt, dd, ol, ul, li,
+fieldset, form, label, legend,
+table, caption, tbody, tfoot, thead, tr, th, td,
+article, aside, canvas, details, embed, 
+figure, figcaption, footer, header, hgroup, 
+menu, nav, output, ruby, section, summary,
+time, mark, audio, video {
+	margin: 0;
+	padding: 0;
+	border: 0;
+	font-size: 100%;
+	vertical-align: baseline;
+}
+strong { font-weight: bold; }
+/* HTML5 display-role reset for older browsers */
+article, aside, details, figcaption, figure, 
+footer, header, hgroup, menu, nav, section {
+	display: block;
+}
+ol, ul {
+	list-style: none;
+}
+table {
+	border-collapse: collapse;
+	border-spacing: 0;
+}
+h1 { font-size: 1.4em; }
+h2 { font-size: 1.2em; }
+h3 { font-size: 1em; }
+h4 { font-size: 0.9em; }
+h5 { font-size: 0.8em; }
+h6 { font-size: 0.7em; }
+
+body {
+	font: 1em/1.4 Arial, Helvetica, sans-serif;
+	overflow-x: hidden;
+}
+hr {
+    display: block;
+    border: 0;
+	clear: both;
+}
+img { vertical-align: middle; }
+a { 
+	color:#025EC7;
+	outline:none;
+}
+textarea { resize: vertical; }
+.no-underline {
+	text-decoration:none
+}
+.no-underline:hover {
+	text-decoration:underline
+}
+#page-container {
+	background: #FFF;
+	box-shadow: 0 1px 5px #777;
+	max-width: 1500px;
+	margin: 0 auto;
+}
+.txt-default{
+	font: 1em Arial, Verdana, serif;
+	color:#414141;
+	letter-spacing: 1px;
+}
+.clear { clear: both; }
+
+.h-list, .v-list {
+	list-style: none;
+}
+
+.v-list li a, .h-list li a {
+	text-decoration: none;
+}
+
+.h-list li {
+	display: inline;
+}
+
+.h-list li a {
+	float: left;
+}
+.v-list li a {
+	display: block;
+}
+.v-list li a:hover, .h-list li a:hover{
+	text-decoration: underline;
+}
+/* classe para limitar as margens horizontais das seções principais da pagina */
+.page-wrapper {
+    display: block;
+	margin: 0 auto;
+    width: 940px;
+}
+.hidden { display: none; }
+
+
+.page-wraper{
+	width:940px;
+	margin:0 auto;
+}
+h2{
+	border-bottom: 2px solid #CCC;
+    color: #414141;
+    float: left;
+    font: 26px Arial,Helvetica,sans-serif;
+    height: 36px;
+    margin-bottom: 15px;
+    margin-top: 30px;
+    width: 100%;
+    letter-spacing: 2px;
+}
+h3 {
+	border-bottom: 1px solid #CCC;
+    color: #414141;
+    float: left;
+    font: 22px Arial,Helvetica,sans-serif;
+    height: 30px;
+    margin-bottom: 15px;
+    margin-top: 30px;
+    width: 100%;
+    letter-spacing: 2px;
+}
+.sub-h2{
+	font:14px Arial, Helvetica, sans-serif;
+	color:#414141;
+}
+.parag-default{
+	font:14px Arial, Helvetica, sans-serif;
+	color:#777;
+	line-height:20px;
+	margin:15px 0;
+	float: left;
+	width:100%;
+}
+.content-aba{
+	width: 100%;
+	float:left;
+	
+}
