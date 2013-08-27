@@ -118,7 +118,6 @@ INSTALLED_APPS = (
     # Portal
      'portal',            # App base do portal
     # Apps de Processos
-    # 'avaliacao',        # App com sistema de avaliação de produtos
       'busca'             # App com mecanismo de busca de produtos
     # 'recomendacoes'     # Motor do sistema de recomendação
 )

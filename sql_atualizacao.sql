@@ -29,3 +29,14 @@ CREATE TABLE "televisores" (
 -- Inserir imagem na marca
 alter table televisores_marca
 add column "imagem" varchar(100) NOT NULL default " ";
+
+-- cadastro de comentários
+CREATE TABLE "portal_comentario" (
+    "id" integer NOT NULL PRIMARY KEY,
+    "televisor_id" integer NOT NULL REFERENCES "televisores" ("id"),
+    "nome" varchar(50) NOT NULL,
+    "comentario" text NOT NULL,
+    "nota" integer NOT NULL,
+    "data" date NOT NULL
+)
+;

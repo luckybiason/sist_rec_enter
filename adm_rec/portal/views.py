@@ -37,7 +37,7 @@ def visualizar(request, id_televisor):
     lojas     = TelevisorLoja.objects.filter(televisor=televisor)
     conexoes  = TelevisorConexao.objects.filter(televisor=televisor)
     itens     = TelevisorItens.objects.filter(televisor=televisor)
-    coment    = Comentario.objects.filter(televisor=televisor)
+    coments   = Comentario.objects.filter(televisor=televisor)
     
     return render(request, 'portal/produtos/detalhes_televisores.html', locals())
 
@@ -50,11 +50,34 @@ def salvar_comentario(request):
         return { 'erro' : 'Sem televisor' }    
     televisor = Televisor.objects.get(pk=id_televisor)
     
-    comnt = Comentario()
-    comnt.televisor  = televisor
-    comnt.nome       = request.GET.get('nome','')
-    comnt.comentario = request.GET.get('comentario','')
-    comnt.nota       = int(request.GET.get('nota','0'))
-    comnt.save()
+    nome = request.GET.get('nome','')
+    if not nome:
+        return { 'erro' : 'Por favor, preencha o nome.' }  
     
-    return { 'status' : 'ok' }  
+    comentario = request.GET.get('comentario','')
+    if not comentario:
+        return { 'erro' : 'Por favor, preencha o comentário.' }  
+    
+    try:
+        comnt = Comentario()
+        comnt.televisor  = televisor
+        comnt.nome       = nome
+        comnt.comentario = comentario
+        comnt.nota       = int(request.GET.get('nota','0'))
+        comnt.save()
+    except Exception, ex:
+        print ex
+        return {'erro' : ex }
+    return { 'status' : 'Comentário Salvo com sucesso' }  
+
+@ajax_json_view
+def lista_comentarios(request):
+    ''' Função que lista os comentários de um televisor '''
+    
+    id_televisor = request.GET.get('id_televisor','')
+    if not id_televisor:
+        return { 'erro' : 'Sem televisor' }    
+    
+    coments   = Comentario.objects.filter(televisor__id=id_televisor)
+    return { 'coments' : [ { 'id':c.id, 'data':str(c.data), 'nome':c.nome, 'comentario':c.comentario, 'nota':c.nota} for c in coments ] }
+    

@@ -13,7 +13,7 @@ class Comentario(models.Model):
     class Meta:
         verbose_name        = _(u'comentario')
         verbose_name_plural = _(u'comentarios')
-        ordering            = ['-data']
+        ordering            = ['data','-id']
 
     def __unicode__(self):
         return self.comentario
