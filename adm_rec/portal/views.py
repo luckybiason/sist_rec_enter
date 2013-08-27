@@ -1,14 +1,16 @@
 #-*- coding: utf-8 -*-
-from django.shortcuts import redirect,render
-from methods_busca    import buscar_produtos
+from adm_rec.utils.decorators import ajax_json_view
+from django.shortcuts         import redirect,render
+from lojas.models             import Loja
+from methods_busca            import buscar_produtos
+from televisores.models       import Televisor, Marca, TelevisorLoja, TelevisorConexao, TelevisorItens
+from portal.models            import Comentario
 
 #from django.contrib.auth.decorators import login_required
 #@login_required
 #@user_passes_test(can_make_user)
 #can_make_user = lambda u: u.is_superuser or u.is_staff
 
-from televisores.models import Televisor, Marca, TelevisorLoja
-from lojas.models import Loja
 def home(request):
     # Principais televisores
     televisores = Televisor.objects.all()
@@ -33,5 +35,26 @@ def visualizar(request, id_televisor):
     
     televisor = Televisor.objects.get(pk=id_televisor)
     lojas     = TelevisorLoja.objects.filter(televisor=televisor)
+    conexoes  = TelevisorConexao.objects.filter(televisor=televisor)
+    itens     = TelevisorItens.objects.filter(televisor=televisor)
+    coment    = Comentario.objects.filter(televisor=televisor)
     
     return render(request, 'portal/produtos/detalhes_televisores.html', locals())
+
+@ajax_json_view
+def salvar_comentario(request):
+    ''' Função que salva o comentário de um televisore '''
+    
+    id_televisor = request.GET.get('id_televisor','')
+    if not id_televisor:
+        return { 'erro' : 'Sem televisor' }    
+    televisor = Televisor.objects.get(pk=id_televisor)
+    
+    comnt = Comentario()
+    comnt.televisor  = televisor
+    comnt.nome       = request.GET.get('nome','')
+    comnt.comentario = request.GET.get('comentario','')
+    comnt.nota       = int(request.GET.get('nota','0'))
+    comnt.save()
+    
+    return { 'status' : 'ok' }  

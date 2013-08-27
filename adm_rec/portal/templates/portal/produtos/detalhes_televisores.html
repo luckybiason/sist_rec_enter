@@ -3,14 +3,18 @@
 {% load url from future %}
 
 {% block js_custom %}
-<script>
-	$(function() {
-	}); 
-</script>
 
-<!--link type="text/css" href="{{STATIC_PREFIX}}pages/css/base.css" rel="stylesheet" /-->
-<link type="text/css" href="{{STATIC_PREFIX}}pages/css/product.css" rel="stylesheet" />
-<script src="{{STATIC_PREFIX}}pages/js/product.js"></script>
+<script>
+	var IMG_RATY       = "{{STATIC_PREFIX}}js/rating/img";
+	var URL_COMNT_SAVE = "{% url 'portal.salvar_comentario' %}";
+	var ID_TELEVISOR   = "{{ televisor.id }}"
+</script>
+<script src="{{STATIC_PREFIX}}js/rating/js/jquery.raty.min.js"></script>
+<script src="{{STATIC_PREFIX}}js/rating/js/raty.js"></script>
+
+<link type="text/css" href="{{STATIC_PREFIX}}js/vitrine/css/product.css" rel="stylesheet" />
+<script src="{{STATIC_PREFIX}}js/vitrine/js/product.js"></script>
+
 {% endblock %}
 
 {% block conteudo %}

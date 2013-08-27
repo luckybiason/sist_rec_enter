@@ -13,7 +13,7 @@ function pesq(btn) {
 			$('#minus' + btn).show();
 		},
 		error : function(jqXHR, textStatus, errorThrown) {
-			alert(gettext('Um erro ocorreu.') + errorThrown)
+			alert('Um erro ocorreu.' + errorThrown)
 		}
 	});
 };

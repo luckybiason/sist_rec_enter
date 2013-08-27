@@ -56,5 +56,12 @@
 	background-position:21px 0;
 }
 .carousel_header{
-    margin-top: 5px;
+	overflow:hidden;
+	margin-top: 0px!important;
+	/*color: #363636;    */
+	color:white;
+	padding-top: 5px;
+    background: url(../img/bg-texture-action-area-panels.png) gray;
+	border-top-left-radius: 7px;
+	border-top-right-radius: 7px;
 }

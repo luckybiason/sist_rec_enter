@@ -7,9 +7,6 @@ from basiccrud.views          import *
 from models                   import *
 from django.contrib.auth.decorators import login_required
 
-#areafuncao_listagem = GeneralListView.as_view(model=models.AreaFuncao)
-#areafuncao_listagem = perm_post_get('list_areafuncao')(areafuncao_listagem)
-
 ## - Cadastros auxiliares          
 # Marcas
 marcas_listagem = login_required(GeneralListView.as_view(model=Marca))
@@ -65,9 +62,51 @@ def getdetail_funcao(request):
 def getdetail_televisor(request):
     id  = request.GET.get('id','')
     if not id:
-        return { 'html': u"  " }
+        return { 'html': u'' }
     tele = Televisor.objects.filter(pk=id)[0]
-    return { 'html': u" %s " % str(tele) }
+    return { 
+            'html': (u"""
+        <table style=' margin-left: auto; margin-right: auto'>    
+             <tr class="specs-row">
+                <td class="spec-name">Marca</td>
+                <td class="spec-value"> %(marca)s </td>
+            </tr>
+            <tr class="specs-row">
+                <td class="spec-name">Tamanho de tela</td>
+                <td class="spec-value"> %(polegadas)s pol</td>
+            </tr>
+            <tr class="specs-row">
+                <td class="spec-name">Tipo de tela</td>
+                <td class="spec-value"> %(tipo_de_tela)s </td>
+            </tr>
+            <tr class="specs-row">
+                <td class="spec-name">Resolução</td>
+                <td class="spec-value"> %(resolucao)s </td>
+            </tr>
+            <tr class="specs-row">
+                <td class="spec-name">Formato de tela</td>
+                <td class="spec-value"> %(formato_tela)s </td>
+            </tr>
+            <tr class="specs-row">
+                <td class="spec-name">Medidas (Altura x Largura x Profundidade)</td>
+                <td class="spec-value">( %(altura)s cm x %(largura)s cm x %(profundidade)s cm )</td>
+            </tr>
+            <tr class="specs-row">
+                <td class="spec-name">Peso</td>
+                <td class="spec-value">%(peso)s kg</td>
+            </tr>
+        </table>
+            """ %{
+                  'marca'        : tele.marca,
+                  'polegadas'    : tele.polegadas,
+                  'tipo_de_tela' : tele.tipo_de_tela,
+                  'resolucao'    : tele.resolucao,
+                  'formato_tela' : tele.formato_tela,
+                  'profundidade' : tele.profundidade,
+                  'largura'      : tele.largura,
+                  'altura'       : tele.altura,
+                  'peso'         : tele.peso,
+                  }).replace('\n','') }
 
 ##-- Funções dos relacionamentos de Televisores
 

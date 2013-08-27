@@ -8,5 +8,6 @@ urlpatterns = patterns('portal',
     # Home
     url(r'^$', 'views.home', name='portal.home'),
     # Produtos
-    url(r'^visualizar/(?P<id_televisor>\d+)/$', 'views.visualizar', name='portal.visualizar'),
+    url(r'^visualizar/(?P<id_televisor>\d+)/$', 'views.visualizar',        name='portal.visualizar'),
+    url(r'^salvar_comentario/$',                'views.salvar_comentario', name='portal.salvar_comentario'),
 )

@@ -10,5 +10,18 @@ $(function(){
 		$(ref).show();
 		$(this).addClass('item-nav-active');
     });
-})
+     
+	$('.link-coment').on('click', function(e) {
+		showHide();
+	});
+});
+
+var showHide = function(){
+	var coment = $('.new-coment');
+	if(coment.hasClass('show-coment')){
+		coment.removeClass('show-coment');
+	}else{
+		coment.addClass('show-coment');
+	}
+}
 

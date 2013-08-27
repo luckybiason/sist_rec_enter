@@ -2,7 +2,11 @@
 	width: 420px;
 	overflow:hidden;
 	margin-top: 0px!important;
-	color: #363636;
+	color: #363636;    
+	padding-top: 5px;
+    background: gray;
+	border-top-left-radius: 7px;
+	border-top-right-radius: 7px;
 }
 .carousel{
 	width: 420px;
