@@ -1,0 +1,168 @@
+.item-vitrine-prod {
+    border-bottom: 1px solid #CCC;
+    display: block;
+    float: left;
+    padding: 18px 0;
+    width: 660px;
+    position:relative;
+}
+.imagem {
+    display: block;
+    float: left;
+    height: 100px;
+    margin-right: 30px;
+    width: 100px;
+}
+.infos-vitrine-prod {
+    display: block;
+    float: left;
+    height: 101px;
+    overflow: hidden;
+    width: 350px;
+}
+.frete-gratis{
+    color:gray;
+    font: 600 12px arial, serif;
+}
+.price-vitrine-prod {
+    color: #D71116;
+    font: 600 20px arial,serif;
+    margin: 6px 0 0;
+}
+.plots{
+    color: gray;
+    font:12px arial,serif;
+}
+.title-filters{
+    color:#414141;
+    font:16px arial, serif;
+    text-indent:10px;
+    margin-top:10px;
+}
+.link-filter{
+    font:12px arial, serif;
+    text-decoration:none;
+}
+.description-prod{
+    font: 13px Arial,Helvetica,sans-serif;
+    height: 35px;
+    line-height:20px;
+    margin-bottom: 8px;
+    overflow: hidden;
+    color:gray;
+}
+.btn-ver-oferta {
+    background: linear-gradient(to bottom, #FF3019 0%, #CF0404 100%) repeat scroll 0 0 transparent;
+    border: 2px solid #BF0303;
+    border-radius: 5px 5px 5px 5px;
+    color: #FFFFFF;
+    float: left;
+    font: 13px Trebuchet MS,Arial,Helvetica,sans-serif;
+    height: 24px;
+    letter-spacing: 2px;
+    margin: 36px 0 0 20px;
+    padding: 7px 0 0;
+    text-align: center;
+    width: 133px;
+}
+#filters{
+    width:230px;
+    float:left;
+    margin-top: 25px; 
+}
+#items-vitrine{
+    /*float:right;*/
+    width:690px;
+    margin-left:auto;
+    margin-right:auto;    
+}
+.filter{
+    width:100%;
+    /*float:left;*/
+    padding-bottom:15px;
+    border-bottom:1px solid #CCC;
+    background: #f3f3f3;
+}
+.nota {
+    color: gray;
+    font: 15px arial;
+    left: 287px;
+    position: absolute;
+    top: 87px;
+}
+
+/*MODO GALERIA*/
+
+.vitrine-galeria .item-vitrine-prod{
+    border-bottom: 1px solid #CCCCCC;
+    display: block;
+    float: left;
+    padding: 18px 0;
+    position: relative;
+    width: 170px;
+    border-left:1px solid #CCC;
+}
+.vitrine-galeria .description-prod {
+    color: gray;
+    font: 13px/20px Arial,Helvetica,sans-serif;
+    height: 57px;
+    margin-bottom: 8px;
+    overflow: hidden;
+    text-align: center;
+    width: 96%;
+}
+.vitrine-galeria .infos-vitrine-prod {
+    display: block;
+    float: left;
+    height: 132px;
+    overflow: hidden;
+    width: 100%;
+}
+.vitrine-galeria .frete-gratis, .vitrine-galeria .price-vitrine-prod, .vitrine-galeria .plots{
+    text-align:center;
+}
+.vitrine-galeria .nota {
+    color: gray;
+    font: 15px arial;
+    left: 0;
+    position: absolute;
+    text-align: center;
+    top: 252px;
+}
+.vitrine-galeria .btn-ver-oferta {
+    margin-top: 62px;
+}
+.vitrine-galeria .imagem {
+    clear: both;
+    margin: 0 33px;
+}
+#view {
+    display: block;
+    height: 27px;
+    text-align: right;
+    width: 100%;
+}
+#view li{
+    float:right;
+    margin-right:10px;
+}
+#paginacao {
+    display: block;
+    float: right;
+    height: 20px;
+    margin-right: 18px;
+    text-align: center;
+    padding:20px 0;
+}
+#paginacao li{
+    float:left;
+    margin-right:9px;
+}
+#paginacao li a{
+    text-decoration:none;
+    color:#414141;
+}
+#paginacao li a.pag-active, .link-filter-active{
+    text-decoration:underline;
+    color:#BF0303;
+}

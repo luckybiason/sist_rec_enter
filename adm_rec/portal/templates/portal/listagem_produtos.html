@@ -1,0 +1,39 @@
+{% extends 'portal/base_portal.html' %}
+
+{% load url from future %}
+
+{% block css_custom %}
+<script src="{{STATIC_PREFIX}}js/rating/js/jquery.raty.min.js"></script>
+<link type="text/css" href="{{STATIC_PREFIX}}js/vitrine/css/vitrine-product.css" rel="stylesheet" />
+{% endblock %}
+
+{% block js_custom %}
+<script>
+	var IMG_RATY = "{{STATIC_PREFIX}}js/rating/img";
+	var URL_COMNT_SAVE = "{% url 'portal.salvar_comentario' %}";
+	var URL_COMNT_LIST = "{% url 'portal.lista_comentarios' %}";
+	var ID_TELEVISOR = "{{ televisor.id }}"; 
+</script>
+<script src="{{STATIC_PREFIX}}js/rating/js/raty.js"></script>
+<script src="{{STATIC_PREFIX}}js/vitrine/js/vitrine-product.js"></script>
+{% endblock %}
+
+{% block conteudo %}
+
+<table style="margin-left: auto; margin-right: auto;">
+
+	<tr>
+		<td>  {% include 'portal/vitrine/vitrine_menu.html' %} </td>
+		<td> 
+              <div id="items-vitrine">
+              	{% include 'portal/vitrine/vitrine_produtos.html' %} 
+              </div>
+	    </td>
+	</tr>
+</table>
+
+
+{#% include 'pagcontrol.html' %#}
+<br/>
+{% endblock %}
+

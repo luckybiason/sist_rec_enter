@@ -25,6 +25,7 @@ encoding//adm_rec/lojas/models.py=utf-8
 encoding//adm_rec/lojas/urls.py=utf-8
 encoding//adm_rec/lojas/views.py=utf-8
 encoding//adm_rec/portal/methods_busca.py=utf-8
+encoding//adm_rec/portal/methods_filtros.py=utf-8
 encoding//adm_rec/portal/models.py=utf-8
 encoding//adm_rec/portal/urls.py=utf-8
 encoding//adm_rec/portal/views.py=utf-8

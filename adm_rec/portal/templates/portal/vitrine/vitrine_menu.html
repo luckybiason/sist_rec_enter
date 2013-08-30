@@ -1,0 +1,151 @@
+<script>
+	$(function() {
+		
+		filtrar = function(){
+			// -  Filtragem de marcas
+			var marcas = ""
+			$.each($(".ck_marcas_ids:checked"), function() {
+				marcas += $(this).val() + ',';
+			});
+			$("#id_marcas_ids").val(marcas);
+
+			// -  Filtragem de telas
+			var telas = ""
+			$.each($(".ck_telas_ids:checked"), function() {
+				telas += $(this).val() + ',';
+			});
+			$("#id_telas_ids").val(telas);
+			
+			// -  Filtragem de informações
+			var infos = ""
+			$.each($(".ck_infos_ids:checked"), function() {
+				infos += $(this).val() + ',';
+			});
+			$("#id_infos_ids").val(infos);
+			
+			$.ajax({
+				url      : "{% url portal.filtrar %}",
+				type     : 'get',
+				dataType : 'json',
+				data     : {
+					ids_produtos : $("#id_produtos").val(),
+					marcas_ids   : marcas,
+					preco_id     : $(".rd_preco_id:checked").val(),
+					telas_ids    : telas,
+					infos_ids    : infos,
+					pagina       : $("#pag_select").val()
+				},
+				success : function(retorno) {
+					$('#items-vitrine').html(retorno.html);
+				},
+				error : function(jqXHR, textStatus, errorThrown) {
+					alert('Um erro ocorreu. - ' + errorThrown)
+				}
+			});
+
+		};
+		
+		$("#apply_filters").click(function() {
+            filtrar();
+		});
+		$("#btn_pag_select").live("click",function() {
+            filtrar();
+		});
+	}); 
+</script>
+
+<ul id="view">
+	<li>
+		<a href="#" id="list">Lista</a>
+	</li>
+	<li>
+		<a href="#" id="galery">Galeria</a>
+	</li>
+</ul>
+
+<form method="POST" id='vitrine_filtros'>
+
+	{% csrf_token %}
+	<input type="hidden" value="{{ id_produtos }}" name="ids_produtos" >
+	<div id="filters">
+		<div class="filter">
+			<p class="title-filters carousel_header">
+				Ordenação
+			</p>
+			<ul class="items-filtro">
+				<li>
+					<a href="#" title="Popularidade" class="link-filter link-filter-active">Popularidade</a>
+				</li>
+				<li>
+					<a href="#" title="Menor Preço" class="link-filter">Menor Preço</a>
+				</li>
+				<li>
+					<a href="#" title="Maior Preço" class="link-filter">Maior Preço</a>
+				</li>
+			</ul>
+		</div>
+		<div class="filter">
+			<p class="title-filters carousel_header">
+				Marca
+			</p>
+			<ul class="items-filtro">
+				<input type="hidden" name="marcas_ids" id="id_marcas_ids">
+				{% for marca in marcas %}
+				<li>
+					<a href="#" title="{{ marca.1 }}" class="link-filter">
+					<input type="checkbox" value="{{ marca.0 }}" class="ck_marcas_ids">
+					{{ marca.1 }} ({{ marca.2|default:0 }}) </a>
+				</li>
+				{% endfor %}
+			</ul>
+		</div>
+		<div class="filter">
+			<p class="title-filters carousel_header">
+				Variação de preço
+			</p>
+			<ul class="items-filtro">
+				{% for preco in precos %}
+				<li>
+					<a href="#" title="" class="link-filter">
+					<input type="radio" value="{{ preco.0 }}" name="preco_id" class="rd_preco_id" >
+					{{ preco.1 }} ({{ preco.2 }})</a>
+				</li>
+				{% endfor %}
+			</ul>
+		</div>
+		<div class="filter">
+			<p class="title-filters carousel_header">
+				Tipo da Tela
+			</p>
+			<ul class="items-filtro">
+				<input type="hidden" name="telas_ids" id="id_telas_ids">
+				{% for tela in telas %}
+				<li>
+					<a href="#" title="" class="link-filter">
+					<input type="checkbox" value="{{ tela.0 }}"  name="telas_ids"  class="ck_telas_ids" >
+					{{ tela.1 }} ({{ tela.2 }})</a>
+				</li>
+				{% endfor %}
+			</ul>
+		</div>
+        
+		<div class="filter">
+			<p class="title-filters carousel_header">
+				Informações
+			</p>
+			<ul class="items-filtro">
+				<input type="hidden" name="infos_ids" id="id_infos_ids">
+				{% for info in informacoes %}
+				<li>
+					<a href="#" title="" class="link-filter">
+					<input type="checkbox" value="{{ info.0 }}"  name="infos_ids"  class="ck_infos_ids" >
+					{{ info.1 }} ({{ info.2 }})</a>
+				</li>
+				{% endfor %}
+			</ul>
+		</div>
+		<p class="aply-filters">
+			<input type="button" value="Aplicar Filtros" id="apply_filters"/>
+		</p>
+	</div>
+</form>
