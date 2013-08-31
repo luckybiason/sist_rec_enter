@@ -23,6 +23,8 @@ urlpatterns = patterns('',
     url(r'^$',    'adm_rec.views.portal',  name='portal'),
     (r'^portal/', include('portal.urls')),
     (r'^buscar/', include('busca.urls')),
+    # Model de Dados
+    (r'^clientes/', include('clientes.urls')),
 )
 
 # Configuração de urls de arquivos estáticos e de mídia

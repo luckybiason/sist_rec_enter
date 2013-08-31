@@ -1,8 +1,25 @@
 <table style="width: 100%; margin: 0px; padding: 2px; background: #222222; height: 25px; color:white;">
 	<tr>
-		<td> Olá, Visitante, Ainda não é cadastrado: <a>Clique aqui</a></td>
-
-		<td><span style="float:right; padding-right: 5px;"> Entrar</span></td>
+		<td> 
+			{% if not ID_CLIENTE %}
+			    Olá, Visitante, Ainda não é cadastrado: 
+			    <a href="{% url clientes.cadastro %}">Clique aqui</a>
+			{% else %}
+			    Olá, {{ NM_CLIENTE }}. Seja Bem Vindo.
+			{% endif %}
+		</td>
+ 
+		<td>
+			{% if not ID_CLIENTE %}
+			<span style="float:right; padding-right: 5px;">
+				<a href="{% url clientes.login %}"> Entrar</a>
+			</span>
+			{% else %}
+			<span style="float:right; padding-right: 5px;"> 
+				<a href="{% url clientes.logout %}">Sair</a>
+			</span>
+			{% endif %}
+		</td>
 	</tr>
 </table>
 

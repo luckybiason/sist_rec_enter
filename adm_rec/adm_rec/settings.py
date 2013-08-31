@@ -114,11 +114,10 @@ INSTALLED_APPS = (
     'lojas',
     'usuario',
     'televisores',
-    # 'clientes',
+    'clientes',
     # Portal
-     'portal',            # App base do portal
-    # Apps de Processos
-      'busca'             # App com mecanismo de busca de produtos
+    'portal',            # App base do portal
+    'busca' ,            # App com mecanismo de busca de produtos
     # 'recomendacoes'     # Motor do sistema de recomendação
 )
 
@@ -130,10 +129,10 @@ TEMPLATE_CONTEXT_PROCESSORS = (
     "django.contrib.messages.context_processors.messages",
     #
     'django.core.context_processors.request',
-    'py_aumenu.contrib.menu_maker',        # CP para Componente de Menu (Pronto)
-    #'tekextensions.context_processors.admin_media_prefix',
-    'captchas.contrib.client_captcha',     # CP para Componente de captchas parametrizados 
-    'adm_rec.contrib.user_logado',         # CP para imprimir dados do Usuário
+    'py_aumenu.contrib.menu_maker',           # CP para Componente de Menu (Pronto)
+    'captchas.contrib.client_captcha',        # CP para Componente de captchas parametrizados 
+    'adm_rec.contrib.user_logado',            # CP para imprimir dados do Usuário (Para o sist. ADM)
+    'clientes.context_processors.id_cliente', # CP para injetar o id co cliente logado nos templates.
 ) 
 
 #####################################################################################
