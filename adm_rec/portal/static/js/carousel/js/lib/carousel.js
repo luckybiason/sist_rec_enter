@@ -7,7 +7,7 @@ var create = function(listJson, elem){
 			itemCarr +='<a href="'+ data[i].url + '" title="" class="link-box-offer">';
 			itemCarr +=' <span class="item1">';
 			//itemCarr +='<figure>';
-			itemCarr +='<img src="'+ data[i].img+ '" alt="" width="120px" height="80px"/>';
+			itemCarr +='<img src="'+ data[i].img+ '" alt="" width="100px" height="100px"/>';
 			//itemCarr +='</figure>';
 			itemCarr +='<p class="description txt-box-offer">'+ data[i].descricao + '</p>';
 			itemCarr +='<p class="aux txt-box-offer">'+ data[i].aux +'</p>';
@@ -21,15 +21,16 @@ var create = function(listJson, elem){
 	
 }
 
-var functionality  = function(elem){
+var functionality  = function(elem, qtd){
 	var
+	
 	voltar = $('.prev', elem),
 	avancar = $('.next', elem),
-	num_pages = Math.ceil($('.offer-block', elem).size() / 3),
+	num_pages = Math.ceil($('.offer-block', elem).size() / 5),
 	curr_page = 1,
 	step = $('#imgsOffers', elem).width(),
 	velocidade = 450;
-	if($('.offer-block', elem).size() <= 3){
+	if($('.offer-block', elem).size() <= qtd){
 		voltar.hide(); avancar.hide();
 	}
 	if(curr_page == 1){

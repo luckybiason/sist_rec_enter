@@ -124,8 +124,8 @@ def get_max_min_preco_from_televisor(televisor):
         Retorna o preço minimo e máximo de um televisor de acordo com suas lojas
     '''    
     lojas = TelevisorLoja.objects.filter(televisor=televisor)
-    max   = lojas.aggregate(Max('preco'))
-    min   = lojas.aggregate(Min('preco'))
+    max   = lojas.aggregate(Max('preco'))['preco__max']
+    min   = lojas.aggregate(Min('preco'))['preco__min']
     return min, max
 
 

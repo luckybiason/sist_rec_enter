@@ -57,6 +57,7 @@ def getdetail_funcao(request):
     funcao = Funcao.objects.get(pk=id)
     return { 'html': u" <b>Descrição:</b> %s " % funcao.descricao }
 
+from methods_filtros import get_max_min_preco_from_televisor
 @ajax_json_view
 @login_required
 def getdetail_televisor(request):
@@ -64,6 +65,8 @@ def getdetail_televisor(request):
     if not id:
         return { 'html': u'' }
     tele = Televisor.objects.filter(pk=id)[0]
+    tele.qntd_lojas = TelevisorLoja.objects.filter(televisor__id=tele.id).count()
+    tele.preco_min, tele.preco_max = get_max_min_preco_from_televisor(tele)
     return { 'html': render(request, 'televisor/det_televisores.html', { 'tele' : tele } ).content }
 
 ##-- Funções dos relacionamentos de Televisores
