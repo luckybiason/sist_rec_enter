@@ -32,12 +32,12 @@ EMAIL_PORT = 587
 # - Configuração de Banco de dados
 DATABASES = {
     'default': {
-        'ENGINE':    'django.db.backends.sqlite3', # Add 'postgresql_psycopg2', 'mysql', 'sqlite3' or 'oracle'.
-        'NAME':      os.path.join(PASTA_PROJETO, 'banco.db'),      
-        #'USER':     '',     
-        #'PASSWORD': '', 
-        #'HOST':     '',     
-        #'PORT':     '',     
+        'ENGINE':    'django.db.backends.sqlite3', # Add 'postgresql_psycopg2', 'mysql', 'sqlite3' or 'oracle'.     
+        'NAME':      os.path.join(PASTA_PROJETO, 'banco.db'),
+        'USER':     '',     
+        'PASSWORD': '', 
+        'HOST':     '',     
+        'PORT':     '',     
     }
 }
 

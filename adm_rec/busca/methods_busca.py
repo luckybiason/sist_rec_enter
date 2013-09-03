@@ -7,34 +7,34 @@ OPERADOR = {
     '+' : ' AND ',
     ' ' : ' OR ',  
 }
-
-def _validando_texto(texto):
-    '''
-        valida o texto da busca para não dar erros ao usuário
-    '''
-    # reservados multiplos no inicio
-    while True:
-        if texto.startswith(' ') or texto.startswith('+'):
-            texto = texto[1:]
-        else: break
-    # reservados multiplos no fim
-    while True:
-        if texto.endswith(' ') or texto.endswith('+'):
-            texto = texto[:-1]
-        else: break
-    # reservados multiplos no meio
-    if re.search('[+| ]{2,}',texto):
-        texto = re.sub('[ ]{2,}', ' ', texto)
-        texto = re.sub('[+| ]{2,}', '+', texto)
-    if re.search('[\"]{2,}',texto):
-        texto = re.sub('[\"]{2,}', '\"', texto)
-    return texto
         
 def _definir_key_words(texto, add_clausulas):
     '''
        Entrada, texto digitado pelo usuario no campo de busca
        Saida, clausulas Where para essas palavras chaves
     '''
+    def _validando_texto(texto):
+        '''
+            valida o texto da busca para não dar erros ao usuário
+        '''
+        # reservados multiplos no inicio
+        while True:
+            if texto.startswith(' ') or texto.startswith('+'):
+                texto = texto[1:]
+            else: break
+        # reservados multiplos no fim
+        while True:
+            if texto.endswith(' ') or texto.endswith('+'):
+                texto = texto[:-1]
+            else: break
+        # reservados multiplos no meio
+        if re.search('[+| ]{2,}',texto):
+            texto = re.sub('[ ]{2,}', ' ', texto)
+            texto = re.sub('[+| ]{2,}', '+', texto)
+        if re.search('[\"]{2,}',texto):
+            texto = re.sub('[\"]{2,}', '\"', texto)
+        return texto
+    
     # Preparo inicial
     clausulas = []
     texto     = _validando_texto(texto)
@@ -55,12 +55,12 @@ def _definir_key_words(texto, add_clausulas):
             add_clausulas(clausulas, buff, OPERADOR[char]) # Adiciona às clausulas o buffer
             buff = '' #limpa o buffer
     add_clausulas(clausulas, buff, '') # Adiciona o restante do buffer
-    # Envolvver as clausulas em parênteses
-    return "(%s)" % (" ".join(clausulas))
+    # Envolver as clausulas em parênteses
+    return "( "+" ".join(clausulas)+" )"
 
 def _wheres_palavras_chave(texto):
 
-    def _adicionar_clausulas(lst_clausulas, palavra, operador):
+    def _adicionar_clausulas_postgresql(lst_clausulas, palavra, operador):
         query_re = "('%(inicio)s' || '%(palavra)s' || '%(fim)s')" % {
             #'palavra'  : del_acento(sql_escape(palavra)),
             'palavra'  : palavra,
@@ -69,36 +69,38 @@ def _wheres_palavras_chave(texto):
         } 
         lst_clausulas.append( """
             (
+                televisores.nome ~* %(query_re)s  OR
                 televisores.especificacao ~* %(query_re)s  /*OR*/
             )
             %(operador)s """ % {
-                'query_re': query_re,
+                'query_re' : query_re,
                 'operador' : operador
             } 
         )       
     
-    return _definir_key_words(texto, _adicionar_clausulas)
+    def _adicionar_clausulas_sqllite(lst_clausulas, palavra, operador):
+        lst_clausulas.append( """
+            (
+                televisores.nome like '"""+palavra+"""'  OR
+                televisores.especificacao like '"""+palavra+"""'
+            )
+             """ + operador +" "
+        )       
+    return _definir_key_words(texto, _adicionar_clausulas_sqllite)
     
 def _buscar_televisores(request):
-    palavras = request.POST.get('pesq_busca',"")
+    palavras = request.GET.get('pesq_busca',"")
     wheres   = _wheres_palavras_chave(palavras)
     
-    SQL = """
-         SELECT televisor.id
-         FROM televisor
-         %(where)s
-         order by televisor.nome
-    """ % {
-           'where' : " WHERE "+ wheres if wheres else "",
-    }
-    
-    return SQL
+    return """
+         SELECT televisores.id
+         FROM televisores
+         """+(" WHERE "+ wheres if wheres else "")+"""
+         order by televisores.nome
+    """ 
 
 # - Função principal
 def buscar_produtos(request):
-    ids = sql_to_dict(_buscar_televisores(request))
-    ids = map(lambda id: id["id"], ids)
-    televisores = Televisor.objects.filter(pk__in=ids)
-    # produto = buscar_produto(request) # para outros tipos
-    return televisores
+    televisores = Televisor.objects.raw(_buscar_televisores(request).replace("\n",""))
+    return Televisor.objects.filter(pk__in=[ t.id for t in televisores])
     

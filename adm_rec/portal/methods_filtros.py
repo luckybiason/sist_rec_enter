@@ -1,7 +1,7 @@
 #-*- coding: utf-8 -*-
-from methods_busca      import buscar_produtos
-from televisores.models import Televisor, Marca, TelevisorLoja, TipoTela
-from portal.models      import Comentario
+from busca.methods_busca         import buscar_produtos
+from televisores.models          import Televisor, Marca, TelevisorLoja, TipoTela
+from portal.models               import Comentario
 from adm_rec.utils.paginators    import makePaginator
 from televisores.methods_filtros import choices_with_qntd_marcas_from, choices_with_qntd_preco_from, \
                                         choices_with_qntd_tipos_tela_from, choices_with_qntd_infos_from,\
@@ -11,9 +11,10 @@ def selecionar(request):
     ''' Função de busca de produtos no site '''
     
     ## Seleção de Produtos
-    if (request.GET.get("pesq_busca","")): # Via busca por palavra chave
+    print "request.GET.get('pesq_busca',''): ",request.GET.get("pesq_busca","")
+    if request.GET.get("pesq_busca",""): # Via busca por palavra chave
         produtos = buscar_produtos(request)
-    elif (request.GET.get("ids_produtos","")): # Via página de vitrine / seleção
+    elif request.GET.get("ids_produtos",""): # Via página de vitrine / seleção
         produtos = Televisor.objects.filter(pk__in=request.GET.get("ids_produtos","").split(','))
     else:
         produtos = Televisor.objects.all() # Via 'Todos os produtos'
