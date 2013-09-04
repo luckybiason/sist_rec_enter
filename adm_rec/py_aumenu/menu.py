@@ -104,6 +104,12 @@ MENU = lambda :{
                          'url-name' : "usuario.listagem",
                          'perm_need'   : [''],
                      },
+                     {  
+                         'titulo'   : _(u"Propagandas"),
+                         'img'      : "img/users.png",
+                         'url-name' : "propagandas.listagem",
+                         'perm_need'   : [''],
+                     },
            ]  # Fim itens
         },  # Fim submenu cadastros
         {  # Item de menu

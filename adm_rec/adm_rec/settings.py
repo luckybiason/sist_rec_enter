@@ -115,10 +115,11 @@ INSTALLED_APPS = (
     'usuario',
     'televisores',
     'clientes',
+    'propagandas',
     # Portal
     'portal',            # App base do portal
     'busca' ,            # App com mecanismo de busca de produtos
-    # 'recomendacoes'     # Motor do sistema de recomendação
+    # 'recomendacoes'    # Motor do sistema de recomendação
 )
 
 TEMPLATE_CONTEXT_PROCESSORS = (

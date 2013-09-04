@@ -15,16 +15,17 @@ urlpatterns = patterns('',
     # Sistema de mensagens
     (r'adm/alerts_e_messages/',  include('alerts_e_messages.urls')),
     # Model de Dados
-    (r'^adm/usuario/',      include('usuario.urls')),
-    (r'^adm/lojas/',        include('lojas.urls')),
-    (r'^adm/televisores/',  include('televisores.urls')),
+    (r'^adm/usuario/',     include('usuario.urls')),
+    (r'^adm/lojas/',       include('lojas.urls')),
+    (r'^adm/televisores/', include('televisores.urls')),
+    (r'^adm/propagandas/', include('propagandas.urls')),
     
     ##### - Portal - #####
-    url(r'^$',    'adm_rec.views.portal',  name='portal'),
-    (r'^portal/', include('portal.urls')),
-    (r'^buscar/', include('busca.urls')),
+    url(r'^$',         'adm_rec.views.portal',  name='portal'),
+    (r'^portal/',      include('portal.urls')),
+    (r'^buscar/',      include('busca.urls')),
     # Model de Dados
-    (r'^clientes/', include('clientes.urls')),
+    (r'^clientes/',    include('clientes.urls')),
 )
 
 # Configuração de urls de arquivos estáticos e de mídia

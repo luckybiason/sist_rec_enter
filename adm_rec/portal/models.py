@@ -8,7 +8,7 @@ class Comentario(models.Model):
     nome       = models.CharField(max_length=50, verbose_name=__(u"Nome"))
     comentario = models.TextField(verbose_name=__(u"Comentário"))
     nota       = models.IntegerField(verbose_name=__(u"Nota"))
-    data       = models.DateField(verbose_name=__(u"Nota"), auto_now=True)
+    data       = models.DateField(verbose_name=__(u"Data cadastro"), auto_now=True)
     
     class Meta:
         verbose_name        = _(u'comentario')
