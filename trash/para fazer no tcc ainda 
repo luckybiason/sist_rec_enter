@@ -1,17 +1,4 @@
-TODO:
-Sistema de envio de email
-Criação de senha nova
-Conversao de senha em md5
-terminar a recuperação de senha apos isso
-
-O campos de senha na tela somente poderá aparecer para o usuário cujo perfil for aquele.
-
-remover o rodapé da listagem de usuarios.
-assim como o detalhe do mais.
-
-arrumar o sistema de autenticação.
-
-
+TODO
 
 
 ############################ PERMISSOES QUE FOI RETIRADO #############################

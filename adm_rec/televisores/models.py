@@ -40,7 +40,9 @@ class Marca(models.Model):
         return "marcas.listagem"
 
 class TipoTela(models.Model):
-    descricao = models.CharField(max_length=50, unique=True, verbose_name=__(u"Descrição"))
+    descricao  = models.CharField(max_length=50, unique=True, verbose_name=__(u"Descrição"))
+    imagem     = models.ImageField(upload_to='img_telas', blank=False, null=False, verbose_name=__(u"Imagem ilustrativa:"))
+    explicacao = models.TextField(verbose_name=__(u"Texto explicativo"))
     
     class Meta:
         verbose_name        = _(u'tipo de tela')
@@ -199,7 +201,14 @@ class Entrada(models.Model):
 ################################################################################
 ############################ - CADASTRO PRINCIPAL - ############################
 ################################################################################
-TIPO_ALIMENTACAO = [('1','110v'), ('2','220v'), ('b','Bivolt')]
+
+TIPO_ALIMENTACAO   = [
+ ('1','110v'), ('2','220v'), ('b','Bivolt')
+]
+
+RESOLUCOES_CHOICES = [
+ ('Normal','Normal'), ('HD','HD'), ('Full HD','Full HD')
+]
 
 class Televisor(models.Model):
     ## Dados Básicos
@@ -216,7 +225,7 @@ class Televisor(models.Model):
     potencia        = models.FloatField(verbose_name=__(u"Potência:"),     blank=True, null=True)
     ## Tela
     tipo_de_tela    = models.ForeignKey(TipoTela, blank=False, null=False, verbose_name=__(u"Tipo de tela:"))
-    resolucao       = models.CharField(max_length=150, verbose_name=__(u"Resolução"), blank=True, null=True)
+    resolucao       = models.CharField(max_length=150, verbose_name=__(u"Resolução"), blank=False, null=False, choices=RESOLUCOES_CHOICES)
     formato_tela    = models.CharField(max_length=150, verbose_name=__(u"Formato da tela:"), blank=True, null=True)
     consumo_energia = models.FloatField(verbose_name=__(u"Consumo Energ.:"), blank=True, null=True)
     ## Flags
