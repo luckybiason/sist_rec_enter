@@ -1,0 +1,24 @@
+.tv{
+	width:800px;
+	height:200px;
+	float:left;
+}
+.item-tv{
+	display:none;
+}
+.bullets{
+	width:800px;
+	height:30px;
+	float:left;
+}
+.bullet{
+	width:20px;
+	height:20px;
+	float:left;
+	margin-right:2px;
+	background:url('../img/bullet.png') center bottom;
+	position:relative;
+}
+.bullet-actived{
+	background:url('../img/bullet.png') center top;
+}

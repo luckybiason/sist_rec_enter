@@ -40,9 +40,9 @@ class Marca(models.Model):
         return "marcas.listagem"
 
 class TipoTela(models.Model):
-    descricao  = models.CharField(max_length=50, unique=True, verbose_name=__(u"Descrição"))
-    imagem     = models.ImageField(upload_to='img_telas', blank=False, null=False, verbose_name=__(u"Imagem ilustrativa:"))
-    explicacao = models.TextField(verbose_name=__(u"Texto explicativo"))
+    descricao     = models.CharField(max_length=50, unique=True, verbose_name=__(u"Descrição"))
+    #imagem        = models.ImageField(upload_to='img_telas', blank=False, null=False, verbose_name=__(u"Imagem ilustrativa:"))
+    #especificacao = models.TextField(verbose_name=__(u"Texto explicativo"))
     
     class Meta:
         verbose_name        = _(u'tipo de tela')

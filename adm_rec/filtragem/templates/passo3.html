@@ -1,0 +1,15 @@
+<div class="filtros_container">
+ 	<fieldset class='filtro_header'>
+ 		<span class="filtro_title">Passo 3</span>
+ 		<span class="filtro_quest"> - Quais os aparelhos que você pretende utilizar? </span>
+ 	</fieldset>
+ 	<fieldset class='filtro_choices'>
+ 		{% for aparelho in aparelhos %}
+ 		<input type="checkbox" value="{{ aparelho.0 }}" />{{ aparelho.1 }}
+ 		{% endfor %}
+ 	</fieldset>
+ 	<fieldset>
+ 		<input type="submit" value="Avançar" />
+ 	</fieldset>
+</div>
+ 

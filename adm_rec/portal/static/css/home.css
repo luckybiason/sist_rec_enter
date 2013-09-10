@@ -1,0 +1,35 @@
+
+
+
+#carrossel1 {
+    margin: 35px auto;
+    width: 870px;
+}
+#tv1{
+	margin:0 auto;
+	width: 800px;
+}
+.carousel_rec{
+	width:774px;
+}
+#carrossel2, #carrossel3{
+	float:left;
+}
+#carrossel2 .item-carousel{
+	height:85px;
+	overflow: hidden;
+}
+#carrossel2 {
+    margin-left: 36px;
+    margin-top: 59px;
+}
+#carrossel2 .prev, #carrossel2 .next {
+    top: 49px;
+}
+#pub{
+	float: right;
+    height: 250px;
+    margin-right: 57px;
+    width: 300px;
+	background: url("../img_portal/pub.jpg");
+}

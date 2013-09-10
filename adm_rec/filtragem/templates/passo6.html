@@ -1,0 +1,19 @@
+<div class="filtros_container">
+ 	<fieldset class='filtro_header'>
+ 		<span class="filtro_title">Passo 6</span>
+ 		<span class="filtro_quest"> - Quais os tipo de tela que você prefere? </span>
+ 	</fieldset>
+ 	<fieldset class='filtro_choices'>
+ 		{% for tipo in tipos %}
+ 		<input type="checkbox" value="{{ tipo.id }}" />{{ tipo.descricao }}
+ 		<img src='/media/{{ tipo.imagem }}' id="foto_tipo{{ tipo.id }}" width='150px'>
+ 		<div id="expl_tipo{{ tipo.id }}">
+ 			 {{ tipo.especificacao }}
+ 		</div>
+ 		{% endfor %}
+ 	</fieldset>
+ 	<fieldset>
+ 		<input type="submit" value="Pular" />
+ 		<input type="submit" value="Terminar" />
+ 	</fieldset>
+</div>

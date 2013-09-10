@@ -1,0 +1,15 @@
+<div class="filtros_container">
+ 	<fieldset class='filtro_header'>
+ 		<span class="filtro_title">Passo 5</span>
+ 		<span class="filtro_quest"> - Quais os tamanhos de tela que você prefere? </span>
+ 	</fieldset>
+ 	<fieldset class='filtro_choices'>
+ 		{% for tamanho in tamanhos %}
+ 		<input type="checkbox" value="{{ tamanho.0 }}" />{{ tamanho.1 }}
+ 		{% endfor %}
+ 	</fieldset>
+ 	<fieldset>
+ 		<input type="submit" value="Pular" />
+ 		<input type="submit" value="Avançar" />
+ 	</fieldset>
+</div>

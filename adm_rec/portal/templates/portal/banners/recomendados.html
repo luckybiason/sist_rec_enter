@@ -12,20 +12,16 @@ var carousel_rec = {
 ]
 };
 $(function(){
-create(carousel_rec.data, '#carrossel_rec');
+create(carousel_rec.data, '#carrossel1', 6);
 });
-
 </script>
-<div class="page-wrapper">
-	<div id="carrossel_rec" class="carousel_box">
-		<div class="carousel_header"  >
-			{% if client_id %}Recomendados para você{% else %}Principais televisores{% endif %}
-		</div>
+	<h2 class="title2">Principais Televisores</h2>
+	<div id="carrossel1" class="carousel_box">
 		<div id="carousel_rec">
 			<div href="#" class="prev-box">
 				<a href="#" alt="voltar" class="prev"></a>
 			</div>
-			<div class="carousel" id="imgsOffers">
+			<div class="carousel carousel_rec" id="imgsOffers">
 				<div class="carr offersCarr">
 					<!-- items -->
 				</div>
@@ -35,4 +31,3 @@ create(carousel_rec.data, '#carrossel_rec');
 			</div>
 		</div>
 	</div>
-</div>

@@ -1,0 +1,14 @@
+<div class="filtros_container">
+ 	<fieldset class='filtro_header'>
+ 		<span class="filtro_title">Passo 2</span>
+ 		<span class="filtro_quest"> - Quais os uso que você pretende para o televisor? </span>
+ 	</fieldset>
+ 	<fieldset class='filtro_choices'>
+ 		{% for uso in usos %}
+ 		<input type="checkbox" value="{{ uso.0 }}" />{{ uso.1 }}
+ 		{% endfor %}
+ 	</fieldset>
+ 	<fieldset>
+ 		<input type="submit" value="Avançar" />
+ 	</fieldset>
+</div>

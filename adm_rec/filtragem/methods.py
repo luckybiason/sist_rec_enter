@@ -1,5 +1,11 @@
 #-*- coding: utf-8 -*-
 from models import *
+from televisores.methods_filtros import filtrar_precos, filtrar_tipos_tela, get_max_min_preco_from_televisores
+from televisores.models          import Entrada
+
+#filtrar_precos(de=0, ate=0, televisores=None)
+#get_max_min_preco_from_televisores(televisores)
+#filtrar_tipos_tela(tipos, televisores=None)
 
 ##===============================##
 ## - Funções de classificação  - ##
@@ -49,6 +55,8 @@ def classifica_por_uso(televisor, usos):
         if USOS_PESOS[televisor.resolucao]>=USOS_PESOS[uso]:
             return True
 
+def classifica_por_aparelhos(televisor, entradas):
+    return True
 
 ##===============================##
 ## - Motores de classificação  - ##
@@ -69,3 +77,21 @@ def classificacao_uso(televisores, usos):
         if retorno:
             classificados.append(retorno)
     return classificados
+
+def classificacao_aparelhos(televisores, aparelhos):
+    
+    # Montar lista de conexoes
+    entradas_desc = list(set([ info[0] for (key,info) APARELHOS_INFO.items() if key in aparelhos ]))
+    entradas = []
+    for entrada in entradas_desc:
+        entradas += map( lambda entrada: entrada.entrada.id, Entrada.objects.filter(descricao__icontains=entrada) )
+    
+    # Filtragem
+    classificados =[]
+    for televisor in televisores:
+        classificado.append( classifica_por_aparelhos(televisor, entradas) )
+    
+    
+    
+    
+    

@@ -1,15 +1,11 @@
-<table style="width: 100%; margin: 0px; padding: 2px; background: #222222; height: 25px; color:white;">
-	<tr>
-		<td> 
+	<div class="page-wrapper">
 			{% if not ID_CLIENTE %}
 			    Olá, Visitante, Ainda não é cadastrado: 
 			    <a href="{% url clientes.cadastro %}">Clique aqui</a>
 			{% else %}
 			    Olá, {{ NM_CLIENTE }}. Seja Bem Vindo.
 			{% endif %}
-		</td>
- 
-		<td>
+
 			{% if not ID_CLIENTE %}
 			<span style="float:right; padding-right: 5px;">
 				<a href="{% url clientes.login %}"> Entrar</a>
@@ -19,8 +15,20 @@
 				<a href="{% url clientes.logout %}">Sair</a>
 			</span>
 			{% endif %}
-		</td>
-	</tr>
-</table>
-
-{% include 'busca/busca_form.html' %}
+</div>
+<div id="top" >
+		<div class="page-wrapper" id="header">
+			<h1>
+				<a href="#" title="No Alvo" class="logo">No alvo</a>
+			</h1>
+			<!--<nav>
+				<ul id="nav-top">
+					<li><a href="#" title="" class="item-nav-top">Inicio</a></li>
+					<li><a href="#" title="" class="item-nav-top">Recomendação</a></li>
+					<li><a href="#" title="" class="item-nav-top">Ultimas Noticias</a></li>
+					<li><a href="#" title="" class="item-nav-top">Fale Conosco</a></li>
+				</ul>
+			</nav>-->
+			{% include 'busca/busca_form.html' %}
+		</div>
+	</div>

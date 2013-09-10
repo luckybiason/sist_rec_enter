@@ -3,58 +3,33 @@
 {% load url from future %}
 
 {% block js_custom %}
-<script>
-	$(function() {
-	}); 
-</script>
+
 {% endblock %}
 
 {% block conteudo %}
 
-<div class="conteudo" style="margin-left: auto; margin-right: auto; width: 100%">
-	<!-- Rotativos-->
+<div class="page-wrapper">
 
-	<style>
-		#carrossel1, #carrossel2, #carrossel3, #carrossel_rec {
-			float: left;
-			margin-left: 30px;
-			margin-bottom: 10px;
-			background: whitesmoke;
-		}
-		#carrossel_rec .carousel {
-			width: 905px;
-			margin-top: 10px;
-		}
-	</style>
-
-	<table class="rotativos"   style="margin-left: auto; margin-right: auto;">
-		<tr>
-			<td colspan='2'> 
-				{% include "portal/banners/recomendados.html" %} 
-			</td>
-		</tr>
-		<tr>
-			<td colspan='2'>
-			<div class="banner_filtragem with_borders" style="margin-left: 30px; height:200px;">
-				{% include "portal/banners/filtragem_inteligente.html" %} 
-			</div>
-			</td>
-		</tr>
-
-		<tr>
-			<td>
-				<div class="rotativos" style="margin-left: auto; margin-right: auto">
-					{% include "portal/banners/principais_marcas.html" %}
-				</div>
-			</td>
-			<td>
-				<div class="rotativos" style="margin-left: auto; margin-right: auto">
-					{% include "portal/banners/principais_lojas.html" %}
-				</div>
-			</td>
-		</tr>
-	</table>
+	<!-- TV Banner -->
+	<div id="tv1">
+	    <div class="tv"></div>
+		<div class="bullets"></div>
+	</div>
+	{% include "portal/banners/recomendados.html" %}
+	{% include "portal/banners/filtragem_inteligente.html" %}
+	{% include "portal/banners/principais_marcas.html" %}
+	<div id="pub"></div>
 
 </div>
 
+<script>
+    var tv = {
+	    "data":[
+			{"url":"http://www.uol.com.br", "img":"/media/fake/banner1.jpg"},
+			{"url":"http://www.uol.com.br", "img":"/media/fake/banner2.jpg"}
+			
+		]
+	};
+</script>
+<script src="{{STATIC_PREFIX}}js/home.js"></script>
 {% endblock %}
