@@ -2,5 +2,6 @@
 <<<<<<<=HEAD
 >>>>>>>=4cba34d8bbe2cad70f6242a1a673193142a9dfe3
 eclipse.preferences.version=1
+encoding//adm_rec/adm_rec/settings.py=utf-8
 encoding//adm_rec/portal/models.py=utf-8
 encoding//adm_rec/televisores/models.py=utf-8

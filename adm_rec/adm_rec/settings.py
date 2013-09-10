@@ -119,6 +119,7 @@ INSTALLED_APPS = (
     # Portal
     'portal',            # App base do portal
     'busca' ,            # App com mecanismo de busca de produtos
+    'filtragem',         # App com mecanismos de filtragem e coleta de perfil
     # 'recomendacoes'    # Motor do sistema de recomendação
 )
 
