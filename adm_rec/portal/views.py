@@ -4,6 +4,7 @@ from django.shortcuts         import redirect,render
 from lojas.models             import Loja
 from methods_busca            import buscar_produtos
 from televisores.models       import Televisor, Marca, TelevisorLoja, TelevisorConexao, TelevisorItens
+from propagandas.models       import Propaganda
 from portal.models            import Comentario
 from adm_rec.utils.paginators import makePaginator
 from portal.methods_filtros   import selecionar, filtrar as filtrar_produtos, prepare, get_filtros
@@ -16,12 +17,18 @@ from portal.methods_filtros   import selecionar, filtrar as filtrar_produtos, pr
 def home(request):
     # Principais televisores
     televisores = Televisor.objects.all()
+    
     # Principais marcas
     marcas = Marca.objects.all()
+    
     # Principais lojas
     lojas = Loja.objects.all()
     for loja in lojas:
         loja.quantidade_prod = len(TelevisorLoja.objects.filter(loja=loja))
+        
+    # Propagandas
+    propagandas = Propaganda.objects.filter(is_ativo=True)
+    
     return render(request, 'portal/home.html', locals())
 
 def visualizar(request, id_televisor):

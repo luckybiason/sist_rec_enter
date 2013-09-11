@@ -6,10 +6,12 @@ from lojas.models import Loja
 from basiccrud.utils import get_boolean_icon
 
 class Propaganda(models.Model):
-    imagem        = models.ImageField(upload_to='img_prop', blank=True, null=True, verbose_name=__(u"Banner:"))
+    #imagem        = models.ImageField(upload_to='img_prop', blank=True, null=True, verbose_name=__(u"Banner:"))
+    imagem  = models.ImageField(upload_to='img_prop', verbose_name=__(u"Banner:"))
     loja          = models.ForeignKey(Loja, verbose_name=__(u"Loja:"))
     ordem         = models.IntegerField(verbose_name=__(u"Ordem:"))
     is_ativo      = models.BooleanField(verbose_name=__(u"Ativo?"), blank=True, default=False)
+    link          = models.CharField(max_length=200, verbose_name=__(u"Link:"))
     data_cadastro = models.DateField(verbose_name=__(u"Data cadastro"), auto_now=True)
     dias_expira   = models.IntegerField(verbose_name=__(u"Dias que expiram:"), default=1)
     

@@ -29,7 +29,7 @@
                   {% else %}
                     <img id='img' src='/static/imagem/sem_img.png' width='550px'>{{form.imagem.errors}}<br/>
                   {% endif %}
-                  <input id="id_imagem" type="file" name="imagem">
+                  <input id="id_imagem" type="file" name="imagem">{{form.imagem.errors}}
 				</div>
 			 </td>
 		 </tr>
@@ -49,7 +49,7 @@
              <td colspan="4">
 	            <fieldset class="fieldset_off">
              	    <input type='submit' value='Salvar' />
-                    <a href="{% url 'lojas.listagem' %}" class="ui-button ui-widget ui-state-default ui-corner-all" 
+                    <a href="{% url 'propagandas.listagem' %}" class="ui-button ui-widget ui-state-default ui-corner-all" 
                                                       style="padding: 5px">Listagem</a>
                 </fieldset>
               </td>

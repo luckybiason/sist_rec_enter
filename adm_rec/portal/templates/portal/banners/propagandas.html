@@ -1,0 +1,19 @@
+<script>
+	var tv = {
+		"data" : [
+        {% for propaganda in propagandas %}
+			{
+				"url" : "{{ propaganda.link }}",
+				"img" : "/media/{{ propaganda.imagem }}"
+			}
+			{% if not forloop.last %},{% endif %}
+        {% endfor %}
+        ]
+	}; 
+</script>
+
+<!-- TV Banner -->
+<div id="tv1">
+	<div class="tv"></div>
+	<div class="bullets"></div>
+</div>

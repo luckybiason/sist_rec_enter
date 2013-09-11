@@ -6,6 +6,11 @@
 .item-tv{
 	display:none;
 }
+.item-tv figure img{
+	height:200px;
+	width:680px;
+	
+}
 .bullets{
 	width:800px;
 	height:30px;
