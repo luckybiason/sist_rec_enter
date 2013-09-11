@@ -72,7 +72,7 @@ table.specs{
 #box-main{
 	width:700px;
 	float:right;
-	margin:25px 0px;
+	margin:25px 0;
 }
 #box-prod {
     float: left;
@@ -190,8 +190,7 @@ table.specs{
     text-align: right;
     text-decoration: none;
     width: 100%;
-    color:#BF0303;
-    margin: 15px 0;	
+    color:#BF0303;	
 }
 
 .coment {

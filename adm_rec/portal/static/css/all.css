@@ -223,6 +223,7 @@ a:hover{
 #open p{
 	color:#FFF;
 }
+/* END: TOP */
 #login{
 	float:right;
 }
@@ -265,100 +266,47 @@ a:hover{
 	font:14px Arial, Helvetica, sans-serif;
 	text-decoration:none;
 }
-/* END: TOP */
-	
-	
-	
-	/* OLD
-		#tudo {
-			display: 
-			         "a"  
-			         "c"  
-			         "e" 
-			         ;
-		}
-		body {
-			padding: 0px;
-			margin: 0px;
-			color:#000000;
-		}
-		#topo {
-			position : a;
-			z-index: 0;
-			margin: 0px;
-			width: 100%;
-			height: 170px;
-			background-color:  rgb(162, 181, 205);/*#4F94CD; /*#436EEE; /*#8B8B83;*/
-        /*    border-bottom: 5px solid #363636;
-            margin-bottom: 30px;
-		}
-		#menu {
-			position   : b;
-			text-align : center;
-		}
-		#principal {
-			position: c;
-			min-height: 400px;
-			text-align: center;
-			height: auto;
-		}
-		#rodape {
-			position: e;
-			width: 100%;
-			height: auto;
-            /*background: #CFCFCF;
-		}
 
-		#id_pesq_label {
-			width: 530px;
-			padding: 3px;
-			padding-right: 0px;
-			margin-right: 0px;
-			height: 35px;
-			font-size: medium;
-			border-bottom-left-radius: 6px;
-			border-bottom-right-radius: 6px;
-			border-top-left-radius: 6px;
-			border-top-right-radius: 6px;
-			vertical-align: middle;
-			background: white;
-			border: 1px solid #666666;
-		}
-		#id_buscar_img {
-			padding: 2px;
-			padding-right: 0px;
-			margin-right: 2px;
-			height: 34px;
-			font-size: medium;
-			float: left;
-		}
-		#id_pesq_busca {
-			border: none;
-			padding: 0px;
-			height: 34px;
-			float: left;
-			width: 400px;
-			color: gray;
-		}
-		#id_pesq_label span {
-			float: left;
-			height: 28px;
-			background: #8B0000;
-			color: white;
-			border-radius: 7px 7px 7px 7px;
-			vertical-align: middle;
-			text-transform: uppercase;
-			padding: 6px 6px 0px 6px;
-		}
-
-		.login_button {
-			border: 1px solid #CD853F;
-			padding: 3px;
-			height: 35px;
-			padding-left: 0px;
-			margin-left: 0px;
-			background-color: #EE9A49;
-			color: white;
-			font-size: medium;
-			width: 180px;
-		}*/
+.smart-filter {
+    border:1px #EAEAEA solid;
+    float: left;
+    margin-bottom: 31px;
+    margin-top: 9px;
+    padding: 15px 15px 30px;
+    width: 908px;
+    border-radius: 0 0 8px 8px;
+}
+.filter-title, .filter-quest{
+	float:left;
+	padding:10px 0;
+	width:100%;
+	font: 18px arial,serif;
+}
+.filter-title{
+	color:#414141;
+}
+.filter-quest{
+	font-size:16px;
+	
+}
+.input-filter{
+	padding:10px;
+	width:400px;
+	margin-bottom: 10px;
+}
+.btns-filter{
+	float:left;
+	margin-top:10px;
+}
+#id_email, #id_nome, #id_senha, #id_login{
+	padding:10px;
+	width:300px;
+}	
+.forms{
+	width:305px;
+	margin:0px auto;
+	padding:80px 0;
+}
+#top-login{
+	color:#414141;
+}

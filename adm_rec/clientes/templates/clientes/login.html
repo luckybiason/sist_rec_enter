@@ -2,23 +2,24 @@
 
 {% load url from future %}
 {% block conteudo %}
-
-<form enctype='multipart/form-data' method='post' id="form_login">
-	{% csrf_token %}
-	<p class="title_rodape">
-		Login
-	</p>
-	<br>
-	Login:
-	{{form.login}}{{form.login.errors}}
-	<br>
-	Senha:
-	{{form.senha}}{{form.senha.errors}}
-	<br>
-	<input type='submit' id="entrar" class='login_button_rdp' value='Login' class="ui-button ui-widget ui-state-default" />
-</form>
-<br>
-</form>
-
+<div class="page-wrapper">
+	<h2 class="title2">Login</h2>
+	<div class="forms">
+		<form enctype='multipart/form-data' method='post' id="form_login">
+			{% csrf_token %}
+			<p>
+				<label>Login</label><br />
+				{{form.login}}{{form.login.errors}}
+			</p>
+			<p>
+				<label>Senha</label><br />
+				{{form.senha}}{{form.senha.errors}}
+			</p>
+			<p class="btns-filter">
+				<input type='submit' id="entrar" class='login_button_rdp' value='Login' class="ui-button ui-widget ui-state-default" />
+			</p>
+		</form>
+	</div>
+</div>
 {% endblock %}
 

@@ -1,4 +1,26 @@
 <div class="filtros_container">
+    <p>
+ 		<span class="filter-title">Passo 3</span>
+ 		<span class="filter-quest"> Quais os aparelhos que você pretende utilizar? </span>
+ 	</p>
+ 	<p>
+ 		
+ 		<input type="checkbox" value="0" />item 1 <br />
+ 		<input type="checkbox" value="1" />item 2 <br />
+ 		<input type="checkbox" value="2" />item 3 <br />
+ 		<input type="checkbox" value="3" />item 4 <br />
+ 		
+ 		{% for aparelho in aparelhos %}
+ 		<input type="checkbox" value="{{ aparelho.0 }}" />{{ aparelho.1 }}
+ 		{% endfor %}
+ 	</p>
+ 	<p class="btns-filter">
+ 		<input type="submit" value="Avançar &gt;" />
+ 	</p>
+</div>
+
+<!--
+<div class="filtros_container">
  	<fieldset class='filtro_header'>
  		<span class="filtro_title">Passo 3</span>
  		<span class="filtro_quest"> - Quais os aparelhos que você pretende utilizar? </span>
@@ -12,4 +34,4 @@
  		<input type="submit" value="Avançar" />
  	</fieldset>
 </div>
- 
+-->
