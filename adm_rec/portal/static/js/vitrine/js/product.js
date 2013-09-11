@@ -12,6 +12,7 @@ $(function(){
     });
      
 	$('.link-coment').on('click', function(e) {
+		e.preventDefault();
 		showHide();
 	});
 });

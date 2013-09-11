@@ -1,4 +1,5 @@
-	<div class="page-wrapper">
+<div class="page-wrapper">
+	<p id="top-login">
 			{% if not ID_CLIENTE %}
 			    Olá, Visitante, Ainda não é cadastrado: 
 			    <a href="{% url clientes.cadastro %}">Clique aqui</a>
@@ -12,8 +13,9 @@
 			</span>
 			{% else %}
 			<span style="float:right; padding-right: 5px;"> 
-				<a href="{% url clientes.logout %}">Sair</a>
-			</span>
+			<a href="{% url clientes.logout %}">Sair</a>
+		</span>
+	</p>
 			{% endif %}
 </div>
 <div id="top" >

@@ -1,4 +1,27 @@
 <div class="filtros_container">
+    <p>
+ 		<span class="filter-title">Passo 2</span>
+ 		<span class="filter-quest"> - Quais os uso que você pretende para o televisor? </span>
+ 	</p>
+ 	<p>
+ 		
+ 		<input type="checkbox" value="0" />item 1 <br />
+ 		<input type="checkbox" value="1" />item 2 <br />
+ 		<input type="checkbox" value="2" />item 3 <br />
+ 		<input type="checkbox" value="3" />item 4 <br />
+ 		
+ 		{% for uso in usos %}
+ 		<input type="checkbox" value="{{ uso.0 }}" />{{ uso.1 }}
+ 		{% endfor %}
+ 	</p>
+ 	<p class="btns-filter">
+ 		<input type="submit" value="Avançar &gt;" />
+ 	</p>
+</div>
+
+
+<!--
+<div class="filtros_container">
  	<fieldset class='filtro_header'>
  		<span class="filtro_title">Passo 2</span>
  		<span class="filtro_quest"> - Quais os uso que você pretende para o televisor? </span>
@@ -12,3 +35,4 @@
  		<input type="submit" value="Avançar" />
  	</fieldset>
 </div>
+-->
