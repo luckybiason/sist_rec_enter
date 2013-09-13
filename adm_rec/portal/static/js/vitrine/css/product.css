@@ -4,7 +4,7 @@ list-style: none;
 table.specs{
 	width: 100%;
 	border: 1px solid #909FB2;
-	/*float:left;*/
+	float:left;
 }
 .spec-name, .spec-value{
 	width:38%;
@@ -159,9 +159,39 @@ table.specs{
 	background: -ms-linear-gradient(top,  #e84b17 0%,#cf0404 100%); /* IE10+ */
 	background: linear-gradient(to bottom,  #e84b17 0%,#cf0404 100%); /* W3C */
 	filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#e84b17', endColorstr='#cf0404',GradientType=0 ); /* IE6-9 */
+}
+.img-product{
+	float:left;
 
 }
+.img-prod{
+	width:200px;
+	height:200px;	
+	
+}
+#info-prod-inicial{
+    display: table-cell;
+    height: 200px;
+    vertical-align: middle;
+    width: 500px;
+}
 
+.range-price, .view-prod{
+	color: #025EC7;
+    font: 20px arial,Helvetica,serif;
+    text-align: center;
+    line-height:25px;
+}
+.view-prod{
+	color: #414141;
+	font-size:16px;
+}
+.parag-desc {
+    border: 1px solid #CCCCCC;
+    border-radius: 5px 5px 5px 5px;
+    margin: 36px 0;
+    padding: 22px;
+}
 /*INI: NAV PROD*/
 .item-nav-first{
 	border-top: 1px solid #CCC;
@@ -218,4 +248,11 @@ table.specs{
 .show-coment{
 	display: block;
     margin: 0;
+}
+
+.grafic{
+	width:300px;
+	height:150px;
+	margin:0px auto;
+	border:1px solid #CCC;
 }
