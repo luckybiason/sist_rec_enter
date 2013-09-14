@@ -202,6 +202,70 @@ def choices_with_qntd_tipos_tela_from(televisores, pelo_menos_um=True):
     
     return choices
 
+########## -  Filtragem Menu de Tipos de Tela (FIM) - ##########
+################################################################
+
+
+#############################################################
+########## -  Filtragem Tamanho de Tela (INICIO) - ##########
+
+def filtrar_tam_tela(tams, televisores=None):
+    ''' Filtragem por tamanho de tela ''' 
+    if not televisores:
+        return Televisor.objects.filter(polegadas__in=tams)
+    
+    return filter(lambda tv: tv.polegadas in tams , televisores)
+
+def quantidade_por_tam_tela(tams, televisores=None):
+    ''' Retorna a quantidade de televisores na coleção ou banco de um determinado tamanho '''
+    return len(filtrar_tam_tela(tams, televisores))
+
+def choices_tam_tela(pelo_menos_um=False,):
+    ''' 
+        Retorna um choice para os tamanhos de tela cadastradas no banco de dados.
+        Ao ser passado o parâmetro pelo_menos_um (opcional) como True, retorna apenas os tamanhos com 
+        pelo menos um televisor cadastrado com eles.
+    '''    
+    if pelo_menos_um:
+        return tuple([ (tv.polegadas, tv.polegadas) for tv in Televisores.objects.all() if quantidade_por_tam_tela([tamanho])  ])
+    
+    return tuple([ (tv.polegadas, tv.polegadas) for tv in Televisores.objects.all() ])
+
+def choices_with_qntd_tipos_tela(televisores):
+    ''' 
+        Retorna um choice com quantidade para os tipos de tela cadastrados no banco de dados.
+    '''    
+    return [ (tipo.id, tipo.descricao,quantidade_por_tipos_tela([tipo], televisores) )  for tipo in TipoTela.objects.all() ]
+
+def choices_tipos_tela_from(televisores, pelo_menos_um=False):
+    ''' 
+        Retorna um choice para os tipos de tela cadastrados dos televisores passados.
+        Ao ser passado o parâmetro pelo_menos_um (opcional) como True, retorna apenas os tipos de tela com 
+        pelo menos um televisor cadastrado com elas.
+    '''    
+    if pelo_menos_um:
+        return tuple(set([ (tel.tipo_de_tela.id, tel.tipo_de_tela.descricao) for tel in televisores \
+                                                                             if quantidade_por_tipos_tela([tel.tipo_de_tela]) ]))
+    
+    return tuple(set([ (tel.tipo_de_tela.id, tel.tipo_de_tela.descricao)  for tel in televisores ]))
+
+def choices_with_qntd_tipos_tela_from(televisores, pelo_menos_um=True):
+    ''' 
+        Retorna um choice com quantidade para marcas cadastradas nos televisores.
+        Ao ser passado o parâmetro pelo_menos_um (opcional) como True, retorna apenas as marcas com 
+        pelo menos um televisor cadastrado com elas.
+    '''    
+    choices = list(set([ (tel.tipo_de_tela.id, 
+                          tel.tipo_de_tela.descricao,
+                          quantidade_por_tipos_tela([tel.tipo_de_tela], televisores) ) for tel in televisores ]))
+    
+    if pelo_menos_um:
+        return filter(lambda tela: tela[2]!=0, choices)
+    
+    return choices
+
+########## -  Filtragem Tamanho de Tela (FIM) - ##########
+##########################################################
 
 ###################################################################
 ########### -  Filtragem Menu de Informações (INICIO) - ###########

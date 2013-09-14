@@ -1,13 +1,17 @@
-<div class="filtros_container">
-    <p>
- 		<span class="filter-title">Passo 1</span>
- 		<span class="filter-quest"> - Qual a distância entre o televisor e seu assento? </span>
- 	</p>
- 	<p>
- 		<input type="number" value="" required name='distancia' id='id-distancia' class="input-filter"/>
- 		<label for='id-distance'>distância (em metros):</label>
- 	</p>
- 	<p class="btns-filter">
- 		<input type="submit" value="Avançar &gt;" />
- 	</p>
-</div>
+{% load url from future %}
+<form name="form_pass01"  id="form_passo01" method="post" action="{% url 'filtragem.passo01' %}">
+	{% csrf_token %}
+	<div class="filtros_container">
+		<p>
+			<span class="filter-title">Passo 1</span>
+			<span class="filter-quest"> - Qual a distância entre o televisor e seu assento? </span>
+		</p>
+		<p>
+			<input type="number" value="" name='distancia' id='id-distancia' class="input-filter" />
+			<label for='id-distance'>distância (em metros):</label>
+		</p>
+		<p class="btns-filter">
+			<input type="submit" value="Avançar &gt;" />
+		</p>
+	</div>
+</form>

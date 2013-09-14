@@ -1,37 +1,26 @@
-<div class="filtros_container">
-    <p>
- 		<span class="filter-title">Passo 3</span>
- 		<span class="filter-quest"> Quais os aparelhos que você pretende utilizar? </span>
- 	</p>
- 	<p>
- 		
- 		<input type="checkbox" value="0" />item 1 <br />
- 		<input type="checkbox" value="1" />item 2 <br />
- 		<input type="checkbox" value="2" />item 3 <br />
- 		<input type="checkbox" value="3" />item 4 <br />
- 		
- 		{% for aparelho in aparelhos %}
- 		<input type="checkbox" value="{{ aparelho.0 }}" />{{ aparelho.1 }}
- 		{% endfor %}
- 	</p>
- 	<p class="btns-filter">
- 		<input type="submit" value="Avançar &gt;" />
- 	</p>
-</div>
+{% extends "portal/base_portal.html" %}
 
-<!--
-<div class="filtros_container">
- 	<fieldset class='filtro_header'>
- 		<span class="filtro_title">Passo 3</span>
- 		<span class="filtro_quest"> - Quais os aparelhos que você pretende utilizar? </span>
- 	</fieldset>
- 	<fieldset class='filtro_choices'>
- 		{% for aparelho in aparelhos %}
- 		<input type="checkbox" value="{{ aparelho.0 }}" />{{ aparelho.1 }}
- 		{% endfor %}
- 	</fieldset>
- 	<fieldset>
- 		<input type="submit" value="Avançar" />
- 	</fieldset>
+{% load url from future %}
+{% block conteudo %}
+<div style="height: 250px!important;">
+	<form name="form_pass02"  id="form_passo02" method="post" action="{% url 'filtragem.passo02' %}">
+		{% csrf_token %}
+		<input type="hidden" value="{{ televisores_ids }}" name='tvs_ids'/>
+		<div class="filtros_container">
+			<p>
+				<span class="filter-title">Passo 3</span>
+				<span class="filter-quest"> Quais os aparelhos que você pretende utilizar? </span>
+			</p>
+			<p>
+				{% for aparelho in aparelhos %}
+				<input type="checkbox" value="{{ aparelho.0 }}" name='aparelhos' />
+				{{ aparelho.1 }}
+				{% endfor %}
+			</p>
+			<p class="btns-filter">
+				<input type="submit" value="Avançar &gt;" />
+			</p>
+		</div>
+	</form>
 </div>
--->
+{% endblock %}

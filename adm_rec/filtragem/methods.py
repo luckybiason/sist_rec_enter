@@ -1,4 +1,5 @@
 #-*- coding: utf-8 -*-
+import pdb
 from models import *
 from televisores.methods_filtros import filtrar_precos, filtrar_tipos_tela, get_max_min_preco_from_televisores
 from televisores.models          import Entrada
@@ -24,7 +25,7 @@ def classifica_por_distancia(televisor,distancia):
        Caso a porcentagem seja entre 20% e 49%,  a marca será “Inadequada”.      
     '''
     # Calculo da porcentagem de adequação a distância
-    tamanho_ideal = televisor.polegadas*4.14
+    tamanho_ideal = (televisor.polegadas*4.14)/100 #(cm/100) = m
     porcentagem   = (distancia*100)/tamanho_ideal
     
     # Classificação
@@ -52,8 +53,8 @@ def classifica_por_uso(televisor, usos):
         return False
     
     for uso in usos:
-        if USOS_PESOS[televisor.resolucao]>=USOS_PESOS[uso]:
-            return True
+        if RESOLUCAO_PESOS[televisor.resolucao]>=USOS_PESOS[uso]:
+            return televisor
 
 def classifica_por_aparelhos(televisor, entradas):
     return True
@@ -72,6 +73,7 @@ def classificacao_distancia(televisores, distancia):
 
 def classificacao_uso(televisores, usos):
     classificados = []
+    
     for televisor in televisores:
         retorno = classifica_por_uso(televisor,usos)
         if retorno:
@@ -81,7 +83,7 @@ def classificacao_uso(televisores, usos):
 def classificacao_aparelhos(televisores, aparelhos):
     
     # Montar lista de conexoes
-    entradas_desc = list(set([ info[0] for (key,info) APARELHOS_INFO.items() if key in aparelhos ]))
+    entradas_desc = list(set([ info[0] for (key,info) in APARELHOS_INFO.items() if key in aparelhos ]))
     entradas = []
     for entrada in entradas_desc:
         entradas += map( lambda entrada: entrada.entrada.id, Entrada.objects.filter(descricao__icontains=entrada) )
@@ -90,8 +92,5 @@ def classificacao_aparelhos(televisores, aparelhos):
     classificados =[]
     for televisor in televisores:
         classificado.append( classifica_por_aparelhos(televisor, entradas) )
-    
-    
-    
     
     

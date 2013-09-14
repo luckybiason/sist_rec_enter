@@ -20,14 +20,13 @@ urlpatterns = patterns('',
     (r'^adm/lojas/',       include('lojas.urls')),
     (r'^adm/televisores/', include('televisores.urls')),
     (r'^adm/propagandas/', include('propagandas.urls')),
+    (r'^clientes/',        include('clientes.urls')),
     
     ##### - Portal - #####
-    url(r'^$',         'adm_rec.views.portal',  name='portal'),
-    (r'^portal/',      include('portal.urls')),
-    (r'^buscar/',      include('busca.urls')),
-    
-    # Model de Dados
-    (r'^clientes/',    include('clientes.urls')),
+    url(r'^$',       'adm_rec.views.portal',  name='portal'),
+    (r'^portal/',    include('portal.urls')),
+    (r'^buscar/',    include('busca.urls')),
+    (r'^filtragem/', include('filtragem.urls')),
 )
 
 # Configuração de urls de arquivos estáticos e de mídia

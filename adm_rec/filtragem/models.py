@@ -38,4 +38,4 @@ APARELHOS_INFO = {
  "TV a cabo HD" : ["HDMI"],
 }
 
-APARELHOS_CHOICES = ( (key,key) for (key,info) in APARELHOS_INFO )
+APARELHOS_CHOICES = ( (key,key) for (key,info) in APARELHOS_INFO.items() )

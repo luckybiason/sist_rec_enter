@@ -9,19 +9,17 @@ from portal.models import Comentario
 ################################################################################
 
 class Cliente(models.Model):
-    ## Dados Básicos (cadastro)
+    ## - Dados Básicos (cadastro)
     nome    = models.CharField(max_length=50,  verbose_name=__(u"Nome:"))
     email   = models.CharField(max_length=60,  verbose_name=__(u"Email:"), unique=True)
     senha   = models.CharField(max_length=15,  verbose_name=__(u"Senha:"))
     
-    ## Perfil Filtragem
-    # ... a fazer
-    # usos = models.CharField(max_length=50) # Códigos dos usos
-    # tip_telas = models.CharField(max_length=50) # Códigos dos tipos de tela
-    # tamanho 
-    # preco_min = models.FloatField(default=0) # Preço Minimo
-    # preco_max = models.FloatField(default=0) # Preço Máximo
-    
+    ## - Perfil Filtragem (armazena os filtros do usuario)
+    distancias = models.IntegerField()            # Distância
+    usos       = models.CharField(max_length=200) # Códigos dos Usos
+    tip_telas  = models.CharField(max_length=200) # Códigos dos Tipos de Tela
+    preco_min  = models.FloatField(default=0)     # Preço Minimo
+    preco_max  = models.FloatField(default=0)     # Preço Máximo
     
     class Meta:
         verbose_name        = _(u'cliente')
@@ -30,7 +28,6 @@ class Cliente(models.Model):
 
     def __unicode__(self):
         return self.nome
-    
     
 class ClienteComentarios(models.Model):
     comentario = models.ForeignKey(Comentario, blank=False, null=False)
