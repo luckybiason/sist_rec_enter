@@ -2,8 +2,8 @@
 from django.db import models
 
 USOS_INFO = {    
-   "Jogos"     : [1],   
-   "Blue-Ray"  : [2],
+   "Jogos"     : [2],   
+   "Blue-Ray"  : [1],
    "HDTV"      : [2],    
    "TV Aberta" : [3],
    "TV a cabo" : [3], 
@@ -19,12 +19,12 @@ RESOLUCAO_PESOS ={
 }
 
 USOS_CHOICES = [
-   ( "DVD",       "DVD" ),
-   ( "Blue-Ray",  "Blue-Ray" ),
-   ( "HDTV",      "HDTV" ),
-   ( "TV Aberta", "TV Aberta" ),
-   ( "TV a cabo", "TV a cabo" ),
-   ( "Jogos",     "Jogos" ),
+   ( "DVD",       "DVD",       "img/dvd_icon.png"),
+   ( "Blue-Ray",  "Blue-Ray",  "img/blu-ray_icon.png"),
+   ( "HDTV",      "HDTV",      "img/HD_icon.png"),
+   ( "TV Aberta", "TV Aberta", "img/tva_con.png" ),
+   ( "TV a cabo", "TV a cabo", "img/tvc_icon.png" ),
+   ( "Jogos",     "Jogos",     "img/jogos2_icon.png" ),
 ]
 
 APARELHOS_INFO = {

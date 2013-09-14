@@ -7,5 +7,5 @@ class ClienteForm(forms.ModelForm):
         model = Cliente
       
 class ClienteLoginForm(forms.Form):
-    login = forms.CharField(required=True)
+    login = forms.CharField(required=True, widget=forms.TextInput(attrs={ 'autocomplete' : "false" }))
     senha = forms.CharField(max_length=32, widget=forms.PasswordInput) 

@@ -15,11 +15,12 @@ class Cliente(models.Model):
     senha   = models.CharField(max_length=15,  verbose_name=__(u"Senha:"))
     
     ## - Perfil Filtragem (armazena os filtros do usuario)
-    distancias = models.IntegerField()            # Distância
     usos       = models.CharField(max_length=200) # Códigos dos Usos
-    tip_telas  = models.CharField(max_length=200) # Códigos dos Tipos de Tela
+    aparelhos  = models.CharField(max_length=200) # Códigos dos Aparelhos
     preco_min  = models.FloatField(default=0)     # Preço Minimo
     preco_max  = models.FloatField(default=0)     # Preço Máximo
+    tip_telas  = models.CharField(max_length=200) # Códigos dos Tipos de Tela
+    distancia  = models.IntegerField()            # Distância
     
     class Meta:
         verbose_name        = _(u'cliente')

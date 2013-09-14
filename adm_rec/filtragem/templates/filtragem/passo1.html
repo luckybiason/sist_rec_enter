@@ -1,17 +1,23 @@
 {% load url from future %}
-<form name="form_pass01"  id="form_passo01" method="post" action="{% url 'filtragem.passo01' %}">
+<form name="form_pass02"  id="form_passo01" method="post" action="{% url 'filtragem.passo01' %}">
 	{% csrf_token %}
+	<input type="hidden" value="{{ televisores_ids }}" name='tvs_ids'/>
 	<div class="filtros_container">
 		<p>
 			<span class="filter-title">Passo 1</span>
-			<span class="filter-quest"> - Qual a distância entre o televisor e seu assento? </span>
+			<span class="filter-quest"> - Quais os uso que você pretende para o televisor? </span>
 		</p>
 		<p>
-			<input type="number" value="" name='distancia' id='id-distancia' class="input-filter" />
-			<label for='id-distance'>distância (em metros):</label>
+			{% for uso in usos %}
+			<input type="checkbox" value="{{ uso.1 }}" name='usos'/>
+			<span>
+				{{ uso.1 }}<br>
+				<img id='img' src='{{ STATIC_PREFIX }}{{ uso.2 }}' width='80px'/> <br>
+			</span>
+			{% endfor %}
 		</p>
 		<p class="btns-filter">
-			<input type="submit" value="Avançar &gt;" />
+			<input type="submit" value="Avançar &gt;" class='b_button'/>
 		</p>
 	</div>
 </form>

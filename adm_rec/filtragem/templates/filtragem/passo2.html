@@ -3,23 +3,27 @@
 {% load url from future %}
 {% block conteudo %}
 <div style="height: 250px!important;">
-<form name="form_pass02"  id="form_passo02" method="post" action="{% url 'filtragem.passo02' %}">
-	{% csrf_token %}
-	<input type="hidden" value="{{ televisores_ids }}" name='tvs_ids'/>
-	<div class="filtros_container">
-		<p>
-			<span class="filter-title">Passo 2</span>
-			<span class="filter-quest"> - Quais os uso que você pretende para o televisor? </span>
-		</p>
-		<p>
-			{% for uso in usos %}
-			<input type="checkbox" value="{{ uso.1 }}" name='usos'/>{{ uso.1 }}
-			{% endfor %}
-		</p>
-		<p class="btns-filter">
-			<input type="submit" value="Avançar &gt;" />
-		</p>
-	</div>
-</form>
+	<form name="form_pass02"  id="form_passo02" method="post" action="{% url 'filtragem.passo02' %}">
+		{% csrf_token %}
+		<input type="hidden" value="{{ televisores_ids }}" name='tvs_ids'/>
+		<div class="filtros_container">
+			<p>
+				<span class="filter-title">Passo 2</span>
+				<span class="filter-quest"> Quais os aparelhos que você pretende utilizar? </span>
+			</p>
+			<p>
+				{% for aparelho in aparelhos %}
+				<input type="checkbox" value="{{ aparelho.0 }}" name='aparelhos' />
+				{{ aparelho.1 }}
+				{% endfor %}
+			</p>
+			<p class="btns-filter">
+				<a href="{% url 'portal.home' %}" class='buscar_button'>Anterior</a>
+				<input type="submit" value="Avançar &gt;" class='b_button' />
+			</p>
+		</div>
+	</form>
 </div>
+<br><br>
+{% include 'filtragem/teste_filtragem.html' %}
 {% endblock %}

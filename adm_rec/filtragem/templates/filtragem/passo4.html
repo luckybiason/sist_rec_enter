@@ -1,17 +1,28 @@
+{% extends "portal/base_portal.html" %}
+
+{% load url from future %}
+{% block conteudo %}
 <div class="filtros_container">
  	<p>
- 		<span class="filter-title">Passo 4</span>
- 		<span class="filter-quest">Qual a faixa de preço desejada? </span>
+ 		<span class="filter-title">Passo 5</span>
+ 		<span class="filter-quest"> - Quais os tamanhos de tela que você prefere? </span>
  	</p>
  	<p>
- 		<label for='de'>de R$:</label>
- 		<input type="text" value="" name='de' id='id_de'/>
-
- 		<label for='ate'>até R$:</label>
- 		<input type="text" value="" name='ate' id='id_ate'/>
+ 		<input type="checkbox" value="0" />item 1 <br />
+ 		<input type="checkbox" value="1" />item 2 <br />
+ 		<input type="checkbox" value="2" />item 3 <br />
+ 		<input type="checkbox" value="3" />item 4 <br />
+ 		{% for tamanho in tamanhos %}
+ 		<input type="checkbox" value="{{ tamanho.0 }}" />{{ tamanho.1 }}
+ 		{% endfor %}
  	</p>
  	<p class="btns-filter">
- 		<input type="submit" value="Pular" />
- 		<input type="submit" value="Avançar &gt;" />
+		<a href="{% url 'portal.home' %}">Anterior</a>
+		<a href="{% url 'portal.home' %}">Pular</a>
+ 		<input type="submit" value="Avançar &gt" />
  	</p>
 </div>
+
+<br><br>
+{% include 'filtragem/teste_filtragem.html' %}
+{% endblock %}

@@ -8,6 +8,7 @@ from propagandas.models       import Propaganda
 from portal.models            import Comentario
 from adm_rec.utils.paginators import makePaginator
 from portal.methods_filtros   import selecionar, filtrar as filtrar_produtos, prepare, get_filtros
+from filtragem.models         import USOS_CHOICES
 
 #from django.contrib.auth.decorators import login_required
 #@login_required
@@ -29,7 +30,11 @@ def home(request):
     # Propagandas
     propagandas = Propaganda.objects.filter(is_ativo=True)
     
+    # Informações para a filtragem
+    usos = USOS_CHOICES
+    
     return render(request, 'portal/home.html', locals())
+
 
 def visualizar(request, id_televisor):
     ''' Função que carrega um televisor e seus detalhes '''
@@ -38,10 +43,18 @@ def visualizar(request, id_televisor):
         return redirect('usuario.listagem')
     
     televisor = Televisor.objects.get(pk=id_televisor)
+    televisor = prepare(request, [televisor])[0]
     lojas     = TelevisorLoja.objects.filter(televisor=televisor)
     conexoes  = TelevisorConexao.objects.filter(televisor=televisor)
     itens     = TelevisorItens.objects.filter(televisor=televisor)
     coments   = Comentario.objects.filter(televisor=televisor)
+    qntde_coments = len(coments)
+    
+    televisor.nota5 = coments.filter(nota=5).count()
+    televisor.nota4 = coments.filter(nota=4).count()
+    televisor.nota3 = coments.filter(nota=3).count()
+    televisor.nota2 = coments.filter(nota=2).count()
+    televisor.nota1 = coments.filter(nota=1).count()
     
     return render(request, 'portal/produtos/detalhes_televisores.html', locals())
 
@@ -92,13 +105,9 @@ def lista_comentarios(request):
     
 @ajax_json_view
 def filtrar(request):   
-        
     ## Seleção e filtragem
     produtos = selecionar(request)
     produtos = filtrar_produtos(request, produtos)
-    
-    ## Cache
-    #id_produtos = ",".join( [ str(obj.id) for obj in produtos] )
     
     ## Paginação e Informações adicionais
     num_pag, page, paginator = makePaginator(request,produtos,group=8)

@@ -1,0 +1,28 @@
+{% for produto in classificados %}
+<div class="">
+	<a  href="{% url portal.visualizar produto.id %}"> 
+		<span class="imagem"> 
+			{% if produto.imagem %} 
+			<img id='img' src='/media/{{ produto.imagem }}' width='80px'> 
+			{% else %} 
+			<img id='img' src='/static/imagem/sem_img.png' width='80px'> 
+			{% endif %} 
+		</span> 
+		<span class="infos-vitrine-prod">
+			<p class="description-prod">
+				{{ produto.nome }}
+			</p>
+			<p class="price-vitrine-prod">
+				de R$ {{ produto.menor_preco }} até R$ {{ produto.maior_preco }}
+			</p> 
+			<span class="nota"> Avaliação: 
+				{{ produto.adequacao }}
+			</span> 
+		</span> 
+</div>
+{% empty %}
+
+<div class="">
+	<a> <span class="no_results"> Nenhum televisor encontrado com os filtros selecionados. </span> </a>
+</div>
+{% endfor %}

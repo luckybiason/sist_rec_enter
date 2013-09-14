@@ -6,13 +6,36 @@
 	</div>
 
 	<div id="info-prod-inicial">
-		<p class="range-price">de {{ televisor.preco_min }} ate {{ televisor.preco_max }}</p>
-		<p class="view-prod">produto visitado 9009 vezes <br />com 10 comentarios</p>
+		<p class="range-price">
+			Variação de preço de R$ {{ televisor.menor_preco }} ate R$ {{ televisor.maior_preco }}
+		</p>
+		<p class="view-prod">
+			Visitado {{ televisor.visitado|default:'0' }} vezes
+			<br/>
+			Recomendado {{ televisor.recomendado|default:'0' }} vezes
+			<br/>
+			com {{ qntde_coments }} comentarios
+		</p>
+		{% if televisor.site %}
+		<p class="view-prod">
+			<a href="{{ televisor.site }}">Acesse o site do produto</a>
+		</p>
+		{% endif %}
 	</div>
-
+	
 	<p class="parag-default parag-desc">
-		There are many variations of passages of Lorem Ipsum available, but the majority have suffered alteration in some form, by injected humour, or randomised words which don't look even slightly believable. If you are going to use a passage of Lorem Ipsum, you need to be sure there isn't anything embarrassing hidden in the middle of text. All the Lorem Ipsum generators on the Internet tend to repeat predefined chunks as necessary, making this the first true generator on the Internet. It uses a dictionary of over 200 Latin words, combined with a handful of model sentence structures, to generate Lorem Ipsum which looks reasonable. The generated Lorem Ipsum is therefore always free from repetition, injected humour, or non-characteristic words etc.
-		{{ televisor.especificacao }}
+		{{ televisor.especificacao|default:"Sem especificação cadastrada." }}
 	</p>
+    
+    {% if televisor.video %}
+	<div id="info-prod-inicial-video">
+		<p class="parag-default parag-video">
+			<iframe width="560" height="315" src="{{ televisor.video }}"
+			frameborder="0" allowfullscreen></iframe>
+		</p>
+	</div>
+    {% endif %}
+
 	{% include 'portal/grafico/metricas.html' %}
+
 </div>

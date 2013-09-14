@@ -8,11 +8,11 @@
 		<form enctype='multipart/form-data' method='post' id="form_login">
 			{% csrf_token %}
 			<p>
-				<label>Login</label><br />
+				<label>Email:</label><br />
 				{{form.login}}{{form.login.errors}}
 			</p>
 			<p>
-				<label>Senha</label><br />
+				<label>Senha:</label><br />
 				{{form.senha}}{{form.senha.errors}}
 			</p>
 			<p class="btns-filter">

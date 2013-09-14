@@ -25,16 +25,19 @@ def login(request):
         if form.is_valid():
             cli = form.cleaned_data
             ## - Validar email
+            #import pdb; pdb.set_trace()
             if not Cliente.objects.filter(email=cli['login']).exists():
                 messages.error(request, u'Não existe registro cadastrado com esse email. Cadastre-se ou tente outro email.')
-            ## - Recuperar cadastro
-            cliente = Cliente.objects.get(email=cli['login'])
-            ## - Validar senha
-            if not cli["senha"]==cliente.senha:
-                messages.error(request, u'Senha Inválidal.')
-            ## - Autenticar e redirecionar
-            request.session["id_cliente"] = cliente.id
-            return redirect('/')
+            else:    
+                ## - Recuperar cadastro
+                cliente = Cliente.objects.get(email=cli['login'])
+                ## - Validar senha
+                if not cli["senha"]==cliente.senha:
+                    messages.error(request, u'Senha Inválidal.')
+                else:
+                    ## - Autenticar e redirecionar
+                    request.session["id_cliente"] = cliente.id
+                    return redirect('/')
         else:
             messages.error(request, u'Existem erros de preenchimento no formulário.')
     else:

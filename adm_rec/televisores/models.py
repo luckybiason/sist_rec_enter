@@ -242,6 +242,10 @@ class Televisor(models.Model):
     site          = models.CharField(max_length=150, verbose_name=__(u"Site"),  blank=True, null=True)
     video         = models.CharField(max_length=150, verbose_name=__(u"Link de Video"), blank=True, null=True)
     
+    ## Estatisticas 
+    visitado    = models.IntegerField(verbose_name=__(u"Visitado:"),    blank=True, null=True)
+    recomendado = models.IntegerField(verbose_name=__(u"Recomendado:"), blank=True, null=True)
+    
     class Meta:
         verbose_name        = _(u'Televisor')
         verbose_name_plural = _(u'Televisores')

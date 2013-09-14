@@ -1,6 +1,47 @@
-<div class="grafic">
-	
-	
-	
+<script src="{{STATIC_PREFIX}}jplot/jquery.jqplot.min.js" type="text/javascript"></script>
+<script src="{{STATIC_PREFIX}}jplot/plugins/jqplot.pieRenderer.js" type="text/javascript"></script>
+
+<link href="{{STATIC_PREFIX}}jplot/jquery.jqplot.min.css" rel="stylesheet" type="text/css" />
+<link type="text/css" rel="stylesheet" href="{{STATIC_PREFIX}}jplot/examples/syntaxhighlighter/styles/shCoreDefault.min.css" />
+<link type="text/css" rel="stylesheet" href="{{STATIC_PREFIX}}jplot/examples/syntaxhighlighter/styles/shThemejqPlot.min.css" />
+
+<script>
+	$(document).ready(function() {
+		jQuery.jqplot.config.enablePlugins = true;
+		plot2 = jQuery.jqplot('chart1', 
+		    [[
+		       ['5 Estrelas', {{ televisor.nota5|default:0 }}], 
+		       ['4 Estrelas', {{ televisor.nota4|default:0 }}], 
+		       ['3 Estrelas', {{ televisor.nota5|default:0 }}], 
+		       ['2 Estrelas', {{ televisor.nota2|default:0 }}], 
+		       ['1 Estrela',  {{ televisor.nota1|default:0 }}]
+		    ]], 
+		    {
+				title : 'Notas do Produto',
+				seriesDefaults : {
+					shadow : false,
+					renderer : jQuery.jqplot.PieRenderer,
+					rendererOptions : {
+						startAngle : 180,
+						sliceMargin : 4,
+						showDataLabels : true
+					}
+				},
+				legend : {
+					show : true,
+					location : 'w'
+				}
+			});
+	}); 
+</script>
+
+{% if coments %}
+<div class="grafic" style=" width:460px; height:300px;">
+	<div id="chart1" style=" width:460px; height:300px;"></div>
 </div>
+{% else %}
+	<p class="grafic_title">
+		O produto ainda não foi avaliado. Seja o primeiro, clique na aba Comentários e deixe sua opnião.
+	</p>
+{% endif %}
 
