@@ -9,9 +9,8 @@
 		</p>
 		<p>
 			{% for uso in usos %}
-			<input type="checkbox" value="{{ uso.1 }}" name='usos'/>
-			<span>
-				{{ uso.1 }}<br>
+			<span style="float: left; margin-left: 15px;">
+			    <input type="checkbox" value="{{ uso.1 }}" name='usos'/>{{ uso.1 }}<br>
 				<img id='img' src='{{ STATIC_PREFIX }}{{ uso.2 }}' width='80px'/> <br>
 			</span>
 			{% endfor %}

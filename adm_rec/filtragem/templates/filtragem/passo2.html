@@ -13,12 +13,13 @@
 			</p>
 			<p>
 				{% for aparelho in aparelhos %}
-				<input type="checkbox" value="{{ aparelho.0 }}" name='aparelhos' />
-				{{ aparelho.1 }}
+			<span style="float: left; margin-left: 15px;">
+			    <input type="checkbox" value="{{ aparelho.0 }}" name='aparelhos'/>{{ aparelho.0 }}<br>
+				<img id='img' src='{{ STATIC_PREFIX }}{{ aparelho.1 }}' width='80px'/> <br>
+			</span>
 				{% endfor %}
 			</p>
 			<p class="btns-filter">
-				<a href="{% url 'portal.home' %}" class='buscar_button'>Anterior</a>
 				<input type="submit" value="Avançar &gt;" class='b_button' />
 			</p>
 		</div>

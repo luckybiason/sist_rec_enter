@@ -236,15 +236,3 @@ def exc_lojas(request, pk):
         return redirect(reverse('tel_lojas.listagem')+'?id_tele=%s' % id_tele)
     return render(request, 'televisor/cad_lojas_exc.html', locals())
 
-
-
-#from basiccrud.views import *
-#class ConexoesListView(GeneralListView):
-#    def get_queryset(self):
-#        if self.request.GET.get('obj_id',''):
-#            return TelevisorConexao.objects.filter(televisor__id=self.request.GET['obj_id'])
-#        else:
-#            return TelevisorConexao.objects.all()
-#list_conexoes = ConexoesListView.as_view(model=TelevisorConexao, 
-#                                         template_base='iframe.html',
-#                                         template_name='cad_conexoes_list.html')

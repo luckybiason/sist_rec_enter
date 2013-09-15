@@ -57,7 +57,7 @@ def classifica_por_uso(televisor, usos):
             return televisor
 
 def classifica_por_aparelhos(televisor, entradas):
-    return True
+    return televisor
 
 ##===============================##
 ## - Motores de classificação  - ##
@@ -86,11 +86,12 @@ def classificacao_aparelhos(televisores, aparelhos):
     entradas_desc = list(set([ info[0] for (key,info) in APARELHOS_INFO.items() if key in aparelhos ]))
     entradas = []
     for entrada in entradas_desc:
-        entradas += map( lambda entrada: entrada.entrada.id, Entrada.objects.filter(descricao__icontains=entrada) )
+        entradas += map( lambda entrada: entrada.id, Entrada.objects.filter(descricao__icontains=entrada) )
     
     # Filtragem
     classificados =[]
     for televisor in televisores:
-        classificado.append( classifica_por_aparelhos(televisor, entradas) )
+        classificados.append( classifica_por_aparelhos(televisor, entradas) )
+    return classificados
     
     

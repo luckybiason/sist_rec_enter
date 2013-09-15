@@ -1,42 +1,26 @@
-<div class="filtros_container">
- 	<p>
- 		<span class="filter-title">Passo 6</span>
- 		<span class="filter-quest"> Quais os tipo de tela que você prefere? </span>
- 	</p>
- 	<p>
- 		<input type="checkbox" value="0" />item 1 <br />
- 		<input type="checkbox" value="1" />item 2 <br />
- 		<input type="checkbox" value="2" />item 3 <br />
- 		<input type="checkbox" value="3" />item 4 <br />
- 		{% for tipo in tipos %}
- 		<input type="checkbox" value="{{ tipo.id }}" />{{ tipo.descricao }}
- 		<figure>
- 			<img src='/media/{{ tipo.imagem }}' id="foto_tipo{{ tipo.id }}">
- 		</figure>
- 		<span id="expl_tipo{{ tipo.id }}">
- 			 {{ tipo.especificacao }}
- 		</span>
- 		{% endfor %}
- 	</p>
- 	<p class="btns-filter">
- 		<input type="submit" value="Pular" />
- 		<input type="submit" value="Terminar" />
- 	</p>
-</div>
+{% extends "portal/base_portal.html" %}
 
-<form name="form_pass01"  id="form_passo01" method="post" action="{% url 'filtragem.passo01' %}">
-	{% csrf_token %}
-	<div class="filtros_container">
-		<p>
-			<span class="filter-title">Passo 1</span>
-			<span class="filter-quest"> - Qual a distância entre o televisor e seu assento? </span>
-		</p>
-		<p>
-			<input type="number" value="" name='distancia' id='id-distancia' class="input-filter" />
-			<label for='id-distance'>distância (em metros):</label>
-		</p>
-		<p class="btns-filter">
-			<input type="submit" value="Avançar &gt;" />
-		</p>
-	</div>
-</form>
+{% load url from future %}
+{% block conteudo %}
+<div style="height: 250px!important;">
+	<form name="form_pass01"  id="form_passo01" method="post" action="{% url 'filtragem.passo06' %}">
+		{% csrf_token %}
+		<div class="filtros_container">
+			<p>
+				<span class="filter-title">Passo 6</span>
+				<span class="filter-quest"> - Qual a distância entre o televisor e seu assento? </span>
+			</p>
+			<p>
+				<input type="number" value="" name='distancia' id='id-distancia' class="input-filter" />
+				<label for='id-distance'>distância (em metros):</label>
+			</p>
+			<p class="btns-filter">
+				<input type="submit" value="Terminar &gt;"  class='b_button'/>
+			</p>
+		</div>
+	</form>
+</div>
+<br>
+<br>
+{% include 'filtragem/teste_filtragem.html' %}
+{% endblock %}

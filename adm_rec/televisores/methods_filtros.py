@@ -231,38 +231,17 @@ def choices_tam_tela(pelo_menos_um=False,):
     
     return tuple([ (tv.polegadas, tv.polegadas) for tv in Televisores.objects.all() ])
 
-def choices_with_qntd_tipos_tela(televisores):
+def choices_with_qntd_tam_tela(televisores):
     ''' 
-        Retorna um choice com quantidade para os tipos de tela cadastrados no banco de dados.
+        Retorna um choice com quantidade para os tamanhos de tela cadastrados no banco de dados.
     '''    
-    return [ (tipo.id, tipo.descricao,quantidade_por_tipos_tela([tipo], televisores) )  for tipo in TipoTela.objects.all() ]
+    return tuple([ (tv.polegadas, tv.polegadas, quantidade_por_tam_tela([tamanho]) ) for tv in Televisores.objects.all() ])
 
-def choices_tipos_tela_from(televisores, pelo_menos_um=False):
+def choices_tam_tela_from(televisores):
     ''' 
-        Retorna um choice para os tipos de tela cadastrados dos televisores passados.
-        Ao ser passado o parâmetro pelo_menos_um (opcional) como True, retorna apenas os tipos de tela com 
-        pelo menos um televisor cadastrado com elas.
-    '''    
-    if pelo_menos_um:
-        return tuple(set([ (tel.tipo_de_tela.id, tel.tipo_de_tela.descricao) for tel in televisores \
-                                                                             if quantidade_por_tipos_tela([tel.tipo_de_tela]) ]))
-    
-    return tuple(set([ (tel.tipo_de_tela.id, tel.tipo_de_tela.descricao)  for tel in televisores ]))
-
-def choices_with_qntd_tipos_tela_from(televisores, pelo_menos_um=True):
-    ''' 
-        Retorna um choice com quantidade para marcas cadastradas nos televisores.
-        Ao ser passado o parâmetro pelo_menos_um (opcional) como True, retorna apenas as marcas com 
-        pelo menos um televisor cadastrado com elas.
-    '''    
-    choices = list(set([ (tel.tipo_de_tela.id, 
-                          tel.tipo_de_tela.descricao,
-                          quantidade_por_tipos_tela([tel.tipo_de_tela], televisores) ) for tel in televisores ]))
-    
-    if pelo_menos_um:
-        return filter(lambda tela: tela[2]!=0, choices)
-    
-    return choices
+        Retorna um choice para os tamanhos de tela cadastrados dos televisores passados.
+    '''
+    return tuple(set([ (tel.polegadas, tel.polegadas)  for tel in televisores ]))
 
 ########## -  Filtragem Tamanho de Tela (FIM) - ##########
 ##########################################################

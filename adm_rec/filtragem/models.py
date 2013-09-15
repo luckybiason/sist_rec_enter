@@ -28,14 +28,14 @@ USOS_CHOICES = [
 ]
 
 APARELHOS_INFO = {
- "Blu-ray"      : ["HDMI"], 
- "DVD"          : ["Conexão AV"],
- "Playstation"  : ["Conexão AV", "HDMI"], 
- "Xbox"         : ["Conexão AV", "HDMI"],
- "Wii U"        : ["HDMI"], 
- "PC/Notebook"  : ["RGB","HDMI"],
- "TV a cabo"    : ["Conexão AV"],
- "TV a cabo HD" : ["HDMI"],
+ "Blu-ray"      : ["HDMI",       "img/blu-ray_icon.png" ], 
+ "DVD"          : ["Conexão AV", "img/dvd_icon.png" ],
+ "Playstation"  : ["Conexão AV", "img/play_icon.png" ], 
+ "Xbox"         : ["Conexão AV", "img/xbox_icon.png" ],
+ "Wii U"        : ["HDMI",       "img/wii_icon.png" ], 
+ "PC/Notebook"  : ["RGB",        "img/pc_icon.png" ],
+ "TV a cabo"    : ["Conexão AV", "img/tvc_icon.png" ],
+ "TV a cabo HD" : ["HDMI",       "img/HD_icon.png" ],
 }
 
-APARELHOS_CHOICES = ( (key,key) for (key,info) in APARELHOS_INFO.items() )
+APARELHOS_CHOICES = ( (key, info[1]) for (key,info) in APARELHOS_INFO.items() )

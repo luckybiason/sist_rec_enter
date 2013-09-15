@@ -41,7 +41,7 @@ class Marca(models.Model):
 
 class TipoTela(models.Model):
     descricao     = models.CharField(max_length=50, unique=True, verbose_name=__(u"Descrição"))
-    imagem        = models.ImageField(upload_to='img_telas', blank=False, null=False, verbose_name=__(u"Imagem ilustrativa:"))
+    imagem        = models.FileField(upload_to='img_telas', blank=False, null=False, verbose_name=__(u"Imagem ilustrativa:"))
     especificacao = models.TextField(verbose_name=__(u"Texto explicativo"))
     
     class Meta:
@@ -281,6 +281,10 @@ class Televisor(models.Model):
         
     def lojas(self):
         return [ tel_loja.loja for tel_loja in TelevisorLoja.objects.filter(televisor=self)]
+    
+    def adicionar_visita(self):
+        self.visitado = self.visitado + 1
+        self.save()
    
 
 class TelevisorConexao(models.Model):    

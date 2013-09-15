@@ -20,6 +20,7 @@ class Cliente(models.Model):
     preco_min  = models.FloatField(default=0)     # Preço Minimo
     preco_max  = models.FloatField(default=0)     # Preço Máximo
     tip_telas  = models.CharField(max_length=200) # Códigos dos Tipos de Tela
+    tam_telas  = models.CharField(max_length=200) # Números dos Tamanhos de Tela
     distancia  = models.IntegerField()            # Distância
     
     class Meta:

@@ -56,6 +56,8 @@ def visualizar(request, id_televisor):
     televisor.nota2 = coments.filter(nota=2).count()
     televisor.nota1 = coments.filter(nota=1).count()
     
+    televisor.adicionar_visita()
+    
     return render(request, 'portal/produtos/detalhes_televisores.html', locals())
 
 @ajax_json_view
