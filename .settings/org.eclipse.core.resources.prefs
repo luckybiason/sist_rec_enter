@@ -4,8 +4,12 @@
 eclipse.preferences.version=1
 encoding//adm_rec/adm_rec/settings.py=utf-8
 encoding//adm_rec/adm_rec/urls.py=utf-8
+encoding//adm_rec/adm_rec/utils/RegExps.py=utf-8
 encoding//adm_rec/adm_rec/utils/ajax.py=utf-8
 encoding//adm_rec/adm_rec/utils/model_utils.py=utf-8
+encoding//adm_rec/adm_rec/utils/sql.py=utf-8
+encoding//adm_rec/adm_rec/utils/strings.py=utf-8
+encoding//adm_rec/busca/methods_busca.py=utf-8
 encoding//adm_rec/busca/views.py=utf-8
 encoding//adm_rec/clientes/context_processors.py=utf-8
 encoding//adm_rec/clientes/forms.py=utf-8

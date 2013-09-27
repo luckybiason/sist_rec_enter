@@ -1,7 +1,8 @@
 #-*- coding: utf-8 -*-
 import re
-from televisores.models import Televisor
-from adm_rec.utils.sql  import sql_to_dict
+from televisores.models    import Televisor
+from adm_rec.utils.sql     import sql_to_dict, sql_escape
+from adm_rec.utils.strings import del_acento  
 
 OPERADOR = {
     '+' : ' AND ',
@@ -62,15 +63,15 @@ def _wheres_palavras_chave(texto):
 
     def _adicionar_clausulas_postgresql(lst_clausulas, palavra, operador):
         query_re = "('%(inicio)s' || '%(palavra)s' || '%(fim)s')" % {
-            #'palavra'  : del_acento(sql_escape(palavra)),
-            'palavra'  : palavra,
+            'palavra'  : del_acento(sql_escape(str(palavra))),
+            #'palavra'  : palavra,
             'inicio'   : "(\n| |^)",
             'fim'      : "([^A-z]|$|\n)"
         } 
         lst_clausulas.append( """
             (
-                televisores.nome ~* %(query_re)s  OR
-                televisores.especificacao ~* %(query_re)s  /*OR*/
+                del_acento(televisores.nome) ~* %(query_re)s  OR
+                del_acento(televisores.especificacao) ~* %(query_re)s  /*OR*/
             )
             %(operador)s """ % {
                 'query_re' : query_re,
@@ -86,7 +87,7 @@ def _wheres_palavras_chave(texto):
             )
              """ + operador +" "
         )       
-    return _definir_key_words(texto, _adicionar_clausulas_sqllite)
+    return _definir_key_words(texto, _adicionar_clausulas_postgresql)
     
 def _buscar_televisores(request):
     palavras = request.GET.get('pesq_busca',"")

@@ -28,4 +28,6 @@ def buscar(request):
     ## Informações para filtragem
     marcas, precos, telas, informacoes = get_filtros(request, produtos)
     
+    pl_chave = request.GET.get("pesq_busca","")
+    
     return render(request, 'portal/listagem_produtos.html', locals())

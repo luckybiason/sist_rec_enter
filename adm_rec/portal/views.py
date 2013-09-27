@@ -118,4 +118,8 @@ def filtrar(request):
     ## Informações para filtragem
     marcas, precos, telas, informacoes = get_filtros(request, produtos)
     
+    ## Cache
+    id_produtos = ",".join( [ str(obj.id) for obj in produtos] )
+    pl_chave = request.GET.get("pesq_busca","")
+    
     return { 'html' : render(request, 'portal/vitrine/vitrine_produtos.html', locals()).content }

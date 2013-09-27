@@ -3,21 +3,21 @@
 		
 		filtrar = function(){
 			// -  Filtragem de marcas
-			var marcas = ""
+			var marcas = "";
 			$.each($(".ck_marcas_ids:checked"), function() {
 				marcas += $(this).val() + ',';
 			});
 			$("#id_marcas_ids").val(marcas);
 
 			// -  Filtragem de telas
-			var telas = ""
+			var telas = "";
 			$.each($(".ck_telas_ids:checked"), function() {
 				telas += $(this).val() + ',';
 			});
 			$("#id_telas_ids").val(telas);
 			
 			// -  Filtragem de informações
-			var infos = ""
+			var infos = "";
 			$.each($(".ck_infos_ids:checked"), function() {
 				infos += $(this).val() + ',';
 			});
@@ -33,7 +33,8 @@
 					preco_id     : $(".rd_preco_id:checked").val(),
 					telas_ids    : telas,
 					infos_ids    : infos,
-					pagina       : $("#pag_select").val()
+					pagina       : $("#pag_select").val(),
+					pesq_busca   : $("#pl_chave").val()
 				},
 				success : function(retorno) {
 					$('#items-vitrine').html(retorno.html);
@@ -67,7 +68,8 @@
 <form method="POST" id='vitrine_filtros'>
 
 	{% csrf_token %}
-	<input type="hidden" value="{{ id_produtos }}" name="ids_produtos" >
+	<input type="hidden" value="{{ id_produtos }}" name="ids_produtos" id='ids_produtos'>
+	<input type="hidden" value="{{ pl_chave }}" name="pl_chave" id='pl_chave'>
 	<div id="filters">
 		<div class="filter">
 			<p class="title-filters">
@@ -146,7 +148,7 @@
 			</ul>
 		</div>
 		<p class="aply-filters">
-			<input type="button" value="Aplicar Filtros" id="apply_filters"/>
+		    <a id="apply_filters" class='link-filter btn-ver-oferta'>Aplicar Filtros</a>
 		</p>
 	</div>
 </form>
