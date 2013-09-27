@@ -12,7 +12,7 @@ TEMPLATE_DEBUG = DEBUG
 # - Administradores do sistema
 ADMINS = (
     ('Lucas Biason', 'biasonlucky10@gmail.com'), # Programação e Processos
-    #('Robson Moraes',     ''), # Programação
+    #('Robson Moraes',     ''), # Programação/UML
     #('Alfredo Stanquini', ''), # Programação
     #('Miguel Freitas',    ''), # Testes
     #('Priscila Rossoni',  ''), # Documentação dos processos e Validaçao/Verificação
@@ -32,12 +32,12 @@ EMAIL_PORT = 587
 # - Configuração de Banco de dados
 DATABASES = {
     'default': {
-        'ENGINE':    'django.db.backends.sqlite3', # Add 'postgresql_psycopg2', 'mysql', 'sqlite3' or 'oracle'.     
-        'NAME':      os.path.join(PASTA_PROJETO, 'banco.db'),
-        'USER':     '',     
-        'PASSWORD': '', 
-        'HOST':     '',     
-        'PORT':     '',     
+        'ENGINE':   'django.db.backends.postgresql_psycopg2',#'django.db.backends.sqlite3',     
+        'NAME':      'noalvo',#os.path.join(PASTA_PROJETO, 'banco.db'),
+        'USER':     'postgres',     
+        'PASSWORD': 'java', 
+        'HOST':     '127.0.0.1',     
+        'PORT':     '5432',     
     }
 }
 
