@@ -2,29 +2,29 @@
 
 {% load url from future %}
 {% block conteudo %}
-<div style="height: 250px!important;">
+<div class="page-wrapper">
 	<form name="form_pass02"  id="form_passo02" method="post" action="{% url 'filtragem.passo04' %}">
 		{% csrf_token %}
 		<input type="hidden" value="{{ televisores_ids }}" name='tvs_ids'/>
 		<div class="filtros_container">
+			<h2 class="title2">Passo 4</h2>
 			<p>
-				<span class="filter-title">Passo 4</span>
 				<span class="filter-quest"> - Quais os tamanhos de tela que você prefere? </span>
 			</p>
-			<p>
+			<div class="box-options">
 				{% for tamanho in tamanhos %}
 				<input type="checkbox" value="{{ tamanho.0 }}"  name='tamanhos'/>
 				{{ tamanho.1 }}
 				{% endfor %}
-			</p>
-			<p class="btns-filter">
+			</div>
+			<p class="btns-filter btn-aj">
 				<input type="submit" value="Pular &gt;"  class='b_button'/>
 				<input type="submit" value="Avançar &gt"  class='b_button'/>
 			</p>
 		</div>
 	</form>
 </div>
-<br>
-<br>
+<div style="width:100%; float: left;">
 {% include 'filtragem/teste_filtragem.html' %}
+</div>
 {% endblock %}
