@@ -2,13 +2,15 @@
 
 {% load url from future %}
 {% block conteudo %}
-<div style="height: 250px!important;">
+<div class="page-wrapper">
 	<form name="form_pass02"  id="form_passo02" method="post" action="{% url 'filtragem.passo03' %}">
 		{% csrf_token %}
 		<input type="hidden" value="{{ televisores_ids }}" name='tvs_ids'/>
 		<div class="filtros_container">
+			<h2 class="title2">
+				Passo 3
+			</h2>
 			<p>
-				<span class="filter-title">Passo 3</span>
 				<span class="filter-quest">Qual a faixa de preço desejada? </span>
 			</p>
 			<p>
@@ -18,14 +20,14 @@
 				<label for='ate'>até R$:</label>
 				<input type="text" value="" name='preco_para' id='id_ate'/>
 			</p>
-			<p class="btns-filter">
+			<p class="btns-filter btn-aj">
 				<input type="submit" value="Pular &gt;"  class='b_button' />
 				<input type="submit" value="Avançar &gt;"  class='b_button' />
 			</p>
 		</div>
 	</form>
 </div>
-<br>
-<br>
+<div style="width:100%; float: left;">
 {% include 'filtragem/teste_filtragem.html' %}
+</div>
 {% endblock %}

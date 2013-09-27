@@ -34,22 +34,21 @@
     font:12px arial,serif;
 }
 .title-filters{
-    color:#414141;
-    font:16px arial, serif;
-    text-indent:10px;
-    margin-top:10px;
+    color: #414141;
+    font: 16px arial,serif;
+    margin-bottom: 10px;
+    margin-top: 10px;
 }
 .link-filter{
     font:12px arial, serif;
     text-decoration:none;
 }
-.description-prod{
-    font: 13px Arial,Helvetica,sans-serif;
-    height: 35px;
-    line-height:20px;
+.description-prod {
+    color: #808080;
+    font: 14px/20px Arial,Helvetica,sans-serif;
+    height: 39px;
     margin-bottom: 8px;
     overflow: hidden;
-    color:gray;
 }
 .btn-ver-oferta {
     background: linear-gradient(to bottom, #FF3019 0%, #CF0404 100%) repeat scroll 0 0 transparent;
@@ -70,30 +69,51 @@
     float:left;
     margin-top: 25px; 
 }
-#items-vitrine{
-    /*float:right;*/
-    width:690px;
-    margin-left:auto;
-    margin-right:auto;    
+#items-vitrine {
+    float: left;
+	margin:15px auto 80px 20px;
+    width: 690px;
 }
 .filter{
-    width:100%;
-    /*float:left;*/
-    padding-bottom:15px;
-    border-bottom:1px solid #CCC;
-    background: #f3f3f3;
+    background: none repeat scroll 0 0 #F3F3F3;
+    border-bottom: 1px solid #CCCCCC;
+    padding-bottom: 15px;
+    padding-left: 10px;
+    padding-top: 10px;
+    width: 100%;
 }
 .nota {
-    color: gray;
+    color: #808080;
     font: 15px arial;
-    left: 287px;
+    left: 131px;
     position: absolute;
-    top: 87px;
+    top: 100px;
+}
+.paginacao{
+	margin-bottom:15px;
+}
+.nota-vitrine{
+	float:left;
 }
 
+.txt-nota {
+    float: left;
+    margin-right: 4px;
+}
 /*MODO GALERIA*/
+.vitrine-galeria{
+	overflow:hidden;
+}
+.vitrine-galeria .txt-nota {
+	margin-left:18px
+}
+.vitrine-galeria .price-vitrine-prod {
+    font: 600 18px arial,serif;
+    padding: 0 17px;
+}
 
 .vitrine-galeria .item-vitrine-prod{
+	margin-left: -1px;
     border-bottom: 1px solid #CCCCCC;
     display: block;
     float: left;
@@ -124,7 +144,7 @@
 .vitrine-galeria .nota {
     color: gray;
     font: 15px arial;
-    left: 0;
+    left: 37px;
     position: absolute;
     text-align: center;
     top: 252px;
@@ -165,4 +185,25 @@
 #paginacao li a.pag-active, .link-filter-active{
     text-decoration:underline;
     color:#BF0303;
+}
+
+.list, .galery{
+	background: url("data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAD8AAAA+CAYAAACcA8N6AAAAGXRFWHRTb2Z0d2FyZQBBZG9iZSBJbWFnZVJlYWR5ccllPAAAAyRpVFh0WE1MOmNvbS5hZG9iZS54bXAAAAAAADw/eHBhY2tldCBiZWdpbj0i77u/IiBpZD0iVzVNME1wQ2VoaUh6cmVTek5UY3prYzlkIj8+IDx4OnhtcG1ldGEgeG1sbnM6eD0iYWRvYmU6bnM6bWV0YS8iIHg6eG1wdGs9IkFkb2JlIFhNUCBDb3JlIDUuMy1jMDExIDY2LjE0NTY2MSwgMjAxMi8wMi8wNi0xNDo1NjoyNyAgICAgICAgIj4gPHJkZjpSREYgeG1sbnM6cmRmPSJodHRwOi8vd3d3LnczLm9yZy8xOTk5LzAyLzIyLXJkZi1zeW50YXgtbnMjIj4gPHJkZjpEZXNjcmlwdGlvbiByZGY6YWJvdXQ9IiIgeG1sbnM6eG1wPSJodHRwOi8vbnMuYWRvYmUuY29tL3hhcC8xLjAvIiB4bWxuczp4bXBNTT0iaHR0cDovL25zLmFkb2JlLmNvbS94YXAvMS4wL21tLyIgeG1sbnM6c3RSZWY9Imh0dHA6Ly9ucy5hZG9iZS5jb20veGFwLzEuMC9zVHlwZS9SZXNvdXJjZVJlZiMiIHhtcDpDcmVhdG9yVG9vbD0iQWRvYmUgUGhvdG9zaG9wIENTNiAoTWFjaW50b3NoKSIgeG1wTU06SW5zdGFuY2VJRD0ieG1wLmlpZDoxMzU4QUQzQjE3MDAxMUUzQTkyMkRGMDc2OTYwNzVBRSIgeG1wTU06RG9jdW1lbnRJRD0ieG1wLmRpZDoxMzU4QUQzQzE3MDAxMUUzQTkyMkRGMDc2OTYwNzVBRSI+IDx4bXBNTTpEZXJpdmVkRnJvbSBzdFJlZjppbnN0YW5jZUlEPSJ4bXAuaWlkOjEzNThBRDM5MTcwMDExRTNBOTIyREYwNzY5NjA3NUFFIiBzdFJlZjpkb2N1bWVudElEPSJ4bXAuZGlkOjEzNThBRDNBMTcwMDExRTNBOTIyREYwNzY5NjA3NUFFIi8+IDwvcmRmOkRlc2NyaXB0aW9uPiA8L3JkZjpSREY+IDwveDp4bXBtZXRhPiA8P3hwYWNrZXQgZW5kPSJyIj8+/PDPRQAAALNJREFUeNrs2bEJgDAQBdBExIUyjvM5ThayiaSzMNpEEPN+Y2Mgjzvkg7GUEnLOJdwkpRTrs/d75zyd6Z16hykMHHh4eHh4+J9n/spFroqPyY8wefXW2sPDw8PDa3gmr+FpeNYeHh4eHh6+nVj/0pr8qPV2W5bb8a/7Ht9475ynM71T7+CDBw8PDw8P//OS84VcFR+TH2Hy6q21h4eHh4fX8Exew9PwrD08PDw8PHw7hwADAB45PFv6AGvSAAAAAElFTkSuQmCC");
+	float: left;
+    height: 31px;
+    margin-top: 6px;
+    text-indent: -5000px;
+    width: 30px;
+}
+.galery{
+	background-position: 0 0;
+}
+.list{
+	background-position: 30px 0;
+}
+.list-actived{
+	background-position: 30px -31px;
+}
+.galery-actived{
+	background-position: 0px -31px;
 }

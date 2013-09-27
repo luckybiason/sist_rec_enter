@@ -2,34 +2,35 @@
 
 {% load url from future %}
 {% block conteudo %}
-<div style="height: 250px!important;">
+<div class="page-wrapper">
 	<form name="form_pass02"  id="form_passo02" method="post" action="{% url 'filtragem.passo05' %}">
 		{% csrf_token %}
 		<input type="hidden" value="{{ televisores_ids }}" name='tvs_ids'/>
 		<div class="filtros_container">
+			<h2 class="title2">Passo 5</h2>
 			<p>
-				<span class="filter-title">Passo 5</span>
 				<span class="filter-quest"> Quais os tipo de tela que você prefere? </span>
 			</p>
-			<p>
+			<div class="box-options">
 				{% for tipo in tipos %}
-				<input type="checkbox" value="{{ tipo.id }}" />
-				{{ tipo.descricao }}
-				<figure>
-					<img src='/media/{{ tipo.imagem }}' id="foto_tipo{{ tipo.id }}" width="50px">
-				</figure>
-				<span id="expl_tipo{{ tipo.id }}"> {{ tipo.especificacao }} </span>
-				<br/>
+				<div class="type-tvs">
+					<input class="field-pass5" type="checkbox" value="{{ tipo.id }}" />
+					<figure>
+						<img class="img-type-tv" src='/media/{{ tipo.imagem }}' id="foto_tipo{{ tipo.id }}" width="50px">
+					</figure>
+					<span class="name-type-tv">{{ tipo.descricao }}</span>
+					<span class="info-type-tv" id="expl_tipo{{ tipo.id }}"> {{ tipo.especificacao }} </span>
+				</div>
 				{% endfor %}
-			</p>
-			<p class="btns-filter">
+			</div>
+			<p class="btns-filter btn-aj">
 				<input type="submit" value="Pular &gt;"  class='b_button'/>
 				<input type="submit" value="Avançar &gt"  class='b_button'/>
 			</p>
 		</div>
 	</form>
 </div>
-<br><br><br>
-<br>
+<div style="width:100%; float: left;">
 {% include 'filtragem/teste_filtragem.html' %}
+</div>
 {% endblock %}

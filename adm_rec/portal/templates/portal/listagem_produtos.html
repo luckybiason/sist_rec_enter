@@ -20,20 +20,12 @@
 
 {% block conteudo %}
 
-<table style="margin-left: auto; margin-right: auto;">
-
-	<tr>
-		<td>  {% include 'portal/vitrine/vitrine_menu.html' %} </td>
-		<td> 
-              <div id="items-vitrine">
-              	{% include 'portal/vitrine/vitrine_produtos.html' %} 
-              </div>
-	    </td>
-	</tr>
-</table>
-
-
+<div class="page-wrapper">
+	{% include 'portal/vitrine/vitrine_menu.html' %} </td>
+    <div id="items-vitrine">
+    {% include 'portal/vitrine/vitrine_produtos.html' %} 
+	</div>
+</div>
 {#% include 'pagcontrol.html' %#}
-<br/>
 {% endblock %}
 

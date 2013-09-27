@@ -316,6 +316,8 @@ a:hover{
 .btns-filter{
 	float:left;
 	margin-top:10px;
+	width:100%;
+	padding-left: 30px;
 }
 #id_email, #id_nome, #id_senha, #id_login{
 	padding:10px;
@@ -328,4 +330,46 @@ a:hover{
 }
 #top-login{
 	color:#414141;
+}
+.box-options{
+	width:100%;
+	
+}
+.items-fiters {
+    float: left;
+    height: 120px;
+    margin: 10px 30px;
+    width: 120px;
+}
+
+
+.img-type-tv {
+    float: left;
+    width: 50px;
+}
+.field-pass5{
+	float:left;
+}
+.type-tvs{
+	float:left;
+	margin:15px 0;
+}
+.info-type-tv {
+    float: left;
+    margin: 15px 30px;
+    width: 100%;
+}
+
+.name-type-tv {
+    float: left;
+    margin: 5px 10px;
+    color:#414141;
+    font-size:14px;
+}
+.btn-aj{
+	padding-left:0px;
+}
+#info-prod-inicial-video{
+	width:560px;
+	margin:20px auto;
 }

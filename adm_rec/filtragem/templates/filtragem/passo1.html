@@ -7,14 +7,14 @@
 			<span class="filter-title">Passo 1</span>
 			<span class="filter-quest"> - Quais os uso que você pretende para o televisor? </span>
 		</p>
-		<p>
+		<div class="box-options">
 			{% for uso in usos %}
-			<span style="float: left; margin-left: 15px;">
+			<span class="items-fiters">
 			    <input type="checkbox" value="{{ uso.1 }}" name='usos'/>{{ uso.1 }}<br>
 				<img id='img' src='{{ STATIC_PREFIX }}{{ uso.2 }}' width='80px'/> <br>
 			</span>
 			{% endfor %}
-		</p>
+		</div>
 		<p class="btns-filter">
 			<input type="submit" value="Avançar &gt;" class='b_button'/>
 		</p>
