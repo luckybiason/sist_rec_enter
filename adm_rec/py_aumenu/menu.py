@@ -100,7 +100,7 @@ MENU = lambda :{
            'itens'  :[
                      {  
                          'titulo'   : _(u"Perfil de usuário"),
-                         'img'      : "img/users.png",
+                         'img'      : "imagem/user_img.png",
                          'url-name' : "usuario.listagem",
                          'perm_need'   : [''],
                      },
@@ -108,6 +108,12 @@ MENU = lambda :{
                          'titulo'   : _(u"Propagandas"),
                          'img'      : "img/users.png",
                          'url-name' : "propagandas.listagem",
+                         'perm_need'   : [''],
+                     },
+                     {  
+                         'titulo'   : _(u"Importar Televisores"),
+                         'img'      : "img/tele.png",
+                         'url-name' : "importacao.televisores",
                          'perm_need'   : [''],
                      },
            ]  # Fim itens

@@ -57,10 +57,10 @@
 
 <ul id="view">
 	<li>
-		<a href="#" id="galery" class="galery"></a>
+		<a  id="galery" class="galery"></a>
 	</li>
 	<li>
-		<a href="#" id="list" class="list list-actived"></a>
+		<a  id="list" class="list list-actived"></a>
 		
 	</li>
 </ul>
@@ -70,23 +70,9 @@
 	{% csrf_token %}
 	<input type="hidden" value="{{ id_produtos }}" name="ids_produtos" id='ids_produtos'>
 	<input type="hidden" value="{{ pl_chave }}" name="pl_chave" id='pl_chave'>
+	
 	<div id="filters">
-		<div class="filter">
-			<p class="title-filters">
-				Ordenação
-			</p>
-			<ul class="items-filtro">
-				<li>
-					<a href="#" title="Popularidade" class="link-filter link-filter-active">Popularidade</a>
-				</li>
-				<li>
-					<a href="#" title="Menor Preço" class="link-filter">Menor Preço</a>
-				</li>
-				<li>
-					<a href="#" title="Maior Preço" class="link-filter">Maior Preço</a>
-				</li>
-			</ul>
-		</div>
+		    	
 		<div class="filter">
 			<p class="title-filters">
 				Marca
@@ -95,7 +81,7 @@
 				<input type="hidden" name="marcas_ids" id="id_marcas_ids">
 				{% for marca in marcas %}
 				<li>
-					<a href="#" title="{{ marca.1 }}" class="link-filter">
+					<a  title="{{ marca.1 }}" class="link-filter">
 					<input type="checkbox" value="{{ marca.0 }}" class="ck_marcas_ids">
 					{{ marca.1 }} ({{ marca.2|default:0 }}) </a>
 				</li>
@@ -109,7 +95,7 @@
 			<ul class="items-filtro">
 				{% for preco in precos %}
 				<li>
-					<a href="#" title="" class="link-filter">
+					<a   class="link-filter">
 					<input type="radio" value="{{ preco.0 }}" name="preco_id" class="rd_preco_id" >
 					{{ preco.1 }} ({{ preco.2 }})</a>
 				</li>
@@ -124,7 +110,7 @@
 				<input type="hidden" name="telas_ids" id="id_telas_ids">
 				{% for tela in telas %}
 				<li>
-					<a href="#" title="" class="link-filter">
+					<a   class="link-filter">
 					<input type="checkbox" value="{{ tela.0 }}"  name="telas_ids"  class="ck_telas_ids" >
 					{{ tela.1 }} ({{ tela.2 }})</a>
 				</li>
@@ -140,15 +126,22 @@
 				<input type="hidden" name="infos_ids" id="id_infos_ids">
 				{% for info in informacoes %}
 				<li>
-					<a href="#" title="" class="link-filter">
+					<a   class="link-filter">
 					<input type="checkbox" value="{{ info.0 }}"  name="infos_ids"  class="ck_infos_ids" >
 					{{ info.1 }} ({{ info.2 }})</a>
 				</li>
 				{% endfor %}
 			</ul>
 		</div>
-		<p class="aply-filters">
-		    <a id="apply_filters" class='link-filter btn-ver-oferta'>Aplicar Filtros</a>
-		</p>
+		
+		
+		
+		<div class="filter">
+			<ul class="items-filtro">
+				<li>
+		            <a id="apply_filters" class='btn-ver-oferta'>Aplicar Filtros</a>
+				</li>
+			</ul>
+		</div>
 	</div>
 </form>

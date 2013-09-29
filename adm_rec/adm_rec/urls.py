@@ -22,6 +22,10 @@ urlpatterns = patterns('',
     (r'^adm/propagandas/', include('propagandas.urls')),
     (r'^clientes/',        include('clientes.urls')),
     
+    # Processos
+    (r'^adm/importacao/',     include('importacao.urls')),
+    
+    
     ##### - Portal - #####
     url(r'^$',       'adm_rec.views.portal',  name='portal'),
     (r'^portal/',    include('portal.urls')),

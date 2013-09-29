@@ -373,3 +373,10 @@ a:hover{
 	width:560px;
 	margin:20px auto;
 }
+
+footer{
+	    position: fixed!important;
+    bottom: 0px!important;
+    width: 100%!important;
+}
+

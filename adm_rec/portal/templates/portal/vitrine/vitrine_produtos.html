@@ -2,12 +2,12 @@
 {% if page.has_other_pages %}
 <div class="paginacao">
 	<label>Pagina</label>:
-	<select name='pagina' id='pag_select'>
+	<select name='pagina' id='pag_select' >
 		{% for i in paginator.page_range %}
 		<option value='{{ i }}'>{{ i }}</option>
 		{% endfor %}
 	</select>
-	<input type='button' value='Ir' id='btn_pag_select'/>
+	<a id='btn_pag_select' class="btn-ver-oferta" style="float: none!important; width:90px!important; padding: 5px!important;">Ir</a>
 </div>
 {% endif %}
 

@@ -1,4 +1,5 @@
 #-*- coding: utf-8 -*-
+from datetime import datetime
 from django.db import models
 from django.utils.translation import ugettext as _ , ugettext_lazy as __
 from django.core.urlresolvers import reverse
@@ -22,6 +23,9 @@ class Cliente(models.Model):
     tip_telas  = models.CharField(max_length=200) # Códigos dos Tipos de Tela
     tam_telas  = models.CharField(max_length=200) # Números dos Tamanhos de Tela
     distancia  = models.IntegerField()            # Distância
+    
+    ## - dt_cadastro
+    data_cadastro = models.DateField(default=datetime.now)
     
     class Meta:
         verbose_name        = _(u'cliente')

@@ -1,0 +1,38 @@
+<script src="{{STATIC_PREFIX}}jplot/jquery.jqplot.min.js" type="text/javascript"></script>
+<link href="{{STATIC_PREFIX}}jplot/jquery.jqplot.min.css" rel="stylesheet" type="text/css" />
+<script type="text/javascript" src="{{STATIC_PREFIX}}jplot/plugins/jqplot.canvasTextRenderer.min.js"></script>
+<script type="text/javascript" src="{{STATIC_PREFIX}}jplot/plugins/jqplot.canvasAxisLabelRenderer.min.js"></script>
+<link type="text/css" rel="stylesheet" href="{{STATIC_PREFIX}}jplot/examples/syntaxhighlighter/styles/shCoreDefault.min.css" />
+<link type="text/css" rel="stylesheet" href="{{STATIC_PREFIX}}jplot/examples/syntaxhighlighter/styles/shThemejqPlot.min.css" />
+
+<script>
+	$(document).ready(function () {
+  var s1 = [
+      {% for data in data_televisores_no_mes %}
+      [{{ data.data }}, {{ data.num }}]{% if not forloop.last %},{% endif %}
+      {% endfor %}
+  ];
+  
+  plot1 = $.jqplot("chart1", [s1], {
+    seriesDefaults:{
+        linePattern: 'solid',
+        showMarker: true,
+        shadow: true
+    },series:[
+          {
+            // Don't show a line, just show markers.
+            // Make the markers 7 pixels with an 'x' style
+            showLine:false,
+            markerOptions: { size: 7,  style:'dimaond' }
+          },
+      ]
+  });
+});
+</script>
+
+{% if data_televisores_no_mes %}
+<div class="grafic" style=" width:460px; height:300px;">
+	<div id="chart1" style=" width:460px; height:300px;"></div>
+</div>
+{% endif %}
+

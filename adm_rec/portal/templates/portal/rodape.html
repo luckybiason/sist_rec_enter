@@ -1,122 +1,4 @@
-<!--<style>
-	table.rodape {
-		font-size: small;
-	}
-	table.rodape a {
-		text-decoration: none;
-		color: #436EEE;
-	}
-	table.rodape td {
-		text-align: left;
-		vertical-align: top;
-	}
-	.title_rodape {
-		color: #436EEE;/*#8B0000;/*#93C3CD;*/
-		background-color: white;/*#605E5E;*/
-		margin: 0;
-		display: block;
-		font-size: 20px;
-		height: 26px;
-		line-height: 26px;
-		font-weight: bold;
-		text-decoration: none;
-		padding-bottom: 5px;
-		padding-top: 5px;
-	}
-	.login_button_rdp {
-		border: 1px solid #436EEE;
-		padding: 3px;
-		height: 35px;
-		padding-left: 0px;
-		margin-left: 0px;
-		background-color: #436EEE;
-		color: white;
-		font-size: medium;
-		width: 180px;
-	}
-</style>
 
-<script></script>
-
-<table style="width: 100%; margin: 0px; padding: 2px; background: #222222; height: 10px; color:white;">
-	<tr>
-		<td></td>
-	</tr>
-</table>
-
-<table cellpadding="2" cellspacing="2" class='rodape' style="float: left">
-	<tr>
-		<td style='border-right: 1px solid #A2B5CD; padding-left: 30px; padding-right: 10px;'>
-		<p class="title_rodape">
-			Tecnologias
-		</p>
-		<p class="left">
-			<img height="30" alt="Python" src="{{STATIC_PREFIX}}imagem/python_logo.png">
-			<br>
-			Powered by <a href="http://www.python.org/">Python</a>.
-			<br>
-		</p>
-		<p class="left">
-			<img height="30" alt="Django" src="{{STATIC_PREFIX}}imagem/django-logo.png">
-			<br>
-			Powered by <a href="https://www.djangoproject.com/">Django</a>.
-		</p></td>
-		<td style='border-right: 1px solid #A2B5CD; padding-left: 30px; padding-right: 10px;'>
-		<p class="title_rodape">
-			No Alvo
-		</p><a href="#" title="Conheça o Buscapé">Conheça o No Alvo</a>
-		<br>
-		<a href="#" target="_blank" title="Junte-se ao Time">Junte-se ao Time</a>
-		<br>
-		<a href="#" target="_blank" title="Junte-se ao Time">Como usar</a></td>
-
-		<td style='border-right: 1px solid #A2B5CD; padding-left: 30px; padding-right: 10px;'>
-		<p class="title_rodape">
-			Empresas
-		</p><a href="#" title="Conheça o Buscapé">Anuncie Grátis</a>
-		<br>
-		<a href="#" target="_blank" title="Junte-se ao Time">Seja nosso parceiro</a>
-		<br>
-		<a href="#" target="_blank" title="Junte-se ao Time">Como usar</a></td>
-
-		<td style='border-right: 1px solid #A2B5CD; padding-left: 30px; padding-right: 10px;'>
-		<p class="title_rodape">
-			Ferramentas
-		</p><a href="#" title="Conheça o Buscapé">Sobre produtos</a>
-		<br>
-		<a href="#" target="_blank" title="Junte-se ao Time">Como pesquisar</a>
-		<br>
-		<a href="#" target="_blank" title="Junte-se ao Time">Sobre Lojas</a>
-		<br>
-		<a href="#" target="_blank" title="Junte-se ao Time">Conheça nossa filtragem inteligente</a></td>
-
-	</tr>
-</table>
-
-<table cellpadding="2" cellspacing="2" class='rodape' style="float: right">
-	<tr>
-		<td>
-		<p class="title_rodape">
-			Melhor com
-		</p></td>
-		<td><img height="30" title="Chrome"  src="{{STATIC_PREFIX}}imagem/chrome.png"><img height="30" title="Firefox" src="{{STATIC_PREFIX}}imagem/firefox.png"><img height="30" title="Safari"  src="{{STATIC_PREFIX}}imagem/safari.png"></td>
-	</tr>
-</table>
-
-<br>
-<table cellpadding="2" cellspacing="2" class='rodape' width="98%">
-	<tr>
-		<td>
-		<p>
-			Apoiamos causas contra a divulgação de materiais ilegais, agressivos, caluniosos, abusivos, difamatórios,
-			discriminatórios, ameaçadores, danosos, invasivos da privacidade de terceiros,
-			terroristas, vulgares, obscenos ou ainda condenáveis de qualquer tipo ou natureza que sejam prejudiciais a
-			menores e à preservação do meio ambiente
-		</p></td>
-	</tr>
-</table>
-
--->
 <footer>
 	
 	<div id="footer">
@@ -136,18 +18,23 @@
 				<a href="#" title="Django" id="django">Django</a>
 			</div>
 			<div id="login">
-				<form action="" method="post">
-					<p>
-						<input type="text" name="login" id="login" class="field-footer" placeholder="login" />
-					</p>
-					
-					<p>
-						<input type="password" name="senha" id="senha" class="field-footer" placeholder="senha"/>
-					</p>
-					
-				</form>
-				
-				
+				<ul class="list-footer">
+						<li>
+							<p style="color: white">
+								Melhor com
+							</p>
+						</li>
+						<li>
+							<ul class="list-footer">
+								<li><img height="30" title="Chrome"  src="{{STATIC_PREFIX}}imagem/chrome.png"  class="item-list-footer" >
+								</li>
+								<li><img height="30" title="Firefox" src="{{STATIC_PREFIX}}imagem/firefox.png" class="item-list-footer" >
+								</li>
+								<li><img height="30" title="Safari"  src="{{STATIC_PREFIX}}imagem/safari.png"  class="item-list-footer" >
+								</li>
+							</ul>
+						</li>
+					</ul>
 			</div>
 		</div>
 		<p id="copy">&copy; Todos os direitos reservados - 2013 - TCC grupo Teta Faeng -FSA <br />

@@ -10,4 +10,5 @@ def user_logado(request):
             'USER_SUPER'     : "true" if user_logado.is_superuser else "",
             'USER_EMAIL'     : user_logado.email,
             'USER_LAST_LOGIN': user_logado.last_login,
+            'IS_SUPERUSER'   : user_logado.is_superuser,
      }

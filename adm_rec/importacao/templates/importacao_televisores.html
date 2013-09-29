@@ -1,0 +1,49 @@
+{% extends 'base.html' %}
+
+{% load url from future %}
+
+{% block conteudo %}
+
+<div id="body-titulo">
+	<h2>{{ titulo_tela }}</h2>
+</div>
+
+<div id="body-form" >
+
+	{% if not arquivo_error %}
+	<fieldset class="fborder" style="padding: 5px!important; width: 683px!important;" >
+			<ul class="mensagem msg_erro">
+			     Os televisores no arquivo abaixo não foram importados.
+			</ul> 
+			<img src='/static/imagem/csv_erro.png'  height="20px;">&nbsp;
+			<a href='/media/tmp/importacao_televisores.csv'>Baixar Arquivo</a> 
+	</fieldset>
+	{% endif %}
+	
+	<form class="vForm" method="POST" enctype="multipart/form-data">
+		{% csrf_token %}
+		<fieldset class="fborder" style="padding: 25px!important; text-align: center">
+
+			<p class="header_fast_menu">
+				<b>Seleção do Arquivo</b>
+			</p>
+			<p class="help_text_back">
+				Para executar a importação de televisores, escolha um arquivo .csv que contenha os dados
+				dos televisores. Esse dados serão atualizados na base de dados.<br/>
+				O delimitador do csv deve ser um pipe (|).
+			</p>
+
+			<fieldset class="fborder" style="padding: 5px!important; width: 370px!important; margin-left: 20%" >
+				<img src='/static/imagem/csv.png' height="50px;" style="float:left">
+				<label style="padding: 5px!important;" > Arquivo:
+					<input type="file" name="arquivo"/>
+				</label>
+			</fieldset>
+
+		<input type="submit" name="acao" value="Importar" class='botao' style="margin-top: 10px" />
+		</fieldset>
+
+	</form>
+</div>
+
+{% endblock %}

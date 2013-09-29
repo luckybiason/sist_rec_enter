@@ -1,4 +1,5 @@
 #-*- coding: utf-8 -*-
+from datetime import datetime
 from django.db import models
 from django.utils.translation import ugettext as _ , ugettext_lazy as __
 from django.core.urlresolvers import reverse
@@ -245,6 +246,7 @@ class Televisor(models.Model):
     ## Estatisticas 
     visitado    = models.IntegerField(verbose_name=__(u"Visitado:"),    blank=True, null=True)
     recomendado = models.IntegerField(verbose_name=__(u"Recomendado:"), blank=True, null=True)
+    data_cadastro = models.DateField(default=datetime.now)
     
     class Meta:
         verbose_name        = _(u'Televisor')

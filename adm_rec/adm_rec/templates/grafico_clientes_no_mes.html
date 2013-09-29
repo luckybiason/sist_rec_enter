@@ -1,0 +1,31 @@
+<script>
+	$(document).ready(function () {
+  s1 = [
+      {% for data in data_clientes_no_mes %}
+      [{{ data.data }}, {{ data.num }}]{% if not forloop.last %},{% endif %}
+      {% endfor %}
+      ];
+ 
+  plot1 = $.jqplot("chart2", [s1], {
+    seriesDefaults:{
+        linePattern: 'solid',
+        showMarker: true,
+        shadow: true
+    },series:[
+          {
+            // Don't show a line, just show markers.
+            // Make the markers 7 pixels with an 'x' style
+            showLine:false,
+            markerOptions: { size: 7,  style:'dimaond' }
+          },
+      ]
+  });
+});
+</script>
+
+{% if data_clientes_no_mes %}
+<div class="grafic" style=" width:460px; height:300px;">
+	<div id="chart2" style=" width:460px; height:300px;"></div>
+</div>
+{% endif %}
+

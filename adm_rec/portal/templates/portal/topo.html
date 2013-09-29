@@ -1,4 +1,4 @@
-<div class="page-wrapper">
+<div class="page-wrapper"  style="background: white; width: 100% text-align:center">
 	<p id="top-login">
 			{% if not ID_CLIENTE %}
 			    Olá, Visitante, Ainda não é cadastrado: 
@@ -14,23 +14,15 @@
 			{% else %}
 			<span style="float:right; padding-right: 5px;"> 
 			<a href="{% url clientes.logout %}">Sair</a>
-		</span>
-	</p>
+		   </span>
 			{% endif %}
+	</p>
 </div>
 <div id="top" >
 		<div class="page-wrapper" id="header">
 			<h1>
-				<a href="#" title="No Alvo" class="logo">No alvo</a>
+				<a href="/" title="No Alvo" class="logo">No alvo</a>
 			</h1>
-			<!--<nav>
-				<ul id="nav-top">
-					<li><a href="#" title="" class="item-nav-top">Inicio</a></li>
-					<li><a href="#" title="" class="item-nav-top">Recomendação</a></li>
-					<li><a href="#" title="" class="item-nav-top">Ultimas Noticias</a></li>
-					<li><a href="#" title="" class="item-nav-top">Fale Conosco</a></li>
-				</ul>
-			</nav>-->
 			{% include 'busca/busca_form.html' %}
 		</div>
 	</div>

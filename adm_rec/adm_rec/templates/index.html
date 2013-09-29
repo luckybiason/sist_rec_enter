@@ -5,6 +5,97 @@
 {% block conteudo %}
 <script>
 	$(function() {
-	});
+	}); 
 </script>
+<style>
+</style>
+
+<fieldset class="fborder">
+	<p class="header_fast_menu ui-widget-header">
+		Inicio Rápido - Cadastros
+	</p>
+	<ul class="ul_fast_menu">
+		<li>
+			<a href='{% url 'televisor.cadastro' %}'><img src="/static/img/tele.png" height="20px">Cadastro de Televisores</a>
+		</li>
+		<li>
+			<a href='{% url 'lojas.cadastro' %}'><img src="/static/img/lojas.png"  height="20px">Cadastro de Lojas</a>
+		</li>
+		<li>
+			<a href='{% url 'marcas.cadastro' %}'><img src="/static/imagem/marcas.png"  height="20px">Cadastro de Marcas</a>
+		</li>
+	</ul>
+</fieldset>
+
+<fieldset class="fborder" >
+	<p class="header_fast_menu ui-widget-header">
+		Inicio Rápido - Gerenciamento
+	</p>
+	<ul class="ul_fast_menu">
+		
+		{% if IS_SUPERUSER %}
+		<li>
+			<a href='{% url 'usuario.cadastro' %}'><img src="/static/imagem/user_img.png" height="20px">Cadastro de Usuários</a>
+		</li>
+		{% endif %}
+		<li>
+			<a href='{% url 'importacao.televisores' %}'><img src="/static/img/tele.png" height="20px">Importar Televisores</a>
+		</li>
+		<li>
+			<a href='{% url 'importacao.televisores' %}'><img src="/static/img/lojas.png" height="20px">Importar Lojas</a>
+		</li>
+		<li>
+			<a href='{% url 'importacao.televisores' %}'><img src="/static/imagem/reload.png" height="20px">Importar Relação de Lojas e Televisores</a>
+		</li>
+	</ul>
+</fieldset>
+
+
+<fieldset class="fborder"  style="width:800px!important;">
+	<p class="header_fast_menu ui-widget-header">
+		Quantidade de cadastros
+	</p>
+	
+	<ul class="ul_fast_menu">
+		<li>
+			<img src="/static/img/tele.png" height="20px">{{ total_televisores }} Televisores
+		</li>
+		<li>
+			<img src="/static/imagem/user_img.png" height="20px">{{ total_clientes }} Clientes
+		</li>
+		<li>
+			<img src="/static/img/lojas.png"  height="20px">{{ total_lojas }} Lojas
+		</li>
+		<li>
+			<img src="/static/imagem/marcas.png"  height="20px">{{ total_marcas }}  Marcas
+		</li>
+			
+	</ul>
+</fieldset>
+
+<fieldset class="fborder"  style="width:800px!important;">
+	<p class="header_fast_menu ui-widget-header">
+		Televisores cadastrados nesse mês (Quantidade x Dia)
+	</p>
+	
+	<ul class="ul_fast_menu">
+		<li>
+			{% include 'grafico_televisores_no_mes.html' %}
+		</li>
+	</ul>
+</fieldset>
+	
+	
+<fieldset class="fborder" style="width:800px!important; margin-bottom: 10px;">
+	<p class="header_fast_menu ui-widget-header">
+		Clientes cadastrados nesse mês (Quantidade x Dia)
+	</p>
+	
+	<ul class="ul_fast_menu">
+		<li>
+			{% include 'grafico_clientes_no_mes.html' %}
+		</li>
+	</ul>
+</fieldset>
+	
 {% endblock %}

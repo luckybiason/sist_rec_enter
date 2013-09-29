@@ -116,6 +116,8 @@ INSTALLED_APPS = (
     'televisores',
     'clientes',
     'propagandas',
+    # Processos
+    'importacao',        # App de controle de importação de dados
     # Portal
     'portal',            # App base do portal
     'busca' ,            # App com mecanismo de busca de produtos
