@@ -11,25 +11,25 @@
 <div id="body-form" >
 
 	{% if not status and arquivo_nome %}
-	<fieldset class="fborder" style="padding: 5px!important; width: 683px!important; float: none" >
+	<fieldset class="fborder" style="padding: 5px!important; width: 683px!important; float: none;" >
 			<ul class="mensagem msg_erro">
-			     Os televisores no arquivo abaixo não foram importados.
+			     As lojas no arquivo abaixo não foram importadas.
 			</ul> 
 			<img src='/static/imagem/csv_erro.png'  height="20px;">&nbsp;
-			<a href='/media/tmp/importacao_televisores.csv'>Baixar Arquivo</a> 
+			<a href='/media/tmp/importacao_lojas.csv'>Baixar Arquivo</a> 
 	</fieldset>
 	{% endif %}
 	
 	<form class="vForm" method="POST" enctype="multipart/form-data">
 		{% csrf_token %}
-		<fieldset class="fborder" style="padding: 25px!important; text-align: center; float: none">
+		<fieldset class="fborder" style="padding: 25px!important; text-align: center; float: none;">
 
 			<p class="header_fast_menu">
 				<b>Seleção do Arquivo</b>
 			</p>
 			<p class="help_text_back">
-				Para executar a importação de televisores, escolha um arquivo .csv que contenha os dados
-				dos televisores. Esse dados serão atualizados na base de dados.<br/>
+				Para executar a importação de lojas, escolha um arquivo .csv que contenha os dados
+				das lojas. Esse dados serão atualizados na base de dados.<br/>
 				O delimitador do csv deve ser um pipe (|).
 			</p>
 
@@ -39,7 +39,7 @@
 					<input type="file" name="arquivo"/>
 				</label>
 			</fieldset>
-			
+
 		</fieldset>
 
 			<fieldset class="fborder " style="float: none" >

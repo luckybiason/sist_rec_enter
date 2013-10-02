@@ -13,10 +13,10 @@
 	{% if not status and arquivo_nome %}
 	<fieldset class="fborder" style="padding: 5px!important; width: 683px!important; float: none" >
 			<ul class="mensagem msg_erro">
-			     Os televisores no arquivo abaixo não foram importados.
+			     As relações no arquivo abaixo não foram importados.
 			</ul> 
 			<img src='/static/imagem/csv_erro.png'  height="20px;">&nbsp;
-			<a href='/media/tmp/importacao_televisores.csv'>Baixar Arquivo</a> 
+			<a href='/media/tmp/importacao_tel_lojas.csv'>Baixar Arquivo</a> 
 	</fieldset>
 	{% endif %}
 	
@@ -28,8 +28,8 @@
 				<b>Seleção do Arquivo</b>
 			</p>
 			<p class="help_text_back">
-				Para executar a importação de televisores, escolha um arquivo .csv que contenha os dados
-				dos televisores. Esse dados serão atualizados na base de dados.<br/>
+				Para executar a importação de relações, escolha um arquivo .csv que contenha os dados
+				das relações entre televisores e suas lojas. Esse dados serão atualizados na base de dados.<br/>
 				O delimitador do csv deve ser um pipe (|).
 			</p>
 

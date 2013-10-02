@@ -1,24 +1,19 @@
 #-*- coding: utf-8 -*-
 from adm_rec.utils.decorators import ajax_json_view
-from django.shortcuts         import redirect,render
-from lojas.models             import Loja
-from methods_busca            import buscar_produtos
-from televisores.models       import Televisor, Marca, TelevisorLoja, TelevisorConexao, TelevisorItens
-from propagandas.models       import Propaganda
-from portal.models            import Comentario
 from adm_rec.utils.paginators import makePaginator
-from portal.methods_filtros   import selecionar, filtrar as filtrar_produtos, prepare, get_filtros
+from clientes.models          import Cliente
+from django.shortcuts         import redirect,render
 from filtragem.models         import USOS_CHOICES
+from lojas.models             import Loja
+from methods                  import get_cliente_from_session
+from methods_busca            import buscar_produtos
+from portal.models            import Comentario
+from portal.methods_filtros   import selecionar, filtrar as filtrar_produtos, prepare, get_filtros
+from propagandas.models       import Propaganda
+from recomendacao.methods     import recomendar
+from televisores.models       import Televisor, Marca, TelevisorLoja, TelevisorConexao, TelevisorItens
 
-#from django.contrib.auth.decorators import login_required
-#@login_required
-#@user_passes_test(can_make_user)
-#can_make_user = lambda u: u.is_superuser or u.is_staff
-
-def home(request):
-    # Principais televisores
-    televisores = Televisor.objects.all()
-    
+def home(request):    
     # Principais marcas
     marcas = Marca.objects.all()
     
@@ -32,9 +27,17 @@ def home(request):
     
     # Informações para a filtragem
     usos = USOS_CHOICES
+        
+    # Gerar recomendados/principais
+    cliente = get_cliente_from_session(request)
+    if cliente:
+        # Recomendados
+        recomendados = recomendar(cliente)
+    
+    # Principais televisores
+    televisores = Televisor.objects.all()
     
     return render(request, 'portal/home.html', locals())
-
 
 def visualizar(request, id_televisor):
     ''' Função que carrega um televisor e seus detalhes '''
@@ -55,8 +58,10 @@ def visualizar(request, id_televisor):
     televisor.nota3 = coments.filter(nota=3).count()
     televisor.nota2 = coments.filter(nota=2).count()
     televisor.nota1 = coments.filter(nota=1).count()
-    
-    televisor.adicionar_visita()
+        
+    # Aplicar visita
+    cliente = get_cliente_from_session(request)
+    televisor.adicionar_visita(cliente)
     
     return render(request, 'portal/produtos/detalhes_televisores.html', locals())
 
@@ -76,6 +81,12 @@ def salvar_comentario(request):
     comentario = request.GET.get('comentario','')
     if not comentario:
         return { 'erro' : 'Por favor, preencha o comentário.' }  
+    
+    # Se cliente logado, o comentário pertence a ele
+    cliente = None
+    if request.session.get("id_cliente", ""):
+        cliente = Cliente.objects.get(pk=request.session.get("id_cliente"))
+        nome    = cliente.nome
     #####################################################################
     
     try:
@@ -83,7 +94,8 @@ def salvar_comentario(request):
         comnt.televisor  = Televisor.objects.get(pk=id_televisor)
         comnt.nome       = nome
         comnt.comentario = comentario
-        comnt.nota       = int(request.GET.get('nota','0'))
+        comnt.cliente    = cliente
+        comnt.nota       = int(request.GET.get('nota','1'))
         comnt.save()
     except Exception, ex:
         return {'erro' : 'Ocorreu um erro, favor, tente mais tarde.' }

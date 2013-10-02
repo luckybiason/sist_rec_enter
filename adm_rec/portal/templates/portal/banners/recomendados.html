@@ -1,7 +1,7 @@
 <script>
 var carousel_rec = {
 "data":[
-{% for televisor in televisores %}
+{% for televisor in recomendados %}
 {
 "url"       :"{% url portal.visualizar televisor.id %}",
 "img"       :"/media/{{ televisor.imagem }}",
@@ -15,7 +15,7 @@ $(function(){
 create(carousel_rec.data, '#carrossel1', 6);
 });
 </script>
-	<h2 class="title2">Principais Televisores</h2>
+	<h2 class="title2">Recomendados pelo seu Perfil</h2>
 	<div id="carrossel1" class="carousel_box">
 		<div id="carousel_rec">
 			<div href="#" class="prev-box">

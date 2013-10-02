@@ -257,6 +257,19 @@ class Televisor(models.Model):
     def __unicode__(self):
         return self.nome
     
+    def get_nota_media(self):
+        from portal.models import Comentario
+        notas = Comentario.objects.only("nota").filter(televisor=self)
+        return reduce(lambda x,y: x+y, notas)/notas.count()
+    
+    def ja_comentado(self, cliente):
+        from portal.models import Comentario
+        return Comentario.objects.filter(cliente=cliente, televisor=self).exists()
+    
+    def ja_visitado(self, cliente):
+        from portal.models import Visitado
+        return Visitado.objects.filter(cliente=cliente, televisor=self).exists()
+    
     def get_imagem(self): 
         return u'''<img src='/media/%s' height='40px'>''' % str(self.imagem)
     
@@ -284,7 +297,10 @@ class Televisor(models.Model):
     def lojas(self):
         return [ tel_loja.loja for tel_loja in TelevisorLoja.objects.filter(televisor=self)]
     
-    def adicionar_visita(self):
+    def adicionar_visita(self, cliente=None):
+        from portal.models import Visitado
+        if cliente:
+             Visitado.objects.create(cliente=cliente, televisor=self)
         self.visitado = self.visitado + 1
         self.save()
    

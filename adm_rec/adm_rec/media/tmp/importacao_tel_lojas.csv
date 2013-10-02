@@ -1,0 +1,5 @@
+Cód.|Erro
+13|"insert or update on table ""televisores_televisorloja"" violates foreign key constraint ""televisores_televisorloja_loja_id_fkey""
+DETAIL:  Key (loja_id)=(87865486) is not present in table ""lojas_loja"".
+"
+17|invalid literal for int() with base 10: 'rtt'

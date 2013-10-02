@@ -5,8 +5,12 @@ from django.conf               import settings
 
 
 urlpatterns = patterns('',
-    ##### - Sistema administrador - #####
-    url(r'^adm/$',       'adm_rec.views.menu',  name='menu'),
+                       
+    ##### - Sistema administrador
+    url(r'^adm/$', 'adm_rec.views.menu',    name='menu'),
+    ##### - Portal
+    url(r'^$',     'adm_rec.views.portal',  name='portal'),
+    (r'^portal/',   include('portal.urls')),
     
     # Sistema Login
     (r'^adm/login/$'  ,'django.contrib.auth.views.login',             {'template_name':'login.html'}),
@@ -23,14 +27,10 @@ urlpatterns = patterns('',
     (r'^clientes/',        include('clientes.urls')),
     
     # Processos
-    (r'^adm/importacao/',     include('importacao.urls')),
-    
-    
-    ##### - Portal - #####
-    url(r'^$',       'adm_rec.views.portal',  name='portal'),
-    (r'^portal/',    include('portal.urls')),
-    (r'^buscar/',    include('busca.urls')),
-    (r'^filtragem/', include('filtragem.urls')),
+    (r'^adm/importacao/', include('importacao.urls')),
+    (r'^buscar/',         include('busca.urls')),
+    (r'^filtragem/',      include('filtragem.urls')),
+    (r'^recomendacao/',   include('recomendacao.urls')),
 )
 
 # Configuração de urls de arquivos estáticos e de mídia

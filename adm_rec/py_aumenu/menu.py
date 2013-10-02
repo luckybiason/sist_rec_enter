@@ -95,7 +95,7 @@ MENU = lambda :{
            'titulo'      : _(u"Gerenciamento"),
            'img'         : "img/settings.png",
            'id-html'     : "config",
-           'itens-width' : "145",
+           'itens-width' : "165",
            'perm_need'   : [''],
            'itens'  :[
                      {  
@@ -111,13 +111,40 @@ MENU = lambda :{
                          'perm_need'   : [''],
                      },
                      {  
-                         'titulo'   : _(u"Importar Televisores"),
-                         'img'      : "img/tele.png",
-                         'url-name' : "importacao.televisores",
+                         'titulo'   : _(u"Exportação de Dados"),
+                         'img'      : "imagem/exporta.png",
+                         'url-name' : "importacao.exportacao",
                          'perm_need'   : [''],
                      },
+                     {  # Submenu
+                       'titulo'      : _(u"Importação de Dados"),
+                       'img'         : "img/settings.png",
+                       'id-html'     : "config",
+                       'itens-width' : "235",
+                       'perm_need'   : [''],
+                       'itens'  :[
+                                {  
+                                  'titulo'   : _(u"Importar Televisores"),
+                                  'img'      : "img/tele.png",
+                                  'url-name' : "importacao.televisores",
+                                  'perm_need'   : [''],
+                                 },
+                                {  
+                                  'titulo'   : _(u"Importar Lojas"),
+                                  'img'      : "img/lojas.png",
+                                  'url-name' : "importacao.lojas",
+                                  'perm_need'   : [''],
+                                 },
+                                {  
+                                  'titulo'   : _(u"Importar Relacionamento loja-televisor"),
+                                  'img'      : "imagem/reload.png",
+                                  'url-name' : "importacao.tel_lojas",
+                                  'perm_need'   : [''],
+                                 },
+                        ]  # Fim itens
+                      },  # Fim submenu
            ]  # Fim itens
-        },  # Fim submenu cadastros
+        },  # Fim submenu 
         {  # Item de menu
             'titulo'    : _(u"Logout"),
             'img'       : "img/logout.png",

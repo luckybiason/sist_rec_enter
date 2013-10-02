@@ -1,0 +1,2 @@
+Cód.|Erro
+1|'ascii' codec can't encode character u'\xe2' in position 6: ordinal not in range(128)

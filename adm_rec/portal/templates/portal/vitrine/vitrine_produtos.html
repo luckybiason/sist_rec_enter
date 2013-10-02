@@ -14,7 +14,7 @@
 {% for produto in page.object_list  %}
 <section>
 	<div class="item-vitrine-prod">
-		<a  href="{% url portal.visualizar produto.id %}"> 
+		<a href="{% url portal.visualizar produto.id %}"> 
 			<span class="imagem"> 
 				{% if produto.imagem %} 
 				<img id='img' src='/media/{{ produto.imagem }}' width='80px'> 
@@ -26,6 +26,11 @@
 				<h2 class="description-prod">
 					{{ produto.nome }}
 				</h2>
+				{% if produto.marcacao %}
+				<p class="marcacao-prod">
+					Em relação a distância de seu ambiente: {{ produto.marcacao }}
+				</p>
+				{% endif %}
 				<p class="price-vitrine-prod">
 					de R$ {{ produto.menor_preco }} até R$ {{ produto.maior_preco }}
 				</p> 

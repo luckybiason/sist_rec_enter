@@ -10,7 +10,15 @@
 
 <div class="page-wrapper">
 	{% include "portal/banners/propagandas.html" %}
-	{% include "portal/banners/recomendados.html" %}
+	
+	{% if recomendados %}
+	    {% include "portal/banners/recomendados.html" %}
+	{% endif %}
+	
+	{% if televisores %}
+	    {% include "portal/banners/principais_televisores.html" %} 
+	{% endif%}
+	
 	{% include "portal/banners/filtragem_inteligente.html" %}
 	{% include "portal/banners/principais_marcas.html" %}
 	<div id="pub"></div>

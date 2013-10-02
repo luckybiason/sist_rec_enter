@@ -1,0 +1,57 @@
+{% extends 'base.html' %}
+
+{% load url from future %}
+
+{% block conteudo %}
+
+<div id="body-titulo">
+	<h2>{{ titulo_tela }}</h2>
+</div>
+
+<div id="body-form" >
+
+	{% if status %}
+	<fieldset class="fborder" style="padding: 5px!important; width: 683px!important; float: none" >
+			<ul class="mensagem msg_erro">
+			    Os registros exportados se encontram no arquivo abaixo.
+			</ul> 
+			<img src='/static/imagem/csv.png'  height="20px;">&nbsp;
+			<a href='/media/tmp/{{ retorno }}'>Baixar Arquivo</a> 
+			{% if arquivo_erros %}
+			<ul class="mensagem msg_erro">
+			    Os registros que não foram exportados se encontram no arquivo abaixo.
+			</ul> 
+			<img src='/static/imagem/csv_erro.png'  height="20px;">&nbsp;
+			<a href='/media/tmp/{{ arquivo_erros }}'>Baixar Arquivo</a> 
+			{% endif %}
+	</fieldset>
+	{% endif %}
+	
+	<form class="vForm" method="POST" enctype="multipart/form-data">
+		{% csrf_token %}
+		<fieldset class="fborder" style="padding: 25px!important; text-align: center; float: none">
+
+			<p class="header_fast_menu">
+				<b>Seleção do Tipo de Exportação</b>
+			</p>
+			<p class="help_text_back">
+				Para executar a exportação de dados, escolha o tipo de exportação.<br/>
+				O delimitador do csv gerado será um pipe (|).<br>
+				O arquivo gerado terá todas as colunas.
+			</p>
+
+			<fieldset class="fborder" style="padding: 5px!important; width: 370px!important; margin-left: 20%; text-align: justify!important;" >
+				<input type="radio" name="tipo" value="televisor">Televisores <br>
+				<input type="radio" name="tipo" value="lojas">Lojas <br>
+				<input type="radio" name="tipo" value="tel_loja">Relação Loja-Televisor <br>
+			</fieldset>
+			
+		</fieldset>
+
+			<fieldset class="fborder " style="float: none" >
+			      <input type="submit" name="acao" value="Exportar" class='botao' style="margin: 10px" />
+			</fieldset>
+	</form>
+</div>
+
+{% endblock %}

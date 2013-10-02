@@ -35,6 +35,9 @@ class Cliente(models.Model):
     def __unicode__(self):
         return self.nome
     
+    def has_perfil(self):
+        return any(self.usos, self.aparelhos, self.preco_min, self.preco_max, self.tip_telas, self.tam_telas, self.distancia)
+    
 class ClienteComentarios(models.Model):
     comentario = models.ForeignKey(Comentario, blank=False, null=False)
     cliente    = models.ForeignKey(Cliente,    blank=False, null=False)
