@@ -76,8 +76,8 @@ def passo03(request):
      Passo 03: Faixa de preço. 
     '''
     ## Captura dos televisores 
-    televisores_ids = request.POST.get("tvs","")
-    classificados   = Televisor.objects.filter(pk__in=televisores_ids)
+    televisores_ids = request.POST.get("tvs_ids","")
+    classificados   = Televisor.objects.filter(pk__in=televisores_ids.split(";"))
     
     ## Captura dos precos
     preco_min, preco_max = '', ''
