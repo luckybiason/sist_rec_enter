@@ -1,4 +1,15 @@
 Cód.|Erro
-6|"insert or update on table ""televisores"" violates foreign key constraint ""televisores_marca_id_fkey""
-DETAIL:  Key (marca_id)=(59898) is not present in table ""televisores_marca"".
-"
+4|list index out of range
+15|list index out of range
+9|list index out of range
+7|list index out of range
+11|list index out of range
+13|list index out of range
+3|list index out of range
+14|list index out of range
+12|list index out of range
+10|list index out of range
+5|list index out of range
+6|list index out of range
+8|list index out of range
+2|list index out of range
