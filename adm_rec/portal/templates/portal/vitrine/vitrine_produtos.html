@@ -50,7 +50,7 @@
 
 <script>
 	$(function() {
-		{% for produto in produtos %}
+		{% for produto in page.object_list %}
 		setupRatyID("comnts_rati_{{ produto.id }}", parseInt("{{ produto.nota_media|default:0 }}"));
 		{% endfor %}
 	}); 

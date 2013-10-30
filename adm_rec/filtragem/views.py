@@ -182,5 +182,6 @@ def passo06(request):
     ## Informações para filtragem
     marcas, precos, telas, informacoes = get_filtros(request, classificados)
     
+    pl_chave = ""
     
     return render(request, "portal/listagem_produtos.html", locals())

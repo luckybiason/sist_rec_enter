@@ -3,7 +3,7 @@ from django.db import models
 
 USOS_INFO = {    
    "Jogos"     : [2],   
-   "Blu-ray"   : [1],
+   "Blu-Ray"   : [1],
    "HDTV"      : [2],    
    "TV Aberta" : [3],
    "TV a cabo" : [3], 
@@ -28,7 +28,7 @@ USOS_CHOICES = [
 ]
 
 APARELHOS_INFO = {
- "Blu-ray"      : ["HDMI",       "img/blu-ray_icon.png" ], 
+ "Blu-Ray"      : ["HDMI",       "img/blu-ray_icon.png" ], 
  "DVD"          : ["Conexão AV", "img/dvd_icon.png" ],
  "Playstation"  : ["Conexão AV", "img/play_icon.png" ], 
  "Xbox"         : ["Conexão AV", "img/xbox_icon.png" ],
